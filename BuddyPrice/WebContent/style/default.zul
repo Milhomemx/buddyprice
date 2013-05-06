@@ -1,0 +1,224 @@
+<zk>
+	<zscript>
+		String themecolor = "#97d077";
+		String fontcolor = "#02735f";
+		String bordercolor = "#51b11d";
+		String lineheight = "65px";
+		String lineHeightSidebar = "26px";
+	</zscript>
+	<style><![CDATA[	
+	/*Propriedades Gerais do Textbox*/                  
+	.z-textbox {
+		border-color: ${bordercolor}; 
+		border-radius: 4px;
+	}
+	
+	/*Propriedades Gerais do Groupbox*/  	
+	.z-groupbox-header span.z-caption-cnt,
+	.z-groupbox-title-cnt {
+		display: -moz-inline-box;
+		display: inline-block;
+		background-color: #FFFFFF;
+		font-size: 30px;
+		font-family: arial, helvetica, serif;
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+	
+	.z-groupbox-hm {
+		position: relative;
+		top: -18px;
+	}
+	
+	.z-groupbox-hr {
+		position: relative;
+		top: 11px;
+		border: 1px solid black;
+		border-bottom: none;
+		-webkit-border-top-left-radius: 8px;
+		-webkit-border-top-right-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-moz-border-radius-topright: 8px;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+	
+	.z-groupbox-cnt {
+		overflow: hidden;
+		padding: 5px;
+		border: 1px solid black;
+		border-top: none;
+		-webkit-border-bottom-right-radius: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		border-bottom-right-radius: 8px;
+		border-bottom-left-radius: 8px;
+	}
+	
+	.z-groupbox .z-label,
+	.z-groupbox .z-radio-cnt{
+		color: black;
+	}
+	
+	/*Propriedades Gerais do Combobox*/ 
+	.z-combobox-inp {
+		border: 1px solid ${bordercolor};
+	}
+	
+	.z-combobox-focus .z-combobox-inp {
+		border: 1px solid ${bordercolor};
+		border-top-color: #3f8419;
+	}
+	
+	.z-combobox .z-combobox-btn{
+		background: transparent no-repeat 0 -1px;
+		background-image: url("/EZRides/imagens/componentes/combobtn.gif");
+		vertical-align: top; 
+		cursor: pointer; 
+		width: 18px; 
+		height: 19px;
+		border: 1px solid ${bordercolor};
+		border-top-color: #3f8419;
+		border-left: 0;
+		overflow: hidden;
+		display:-moz-inline-box; display:inline-block;
+		border-radius: 0 2px 2px 0;
+		-moz-border-radius: 0 2px 2px 0;
+		-webkit-border-radius: 0 2px 2px 0;
+	}
+	
+	/*Propriedades Gerais do Datebox*/ 
+	.z-datebox-inp {
+		font-weight: normal;
+		background: #FFFFFF;
+		border: 1px solid ${bordercolor};
+		border-top-color: #3f8419;
+		border-right: 0;
+		padding: 2px;
+		border-radius: 2px 0 0 2px;
+		-moz-border-radius: 2px 0 0 2px;
+		-webkit-border-radius: 2px 0 0 2px;
+		height: 15px;
+		outline: none;
+	}
+	
+	.z-datebox-focus .z-datebox-inp {
+		border: 1px solid ${bordercolor};
+		border-top-color: #3f8419;
+		border-right: none;
+	}
+	
+	.z-datebox .z-datebox-btn{
+		border: 1px solid ${bordercolor};
+	}
+	
+	.z-datebox-focus .z-datebox-btn-clk, .z-datebox .z-datebox-btn-clk {
+		margin-left: -1px;
+	}
+	
+	.z-datebox-focus .z-datebox-btn-clk, .z-datebox .z-datebox-btn-clk {
+		background-position: -38px -1px;
+		border: 1px solid #94B9DA;
+	}
+	
+	.z-datebox-focus .z-datebox-btn {
+		background-position: -57px -1px;
+		border: 1px solid #D5EAFD;
+		border-top-color: #94B9DA;
+		border-left: 0;
+	}
+	
+	.z-datebox-focus .z-datebox-btn-over {
+		background-position: -19px -1px;
+		border: 1px solid #94B9DA;
+	}
+	
+	/*Propriedades Gerais do Button*/   
+	.z-button .z-button-cr, .z-button .z-button-cl, 
+	.z-button .z-button-bl, .z-button .z-button-bm,
+	.z-button .z-button-br, .z-button .z-button-tl,
+	.z-button .z-button-tm, .z-button .z-button-tr {
+	    background-image: none;
+	}
+	.z-button .z-button-cm {
+	    background : transparent url('') no-repeat 0 0 ;
+	}
+	
+	/*Propriedades do cabeçalho*/              
+	.header {
+	    background-color: ${themecolor};
+	    border-bottom: 0px;
+	    color: ${fontcolor};
+	    padding-left: 13px;
+	    padding-right: 13px;
+	}
+	.header-title1 {
+	    color: ${fontcolor};
+	    font-size: 35px;
+	    font-weight: bold;
+	    float: left;
+	    line-height: ${lineheight};
+	}
+	.oeste {
+		background-color: ${themecolor};
+		border: none;
+		line-height: ${lineheight};
+	}
+	
+	.leste {
+		background-color: ${themecolor};
+		border: none;
+	}
+	
+	.centro {
+		background-color: ${themecolor};
+		border: none;
+		text-align: center;
+		line-height: ${lineheight};
+	}
+	
+	/*Propriedades do centro*/   
+	.center {
+	    padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	
+	/*Propriedades do rodapé*/   
+	.footer {
+	    background-color: ${themecolor};
+	    border-top : 0px solid gray;
+	    color: ${fontcolor};
+	    text-align: center;
+	}
+	
+	/*Propriedades da Side bar*/ 
+	.sidebar {
+		border-right-color: #51b11d;
+		border-left-width: 0px;
+		border-top-width: 0px;
+		border-bottom-width: 0px;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 13px;
+		padding-right: 13px;
+		color: #168910;
+	}	
+	div.itens {
+		line-height: ${lineHeightSidebar};
+	}
+	.icones {
+		float: left;
+	}
+	.menuSidebar a:link, 
+	.menuSidebar a:visited, 
+	.menuSidebar a:active {
+		text-decoration: none;
+		color: #168910;
+	}
+	.menuSidebar a:hover {
+		text-decoration: none;
+		color: red;
+	}   
+	]]></style>
+</zk>

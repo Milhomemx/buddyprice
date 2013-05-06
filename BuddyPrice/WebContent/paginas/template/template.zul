@@ -1,0 +1,22 @@
+<zk> 
+	  <include src="/style/default.zul"/>
+	  <borderlayout width="100%" height="100%">
+	    <north border="none" size="65px" class="header">
+	      <include src="/paginas/componentes/header.zul"/>
+	    </north>
+	    <west class="sidebar" size="155px" minsize="155" maxsize="155" id="sidebar" splittable="false" collapsible="false" >
+	    	 <include src="/paginas/componentes/sidebar.zul"/>
+	    </west>
+	    <center border="none" flex="true" class="center" >
+	    	<hlayout>
+		    	 <div hflex="1"></div>		  
+					  <div hflex="15" vflex="1" class="center-right" self="@insert(content)">				   
+					  </div>
+				<div hflex="1"></div>
+			</hlayout>
+	    </center>
+	    <south border="none" class="footer" size="15px">
+	      <include src="/paginas/componentes/footer.zul"/>
+	    </south>
+	  </borderlayout>
+</zk>

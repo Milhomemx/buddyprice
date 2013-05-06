@@ -1,0 +1,9 @@
+<?page title="Auto Generated index.zul"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/paginas/template/template.zul"?>
+<zk>
+	<div self="@define(content)">
+		<hlayout>
+		    <include src="/paginas/content.zul" />
+		</hlayout>
+	</div>
+</zk>

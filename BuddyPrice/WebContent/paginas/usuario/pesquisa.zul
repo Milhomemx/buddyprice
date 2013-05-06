@@ -1,0 +1,7 @@
+<?page title="Pesquisa de Usuário"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/paginas/template/template.zul"?>
+<zk>
+	<div self="@define(content)">
+		<include src="/paginas/usuario/frmPesquisaUsuario.zul"/>
+	</div>
+</zk>

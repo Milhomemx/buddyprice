@@ -1,0 +1,22 @@
+<zk>
+ <borderlayout id="cabecalho" width="100%" height="100%">
+    <west size="155px" class="oeste">
+    	<div>
+    		 <label class="header-title1" value="EZ-Rides" />
+    	 </div>
+    </west>
+    <center id="center" border="none" flex="true" class="centro">
+   		<hbox id="boxPesquisa" width="100%" height="100%" align="center" pack="center">
+   			<textbox placeholder="Pesquise algum destino clicando aqui!" width="458px" />
+			<button id="teste" image="/imagens/cabecalho/botao-pesquisa-cabecalho.png" mold="trendy" />
+   		</hbox>
+    </center>
+    <east id="east" border="none" size="65px" vflex="1" class="leste">
+    	<vbox id="boxLogout" width="100%" height="100%" align="center" pack="center">
+	     	<image src="/imagens/fotopadrao.png" width="34px" height="34px" />
+	     	<a href="">Logout</a>
+		</vbox>
+    </east>
+</borderlayout>
+</zk>
+  

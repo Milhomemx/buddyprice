@@ -1,0 +1,22 @@
+<?page title="teste" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
+Nome
+<textbox value="@{controller.entity.nome}"/>
+
+Data de Nascimento
+<datebox value="@{controller.entity.data_nasc}"/>
+
+E-mail
+<textbox value="@{controller.entity.email}"/>
+
+Telefone
+<textbox value="@{controller.entity.tel}"/>
+
+Senha
+<textbox type="password" value="@{controller.entity.senha}"/>
+
+<button value="Submit"><attribute name="onClick">controller.saveEntity();</attribute></button>
+
+</window>
+</zk>
