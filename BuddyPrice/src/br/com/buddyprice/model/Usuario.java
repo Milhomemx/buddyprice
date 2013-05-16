@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import br.com.vexillum.model.UserBasic;
+import br.com.vexillum.model.annotations.ValidatorClass;
 
 @SuppressWarnings("serial")
 @Entity
+@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.UsuarioValidator")
 @Table(name="Usuario")
 public class Usuario extends UserBasic {
 

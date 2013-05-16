@@ -1,23 +1,29 @@
 package br.com.buddyprice.view.composer;
 
+import org.zkoss.zk.ui.Component;
+
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
-import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.view.composer.CRUDComposer;
 
 
-public class UsuarioComposer extends CRUDComposer<Usuario> {
+@SuppressWarnings("serial")
+public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
+
+	public void doAfterCompose(Component comp) throws Exception{
+		super.doAfterCompose(comp);
+		loadBinder();
+	}
+	
+	@Override
+	 public UsuarioController getControl() {
+	 return new UsuarioController(ReflectionUtils.prepareDataForPersistence(this));
+	 }
 
 	@Override
-	public GenericControl<Usuario> getControl() {
-		UsuarioController a = new UsuarioController(ReflectionUtils.prepareDataForPersistence(this));
-		return a;
-	}
-
-	@Override
-	public Usuario getObjetoDominio() {
-		return new Usuario();
-	}
+	 public Usuario getEntityObject() {
+	 return new Usuario();
+	 }
 
 }
