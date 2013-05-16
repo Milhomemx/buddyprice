@@ -2,13 +2,13 @@
 <zk>
 <window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
 Nome
-<textbox value="@{controller.entity.nome}"/>
+<textbox id="fldNome" value="@{controller.entity.nome}"/>
 
 Data de Nascimento
-<datebox value="@{controller.entity.data_nasc}"/>
+<datebox value="@{controller.entity.dataNascimento}"/>
 
 E-mail
-<textbox value="@{controller.entity.email}"/>
+<textbox id="fldEmail" value="@{controller.entity.email}"/>
 
 Telefone
 <textbox value="@{controller.entity.tel}"/>
@@ -16,7 +16,26 @@ Telefone
 Senha
 <textbox type="password" value="@{controller.entity.senha}"/>
 
-<button value="Submit"><attribute name="onClick">controller.saveEntity();</attribute></button>
+<button label="Submit"><attribute name="onClick">controller.doAction("saveEntity");</attribute></button>
+
+</window>
+
+<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
+
+<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
+
+<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
+	<listhead>
+		<listheader>Nome:</listheader>
+		<listheader>Email:</listheader>
+		<listheader>Telfone:</listheader>
+	</listhead>
+	<listitem self="@{each=user}">
+		<listcell label="@{user.nome}"/>
+		<listcell label="@{user.email}"/>
+		<listcell label="@{user.tel}"/>
+	</listitem>
+</listbox>
 
 </window>
 </zk>
