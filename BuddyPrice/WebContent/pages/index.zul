@@ -1,4 +1,4 @@
-<?page title="teste" contentType="text/html;charset=UTF-8"?>
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
 <zk>
 <window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
 Nome
@@ -18,8 +18,13 @@ Senha
 
 <button label="Submit"><attribute name="onClick">controller.doAction("saveEntity");</attribute></button>
 
-</window>
+<radiogroup id="fldSexo" selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
+       <radio label="Masculino" value="Masculino"/>
+       <radio label="Feminino" value="Feminino"/>
+      </radiogroup>
 
+</window>
+<!-- 
 <window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
 
 <button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
@@ -37,5 +42,5 @@ Senha
 	</listitem>
 </listbox>
 
-</window>
+</window> -->
 </zk>
