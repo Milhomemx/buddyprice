@@ -16,7 +16,7 @@ Telefone
 Senha
 <textbox type="password" value="@{controller.entity.senha}"/>
 
-<button label="Submit"><attribute name="onClick">controller.doAction("saveEntity");</attribute></button>
+<button label="Submit" onClick="controller.registerUser()" />
 
 <radiogroup id="fldSexo" selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
        <radio label="Masculino" value="Masculino"/>
