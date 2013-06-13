@@ -1,11 +1,32 @@
-<zk> 
+<?page title="Posicões da tela" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <borderlayout hflex="0" vflex="0">
+        <north height="7%" border="none">
+            <include src="/pages/components/banner.zul"/>
+            
+        </north>
+        <west width="15%" border="none" splittable="true">
+            <label>Barra lateral auxiliar esquerda</label >
+        </west>
+        <east width="15%" border="none"  splittable="true">
+			<label>Barra lateral auxiliar direita</label>
+        </east>
+        <center id="mainContent">
+            <label style="font-size:50px">Conteúdo da página</label>
+        </center>
+        <south height="5%" border="none"><label>Barrinha inferior</label>
+        </south>
+    </borderlayout>
+</zk>
+
+<!-- <zk> 
 	  <include src="/style/default.zul"/>
 	  <borderlayout width="100%" height="100%">
 	    <north border="none" size="65px" class="header">
-	      <include src="/paginas/componentes/header.zul"/>
+	      <include src="/pages/components/header.zul"/>
 	    </north>
 	    <west class="sidebar" size="155px" minsize="155" maxsize="155" id="sidebar" splittable="false" collapsible="false" >
-	    	 <include src="/paginas/componentes/sidebar.zul"/>
+	    	 <include src="/pages/components/sidebar.zul"/>
 	    </west>
 	    <center border="none" flex="true" class="center" >
 	    	<hlayout>
@@ -16,7 +37,7 @@
 			</hlayout>
 	    </center>
 	    <south border="none" class="footer" size="15px">
-	      <include src="/paginas/componentes/footer.zul"/>
+	      <include src="/pages/components/footer.zul"/>
 	    </south>
 	  </borderlayout>
-</zk>
+</zk> -->
