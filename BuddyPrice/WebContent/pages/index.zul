@@ -1,46 +1,73 @@
 <?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
-Nome
-<textbox id="fldNome" value="@{controller.entity.nome}"/>
+	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
 
-Data de Nascimento
-<datebox value="@{controller.entity.dataNascimento}"/>
+		<grid>
+			<rows>
+				<row>
+					<label value="Nome" />
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" />
+				</row>
+				<row>
+					Data de Nascimento
+					<datebox
+						value="@{controller.entity.dataNascimento}" />
+				</row>
+				<row>
+					E-mail
 
-E-mail
-<textbox id="fldEmail" value="@{controller.entity.email}"/>
+					<textbox id="fldEmail"
+						value="@{controller.entity.email}" />
+				</row>
+				<row>
+				Telefone
 
-Telefone
-<textbox value="@{controller.entity.tel}"/>
+				<textbox value="@{controller.entity.tel}" />
+				</row>
+				<row>
+				Senha
+				<textbox type="password"
+					value="@{controller.entity.senha}" />
+				</row>
+				<row>
+				Sexo
+				<radiogroup id="fldSexo"
+					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
+					     
+					<radio label="Masculino" selected="true"
+						value="Masculino" />
+					     
+					<radio label="Feminino" value="Feminino" />
+					   
+				</radiogroup>
+				</row>
+				<row>
+				<button label="Submit"
+					onClick="controller.registerUser()" />
+				</row>
+			</rows>
 
-Senha
-<textbox type="password" value="@{controller.entity.senha}"/>
+		</grid>
 
-<button label="Submit" onClick="controller.registerUser()" />
-
-<radiogroup id="fldSexo" selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
-       <radio label="Masculino" value="Masculino"/>
-       <radio label="Feminino" value="Feminino"/>
-      </radiogroup>
-
-</window>
-<!-- 
-<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
-
-<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
-
-<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
-	<listhead>
+	</window>
+	<!-- 
+		<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
+		
+		<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
+		
+		<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
+		<listhead>
 		<listheader>Nome:</listheader>
 		<listheader>Email:</listheader>
 		<listheader>Telfone:</listheader>
-	</listhead>
-	<listitem self="@{each=user}">
+		</listhead>
+		<listitem self="@{each=user}">
 		<listcell label="@{user.nome}"/>
 		<listcell label="@{user.email}"/>
 		<listcell label="@{user.tel}"/>
-	</listitem>
-</listbox>
-
-</window> -->
+		</listitem>
+		</listbox>
+		
+		</window> -->
 </zk>
