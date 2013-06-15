@@ -25,7 +25,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
 	public void registerUser() {
 		treatReturn(getControl().registerUser());
 		//validar sucesso do cadastro
-		Executions.sendRedirect("/pages/filePosition.zul");
+		//Executions.sendRedirect("/pages/filePosition.zul");
 
 	}
 	

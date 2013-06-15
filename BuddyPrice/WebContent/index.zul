@@ -1,9 +1,9 @@
 <?page title="Buddy Price"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
 <zk>
-	<!-- <div self="@define(content)">
+	 <div self="@define(content)">
 		<hlayout>
 		    <include src="/pages/index.zul" />
 		</hlayout>
-	</div> -->
+	</div> 
 </zk>

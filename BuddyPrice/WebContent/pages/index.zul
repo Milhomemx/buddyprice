@@ -1,5 +1,9 @@
 <?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
 <zk>
+
+
+<div self="@define(content)">
 	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
 
 		<grid>
@@ -35,7 +39,7 @@
 				<radiogroup id="fldSexo"
 					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
 					     
-					<radio label="Masculino" selected="true"
+					<radio label="Masculino" checked="true"
 						value="Masculino" />
 					     
 					<radio label="Feminino" value="Feminino" />
@@ -43,7 +47,7 @@
 				</radiogroup>
 				</row>
 				<row>
-				<button label="Submit"
+				<button sclass="btn btn-danger" label="Cadastrar"
 					onClick="controller.registerUser()" />
 				</row>
 			</rows>
@@ -51,6 +55,7 @@
 		</grid>
 
 	</window>
+</div>
 	<!-- 
 		<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
 		
