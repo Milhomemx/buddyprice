@@ -1,5 +1,5 @@
 <zk>
- <zscript>
+<zscript>
   String themecolor = "#AC0000";
   String fontcolor = "#AC0000";
   String fontcolorListbox = "#FFFFFF";
@@ -11,7 +11,8 @@
  <style><![CDATA[ 
 <%-- Grid --%>
 div.z-grid {
-	border: 1px solid #000000;
+	border: 1px solid #cfcfcf; 
+	#cfcfcf;
 	overflow: hidden;
 	zoom: 1;
 }
@@ -439,6 +440,5 @@ div.z-grid-header-bg {
 .z-grid-footer .z-footer {
 	overflow: hidden; <%-- B50-ZK-410: Bug on footer labels applied to a grid --%>
 }
- 
  ]]></style>
 </zk>

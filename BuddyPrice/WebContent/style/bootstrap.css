@@ -12,6 +12,10 @@
   *zoom: 1;
 }
 
+div.z-grid {
+	border: 0px solid #cfcfcf; 
+}
+
 .clearfix:before,
 .clearfix:after {
   display: table;
