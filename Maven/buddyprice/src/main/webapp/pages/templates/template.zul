@@ -1,0 +1,23 @@
+<?page title="Posicões da tela" contentType="text/html;charset=UTF-8"?>
+
+<zk>
+<include src="/style/default.zul"></include>
+<style src="/style/bootstrap.css"/>
+<script src="/scripts/bootstrap.js" type="text/javascript" charset="UTF-8"></script>
+    <borderlayout hflex="0" vflex="0">
+        <north height="7%" border="none">
+            <include src="/pages/components/banner.zul"/>
+            
+        </north>
+        <west width="15%" border="none" splittable="true">
+            <label>Barra lateral auxiliar esquerda</label >
+        </west>
+        <east width="15%" border="none"  splittable="true">
+			<label>Barra lateral auxiliar direita</label>
+        </east>
+        <center self="@insert(content)"/>
+        <south height="5%" border="none"><label>Barrinha inferior</label>
+        </south>
+    </borderlayout>
+</zk>
+

@@ -1,0 +1,51 @@
+
+<zk>
+<vlayout xmlns:h="native" vflex="1">
+	<image src="/imagens/fotopadrao.png" width="147px" height="147px" />
+	<separator width="20px"/>
+	<div class="menuSidebar">
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/verdinho.png" width="26px" height="${lineHeight}" class="icones"/>
+			<label value="Meu Perfil"/>
+			<div style="clear: both;"></div>
+		</div>
+	</a>	
+	<separator width="13px"/>
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/sidebar/minhasrotas.png" width="26px" height="26px" class="icones"/>
+			<label value="Minhas Rotas" style="vertical-align:middle;"/>
+		</div>	
+	</a>
+	<separator width="13px"/>
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/sidebar/amigos.png" width="26px" height="26px" class="icones"/>
+			<label value="Amigos" style="vertical-align:middle;"/>
+		</div>
+	</a>
+	<separator width="13px"/>
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/sidebar/mps.jpg" width="26px" height="26px" class="icones"/>
+			<label value="Mensagens Pessoais" style="vertical-align:middle;"/>
+		</div>
+	</a>
+	<separator width="13px"/>
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/sidebar/configuracoes.png" width="26px" height="26px" class="icones"/>
+			<label value="Configurações" style="vertical-align:middle;"/>
+		</div>
+	</a>
+	<separator width="13px"/>
+	<a href="">
+		<div align="center" class="itens">
+			<image src="/imagens/sidebar/administrador.jpg" width="26px" height="26px" class="icones"/>
+			<label value="Administrador" style="vertical-align:middle;"/>
+		</div>
+	</a>
+	</div>
+</vlayout>
+</zk>
