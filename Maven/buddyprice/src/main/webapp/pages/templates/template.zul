@@ -1,5 +1,5 @@
 <?page title="Posicões da tela" contentType="text/html;charset=UTF-8"?>
-
+ <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
 <?xel-method prefix="c" name="getProperty" class="br.com.vexillum.view.GenericComposer" signature="java.lang.String getProperty(java.lang.String)"?>
 <include src="/style/default.zul"></include>

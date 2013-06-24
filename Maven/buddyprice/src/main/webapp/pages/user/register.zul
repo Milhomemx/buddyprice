@@ -1,8 +1,13 @@
-<?page title="Registrar-se" contentType="text/html;charset=UTF-8"?>
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
+
 <zk>
-<window title="Registrar-se" apply="br.com.buddyprice.view.composer.UsuarioComposer">
-<include src="/style/default.zul"/>
-		<grid>
+
+
+<div>
+	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
+
+		<grid width="50%">
 			<rows>
 				<row>
 					<label value="Nome" />
@@ -36,14 +41,13 @@
 					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
 					     
 					<radio label="Masculino" selected="true"
-						value="Masculino" />
-					     
-					<radio label="Feminino" value="Feminino" />
+						value="Masculino"  />
+					     <radio label="Feminino" value="Feminino" />
 					   
 				</radiogroup>
 				</row>
 				<row>
-				<button label="Submit"
+				<button sclass="btn btn-danger" label="Cadastrar"
 					onClick="controller.registerUser()" />
 				</row>
 			</rows>
@@ -51,4 +55,24 @@
 		</grid>
 
 	</window>
+</div>
+	<!-- 
+		<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
+		
+		<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
+		
+		<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
+		<listhead>
+		<listheader>Nome:</listheader>
+		<listheader>Email:</listheader>
+		<listheader>Telfone:</listheader>
+		</listhead>
+		<listitem self="@{each=user}">
+		<listcell label="@{user.nome}"/>
+		<listcell label="@{user.email}"/>
+		<listcell label="@{user.tel}"/>
+		</listitem>
+		</listbox>
+		
+		</window> -->
 </zk>

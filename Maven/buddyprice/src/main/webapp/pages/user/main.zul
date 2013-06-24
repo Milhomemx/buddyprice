@@ -1,0 +1,25 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+
+<div>
+		<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
+		
+		<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
+		
+		<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
+		<listhead>
+		<listheader>Nome:</listheader>
+		<listheader>Email:</listheader>
+		<listheader>Telfone:</listheader>
+		</listhead>
+		<listitem self="@{each=user}">
+		<listcell label="@{user.nome}"/>
+		<listcell label="@{user.email}"/>
+		<listcell label="@{user.tel}"/>
+		</listitem>
+		</listbox>
+		
+		</window>
+		</div>
+</zk>

@@ -1,16 +1,18 @@
 package br.com.buddyprice.control;
 
-import java.util.HashMap;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
-
+@Service
+@Scope("prototype")
 public class UsuarioController extends GenericControl<Usuario> {
-
-	public UsuarioController(HashMap<String, Object> data) {
-		super(data);
+	public UsuarioController() {
+		super();
+		classEntity = Usuario.class;
 	}
 	
 	public Return registerUser() {
@@ -18,7 +20,9 @@ public class UsuarioController extends GenericControl<Usuario> {
 		regReturn.concat(doAction("save"));
 		if (regReturn.isValid()){
 			//TODO email?
-			regReturn.addMessage(new Message(null, "Conta Criada!"));
+			regReturn.addMessage(new Message(null, "Voce esta cadastrado! Seja bem vindo!"));
+			
+			
 		}
 		return regReturn;
 
