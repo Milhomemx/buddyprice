@@ -1,18 +1,22 @@
 <div hflex="1" vflex="1">
 		<div>
-		<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none" style="left: 900px">
+		<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none">
 
 		<grid>
 			<rows>
-				<row>
-					<label value="Login" style="font-size:18px"/>
-					<textbox id="fldNome"
-						value="@{controller.entity.nome}" />
-
-					<textbox id="fldUltNome"
-						value="@{controller.entity.nome}" />
-				<button sclass="btn btn-danger" label="Cadastrar"
-					onClick="controller.registerUser()" />
+				<row style="float: right; width: auto;">
+				<button sclass="btn btn-danger" label="Conectar"
+					onClick="controller.loginUser()" />
+					<textbox id="fldPass" type="password"
+						value="@{controller.entity.senha}" />
+						<label value="Senha" style="font-size:16px"/>
+					<textbox id="fldEmail"
+						value="@{controller.entity.email}" />
+					
+					<label value="Login" style="font-size:16px"/>
+					
+					
+				
 				</row>
 			</rows>
 

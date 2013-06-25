@@ -62,7 +62,7 @@ div.z-grid-header .z-column-sort-dsc div.z-column-cnt {
 	background-repeat: no-repeat;
 }
 div.z-grid-body {
-	background: white; border: 0; overflow: auto; width: 100%;
+	background: white; border: 0; overflow: auto; width: 90%;
 }
 tbody.z-grid-empty-body td{
    	font-family: ${fontFamilyC};

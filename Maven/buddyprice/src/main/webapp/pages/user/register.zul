@@ -2,7 +2,9 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
 
 <zk>
+<div>
 			<include src="/pages/user/Login.zul"/>
+</div>			
      <style>
     .water-mark { 
         color: gray; font-style: italic; 
@@ -19,16 +21,16 @@
             jq("$fldEmail2").Watermark("Digite seu e-mail novamente","gray"); 
             jq("$fldtel").Watermark("Digite seu telefone celular","gray");
             jq("$flddataNasc").Watermark("Digite sua data de nascimento","gray");
-            jq("$fldPass").Watermark("O segredo do sucesso é","gray");
-            jq("$fldPass2").Watermark("Nada além do esforço..","gray");
+            jq("$fldPass").Watermark("                      ","gray");
+            jq("$fldPass2").Watermark("                      ","gray");
                          
         });        
     </script>
 
 <div>
-	<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none">
+	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
 
-		<grid width="50%">
+		<grid style="width: 40%">
 			<rows>
 
 				<row>
