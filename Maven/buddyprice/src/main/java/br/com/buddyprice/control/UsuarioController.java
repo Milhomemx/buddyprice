@@ -27,5 +27,17 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return regReturn;
 
 		
+	}public Return loginUser() {
+		Return regReturn = new Return(true);
+		regReturn.concat(doAction("save"));
+		if (regReturn.isValid()){
+			//TODO email?
+			regReturn.addMessage(new Message(null, "Voce esta cadastrado! Seja bem vindo!"));
+			
+			
+		}
+		return regReturn;
+
+		
 	}
 }

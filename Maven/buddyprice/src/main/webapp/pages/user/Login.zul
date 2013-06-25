@@ -1,0 +1,24 @@
+<div hflex="1" vflex="1">
+		<div>
+		<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none" style="left: 900px">
+
+		<grid>
+			<rows>
+				<row>
+					<label value="Login" style="font-size:18px"/>
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" />
+
+					<textbox id="fldUltNome"
+						value="@{controller.entity.nome}" />
+				<button sclass="btn btn-danger" label="Cadastrar"
+					onClick="controller.registerUser()" />
+				</row>
+			</rows>
+
+		</grid>
+
+	</window>
+		</div>
+		
+</div>

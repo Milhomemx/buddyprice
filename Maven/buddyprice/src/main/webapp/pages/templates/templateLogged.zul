@@ -9,18 +9,13 @@
 	</script>
 	<borderlayout hflex="0" vflex="0">
 		<north height="7%" border="none">
-			<div>
 			<include src="/pages/components/banner.zul" />
-			</div>
-			
-		</north>
-		<west width="8%" border="none"></west>
-		<east width="8%" border="none"></east>
-		<center self="@insert(content)" border="none">
 
-		</center>
-		<south height="3%" border="none">
-			<include src="/pages/components/footer.zul" />
+		</north>
+		<west width="15%" border="none" splittable="true"></west>
+		<east width="15%" border="none" splittable="true"></east>
+		<center self="@insert(content)" border="none"/>
+		<south height="5%" border="none">
 		</south>
 	</borderlayout>
 </zk>

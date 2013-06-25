@@ -2,50 +2,79 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
 
 <zk>
+			<include src="/pages/user/Login.zul"/>
+     <style>
+    .water-mark { 
+        color: gray; font-style: italic; 
+    }
 
+    </style>
+  <script type="text/javascript" src="/scripts/maskedinput-1.2.2.min.js" />
+    <script type="text/javascript" src="/scripts/watermarkinput.js" />
+ <script type="text/javascript">
+        zk.afterMount(function() {
+            jq("$fldNome").Watermark("Seu nome","gray");
+            jq("$fldUltNome").Watermark("Sobrenome","gray"); 
+            jq("$fldEmail").Watermark("Seu e-mail","gray"); 
+            jq("$fldEmail2").Watermark("Digite seu e-mail novamente","gray"); 
+            jq("$fldtel").Watermark("Digite seu telefone celular","gray");
+            jq("$flddataNasc").Watermark("Digite sua data de nascimento","gray");
+            jq("$fldPass").Watermark("O segredo do sucesso é","gray");
+            jq("$fldPass2").Watermark("Nada além do esforço..","gray");
+                         
+        });        
+    </script>
 
 <div>
-	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
+	<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none">
 
 		<grid width="50%">
 			<rows>
+
 				<row>
-					<label value="Nome" />
+					<label value="Cadastre-se" style="font-size:24px"/>
+				</row>
+				<row>
 					<textbox id="fldNome"
+						value="@{controller.entity.nome}" />
+
+					<textbox id="fldUltNome"
 						value="@{controller.entity.nome}" />
 				</row>
 				<row>
-					Data de Nascimento
-					<datebox
-						value="@{controller.entity.dataNascimento}" />
-				</row>
-				<row>
-					E-mail
-
 					<textbox id="fldEmail"
-						value="@{controller.entity.email}" />
-				</row>
-				<row>
-				Telefone
+						value="@{controller.entity.email}"/>
 
-				<textbox value="@{controller.entity.tel}" />
+					<textbox id="fldEmail2"
+						value=""/>
+				</row>
+
+				<row>
+					<label value="Data de Nascimento:" />
+				<datebox value="@{controller.entity.dataNascimento}" />
 				</row>
 				<row>
-				Senha
-				<textbox type="password"
+					<label value="Digite uma senha:" />				
+				<textbox type="password" id="fldPass"
 					value="@{controller.entity.senha}" />
 				</row>
 				<row>
-				Sexo
+					<label value="Repita a senha:" />				
+				<textbox type="password" id="fldPass2"
+					value="" />
+				</row>
+				
+				<row>
+				<textbox id="fldtel" value="@{controller.entity.tel}" />
 				<radiogroup id="fldSexo"
-					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">
-					     
+					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">					     
 					<radio label="Masculino" selected="true"
 						value="Masculino"  />
 					     <radio label="Feminino" value="Feminino" />
 					   
 				</radiogroup>
-				</row>
+				</row>				
+				
 				<row>
 				<button sclass="btn btn-danger" label="Cadastrar"
 					onClick="controller.registerUser()" />
@@ -56,23 +85,5 @@
 
 	</window>
 </div>
-	<!-- 
-		<window title="teste" apply="br.com.buddyprice.view.composer.UsuarioComposer" border="normal">
-		
-		<button label="Lista ALL"><attribute name="onClick">controller.doAction("listAll");</attribute></button>
-		
-		<listbox model="@{controller.listEntity}" selectedItem="@{controller.selectedEntity}">
-		<listhead>
-		<listheader>Nome:</listheader>
-		<listheader>Email:</listheader>
-		<listheader>Telfone:</listheader>
-		</listhead>
-		<listitem self="@{each=user}">
-		<listcell label="@{user.nome}"/>
-		<listcell label="@{user.email}"/>
-		<listcell label="@{user.tel}"/>
-		</listitem>
-		</listbox>
-		
-		</window> -->
+	
 </zk>

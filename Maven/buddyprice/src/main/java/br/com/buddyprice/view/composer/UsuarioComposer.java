@@ -27,7 +27,12 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
 	public void registerUser() {
 		treatReturn(getControl().registerUser());
 		
-		Executions.sendRedirect("./pages/user/main.zul");
+		Executions.sendRedirect("./pages/dashboard/index.zul");
+	}
+		public void loginUser() {
+			treatReturn(getControl().loginUser());
+			
+			Executions.sendRedirect("./pages/dashboard/index.zul");
 		
 
 	}
