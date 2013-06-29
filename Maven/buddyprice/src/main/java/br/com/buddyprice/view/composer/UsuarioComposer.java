@@ -32,14 +32,16 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
 
 	public void registerUser()  {
 		treatReturn(getControl().registerUser());
-		redirectToUserSession();
+		redirectToDash();
 	}
 		public void loginUser() {
 //			treatReturn(getControl().loginUser());
-			redirectToUserSession();
+			redirectToDash();
 
 			
 	}
+		
+
 		
 		@SuppressWarnings("rawtypes")
 		public static void showImageProfile(Image comp) {
@@ -61,12 +63,19 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
 		}
 	
 		public static void redirectToUser(Long id) {
-			Executions.sendRedirect("../dashboard/index.zul?id=" + id);
+			Executions.sendRedirect("../user/edit.zul?id=" + id);
+		}
+		
+		public static void redirectToDash() {
+			Executions.sendRedirect("../dashboard/index.zul?id=" + getUserInSession().getId());
 		}
 
 		public static void redirectToUserSession() {
 			redirectToUser(getUserInSession().getId());
 		}
+		
+		
+		
 	
 	@Override
 	 public Usuario getEntityObject() {

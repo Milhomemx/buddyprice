@@ -443,5 +443,17 @@ div.z-grid-header-bg {
 .z-grid-footer .z-footer {
 	overflow: hidden; <%-- B50-ZK-410: Bug on footer labels applied to a grid --%>
 }
+
+.menuSidebar a:link, 
+.menuSidebar a:visited, 
+.menuSidebar a:active {
+	text-decoration: none;
+	color: black;
+}
+.menuSidebar a:hover {
+	text-decoration: none;
+	color: black;
+}   
+
  ]]></style>
 </zk>

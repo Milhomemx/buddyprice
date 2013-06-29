@@ -1,0 +1,87 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+
+
+<zk>			
+     <style>
+    .water-mark { 
+        color: gray; font-style: italic; 
+    }
+
+    </style>
+  <script type="text/javascript" src="/scripts/maskedinput-1.2.2.min.js" />
+    <script type="text/javascript" src="/scripts/watermarkinput.js" />
+ <script type="text/javascript" src="/scripts/global.js"/> 
+
+<div self="@define(content)">
+	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
+
+		<grid style="width: 40%">
+			<rows>
+
+				<row>
+					<label value="Alterando dados de Nome_do_Usuario" style="font-size:18px"/>
+				</row>
+				<row>
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" />
+
+					<textbox id="fldUltNome"
+						value="@{controller.entity.sobreNome}" />
+				</row>
+				<row>
+					<textbox id="fldEmail"
+						value="@{controller.entity.email}"/>
+
+				</row>
+				<row>
+					<textbox id="fldCidade"
+						value="@{controller.entity.cidade}"/>
+
+				</row>
+				<row>
+					<textbox id="fldEstado"
+						value="@{controller.entity.estado}"/>
+
+				</row>
+				<row>
+					<textbox id="fldPais"
+						value="@{controller.entity.pais}"/>
+
+				</row>
+<row>
+					<textbox id="fldtel"
+						value="@{controller.entity.tel}"/>
+
+				</row>
+
+				<row>
+					<label value="Data de Nascimento:" />
+				<datebox value="@{controller.entity.dataNascimento}"  id="fldNasc"/>
+				</row>
+				<row>
+					<label value="Digite uma senha:" />				
+				<textbox type="password" id="fldPass"
+					value="@{controller.entity.senha}" />
+				</row>				
+				
+				<row>
+				<button sclass="btn btn-danger" label="Salvar Alterações"
+					onClick="controller.updateInformation()" />
+				</row>
+				
+				<row>
+				<label value="Desativar conta?" />
+				</row>
+				<row>
+				<button sclass="btn btn-danger" label="Desativar"
+					onClick="controller.desactiveAccount()" />
+				</row>
+			</rows>
+
+		</grid>
+
+	</window>
+</div>
+	
+</zk>

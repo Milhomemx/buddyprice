@@ -7,17 +7,22 @@
 	<script src="/scripts/bootstrap.js" type="text/javascript"
 		charset="UTF-8">
 	</script>
-	<borderlayout self="@insert(content)" hflex="0" vflex="0">
+	<borderlayout hflex="0" vflex="0">
 		<north height="7%" border="none">
+			<div>
 			<include src="/pages/components/banner.zul" />
-
+			</div>
+			
 		</north>
-		<west width="15%" border="none" splittable="true">
-		<include src="/pages/components/leftsidebar.zul" />
+		<west width="8%" border="none">
+					<include src="/pages/components/leftsidebar.zul" />
 		</west>
-		<east width="15%" border="none" splittable="true"></east>
-		<center  border="none"/>
-		<south height="5%" border="none">
+		<east width="8%" border="none"></east>
+		<center self="@insert(content)" border="none">
+
+		</center>
+		<south height="3%" border="none">
+			<include src="/pages/components/footer.zul" />
 		</south>
 	</borderlayout>
 </zk>

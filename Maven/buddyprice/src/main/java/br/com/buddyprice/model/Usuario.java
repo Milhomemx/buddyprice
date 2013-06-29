@@ -16,9 +16,41 @@ public class Usuario extends UserBasic {
 @Column(name="tel", nullable=true, updatable =false, length = 30)
 	private String tel;
 
+public String getCidade() {
+	return cidade;
+}
+
+public void setCidade(String cidade) {
+	this.cidade = cidade;
+}
+
+public String getEstado() {
+	return estado;
+}
+
+public void setEstado(String estado) {
+	this.estado = estado;
+}
+
+public String getPais() {
+	return pais;
+}
+
+public void setPais(String pais) {
+	this.pais = pais;
+}
+
 @Column(name="sobreNome", nullable=true, updatable =true, length = 150)
 private String sobreNome;
 
+@Column(name="cidade", nullable=true, updatable =true, length = 150)
+private String cidade;
+
+@Column(name="estado", nullable=true, updatable =true, length = 150)
+private String estado;
+
+@Column(name="pais", nullable=true, updatable =true, length = 150)
+private String pais;
 
 	public String getSobreNome() {
 	return sobreNome;

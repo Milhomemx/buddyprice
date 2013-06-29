@@ -9,5 +9,8 @@ zk.afterMount(function() {
             jq("$flddataNasc").Watermark("Digite sua data de nascimento","gray");
             jq("$fldPass").Watermark("                      ","gray");
             jq("$fldPass2").Watermark("                      ","gray");
+            jq("$fldCidade").Watermark("Digite sua cidade","gray");
+            jq("$fldEstado").Watermark("Digite o seu estado","gray");
+            jq("$fldPais").Watermark("Digite o seu pais","gray");
                          
         });

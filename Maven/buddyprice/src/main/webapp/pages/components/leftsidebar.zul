@@ -1,42 +1,43 @@
 <zk>
 <vlayout xmlns:h="native" vflex="1">
 	<hbox width="100%" height="150px" align="center" pack="center">
-		<image src="/images/avatars/defaultPicture.png" />
+		<image src="/images/avatars/defaultPicture.png" onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);"/>
 	</hbox>
 	<separator width="20px"/>
 	<div class="menuSidebar">
-	<a onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToProfileSession();">
+	<a onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToUserSession();">
 		<div align="center" class="itens">
-			<image src="/imagens/verdinho.png" width="26px" height="${lineHeight}" class="icones"/>
-			<label value="Meu Perfil"/>
+			<label value="[Nome_do_Uusario]"/>
 			<div style="clear: both;"></div>
 		</div>
 	</a>	
 	<separator width="13px"/>
 	<a href="">
 		<div align="center" class="itens">
-			<image src="/imagens/sidebar/minhasrotas.png" width="26px" height="26px" class="icones"/>
-			<label value="Minhas Rotas" style="vertical-align:middle;"/>
+			<label value="Produtos" style="vertical-align:middle;"/>
 		</div>	
 	</a>
 	<separator width="13px"/>
 	<a href="">
 		<div align="center" class="itens">
-			<image src="/imagens/sidebar/amigos.png" width="26px" height="26px" class="icones"/>
-			<label value="Amigos" style="vertical-align:middle;"/>
+			<label value="Estabelecimentos" style="vertical-align:middle;"/>
 		</div>
 	</a>
 	<separator width="13px"/>
 	<a href="">
 		<div align="center" class="itens">
-			<image src="/imagens/sidebar/mps.jpg" width="26px" height="26px" class="icones"/>
-			<label value="Mensagens Pessoais" style="vertical-align:middle;"/>
+			<label value="Ofertas" style="vertical-align:middle;"/>
 		</div>
 	</a>
 	<separator width="13px"/>
-	<a href="/paginas/configs/configuration.zul">
+	<a href="">
 		<div align="center" class="itens">
-			<image src="/imagens/sidebar/configuracoes.png" width="26px" height="26px" class="icones"/>
+			<label value="Buddies" style="vertical-align:middle;"/>
+		</div>
+	</a>
+	<separator width="13px"/>
+	<a href="/pages/configuration/index.zul">
+		<div align="center" class="itens">
 			<label value="Configurações" style="vertical-align:middle;"/>
 		</div>
 	</a>

@@ -1,8 +1,8 @@
-<?page title="Nome_do_Usuario" contentType="text/html;charset=UTF-8"?>
-<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
-
+<?page title="Nome_do_Usuario"?>
 <zk>
-<window title="Nome_do_Usuario" border="normal">
-New Content Here!
-</window>
+	 <div self="@define(content)">
+	 <div>
+		    <include src="/pages/dashboard/view.zul" /> 
+		</div>
+	</div> 
 </zk>
