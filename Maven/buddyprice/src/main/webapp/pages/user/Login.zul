@@ -4,17 +4,17 @@
 
 		<grid>
 			<rows>
-				<row style="float: right; width: auto;">
-				<button sclass="btn btn-danger" label="Conectar"
-					onClick="controller.loginUser()" />
-					<textbox id="fldPass" type="password"
-						value="@{controller.entity.senha}" />
-						<label value="Senha" style="font-size:16px"/>
+				<row style="float: right">
+				<button sclass="btn btn-danger" label="Conecte-se"
+					onClick="controller.registerUser()" />
+					<textbox type="password" id="fldPass"
+					value="@{controller.entity.senha}" />
+					<label value="Senha" style="font-size:18px"/>
 					<textbox id="fldEmail"
 						value="@{controller.entity.email}" />
+					<label value="Login" style="font-size:18px"/>
 					
-					<label value="Login" style="font-size:16px"/>
-					
+
 					
 				
 				</row>

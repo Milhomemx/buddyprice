@@ -13,19 +13,7 @@
     </style>
   <script type="text/javascript" src="/scripts/maskedinput-1.2.2.min.js" />
     <script type="text/javascript" src="/scripts/watermarkinput.js" />
- <script type="text/javascript">
-        zk.afterMount(function() {
-            jq("$fldNome").Watermark("Seu nome","gray");
-            jq("$fldUltNome").Watermark("Sobrenome","gray"); 
-            jq("$fldEmail").Watermark("Seu e-mail","gray"); 
-            jq("$fldEmail2").Watermark("Digite seu e-mail novamente","gray"); 
-            jq("$fldtel").Watermark("Digite seu telefone celular","gray");
-            jq("$flddataNasc").Watermark("Digite sua data de nascimento","gray");
-            jq("$fldPass").Watermark("                      ","gray");
-            jq("$fldPass2").Watermark("                      ","gray");
-                         
-        });        
-    </script>
+ <script type="text/javascript" src="/scripts/global.js"/> 
 
 <div>
 	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
@@ -41,7 +29,7 @@
 						value="@{controller.entity.nome}" />
 
 					<textbox id="fldUltNome"
-						value="@{controller.entity.nome}" />
+						value="@{controller.entity.sobreNome}" />
 				</row>
 				<row>
 					<textbox id="fldEmail"
@@ -53,7 +41,7 @@
 
 				<row>
 					<label value="Data de Nascimento:" />
-				<datebox value="@{controller.entity.dataNascimento}" />
+				<datebox value="@{controller.entity.dataNascimento}"  id="fldNasc"/>
 				</row>
 				<row>
 					<label value="Digite uma senha:" />				
@@ -67,7 +55,6 @@
 				</row>
 				
 				<row>
-				<textbox id="fldtel" value="@{controller.entity.tel}" />
 				<radiogroup id="fldSexo"
 					selectedItem="@{controller.entity.sexo, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">					     
 					<radio label="Masculino" selected="true"

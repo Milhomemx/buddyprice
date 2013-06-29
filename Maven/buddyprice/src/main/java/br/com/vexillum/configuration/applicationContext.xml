@@ -17,7 +17,7 @@
 	<context:component-scan base-package="br.com.vexillum.view" />
 	<context:component-scan base-package="br.com.buddyprice.control" />
 	<context:component-scan base-package="br.com.buddyprice.visao.composer" />
-	
+
 	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/PostgresDS" />
 
 	<bean id="sessionFactory"
@@ -31,36 +31,45 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
-<!-- 				<prop key="hibernate.connection.autocommit">false</prop> -->
-<!-- 				<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</prop> -->
-<!-- 				<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop> -->
-<!-- 				<prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform</prop> -->
+				<!-- <prop key="hibernate.connection.autocommit">false</prop> -->
+				<!-- <prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</prop> -->
+				<!-- <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop> -->
+				<!-- <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform</prop> -->
 			</props>
 		</property>
-		<property name="annotatedClasses">
+		<property name="packagesToScan">
 			<list>
-				<value>br.com.buddyprice.model.Usuario</value>
-				<value>br.com.vexillum.model.PropertiesCategory</value>
-				<value>br.com.vexillum.model.UserProperties</value>
-				<value>br.com.vexillum.model.SystemProperties</value>
-				<value>br.com.vexillum.model.Configuration</value>
+				<value>br.com.buddyprice.model.**</value>
+				<value>br.com.vexillum.model.**</value>
 			</list>
 		</property>
 	</bean>
-	
-	     <!-- DAOs -->
-    <bean id="genericPersistence" class="br.com.vexillum.control.persistence.GenericPersistence">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
 
-<!-- 	<bean id="transactionManager" -->
-<!-- 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"> -->
-<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean id="transactionManager" -->
-<!-- 		class="org.springframework.transaction.jta.JtaTransactionManager"/> -->
+	<!-- DAOs -->
+	<bean id="genericPersistence" class="br.com.vexillum.control.persistence.GenericPersistence">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
-<!-- 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/> -->
+
+	<bean id="messagesProperties" class="br.com.vexillum.configuration.Properties">
+		<property name="pathName" value="properties/messages/messages.properties" />
+	</bean>
+	<bean id="exceptionProperties" class="br.com.vexillum.configuration.Properties">
+		<property name="pathName" value="properties/exceptions/exception.properties" />
+	</bean>
+	<bean id="emailProperties" class="br.com.vexillum.configuration.Properties">
+		<property name="pathName" value="properties/email/email.properties" />
+	</bean>
+
+
+	<!-- <bean id="transactionManager" -->
+	<!-- class="org.springframework.orm.hibernate4.HibernateTransactionManager"> -->
+	<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="transactionManager" -->
+	<!-- class="org.springframework.transaction.jta.JtaTransactionManager"/> -->
+
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/> -->
 
 </beans>

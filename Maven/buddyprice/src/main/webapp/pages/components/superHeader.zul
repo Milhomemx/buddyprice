@@ -1,6 +1,0 @@
-<zk>
-    <borderlayout hflex="1" vflex="1">
-       
-            <include src="tests/banner.zul"/>
-    </borderlayout>
-</zk>

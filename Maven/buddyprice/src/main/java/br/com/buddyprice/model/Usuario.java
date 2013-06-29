@@ -16,6 +16,18 @@ public class Usuario extends UserBasic {
 @Column(name="tel", nullable=true, updatable =false, length = 30)
 	private String tel;
 
+@Column(name="sobreNome", nullable=true, updatable =true, length = 150)
+private String sobreNome;
+
+
+	public String getSobreNome() {
+	return sobreNome;
+}
+
+public void setSobreNome(String sobreNome) {
+	this.sobreNome = sobreNome;
+}
+
 	public String getTel() {
 		return tel;
 	}

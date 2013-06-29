@@ -1,11 +1,17 @@
 package br.com.buddyprice.view.composer;
 
-import org.springframework.core.io.support.SpringFactoriesLoader;
+import java.io.File;
+
+import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zul.Image;
 
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
+import br.com.buddyprice.view.attachments.AttachmentMedia;
+import br.com.vexillum.control.manager.ExceptionManager;
+import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
@@ -24,18 +30,43 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController>{
 	 return SpringFactory.getController("usuarioController", UsuarioController.class, ReflectionUtils.prepareDataForPersistence(this));
 	 }
 
-	public void registerUser() {
+	public void registerUser()  {
 		treatReturn(getControl().registerUser());
-		
-		Executions.sendRedirect("./pages/dashboard/index.zul");
+		redirectToUserSession();
 	}
 		public void loginUser() {
-			treatReturn(getControl().loginUser());
-			
-//			Executions.sendRedirect("./pages/dashboard/index.zul");
-		
+//			treatReturn(getControl().loginUser());
+			redirectToUserSession();
 
+			
 	}
+		
+		@SuppressWarnings("rawtypes")
+		public static void showImageProfile(Image comp) {
+			Attachment att = new AttachmentMedia();
+			try {
+				File image = att.getAttachment("image_profile", getUserInSession());
+				if (image != null) {
+					comp.setContent(new AImage(image));
+				}
+			} catch (Exception e) {
+				new ExceptionManager(e).treatException();
+			}
+		}
+
+		public static boolean isAdministrator() {
+			if (isLogged()) {
+			}
+			return true;
+		}
+	
+		public static void redirectToUser(Long id) {
+			Executions.sendRedirect("../dashboard/index.zul?id=" + id);
+		}
+
+		public static void redirectToUserSession() {
+			redirectToUser(getUserInSession().getId());
+		}
 	
 	@Override
 	 public Usuario getEntityObject() {
