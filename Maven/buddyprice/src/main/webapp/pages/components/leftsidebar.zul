@@ -7,8 +7,11 @@
 	<div class="menuSidebar">
 	<a onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToUserSession();">
 		<div align="center" class="itens">
-			<label value="[Nome_do_Uusario]"/>
-			<div style="clear: both;"></div>
+<label value="Perfil" />
+
+
+
+<div style="clear: both;"></div>
 		</div>
 	</a>	
 	<separator width="13px"/>

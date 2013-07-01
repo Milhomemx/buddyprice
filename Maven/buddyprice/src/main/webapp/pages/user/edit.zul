@@ -14,11 +14,16 @@
  <script type="text/javascript" src="/scripts/global.js"/> 
 
 <div self="@define(content)">
-	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
+	<window apply="${profileComposer}">
 
 		<grid style="width: 40%">
 			<rows>
 
+				<row>
+				<button width="170px" upload="true" label="Alterar Foto" onUpload='controller.changeProfileImage(event)'/>
+				
+				</row>
+				
 				<row>
 					<label value="Alterando dados de Nome_do_Usuario" style="font-size:18px"/>
 				</row>
@@ -67,7 +72,7 @@
 				
 				<row>
 				<button sclass="btn btn-danger" label="Salvar Alterações"
-					onClick="controller.updateInformation()" />
+					onClick='controller.doAction("updateInformation")' />
 				</row>
 				
 				<row>
@@ -77,6 +82,8 @@
 				<button sclass="btn btn-danger" label="Desativar"
 					onClick="controller.desactiveAccount()" />
 				</row>
+				
+				
 			</rows>
 
 		</grid>
