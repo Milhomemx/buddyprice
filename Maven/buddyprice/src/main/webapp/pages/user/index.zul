@@ -1,8 +1,7 @@
 <?page title="Buddy Price"?>
 <zk>
 	 <div self="@define(content)">
-	 <div style="float:center">
+
 		    <include src="/pages/user/register.zul" /> 
 		</div>
-	</div> 
 </zk>

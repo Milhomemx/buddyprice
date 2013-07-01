@@ -8,10 +8,10 @@
 				<button sclass="btn btn-danger" label="Conecte-se"
 					onClick="controller.registerUser()" />
 					<textbox type="password" id="fldPass"
-					value="@{controller.entity.senha}" />
+					value="@{controller.entity.senha}" placeholder='${c:getProperty("HolderYourWild")}' />
 					<label value="Senha" style="font-size:18px"/>
 					<textbox id="fldEmail"
-						value="@{controller.entity.email}" />
+						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
 					<label value="Login" style="font-size:18px"/>
 					
 
