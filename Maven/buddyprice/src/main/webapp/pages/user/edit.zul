@@ -16,7 +16,7 @@
 <div self="@define(content)">
 	<window apply="${profileComposer}">
 
-		<grid style="width: 40%">
+		<grid style="width: 50%">
 			<rows>
 
 				<row>
@@ -35,7 +35,7 @@
 						value="@{controller.entity.sobreNome}" placeholder='${c:getProperty("HolderYourLastName")}' />
 				</row>
 				<row>
-					<textbox id="fldEmail"
+					<textbox id="fldEmail" class="uneditable-input"
 						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
 
 				</row>

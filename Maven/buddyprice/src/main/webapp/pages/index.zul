@@ -1,6 +1,0 @@
-<?page title="Wellcome to the jungle" contentType="text/html;charset=UTF-8"?>
-<zk>
-<window title="Wellcome to the jungle" border="normal">
-<textbox Placeholder="Teste"/>
-</window>
-</zk>

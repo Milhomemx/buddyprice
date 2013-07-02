@@ -1,5 +1,5 @@
 <?page title="Buddy Price"?>
-<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 <zk>
 	 <div self="@define(content)">
 		

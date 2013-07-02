@@ -1,3 +1,4 @@
+<zk><?xel-method prefix="c" name="getProperty" class="br.com.vexillum.view.GenericComposer" signature="java.lang.String getProperty(java.lang.String)"?>
 <div hflex="1" vflex="1">
 		<div>
 		<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none">
@@ -26,3 +27,5 @@
 		</div>
 		
 </div>
+
+</zk>

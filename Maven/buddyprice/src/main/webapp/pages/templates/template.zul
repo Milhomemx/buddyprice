@@ -1,10 +1,10 @@
 <?link rel="shortcut icon" href="/images/icon/icon.ico" type="image/x-icon"?>
-<?page title="Posicões da tela" contentType="text/html;charset=UTF-8"?>
+<?page title="Template padrão" contentType="text/html;charset=UTF-8"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
 	<?xel-method prefix="c" name="getProperty" class="br.com.vexillum.view.GenericComposer" signature="java.lang.String getProperty(java.lang.String)"?>
 	<include src="/style/default.zul"></include>
-	<style src="/style/bootstrap.css" />
+ 	<style src="/style/bootstrap.css" />
 	<script src="/scripts/bootstrap.js" type="text/javascript"
 		charset="UTF-8">
 	</script>
@@ -18,7 +18,6 @@
 		<west width="8%" border="none"></west>
 		<east width="8%" border="none"></east>
 		<center self="@insert(content)" border="none">
-
 		</center>
 		<south height="3%" border="none">
 			<include src="/pages/components/footer.zul" />

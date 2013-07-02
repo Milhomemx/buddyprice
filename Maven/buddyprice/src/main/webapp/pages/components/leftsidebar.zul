@@ -1,7 +1,7 @@
 <zk>
 <vlayout xmlns:h="native" vflex="1">
 	<hbox width="100%" height="150px" align="center" pack="center">
-		<image src="/images/avatars/defaultPicture.png" onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);"/>
+		<image src='${c:getProperty("DefaultAvatar")};' onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);"/>
 	</hbox>
 	<separator width="20px"/>
 	<div class="menuSidebar">
@@ -39,7 +39,7 @@
 		</div>
 	</a>
 	<separator width="13px"/>
-	<a href="/pages/configuration/index.zul">
+	<a href='${c:getProperty("ConfigurationPath")}'>
 		<div align="center" class="itens">
 			<label value="Configurações" style="vertical-align:middle;"/>
 		</div>

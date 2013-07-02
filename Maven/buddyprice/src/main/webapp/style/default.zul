@@ -1,26 +1,29 @@
 <zk>
 
-<zscript>
-  String themecolor = "#AC0000";
-  String fontcolor = "#AC0000";
-  String fontcolorListbox = "#FFFFFF";
-  String bordercolor = "#A60000";
-  String backgroundcolor = "#AC0000";
-  String lineheight = "65px";
-  String lineHeightSidebar = "26px";
- </zscript>
  <style><![CDATA[ 
 <%-- Grid --%>
 div.z-grid {
-	border: 1px solid #cfcfcf; 
-	#cfcfcf;
+	border: 0px; 
 	overflow: hidden;
 	zoom: 1;
-	
-	
 }
+
+div.z-grid {
+border: 0px;
+border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-width: 0px;
+border-left-width: 0px;
+
+}
+
+
 div.z-grid-header, div.z-grid-header tr, div.z-grid-footer {
 	border: 0; width: 100%;
+}
+
+z-rows {
+	border: 0;
 }
 
 div.z-grid-header, div.z-grid-footer {
@@ -34,7 +37,7 @@ div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader {
 	overflow: hidden;
 	border: 0px solid;
 	white-space: nowrap;
-	padding: 0 0 0 2px;
+	padding: 0 0 0 0px;
 	border-color: transparent transparent transparent transparent;
 	border-top: none;
 	<c:if test="${!(zk.ie >= 8)}">
@@ -127,7 +130,7 @@ tr.z-group {
 td.z-group-inner {
 	overflow: hidden;
 	border-bottom: 0px solid #000000;
-	border-top:1px solid #000000;
+	border-top:0px solid #000000;
 }
 .z-group-inner .z-group-cnt .z-label, .z-group-inner .z-group-cnt {
 	color:#000000;
@@ -262,7 +265,7 @@ div.z-grid-header .z-column-sort-asc, div.z-grid-header .z-column-sort-dsc {
 	position:relative;
 	margin-right: -11px;
 	top: 0;
-	height: 1px;
+	height: 0px;
 	font-size: 0;
 	margin-top: -1px;
 }
@@ -281,10 +284,10 @@ div.z-grid-header tr.z-auxhead th:last-child {
 tr.z-row td.z-row-inner,
 tr.z-row .z-cell {
 	background: white;
-	border: 1px solid white;
-	border-right: 1px solid transparent;
+	border: 0px solid white;
+	border-right: 0px solid transparent;
 	<c:if test="${zk.ie == 6}">
-	border-right: 1px solid white;
+	border-right: 0px solid white;
 	</c:if>
 	line-height: 18px;
 }
@@ -299,11 +302,11 @@ tr.z-groupfoot td.z-groupfoot-inner {
 }
 tr.z-grid-odd td.z-row-inner,
 tr.z-grid-odd .z-cell {
-	border-left: 1px solid transparent;
+	border-left: 0px solid transparent;
 	background-color: #000000;
-	border-top: 1px solid transparent;
-	border-bottom: 1px solid transparent;
-	border-left: 1px solid transparent;
+	border-top: 0px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 0px solid transparent;
 }
 tr.z-grid-odd td.z-row-inner,
 tr.z-grid-odd .z-cell,
@@ -357,8 +360,8 @@ tr.z-grid-odd tr.z-grid-odd tr.z-grid-odd * td.z-row-inner {
 </c:if>
 
 tr.z-row-over > td.z-row-inner {
-	border-top: 1px solid #e3f2ff;
-	border-bottom: 1px solid #e3f2ff;
+	border-top: 0px solid #e3f2ff;
+	border-bottom: 0px solid #e3f2ff;
 }
 
 tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
@@ -427,7 +430,7 @@ div.z-grid {
 	width: 100%;
 }
 tr.z-row td.z-row-inner {
-	border-right: 1px solid #FFF;
+	border-right: 0px solid #FFF;
 }
 .z-column-sort-asc .z-column-sort-img,
 .z-column-sort-dsc .z-column-sort-img {

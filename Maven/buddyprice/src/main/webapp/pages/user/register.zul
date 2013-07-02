@@ -6,44 +6,38 @@
 			<include src="/pages/user/Login.zul"/>
 </div>			
 
-
-<div>
+<div class="controls controls-row">
 	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
 
-		<grid style="width: 1000%">
-			<rows>
+		<grid style="width: 470px">
+			<rows style="width=95%">
 
 				<row>
 					<label value="Cadastre-se" style="font-size:24px"/>
 				</row>
 				<row>
-					<textbox id="fldNome"
+					<textbox id="fldNome" class="input-large"
 						value="@{controller.entity.nome}" placeholder='${c:getProperty("HolderYourName")}'/>
-
-					<textbox id="fldUltNome"
+						<textbox id="fldUltNome" class="input-large"
 						value="@{controller.entity.sobreNome}" placeholder='${c:getProperty("HolderYourLastName")}' />
 				</row>
 				<row>
-					<textbox id="fldEmail"
+					<textbox id="fldEmail" class="input-large"
 						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
 
-					<textbox id="fldEmail2"
+					<textbox id="fldEmail2" class="input-large"
 						value="" placeholder='${c:getProperty("HolderYourEmail2")}'/>
+				</row>
+				
+				<row>
+				<textbox type="password" id="fldPass" class="input-large"
+					value="@{controller.entity.senha}" placeholder='${c:getProperty("HolderYourPass")}' />
+				<textbox type="password" id="fldPass2" class="input-large"
+					value="" placeholder='${c:getProperty("HolderYourPass2")}' />
 				</row>
 
 				<row>
-					<label value="Data de Nascimento:" />
-				<datebox value="@{controller.entity.dataNascimento}"  id="fldNasc" placeholder='${c:getProperty("HolderYourDate")}'/>
-				</row>
-				<row>
-					<label value="Digite uma senha:" />				
-				<textbox type="password" id="fldPass"
-					value="@{controller.entity.senha}" placeholder='${c:getProperty("HolderYourWild")}' />
-				</row>
-				<row>
-					<label value="Repita a senha:" />				
-				<textbox type="password" id="fldPass2"
-					value="" placeholder='${c:getProperty("HolderYourWild")}' />
+				<datebox value="@{controller.entity.dataNascimento}" class="input-xxlarge"  id="fldNasc" placeholder='${c:getProperty("HolderYourDate")}'/>
 				</row>
 				
 				<row>
