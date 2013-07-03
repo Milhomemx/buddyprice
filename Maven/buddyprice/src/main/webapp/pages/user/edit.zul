@@ -2,93 +2,106 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 
-<zk>			
-     <style>
-    .water-mark { 
-        color: gray; font-style: italic; 
-    }
+<zk>
+	<style>
+		.water-mark { color: gray; font-style: italic; }
 
-    </style>
-  <script type="text/javascript" src="/scripts/maskedinput-1.2.2.min.js" />
-    <script type="text/javascript" src="/scripts/watermarkinput.js" />
- <script type="text/javascript" src="/scripts/global.js"/> 
+	</style>
+	<script type="text/javascript"
+		src="/scripts/maskedinput-1.2.2.min.js" />
+	<script type="text/javascript" src="/scripts/watermarkinput.js" />
+	<script type="text/javascript" src="/scripts/global.js" />
 
-<div self="@define(content)">
-	<window apply="${profileComposer}">
+	<div self="@define(content)">
+		<window apply="${profileComposer}">
 
-		<grid style="width: 50%">
-			<rows>
+			<grid style="width: 80%">
+				<columns>
+					<column label="@{controller.entity.nome}" />
+					<column label="" />
+				</columns>
 
-				<row>
-				<button width="170px" upload="true" label="Alterar Foto" onUpload='controller.changeProfileImage(event)'/>
-				
-				</row>
-				
-				<row>
-					<label value="Alterando dados de Nome_do_Usuario" style="font-size:18px"/>
-				</row>
-				<row>
-					<textbox id="fldNome"
-						value="@{controller.entity.nome}" placeholder='${c:getProperty("HolderYourName")}' />
+				<rows>
 
-					<textbox id="fldUltNome"
-						value="@{controller.entity.sobreNome}" placeholder='${c:getProperty("HolderYourLastName")}' />
-				</row>
-				<row>
-					<textbox id="fldEmail" class="uneditable-input"
-						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
+					<row>
+						<button width="170px" upload="true"
+							label="Alterar Foto"
+							onUpload='controller.changeProfileImage(event)' />
 
-				</row>
-				<row>
-					<textbox id="fldCidade"
-						value="@{controller.entity.cidade}" placeholder='${c:getProperty("HolderYourCity")}'/>
+					</row>
 
-				</row>
-				<row>
-					<textbox id="fldEstado"
-						value="@{controller.entity.estado}" placeholder='${c:getProperty("HolderYourState")}'/>
+					<row>
+						<hbox>
+							<textbox id="fldNome"
+								value="@{controller.entity.nome}" class="input-small"
+								placeholder='${c:getProperty("HolderYourName")}' />
+							<textbox id="fldUltNome" class="input-medium"
+								value="@{controller.entity.sobreNome}"
+								placeholder='${c:getProperty("HolderYourLastName")}' />
+						</hbox>
+					</row>
+					<row>
+						<textbox id="fldEmail" class="input-xlarge"
+							value="@{controller.entity.email}"
+							placeholder='${c:getProperty("HolderYourEmail")}' />
 
-				</row>
-				<row>
-					<textbox id="fldPais"
-						value="@{controller.entity.pais}" placeholder='${c:getProperty("HolderYourCountry")}'/>
+					</row>
+					<row>
+						<textbox id="fldCidade" class="input-xlarge"
+							value="@{controller.entity.cidade}"
+							placeholder='${c:getProperty("HolderYourCity")}' />
 
-				</row>
-<row>
-					<textbox id="fldtel"
-						value="@{controller.entity.tel}" placeholder='${c:getProperty("HolderYourCel")}'/>
+					</row>
+					<row>
+						<textbox id="fldEstado" class="input-xlarge"
+							value="@{controller.entity.estado}"
+							placeholder='${c:getProperty("HolderYourState")}' />
 
-				</row>
+					</row>
+					<row>
+						<textbox id="fldPais" class="input-xlarge"
+							value="@{controller.entity.pais}"
+							placeholder='${c:getProperty("HolderYourCountry")}' />
 
-				<row>
-					<label value="Data de Nascimento:" />
-				<datebox value="@{controller.entity.dataNascimento}"  id="fldNasc"/>
-				</row>
-				<row>
-					<label value="Digite uma senha:" />				
-				<textbox type="password" id="fldPass"
-					value="@{controller.entity.senha}" placeholder='${c:getProperty("HolderYourWild")}' />
-				</row>				
-				
-				<row>
-				<button sclass="btn btn-danger" label="Salvar Alterações"
-					onClick='controller.doAction("updateInformation")' />
-				</row>
-				
-				<row>
-				<label value="Desativar conta?" />
-				</row>
-				<row>
-				<button sclass="btn btn-danger" label="Desativar"
-					onClick="controller.desactiveAccount()" />
-				</row>
-				
-				
-			</rows>
+					</row>
+					<row>
+						<textbox id="fldtel" class="input-xlarge"
+							value="@{controller.entity.tel}"
+							placeholder='${c:getProperty("HolderYourCel")}' />
 
-		</grid>
+					</row>
 
-	</window>
-</div>
-	
+					<row>
+						<datebox class="input-xlarge"
+							value="@{controller.entity.dataNascimento}" id="fldNasc" />
+					</row>
+					<row>
+						<label value="Digite uma senha:" />
+						<textbox type="password" id="fldPass"
+							value="@{controller.entity.senha}"
+							placeholder='${c:getProperty("HolderYourWild")}' />
+					</row>
+
+					<row>
+						<button sclass="btn btn-danger"
+							label="Salvar Alterações"
+							onClick='controller.doAction("updateInformation")' />
+					</row>
+
+					<row>
+						<label value="Desativar conta?" />
+					</row>
+					<row>
+						<button sclass="btn btn-danger"
+							label="Desativar" onClick="controller.desactiveAccount()" />
+					</row>
+
+
+				</rows>
+
+			</grid>
+
+		</window>
+	</div>
+
 </zk>
