@@ -16,6 +16,10 @@ public class Usuario extends UserBasic {
 @Column(name="tel", nullable=true, updatable =false, length = 30)
 	private String tel;
 
+@Column(name="ativo", nullable=false, updatable =true, length = 1)
+private int ativo;
+
+
 public String getCidade() {
 	return cidade;
 }

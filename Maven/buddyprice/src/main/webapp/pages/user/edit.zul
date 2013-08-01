@@ -29,8 +29,10 @@
 							onUpload='controller.changeProfileImage(event)' />
 
 					</row>
-
-					<row>
+				<row>
+					<label value="Alterando dados de Nome_do_Usuario" style="font-size:18px"/>
+				</row>
+<row>
 						<hbox>
 							<textbox id="fldNome"
 								value="@{controller.entity.nome}" class="input-small"
@@ -71,33 +73,31 @@
 
 					</row>
 
-					<row>
-						<datebox class="input-xlarge"
-							value="@{controller.entity.dataNascimento}" id="fldNasc" />
-					</row>
-					<row>
-						<label value="Digite uma senha:" />
-						<textbox type="password" id="fldPass"
-							value="@{controller.entity.senha}"
-							placeholder='${c:getProperty("HolderYourWild")}' />
-					</row>
-
-					<row>
-						<button sclass="btn btn-danger"
-							label="Salvar Alterações"
-							onClick='controller.doAction("updateInformation")' />
-					</row>
-
-					<row>
-						<label value="Desativar conta?" />
-					</row>
-					<row>
-						<button sclass="btn btn-danger"
-							label="Desativar" onClick="controller.desactiveAccount()" />
-					</row>
-
-
-				</rows>
+				<row>
+					<label value="Data de Nascimento:" />
+				<datebox value="@{controller.entity.birthDate}"  id="fldNasc"/>
+				</row>
+				<row>
+					<label value="Digite uma senha:" />				
+				<textbox type="password" id="fldPass"
+					value="@{controller.entity.password}" />
+				</row>				
+				
+				<row>
+				<button sclass="btn btn-danger" label="Salvar Alterações"
+					onClick='controller.doAction("updateInformation")' />
+				</row>
+				
+				<row>
+				<label value="Desativar conta?" />
+				</row>
+				<row>
+				<button sclass="btn btn-danger" label="Desativar"
+					onClick="controller.desactiveAccount()" />
+				</row>
+				
+				
+			</rows>
 
 			</grid>
 
