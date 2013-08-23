@@ -13,7 +13,11 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 @Table(name="Usuario")
 public class Usuario extends UserBasic {
 
-@Column(name="tel", nullable=true, updatable =false, length = 30)
+	public Usuario() {
+		this.setActive(true);
+	}
+	
+@Column(name="tel", nullable=true, updatable =true, length = 30)
 	private String tel;
 
 public String getCidade() {

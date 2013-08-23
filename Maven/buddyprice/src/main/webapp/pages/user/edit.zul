@@ -35,7 +35,7 @@
 <row>
 						<hbox>
 							<textbox id="fldNome"
-								value="@{controller.entity.nome}" class="input-small"
+								value="@{controller.entity.name}" class="input-small"
 								placeholder='${c:getProperty("HolderYourName")}' />
 							<textbox id="fldUltNome" class="input-medium"
 								value="@{controller.entity.sobreNome}"

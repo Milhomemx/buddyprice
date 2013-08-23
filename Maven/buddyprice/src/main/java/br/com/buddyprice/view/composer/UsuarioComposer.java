@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -14,6 +16,7 @@ import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.view.attachments.AttachmentMedia;
 import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.control.util.Attachment;
+import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
@@ -94,7 +97,11 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		}
 		return false;
 	}
-
+	public static UserBasic getUserInSession() {
+		Usuario a = new Usuario();
+		a.setId(1l);
+				return (UserBasic) a;
+	}
 	@Override
 	public Usuario getEntityObject() {
 		return new Usuario();

@@ -11,8 +11,7 @@ import br.com.vexillum.util.Return;
 @Scope("prototype")
 public class UsuarioController extends GenericControl<Usuario> {
         public UsuarioController() {
-                super();
-                classEntity = Usuario.class;
+                super(Usuario.class);
         }
         
         public Return registerUser() {
