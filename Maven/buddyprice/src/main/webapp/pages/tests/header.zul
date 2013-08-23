@@ -1,0 +1,59 @@
+<zk xmlns:h="native">
+ <borderlayout id="cabecalho" width="100%" height="100%">
+    <west size="155px" class="oeste">
+    	<div>
+    		 <label class="header-title1" value="EZ-Rides" />
+    	 </div>
+    </west>
+    <center id="center" border="none" flex="true" class="centro">
+   		<hbox id="boxPesquisa" width="100%" height="100%" align="center" pack="center" if="${c:isLogged()}">
+   			<textbox placeholder="Pesquise algum destino clicando aqui!" width="458px" />
+   			<button id="teste" image="/imagens/search-icon.png" mold="trendy" />
+<!-- 			<button id="teste" image="/imagens/cabecalho/botao-pesquisa-cabecalho.png" mold="trendy" /> -->
+   		</hbox>
+    </center>
+    <east id="east" border="none" size="250px" vflex="1" class="leste">
+    	<vbox id="boxLogout" width="100%" height="100%" align="end" pack="center">
+    		<div width="100%" height="100%" if="${c:isLogged()}">
+    			<hbox width="100%" height="100%" pack="end">
+    				<vbox align="center" pack="center">
+    					<image src="/imagens/fotopadrao.png" width="34px" height="34px" onCreate="br.ueg.ezrides.view.composer.UserComposer.showImageProfile(self);"/>
+     					<a href="/logout">Logout</a>
+    				</vbox>
+    			</hbox>
+    		</div>
+	     	<div if="${!c:isLogged()}">
+	     		<zscript>
+				<![CDATA[
+					import br.com.vexillum.util.EncryptUtils;		
+				]]>
+				</zscript>
+				<vbox>
+		     		<hbox>
+		     			<h:form name="formHeader" action="/ezrides/j_spring_security_check" method="POST">
+			     			<textbox id="j_username" name="j_username" placeholder="Email" width="80px" onOK="password.focus()"/>
+			     			<textbox id="password" type="password" name="password" placeholder="Senha" width="80px" onOK="submitForm();"/>
+			     			<textbox id="j_password" name="j_password" visible="false"/>
+			     			<button sclass="btn btn-mini btn-success" label="Login" onClick="submitForm();"/>
+		     			</h:form>
+		     		</hbox>
+		     		<a href="/paginas/recuperacao/enviaremail.zul" label="Esqueceu a Senha?"/>
+	     		</vbox>
+	     		<zscript>
+				<![CDATA[
+					public void encryptPassword(){
+						j_password.setValue(EncryptUtils.encryptOnSHA512(password.getValue()));	
+					}
+					
+					public void submitForm(){
+						encryptPassword();	
+						Clients.evalJavaScript("document.formHeader.submit();");
+					}
+				]]>
+				</zscript>
+	     	</div>
+		</vbox>
+    </east>
+</borderlayout>
+</zk>
+  
