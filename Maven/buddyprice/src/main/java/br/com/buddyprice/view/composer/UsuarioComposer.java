@@ -30,6 +30,16 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		super.doAfterCompose(comp);
 		loadBinder();
 	}
+	
+	String email2 = new String();
+	
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
 
 	@Override
 	public UsuarioController getControl() {

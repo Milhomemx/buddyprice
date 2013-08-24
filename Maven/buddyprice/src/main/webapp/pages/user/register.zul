@@ -25,13 +25,16 @@
 				<row>
 					<textbox id="fldEmail" class="input-large"
 						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
+				
+				<textbox id="fldEmail2" class="input-large"
+						value="@{controller.email2}" placeholder='${c:getProperty("HolderYourEmail2")}'/>
+				
 				</row>
+				
 				<row>
 					<label value="Data de Nascimento:" />
 				<datebox value="@{controller.entity.birthDate}"  id="fldNasc"/>
-					<textbox id="fldEmail2" class="input-large"
-						value="" placeholder='${c:getProperty("HolderYourEmail2")}'/>
-				</row>
+					</row>
 				
 				<row>
 					<label value="Digite uma senha:" />				
@@ -52,7 +55,7 @@
 				</radiogroup>
 				</row>				
 				
-				<row>
+				<row>	
 				<button sclass="btn btn-danger" label="Cadastrar"
 					onClick="controller.registerUser()" />
 				</row>
