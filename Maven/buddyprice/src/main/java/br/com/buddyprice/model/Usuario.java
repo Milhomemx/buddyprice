@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import br.com.vexillum.model.Category;
 import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
@@ -14,7 +15,10 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 public class Usuario extends UserBasic {
 
 	public Usuario() {
+		Category c = new Category();
+		c.setId(1l);
 		this.setActive(true);
+		this.setCategory(c);
 	}
 	
 @Column(name="tel", nullable=true, updatable =true, length = 30)

@@ -30,7 +30,7 @@ public class UsuarioController extends GenericControl<Usuario> {
         regReturn.concat(doAction("save"));
         if (regReturn.isValid()){
                 //TODO email?
-                regReturn.addMessage(new Message(null, "Voce esta cadastrado! Seja bem vindo!"));
+                regReturn.addMessage(new Message(null, "Voce esta logado! Seja bem vindo!"));
                 
                 
         }

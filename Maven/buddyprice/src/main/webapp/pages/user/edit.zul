@@ -24,9 +24,7 @@
 				<rows>
 
 					<row>
-						<button width="170px" upload="true"
-							label="Alterar Foto"
-							onUpload='controller.changeProfileImage(event)' />
+						
 
 					</row>
 				<row>

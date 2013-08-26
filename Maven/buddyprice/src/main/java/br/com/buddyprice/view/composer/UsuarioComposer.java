@@ -59,18 +59,18 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static void showImageProfile(Image comp) {
-		Attachment att = new AttachmentMedia();
-		try {
-			File image = att.getAttachment("avatar", getUserInSession());
-			if (image != null) {
-				comp.setContent(new AImage(image));
-			}
-		} catch (Exception e) {
-			new ExceptionManager(e).treatException();
-		}
-	}
+//	@SuppressWarnings("rawtypes")
+//	public static void showImageProfile(Image comp) {
+//		Attachment att = new AttachmentMedia();
+//		try {
+//			File image = att.getAttachment("avatar", getUserInSession());
+//			if (image != null) {
+//				comp.setContent(new AImage(image));
+//			}
+//		} catch (Exception e) {
+//			new ExceptionManager(e).treatException();
+//		}
+//	}
 
 	public static boolean isAdministrator() {
 		if (isLogged()) {
