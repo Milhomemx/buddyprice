@@ -1,21 +1,13 @@
 package br.com.buddyprice.view.composer;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zul.Image;
 
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
-import br.com.buddyprice.view.attachments.AttachmentMedia;
-import br.com.vexillum.control.manager.ExceptionManager;
-import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
@@ -30,7 +22,6 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		super.doAfterCompose(comp);
 		loadBinder();
 	}
-	
 	String email2 = new String();
 
 	String pass2 = new String();

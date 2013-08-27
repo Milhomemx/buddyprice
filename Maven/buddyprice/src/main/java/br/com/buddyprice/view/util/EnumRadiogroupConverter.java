@@ -13,7 +13,7 @@ public class EnumRadiogroupConverter<T extends Enum> extends RadiogroupSelectedI
 
     @Override
     public Object coerceToUi(Object val, Component component) {
-        if (val instanceof Enum) {
+    	if (val instanceof Enum) {
             Enum value = (Enum) val;
             String constanteName = value.name();
             return super.coerceToUi(constanteName, component);
