@@ -2,9 +2,6 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
 
 <zk>
-<div>
-			<include src="/pages/user/Login.zul"/>
-</div>			
 
 <div class="controls controls-row">
 	<window apply="br.com.buddyprice.view.composer.UsuarioComposer">
@@ -40,6 +37,7 @@
 					<label value="Digite uma senha:" />				
 				<textbox type="password" id="fldPass"
 					value="@{controller.entity.password}" placeholder='${c:getProperty("HolderYourPass")}'/>
+					
 				<textbox type="password" id="fldPass2" class="input-large"
 					value="" placeholder='${c:getProperty("HolderYourPass2")}' />
 				</row>
@@ -48,22 +46,20 @@
 				<row>
 				<radiogroup id="fldSexo"
 					selectedItem="@{controller.entity.sex, converter='br.com.buddyprice.view.util.SexoEnumRadiogroupConverter'}">					     
-					<radio label="Masculino" selected="true"
-						value="Masculino"  />
-					     <radio label="Feminino" value="Feminino" />
+							<radio label="Masculino" value="Masculino" radiogroup="fldSexo" style="padding-right: 8px;"/>
+							<radio label="Feminino" value="Feminino" radiogroup="fldSexo" />
 					   
 				</radiogroup>
 				</row>				
 				
 				<row>	
 				<button sclass="btn btn-danger" label="Cadastrar"
-					onClick="controller.registerUser()" />
+					onClick='controller.doAction("registerUser")' />
 				</row>
 			</rows>
 
 		</grid>
 
 	</window>
-</div>
-	
+	</div>
 </zk>

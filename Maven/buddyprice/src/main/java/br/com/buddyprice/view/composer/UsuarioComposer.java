@@ -32,7 +32,17 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 	
 	String email2 = new String();
+
+	String pass2 = new String();
 	
+	public String getPass2() {
+		return pass2;
+	}
+
+	public void setPass2(String pass2) {
+		this.pass2 = pass2;
+	}
+
 	public String getEmail2() {
 		return email2;
 	}

@@ -1,31 +1,82 @@
-<zk><?xel-method prefix="c" name="getProperty" class="br.com.vexillum.view.GenericComposer" signature="java.lang.String getProperty(java.lang.String)"?>
-<div hflex="1" vflex="1">
-		<div>
-		<window apply="br.com.buddyprice.view.composer.UsuarioComposer" border="none">
-
-		<grid>
-			<rows>
-				<row style="float: right">
-				<button sclass="btn btn-danger" label="Conecte-se"
-					onClick="controller.registerUser()" />
-					<textbox type="password" id="fldPass"
-					value="@{controller.entity.senha}" placeholder='${c:getProperty("HolderYourWild")}' />
-					<label value="Senha" style="font-size:18px"/>
-					<textbox id="fldEmail"
-						value="@{controller.entity.email}" placeholder='${c:getProperty("HolderYourEmail")}'/>
-					<label value="Login" style="font-size:18px"/>
-					
-
-					
-				
-				</row>
-			</rows>
-
-		</grid>
-
-	</window>
-		</div>
-		
-</div>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="Login"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
+<zk xmlns:h="native">
+	<div self="@define(content)">
+		<zscript>
+		<![CDATA[
+			import br.com.vexillum.util.EncryptUtils;		
+		]]>
+		</zscript>
+		<vbox width="100%" align="center">
+			<groupbox sclass="frmGroupbox" width="1000px" style="overflow: auto;">
+				<caption sclass="myCaption">Acesso</caption>
+				<vbox width="100%" align="center">
+					<div width="820px" style="overflow: auto;">
+						<hbox>
+							<h:form name="f" action="/buddyprice/j_spring_security_check" method="POST">
+								<grid sclass="nostyle" width="500px">
+									<columns>
+										<column width="100px"/>
+										<column hflex="min"/>
+									</columns>
+									<rows>
+										<row>
+											<label value="Usuário:" style="font-size: 20px;" onClick="j_username.focus();" />
+											<textbox id="j_username" name="j_username" width="300px" height="20px" style="font-size: 15px;" onOK="password.focus()"/>
+										</row>
+										<row>
+											<label value="Senha:" style="font-size: 20px;" onClick="password.focus();" />
+											<div>
+												<textbox id="password" type="password" name="password" width="300px" height="20px" style="font-size: 15px;" onOK="submitForm();"/>
+													
+												<textbox id="j_password" name="j_password" visible="false"/>
+											</div>
+										</row>
+										<row spans="2">
+											<a href="/paginas/recuperacao/enviaremail.zul" label="Esqueceu a Senha?" style="font-size: 15px;"/>
+										</row>
+										<row spans="2" if="${not empty param.error}">
+											<hbox>
+												<label sclass="testecss3" value="Dados inválidos!"/>
+											</hbox>
+										</row>
+										<row>
+											<div></div>
+										</row>
+										<row spans="2">
+											<hbox>
+												<button onClick="submitForm();" sclass="btn btn-success" label="Login"/>
+												<separator width="30px"/>
+												<h:input type="reset" class="btn btn-success" value="Redefinir" />
+											</hbox>
+										</row>
+									</rows>
+								</grid>
+							</h:form>
+							<div width="300px">
+								<vbox>
+									<a href="/paginas/usuario/inclusao.zul" label="Cadastre-se" style="font-size: 25px;"/>
+									<separator height="10px"/>
+									<label value='asdf' style="font-size: 20px;"/>
+								</vbox>
+							</div>
+						</hbox>
+					</div>
+				</vbox>
+			</groupbox>
+		</vbox>
+		<zscript>
+		<![CDATA[
+			public void encryptPassword(){
+				j_password.setValue(EncryptUtils.encryptOnSHA512(password.getValue()));	
+			}
+			
+			public void submitForm(){
+ 				encryptPassword();	
+ 				Clients.evalJavaScript("document.f.submit();");
+			}
+		]]>
+		</zscript>
+	</div>
 </zk>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.GenericControl;
+import br.com.vexillum.util.EncryptUtils;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 @Service
@@ -25,7 +26,14 @@ public class UsuarioController extends GenericControl<Usuario> {
             }
             return regReturn;
             
-    }public Return loginUser() {
+    }
+        @Override
+        public Return save() {
+        	entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
+        return super.save();
+        }
+        
+        public Return loginUser() {
         Return regReturn = new Return(true);
         regReturn.concat(doAction("save"));
         if (regReturn.isValid()){

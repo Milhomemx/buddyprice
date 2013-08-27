@@ -67,7 +67,7 @@
 		<servlet-name>auEngine</servlet-name>
 		<url-pattern>/zkau/*</url-pattern>
 	</servlet-mapping>
-<!-- <filter>
+ <filter>
 			<filter-name>springSecurityFilterChain</filter-name>
 			<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		</filter>
@@ -77,11 +77,11 @@
 			</filter-name>
 			<url-pattern>/*</url-pattern>
 		</filter-mapping>
- -->	<context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
  		\WEB-INF\classes\br\com\vexillum\configuration\springSecurity.xml
-		\WEB-INF\classes\br\com\vexillum\configuration\applicationContext.xml
+ 		\WEB-INF\classes\br\com\vexillum\configuration\applicationContext.xml
 		</param-value>
 	</context-param>
 
