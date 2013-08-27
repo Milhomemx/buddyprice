@@ -51,7 +51,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	public void registerUser() {
 		treatReturn(getControl().registerUser());
-//		redirectToDash();
+		
 	}
 
 	public void loginUser() {
