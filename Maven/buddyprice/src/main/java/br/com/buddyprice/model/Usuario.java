@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 import br.com.vexillum.model.Category;
 import br.com.vexillum.model.UserBasic;
+import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
 @SuppressWarnings("serial")
@@ -48,7 +49,8 @@ public void setPais(String pais) {
 	this.pais = pais;
 }
 
-@Column(name="sobreNome", nullable=true, updatable =true, length = 150)
+@Validate(notNull = true, min = 2, max = 50)
+@Column(name="sobreNome", nullable=false, updatable =true, length = 150)
 private String sobreNome;
 
 @Column(name="cidade", nullable=true, updatable =true, length = 150)

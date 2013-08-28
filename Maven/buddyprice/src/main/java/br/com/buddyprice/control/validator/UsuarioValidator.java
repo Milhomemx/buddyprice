@@ -24,7 +24,7 @@ public class UsuarioValidator extends Validator {
 	public Return equalsEmail(){
 		Return ret = equalsFields(((Usuario)entity).getEmail(), (String)mapData.get("email2"));
 		if(!ret.isValid()){
-			ret.concat(creatReturn("email2", getValidationMessage("email2", "equalsEmail", false))); //fld ele coloca sozinho
+			ret.concat(creatReturn("email2", getValidationMessage("email2", "equalsEmail", false)));
 		}
 		return ret;	
 	}
@@ -32,7 +32,7 @@ public class UsuarioValidator extends Validator {
 	public Return equalsPassWord(){
 		Return ret = equalsFields(((Usuario)entity).getPassword(), (String)mapData.get("pass2"));
 		if(!ret.isValid()){
-			ret.concat(creatReturn("pass2", getValidationMessage("pass2", "equalsPass", false))); //fld ele coloca sozinho
+			ret.concat(creatReturn("pass2", getValidationMessage("pass2", "equalsPassWord", false)));
 		}
 		return ret;	
 	}

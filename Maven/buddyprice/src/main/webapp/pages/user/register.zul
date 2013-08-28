@@ -51,7 +51,6 @@
 							placeholder='${c:getProperty("HolderYourPass2")}' />
 					</row>
 
-
 					<row>
 						<radiogroup id="fldSex"
 							selectedItem="@{controller.entity.sex, converter='br.com.vexillum.view.converter.SexoEnumRadiogroupConverter'}">
