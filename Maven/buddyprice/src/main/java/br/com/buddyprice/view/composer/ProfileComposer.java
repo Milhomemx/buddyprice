@@ -9,6 +9,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Window;
 
+import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.view.attachments.AttachmentMedia;
 import br.com.buddyprice.view.validator.ImageValidator;
 import br.com.vexillum.control.util.Attachment;
@@ -21,9 +22,7 @@ public class ProfileComposer extends UsuarioComposer {
 
 	public void doAfterCompose(Component comp) throws Exception{
 		super.doAfterCompose(comp);	
-		if(!(haveIdOnRequest() && initUserById(Executions.getCurrent().getParameter("id")))){
-			Executions.sendRedirect("/pages/errors/index.zul");
-		} 
+		setEntity((Usuario) getUserInSession());
 		loadBinder();
 	}
 	
@@ -52,7 +51,9 @@ public class ProfileComposer extends UsuarioComposer {
         treatReturn(ret);
 	}
 	
-	
+	public Return deactivate() {
+		return getControl().doAction("deactivate");
+	}
 
 	public void callModalWindow(String page){
 		Map<String, Object> map = ReflectionUtils.prepareDataForPersistence(this);

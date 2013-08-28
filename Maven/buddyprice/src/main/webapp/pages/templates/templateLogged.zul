@@ -11,6 +11,7 @@
 		<north height="7%" border="none">
 			<div>
 			<include src="/pages/components/banner.zul" />
+			
 			</div>
 			
 		</north>

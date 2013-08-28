@@ -33,6 +33,12 @@ public class UsuarioController extends GenericControl<Usuario> {
         return super.save();
         }
         
+        public Return deactivate() {
+        	entity.setActive(false);
+        	
+        	return super.update();
+        }
+        
         public Return loginUser() {
         Return regReturn = new Return(true);
         regReturn.concat(doAction("save"));

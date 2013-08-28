@@ -1,9 +1,9 @@
 <div hflex="1" vflex="1" style='background:${c:getProperty("ThemeColor")};'>
-
+<hbox>
 		<a href="/index.html">
 			<image src='${c:getProperty("NormalLogo")};'/>
+			
+			<a style="float:right" href="/buddyprice/logout">Sair!</a>
 		</a>
-		<div width="400px">
-		</div>
-		
+		</hbox>
 </div>

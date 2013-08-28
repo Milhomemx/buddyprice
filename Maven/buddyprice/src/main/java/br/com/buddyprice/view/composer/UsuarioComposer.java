@@ -1,15 +1,22 @@
+
 package br.com.buddyprice.view.composer;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
+import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zul.Image;
 
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
-import br.com.vexillum.model.UserBasic;
+import br.com.buddyprice.view.attachments.AttachmentMedia;
+import br.com.vexillum.control.manager.ExceptionManager;
+import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
+import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
 
@@ -49,8 +56,8 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-	public void registerUser() {
-		treatReturn(getControl().registerUser());
+	public Return registerUser() {
+		return getControl().registerUser();
 		
 	}
 
@@ -60,18 +67,18 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	}
 
-//	@SuppressWarnings("rawtypes")
-//	public static void showImageProfile(Image comp) {
-//		Attachment att = new AttachmentMedia();
-//		try {
-//			File image = att.getAttachment("avatar", getUserInSession());
-//			if (image != null) {
-//				comp.setContent(new AImage(image));
-//			}
-//		} catch (Exception e) {
-//			new ExceptionManager(e).treatException();
-//		}
-//	}
+	@SuppressWarnings("rawtypes")
+	public static void showImageProfile(Image comp) {
+		Attachment att = new AttachmentMedia();
+		try {
+			File image = att.getAttachment("image_profile", getUserInSession());
+			if (image != null) {
+				comp.setContent(new AImage(image));
+			}
+		} catch (Exception e) {
+			new ExceptionManager(e).treatException();
+		}
+	}
 
 	public static boolean isAdministrator() {
 		if (isLogged()) {
@@ -96,6 +103,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		String id = Executions.getCurrent().getParameter("id");
 		return ((id != null && Integer.parseInt(id) >= 0));
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	public boolean initUserById(String id) {
@@ -107,11 +115,6 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 			return true;
 		}
 		return false;
-	}
-	public static UserBasic getUserInSession() {
-		Usuario a = new Usuario();
-		a.setId(1l);
-				return (UserBasic) a;
 	}
 	@Override
 	public Usuario getEntityObject() {

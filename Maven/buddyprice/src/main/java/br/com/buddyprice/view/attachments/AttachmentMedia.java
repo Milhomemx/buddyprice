@@ -23,7 +23,7 @@ public class AttachmentMedia implements Attachment<Media> {
 		Return ret = new Return(true);
 		try {
 			InputStream in = ZKUtils.mediaToStream(file);
-			Files.copy(new File(PATH + "/" + FOLDERATTACHMENTS + "/" + user.getId() + "/" + name), in);
+			Files.copy(new File(PATH + File.separator + FOLDERATTACHMENTS + File.separator + user.getId() + File.separator + name), in);
 		} catch (Exception e) {
 			ret.concat(new ExceptionManager(e).treatException());
 		}
@@ -46,7 +46,7 @@ public class AttachmentMedia implements Attachment<Media> {
 
 	@Override
 	public File getAttachment(String name, UserBasic user) {
-		File f = new File(PATH + "/" + FOLDERATTACHMENTS + "/" + user.getId() + "/" + name); 
+		File f = new File(PATH + File.separator + FOLDERATTACHMENTS + File.separator + user.getId() + File.separator + name); 
 		if(!f.exists()) return null;
 		return f;
 	}

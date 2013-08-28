@@ -12,17 +12,23 @@
 	<!-- Parte do Spring Security -->
 	<security:http auto-config="true">
 		
-<!-- 		<security:intercept-url pattern="/pages/configuration/**" access="ROLE_ADMIN,ROLE_USER" />
+ 		<security:intercept-url pattern="/pages/configuration/**" access="ROLE_ADMIN,ROLE_USER" />
 		<security:intercept-url pattern="/pages/user/register.zul" access="ROLE_ANONYMOUS" />
+		<security:intercept-url pattern="/pages/user/login.zul" access="ROLE_ANONYMOUS" />		
 		<security:intercept-url pattern="/pages/user/index.zul" access="ROLE_ANONYMOUS" />
-		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" /> -->
+		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/pages/dashboard/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/**" access="ROLE_ANONYMOUS" />		
 				
 		<security:form-login login-page="/pages/user/login.zul"
-			default-target-url="/pages/dashboard/**" />
+			default-target-url="/pages/dashboard/" authentication-failure-url="/pages/user/login.zul?error=true"  />
+	<security:logout logout-success-url="/pages/user/login.zul" invalidate-session="true" logout-url="/logout"/>
+	
+	 <security:access-denied-handler error-page="/pages/erros/error.zul"/>
+	
 	</security:http>
-
-	<security:authentication-manager>
+	
+		<security:authentication-manager>
 		<security:authentication-provider ref="VXAuthenticatorProvider"/>
 		<security:authentication-provider>
 			<!-- A query users-by-username-query deve retorna as colunas username, 

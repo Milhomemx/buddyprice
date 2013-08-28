@@ -16,19 +16,12 @@
 		<window apply="${profileComposer}">
 
 			<grid style="width: 80%">
-				<columns>
-					<column label="@{controller.entity.nome}" />
-					<column label="" />
-				</columns>
-
 				<rows>
 
-					<row>
-						
-
-					</row>
 				<row>
-					<label value="Alterando dados de Nome_do_Usuario" style="font-size:18px"/>
+				<hbox>
+					<label value="Alterando " style="font-size:18px"/><label value="@{controller.entity.name}" style="font-size:18px"/>
+				</hbox>
 				</row>
 <row>
 						<hbox>
@@ -91,7 +84,12 @@
 				</row>
 				<row>
 				<button sclass="btn btn-danger" label="Desativar"
-					onClick="controller.desactiveAccount()" />
+					onClick='controller.doAction("deactivate")' />
+					
+					
+					
+								<button sclass="btn btn-block btn-success" width="170px" upload="true" label="Alterar Foto" onUpload='controller.changeProfileImage(event)'/>
+
 				</row>
 				
 				
