@@ -33,6 +33,13 @@ public class UsuarioController extends GenericControl<Usuario> {
         return super.save();
         }
         
+        public Return update() {
+        	entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
+        return super.update();
+        }
+        
+        
+        
         public Return deactivate() {
         	entity.setActive(false);
         	

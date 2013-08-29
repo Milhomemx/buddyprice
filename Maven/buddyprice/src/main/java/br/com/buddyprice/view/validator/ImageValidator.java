@@ -27,7 +27,7 @@ public class ImageValidator{
 	private Return maxSize(){
 		Return ret = new Return(true);
 		if(media.getByteData().length > 1000*500){
-			ret.concat(new Return(false, new Message(null, "Imagem não poder ter tamanho superior a 500KB!")));
+			ret.concat(new Return(false, new Message(null, "A imagem não pode ter tamanho superior a 500KB!")));
 		}
 		return ret;
 	}
@@ -35,7 +35,7 @@ public class ImageValidator{
 	private Return contentType(){
 		Return ret = new Return(true);
 		if(!media.getFormat().equalsIgnoreCase("png") && !media.getFormat().equalsIgnoreCase("gif") && !media.getFormat().equalsIgnoreCase("jpg") && !media.getFormat().equalsIgnoreCase("jpeg")){
-			ret.concat(new Return(false, new Message(null, "Imagem não suportada! A imagem dever ser JPG, PNG ou GIF!")));
+			ret.concat(new Return(false, new Message(null, "A imagem não suportada! A imagem dever ser JPG, PNG ou GIF!")));
 		}
 		return ret;
 	}
@@ -45,7 +45,7 @@ public class ImageValidator{
 		try {
 			AImage img = (media instanceof AImage) ? (AImage) media : new AImage("photo", ZKUtils.mediaToStream(media));
 			if(img.getHeight() > 150 || img.getWidth() > 150){
-				ret.concat(new Return(false, new Message(null, "Imagem não poder ter resolução superior a 150x150!")));
+				ret.concat(new Return(false, new Message(null, "A imagem não pode ter resolução superior a 150x150!")));
 			}
 		} catch (Exception e) {
 			ret.concat(new ExceptionManager(e).treatException());

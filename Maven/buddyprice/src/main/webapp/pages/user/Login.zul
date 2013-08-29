@@ -42,7 +42,6 @@
 											</hbox>
 										</row>
 										<row>
-											<div></div>
 										</row>
 										<row spans="2">
 											<hbox>
@@ -56,9 +55,8 @@
 							</h:form>
 							<div width="300px">
 								<vbox>
-									<a href="/paginas/usuario/inclusao.zul" label="Cadastre-se" style="font-size: 25px;"/>
+									<a href="/pages/user/" label="Cadastre-se" style="font-size: 25px;"/>
 									<separator height="10px"/>
-									<label value='asdf' style="font-size: 20px;"/>
 								</vbox>
 							</div>
 						</hbox>
