@@ -57,6 +57,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 
 	public Return registerUser() {
+
 		return getControl().registerUser();
 		
 	}
