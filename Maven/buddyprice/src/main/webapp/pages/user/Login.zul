@@ -38,7 +38,7 @@
 										</row>
 										<row spans="2" if="${not empty param.error}">
 											<hbox>
-												<label sclass="testecss3" value="Dados inválidos!"/>
+												<label sclass="testecss3" value="Usuário/Senha estão incorretos"/>
 											</hbox>
 										</row>
 										<row>

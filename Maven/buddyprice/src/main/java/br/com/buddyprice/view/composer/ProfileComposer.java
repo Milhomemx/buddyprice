@@ -7,6 +7,7 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import br.com.buddyprice.model.Usuario;
@@ -52,7 +53,9 @@ public class ProfileComposer extends UsuarioComposer {
 	}
 	
 	public Return deactivate() {
-		return getControl().doAction("deactivate");
+			Executions.sendRedirect("/buddyprice/logout");
+			return getControl().doAction("deactivate");
+			
 	}
 
 	public void callModalWindow(String page){
@@ -69,6 +72,7 @@ public class ProfileComposer extends UsuarioComposer {
 		Return ret =null;
 		ret = saveEntity();
 		if(ret.isValid()){
+			Executions.sendRedirect("edit.zul?sucess=true");
 			component.detach();
 		}
 		return ret;

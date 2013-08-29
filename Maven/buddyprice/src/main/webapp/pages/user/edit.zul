@@ -18,18 +18,27 @@
 			<grid style="width: 80%">
 				<rows>
 
-				<row>
-				<hbox>
-					<label value="Alterando " style="font-size:18px"/><label value="@{controller.entity.name}" style="font-size:18px"/>
-				</hbox>
-				</row>
-<row>
+					<row>
+						<hbox>
+							<label value="Alterando conta de "
+								style="font-size:18px" />
+							<label value="@{controller.entity.name}"
+								style="font-size:18px" />
+						</hbox>
+
+					</row>
+
+					<row spans="2" if="${not empty param.sucess}">
+						<label value="Usuário cadastrado com sucesso!" />
+					</row>
+
+					<row>
 						<hbox>
 							<textbox id="fldNome"
 								value="@{controller.entity.name}" class="input-small"
 								placeholder='${c:getProperty("HolderYourName")}' />
-							<textbox id="fldUltNome" class="input-medium"
-								value="@{controller.entity.sobreNome}"
+							<textbox id="fldUltNome"
+								class="input-medium" value="@{controller.entity.sobreNome}"
 								placeholder='${c:getProperty("HolderYourLastName")}' />
 						</hbox>
 					</row>
@@ -64,36 +73,48 @@
 
 					</row>
 
-				<row>
-					<label value="Data de Nascimento:" />
-				<datebox value="@{controller.entity.birthDate}"  id="fldNasc"/>
-				</row>
-				<row>
-					<label value="Digite uma senha:" />				
-				<textbox type="password" id="fldPass"
-					value="@{controller.entity.password}" />
-				</row>				
-				
-				<row>
-				<button sclass="btn btn-danger" label="Salvar Alterações"
-					onClick='controller.doAction("updateInformation")' />
-				</row>
-				
-				<row>
-				<label value="Desativar conta?" />
-				</row>
-				<row>
-				<button sclass="btn btn-danger" label="Desativar"
-					onClick='controller.doAction("deactivate")' />
-					
-					
-					
-								<button sclass="btn btn-block btn-success" width="170px" upload="true" label="Alterar Foto" onUpload='controller.changeProfileImage(event)'/>
+					<row>
+						<label value="Data de Nascimento:" />
+						<datebox value="@{controller.entity.birthDate}"
+							id="fldNasc" />
+					</row>
+					<row>
+						<label value="Digite uma senha:" />
+						<textbox type="password" id="fldPass"
+							value="@{controller.entity.password}" />
+					</row>
 
-				</row>
-				
-				
-			</rows>
+					<row>
+						<button sclass="btn btn-danger"
+							label="Salvar Alterações"
+							onClick='controller.doAction("updateInformation")' />
+					</row>
+
+					<row>
+						<label value="Desativar conta" />
+					</row>
+					<row>
+
+ <button label="Desativar" width="100px" onClick='controller.doAction("deactivate")'>
+                <attribute name="onClick"><![CDATA[
+    Messagebox.show("Tem certeza que deseja desativar sua conta?", "Desativar", Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
+]]></attribute>
+            </button>
+					
+						<button sclass="btn btn-danger"
+							label="Desativar" onClick='controller.doAction("deactivate")' />
+
+						<button sclass="btn btn-danger"
+							label="Cancelar" onClick='controller.doAction("redirectToDash")' />
+
+						<button sclass="btn btn-block btn-success"
+							width="170px" upload="true" label="Alterar Foto"
+							onUpload='controller.changeProfileImage(event)' />
+
+					</row>
+
+
+				</rows>
 
 			</grid>
 

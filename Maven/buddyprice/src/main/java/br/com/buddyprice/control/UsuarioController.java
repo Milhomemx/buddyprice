@@ -38,6 +38,11 @@ public class UsuarioController extends GenericControl<Usuario> {
         	
         	return super.update();
         }
+        public Return nullit() {
+        	Return ret = new Return(false);
+        	
+        	return ret;
+        }
         
         public Return loginUser() {
         Return regReturn = new Return(true);

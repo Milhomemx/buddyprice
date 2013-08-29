@@ -5,9 +5,11 @@
 	</hbox>
 	<separator width="20px"/>
 	<div class="menuSidebar">
+
 	<a onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToUserSession();">
 		<div align="center" class="itens">
-<label value="Perfil" />
+	<label value= "Perfil"/>
+<label value="[Alterar]" />
 
 
 
