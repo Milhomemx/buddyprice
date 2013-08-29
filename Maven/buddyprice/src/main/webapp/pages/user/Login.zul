@@ -22,19 +22,16 @@
 									</columns>
 									<rows>
 										<row>
-											<label value="Usuário:" style="font-size: 20px;" onClick="j_username.focus();" />
-											<textbox id="j_username" name="j_username" width="300px" height="20px" style="font-size: 15px;" onOK="password.focus()"/>
+											<label value="Usuário:" onClick="j_username.focus();" />
+											<textbox id="j_username" name="j_username" onOK="password.focus()"/>
 										</row>
 										<row>
-											<label value="Senha:" style="font-size: 20px;" onClick="password.focus();" />
+											<label value="Senha:" onClick="password.focus();" />
 											<div>
-												<textbox id="password" type="password" name="password" width="300px" height="20px" style="font-size: 15px;" onOK="submitForm();"/>
+												<textbox id="password" type="password" name="password" onOK="submitForm();"/>
 													
 												<textbox id="j_password" name="j_password" visible="false"/>
 											</div>
-										</row>
-										<row spans="2">
-											<a href="/paginas/recuperacao/enviaremail.zul" label="Esqueceu a Senha?" style="font-size: 15px;"/>
 										</row>
 										<row spans="2" if="${not empty param.error}">
 											<hbox>
@@ -45,9 +42,9 @@
 										</row>
 										<row spans="2">
 											<hbox>
-												<button onClick="submitForm();" sclass="btn btn-success" label="Login"/>
+												<button onClick="submitForm();" label="Login"/>
 												<separator width="30px"/>
-												<h:input type="reset" class="btn btn-success" value="Redefinir" />
+												<h:input type="reset" value="Redefinir" />
 											</hbox>
 										</row>
 									</rows>
@@ -55,7 +52,7 @@
 							</h:form>
 							<div width="300px">
 								<vbox>
-									<a href="/pages/user/" label="Cadastre-se" style="font-size: 25px;"/>
+									<a href="/pages/user/" label="Cadastre-se"/>
 									<separator height="10px"/>
 								</vbox>
 							</div>
