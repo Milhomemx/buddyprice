@@ -24,7 +24,7 @@
 			default-target-url="/pages/dashboard/" authentication-failure-url="/pages/user/login.zul?error=true"  />
 	<security:logout logout-success-url="/pages/user/login.zul" invalidate-session="true" logout-url="/logout"/>
 	
-	 <security:access-denied-handler error-page="/pages/erros/error.zul"/>
+	 <security:access-denied-handler error-page="/pages/erros/"/>
 	
 	</security:http>
 	

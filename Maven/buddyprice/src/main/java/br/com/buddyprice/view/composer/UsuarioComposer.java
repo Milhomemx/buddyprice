@@ -87,17 +87,21 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		return true;
 	}
 
-	public static void redirectToUser(Long id) {
+	public static void redirectToEdit() {
 		Executions.sendRedirect("../user/edit.zul");
+	}
+	
+	public static void redirectToConfig() {
+		Executions.sendRedirect("../configuration/");
 	}
 
 	public static void redirectToDash() {
 		Executions.sendRedirect("../dashboard/index.zul");
 	}
 
-	public static void redirectToUserSession() {
-		redirectToUser(getUserInSession().getId());
-	}
+//	public static void redirectToUserSession() {
+//		redirectToEdit(getUserInSession().getId());
+//	}
 
 	public static Boolean haveIdOnRequest() {
 		String id = Executions.getCurrent().getParameter("id");

@@ -34,7 +34,7 @@ public class UsuarioController extends GenericControl<Usuario> {
         }
         
         public Return update() {
-        	entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
+
         return super.update();
         }
         

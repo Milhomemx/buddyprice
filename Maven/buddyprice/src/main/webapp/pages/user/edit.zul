@@ -29,7 +29,7 @@
 					</row>
 
 					<row spans="2" if="${not empty param.sucess}">
-						<label value="Usuário alterado com sucesso!" />
+						<label id="inputSuccess" value="Usuário alterado com sucesso!" />
 					</row>
 
 					<row>
@@ -44,7 +44,7 @@
 					</row>
 					<row>
 						<textbox id="fldEmail" class="input-xlarge"
-							value="@{controller.entity.email}"
+							value="@{controller.entity.email}" disabled ="true"
 							placeholder='${c:getProperty("HolderYourEmail")}' />
 
 					</row>
@@ -74,15 +74,17 @@
 					</row>
 
 					<row>
+					<hbox>
 						<label value="Data de Nascimento:" />
 						<datebox value="@{controller.entity.birthDate}"
 							id="fldNasc" />
+							</hbox>
 					</row>
-					<row>
+<!-- 					<row>
 						<label value="Digite uma senha:" />
 						<textbox type="password" id="fldPass"
 							value="@{controller.entity.password}" />
-					</row>
+					</row>-->
 
 					<row>
 						<button sclass="btn btn-danger"
@@ -90,9 +92,6 @@
 							onClick='controller.doAction("updateInformation")' />
 					</row>
 
-					<row>
-						<label value="Desativar conta" />
-					</row>
 					<row>
 						<hbox>
 							<button sclass="btn btn-danger"

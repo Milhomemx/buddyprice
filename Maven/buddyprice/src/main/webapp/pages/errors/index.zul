@@ -1,6 +1,6 @@
-<?page title="Error!" contentType="text/html;charset=UTF-8"?>
+<?page title="Erro! Você não tem acesso a esta página!" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="Error!" border="normal">
-New Content Here!
+<window title="Erro! Você não tem acesso a esta página!" border="normal">
+Erro! Você não tem acesso a esta página!
 </window>
 </zk>

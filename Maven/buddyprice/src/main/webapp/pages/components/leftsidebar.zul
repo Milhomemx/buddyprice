@@ -1,60 +1,146 @@
 <zk>
-<vlayout xmlns:h="native" vflex="1">
-	<hbox width="100%" height="150px" align="center" pack="center">
-		<image src='${c:getProperty("DefaultAvatar")};' onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);"/>
-	</hbox>
-	<separator width="20px"/>
-	<div class="menuSidebar">
-
-	<a onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToUserSession();">
-		<div align="center" class="itens">
-	<label value= "Perfil"/>
-<label value="[Alterar]" />
+	<vlayout xmlns:h="native" vflex="1">
+		<hbox width="100%" height="150px" align="center"
+			pack="center">
+			<image src='${c:getProperty("DefaultAvatar")};'
+				onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);" />
+		</hbox>
+		<separator width="20px" />
+		<div class="menuSidebar">
 
 
 
-<div style="clear: both;"></div>
+
+ <panel border="none" 
+                            height="100%">
+                            <panelchildren>
+                                <grid style="border:0;">
+                                    <rows>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/user.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToEdit();"
+                                                    label="Perfil" />
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/products.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton
+                                                    label="Produtos" />
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/establishments.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton
+                                                    label="Estabelecimentos" />
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/offer.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton
+                                                    label="Ofertas" />
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/buddies.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton
+                                                    label="Camaradas" />
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src="/images/menu_icons/configuration.png" />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToConfig();"
+                                                    label="Configurações" />
+                                            </div>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </panelchildren>
+                        </panel>
+
+
+
+
+
+<!--
+			<a
+				>
+				<div align="center" class="sidebar z-navbar z-navbar-vertical">
+					<label value="Perfil" />
+					<label value="[Alterar]" />
+
+
+
+					<div></div>
+				</div>
+			</a>
+			<separator width="13px" />
+			<a href="">
+				<div align="center" class="itens">
+					<label value="Produtos"
+						style="vertical-align:middle;" />
+				</div>
+			</a>
+			<separator width="13px" />
+			<a href="">
+				<div align="center" class="itens">
+					<label value="Estabelecimentos"
+						style="vertical-align:middle;" />
+				</div>
+			</a>
+			<separator width="13px" />
+			<a href="">
+				<div align="center" class="itens">
+					<label value="Ofertas"
+						style="vertical-align:middle;" />
+				</div>
+			</a>
+			<separator width="13px" />
+			<a href="">
+				<div align="center" class="itens">
+					<label value="Buddies"
+						style="vertical-align:middle;" />
+				</div>
+			</a>
+			<separator width="13px" />
+			<a href='${c:getProperty("ConfigurationPath")}'>
+				<div align="center" class="itens">
+					<label value="Configurações"
+						style="vertical-align:middle;" />
+				</div>
+			</a>
+			<separator width="13px" />
+
+
+
+
+-->
+
+
+
 		</div>
-	</a>	
-	<separator width="13px"/>
-	<a href="">
-		<div align="center" class="itens">
-			<label value="Produtos" style="vertical-align:middle;"/>
-		</div>	
-	</a>
-	<separator width="13px"/>
-	<a href="">
-		<div align="center" class="itens">
-			<label value="Estabelecimentos" style="vertical-align:middle;"/>
-		</div>
-	</a>
-	<separator width="13px"/>
-	<a href="">
-		<div align="center" class="itens">
-			<label value="Ofertas" style="vertical-align:middle;"/>
-		</div>
-	</a>
-	<separator width="13px"/>
-	<a href="">
-		<div align="center" class="itens">
-			<label value="Buddies" style="vertical-align:middle;"/>
-		</div>
-	</a>
-	<separator width="13px"/>
-	<a href='${c:getProperty("ConfigurationPath")}'>
-		<div align="center" class="itens">
-			<label value="Configurações" style="vertical-align:middle;"/>
-		</div>
-	</a>
-	<separator width="13px"/>
-	
-	
-	
-	
-	
-	
-	
-	
-	</div>
-</vlayout>
+	</vlayout>
 </zk>
