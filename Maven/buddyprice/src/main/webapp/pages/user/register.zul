@@ -61,7 +61,6 @@
 						<radiogroup id="fldSex"
 							selectedItem="@{controller.entity.sex, converter='br.com.vexillum.view.converter.SexoEnumRadiogroupConverter'}">
 							<radio label="Masculino" value="Masculino" />
-							<separator spacing="10px">
 							<radio label="Feminino" value="Feminino" />
 						</radiogroup>
 					</row>

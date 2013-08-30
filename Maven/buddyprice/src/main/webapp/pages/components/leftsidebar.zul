@@ -33,7 +33,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
-                                                    label="Produtos" />
+                                                    label="Produtos" disabled ="true" />
                                             </div>
                                         </row>
                                         <row>
@@ -43,7 +43,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
-                                                    label="Estabelecimentos" />
+                                                    label="Estabelecimentos"  disabled ="true"/>
                                             </div>
                                         </row>
                                         <row>
@@ -53,7 +53,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
-                                                    label="Ofertas" />
+                                                    label="Ofertas" disabled ="true" />
                                             </div>
                                         </row>
                                         <row>
@@ -63,7 +63,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
-                                                    label="Camaradas" />
+                                                    label="Camaradas" disabled ="true" />
                                             </div>
                                         </row>
                                         <row>
