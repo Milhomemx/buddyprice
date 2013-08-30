@@ -35,15 +35,15 @@
 					<row>
 						<hbox>
 							<textbox id="fldNome"
-								value="@{controller.entity.name}" class="input-small"
+								value="@{controller.entity.name}" class="input-small" constraint="no empty"
 								placeholder='${c:getProperty("HolderYourName")}' />
 							<textbox id="fldUltNome"
 								class="input-medium" value="@{controller.entity.sobreNome}"
-								placeholder='${c:getProperty("HolderYourLastName")}' />
+								placeholder='${c:getProperty("HolderYourLastName")}' constraint="no empty" />
 						</hbox>
 					</row>
 					<row>
-						<textbox id="fldEmail" class="input-xlarge"
+						<textbox id="fldEmail" class="input-xlarge" constraint="no empty"
 							value="@{controller.entity.email}" disabled ="true"
 							placeholder='${c:getProperty("HolderYourEmail")}' />
 

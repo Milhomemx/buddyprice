@@ -9,8 +9,8 @@
 		]]>
 		</zscript>
 		<vbox width="100%" align="center">
-			<groupbox sclass="frmGroupbox" width="1000px" style="overflow: auto;">
-				<caption sclass="myCaption">Acesso</caption>
+			<groupbox sclass="frmGroupbox" width="500px" style="overflow: auto;">
+
 				<vbox width="100%" align="center">
 					<div width="820px" style="overflow: auto;">
 						<hbox>
@@ -43,19 +43,15 @@
 										<row spans="2">
 											<hbox>
 												<button onClick="submitForm();" label="Login"/>
-												<separator width="30px"/>
-												<h:input type="reset" value="Redefinir" />
+												<separator/>
+									<a href="/pages/user/" label="Não tem cadastro ainda?"/>
+									<separator height="10px"/>
+
 											</hbox>
 										</row>
 									</rows>
 								</grid>
 							</h:form>
-							<div width="300px">
-								<vbox>
-									<a href="/pages/user/" label="Cadastre-se"/>
-									<separator height="10px"/>
-								</vbox>
-							</div>
 						</hbox>
 					</div>
 				</vbox>

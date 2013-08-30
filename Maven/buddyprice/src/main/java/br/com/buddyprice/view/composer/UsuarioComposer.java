@@ -91,6 +91,11 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		Executions.sendRedirect("../user/edit.zul");
 	}
 	
+	public static void redirectToRegister() {
+		Executions.sendRedirect("pages/user/");
+	}
+
+	
 	public static void redirectToConfig() {
 		Executions.sendRedirect("../configuration/");
 	}

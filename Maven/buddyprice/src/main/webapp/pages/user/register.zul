@@ -7,54 +7,61 @@
 		<window
 			apply="br.com.buddyprice.view.composer.UsuarioComposer">
 
-			<grid style="width: 470px">
-				<rows style="width=95%">
+			<grid>
+				<rows>
 
 					<row>
 						<label value="Cadastre-se"
 							style="font-size:24px" />
 					</row>
 					<row>
-						<textbox id="fldNome"
-							value="@{controller.entity.name}"
-							placeholder='${c:getProperty("HolderYourName")}' />
+						<hbox>
+							<textbox id="fldNome" value="@{controller.entity.name}" constraint="no empty"
+								placeholder='${c:getProperty("HolderYourName")}' />
 
-						<textbox id="fldUltNome"
-							value="@{controller.entity.sobreNome}" constraint="no empty"
-							placeholder='${c:getProperty("HolderYourLastName")}' />
+							<textbox id="fldUltNome" width="180px"
+								value="@{controller.entity.sobreNome}" constraint="no empty"
+								placeholder='${c:getProperty("HolderYourLastName")}' />
+						</hbox>
 					</row>
 					<row>
-						<textbox id="fldEmail" class="input-large"
-							value="@{controller.entity.email}" constraint="/.+@.+\.[a-z]+/: Por favor, informe um e-mail válido"
-							placeholder='${c:getProperty("HolderYourEmail")}' />
+						<hbox>
+							<textbox id="fldEmail" class="input-large"
+								value="@{controller.entity.email}"
+								constraint="/.+@.+\.[a-z]+/: Por favor, informe um e-mail válido"
+								placeholder='${c:getProperty("HolderYourEmail")}' />
 
-						<textbox id="fldEmail2" class="input-large" constraint="/.+@.+\.[a-z]+/: Por favor, informe um e-mail válido"
-							value="@{controller.email2}"
-							placeholder='${c:getProperty("HolderYourEmail2")}' />
+							<textbox id="fldEmail2" class="input-large" width="180px"
+								constraint="/.+@.+\.[a-z]+/: Por favor, informe um e-mail válido"
+								value="@{controller.email2}"
+								placeholder='${c:getProperty("HolderYourEmail2")}' />
 
+						</hbox>
 					</row>
 
 					<row>
-						<label value="Data de Nascimento:" />
-						<datebox placeholder='${c:getProperty("HolderYourDate")}' value="@{controller.entity.birthDate}" constraint="no empty, no future: Data inválida"
-							id="fldNasc" />
-					</row>
-
-					<row>
-						<label value="Digite uma senha:" />
-						
-						<textbox type="password" id="fldPass"
+					<hbox>
+						<textbox type="password" id="fldPass" constraint="no empty"
 							value="@{controller.entity.password}"
 							placeholder='${c:getProperty("HolderYourPass")}' />
 
-						<textbox type="password" id="fldPass2" value="@{controller.pass2}"
+						<textbox type="password" id="fldPass2" width="180px" constraint="no empty"
+							value="@{controller.pass2}"
 							placeholder='${c:getProperty("HolderYourPass2")}' />
+							</hbox>
+					</row>
+					<row>
+						<datebox
+							placeholder='${c:getProperty("HolderYourDate")}' width="140px"
+							value="@{controller.entity.birthDate}"
+							constraint="no empty, no future: Data inválida" id="fldNasc" />
 					</row>
 
 					<row>
 						<radiogroup id="fldSex"
 							selectedItem="@{controller.entity.sex, converter='br.com.vexillum.view.converter.SexoEnumRadiogroupConverter'}">
 							<radio label="Masculino" value="Masculino" />
+							<separator spacing="10px">
 							<radio label="Feminino" value="Feminino" />
 						</radiogroup>
 					</row>

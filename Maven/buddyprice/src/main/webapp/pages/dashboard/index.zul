@@ -1,4 +1,4 @@
-<?page title="Nome_do_Usuario"?>
+<?page title="BuddyPrice"?>
 <zk>
 	 <div self="@define(content)">
 	 <div>
@@ -6,3 +6,4 @@
 		</div>
 	</div> 
 </zk>
+

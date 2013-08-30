@@ -3,7 +3,7 @@
 		<a href="/index.html">
 			<image src='${c:getProperty("NormalLogo")};'/>
 			
-			<a class="btn" style="float:right" href="/buddyprice/logout">Sair!</a>
+			<a class="btn" style="float:right font-color" href="/buddyprice/logout">Sair!</a>
 		</a>
 		</hbox>
 </div>

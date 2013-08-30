@@ -13,7 +13,6 @@
 	<security:http auto-config="true">
 		
  		<security:intercept-url pattern="/pages/configuration/**" access="ROLE_ADMIN,ROLE_USER" />
-		<security:intercept-url pattern="/pages/user/register.zul" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/pages/user/login.zul" access="ROLE_ANONYMOUS" />		
 		<security:intercept-url pattern="/pages/user/index.zul" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" />

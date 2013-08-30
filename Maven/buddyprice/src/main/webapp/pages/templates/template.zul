@@ -9,7 +9,7 @@
 		charset="UTF-8">
 	</script>
 	<borderlayout hflex="0" vflex="0">
-		<north height="7%" border="none">
+		<north height="100px" border="none">
 			<div>
 			<include src="/pages/components/banner.zul" />
 			</div>
