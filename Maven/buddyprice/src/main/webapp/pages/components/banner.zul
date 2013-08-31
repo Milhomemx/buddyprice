@@ -1,8 +1,14 @@
+<zk xmlns:h="native">
+
 <div hflex="1" vflex="1" style='background:${c:getProperty("ThemeColor")};'>
+
 <hbox>
 		<a href="/index.html">
 			<image src='${c:getProperty("NormalLogo")};'/>
 			
 		</a>
 		</hbox>
-</div>
+
+</div>		
+
+</zk>

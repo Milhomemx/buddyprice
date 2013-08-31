@@ -1,5 +1,6 @@
 <?page title="Buddy Price"?>
 <zk>
+
 	 <div self="@define(content)">
 
 		    <include src="/pages/user/register.zul" /> 
