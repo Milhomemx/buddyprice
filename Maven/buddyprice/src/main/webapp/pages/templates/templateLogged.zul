@@ -9,7 +9,7 @@
 	<borderlayout hflex="0" vflex="0">
 		<north height="7%" border="none">
 			<div>
-			<include src="/pages/components/banner.zul" />
+			<include src="/pages/components/bannerLogged.zul" />
 			
 			</div>
 			
