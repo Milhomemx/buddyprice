@@ -64,7 +64,6 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 
 	public void loginUser() {
-		// treatReturn(getControl().loginUser());
 		redirectToDash();
 
 	}
@@ -109,10 +108,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		Executions.sendRedirect("/pages/user/login.zul?sucess=true");
 	}
 
-	
-//	public static void redirectToUserSession() {
-//		redirectToEdit(getUserInSession().getId());
-//	}
+
 
 	public static Boolean haveIdOnRequest() {
 		String id = Executions.getCurrent().getParameter("id");

@@ -14,7 +14,7 @@
 												onClick="j_username.focus();" />
 											<textbox id="j_username" constraint='/.+@.+\.[a-z]+/: ${c:getProperty("NotificationInvalidEmail")}'
 												name="j_username" onOK="password.focus()" placeholder='${c:getProperty("HolderYourEmail")}' />
-									
+
 											<label value="Senha:"
 												onClick="password.focus();" />
 												<textbox id="password"

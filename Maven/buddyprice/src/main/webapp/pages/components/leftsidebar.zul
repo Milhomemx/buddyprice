@@ -19,7 +19,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/user.png" />
+                                                    src='${c:getProperty("ProfileIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToEdit();"
@@ -29,7 +29,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/products.png" />
+                                                    src='${c:getProperty("ProductsIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
@@ -39,7 +39,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/establishments.png" />
+                                                    src='${c:getProperty("EstablishmentsIcon")};'/>
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
@@ -49,7 +49,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/offer.png" />
+                                                    src='${c:getProperty("OffersIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
@@ -59,7 +59,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/buddies.png" />
+                                                    src='${c:getProperty("BuddiesIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton
@@ -69,7 +69,7 @@
                                         <row>
                                             <div>
                                                 <image
-                                                    src="/images/menu_icons/configuration.png" />
+                                                    src='${c:getProperty("ConfigurationIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToConfig();"

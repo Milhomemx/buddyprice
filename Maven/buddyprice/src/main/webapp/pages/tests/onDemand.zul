@@ -1,0 +1,20 @@
+<zk>
+    <groupbox id="root" mold="3d" open="false" width="420px">
+        <caption label="Cadastrar Produto"></caption>
+        <label value="Teste" fulfill="root.onOpen" />
+        <grid fulfill="root.onOpen">
+            <columns>
+                <column label="Título" hflex="1" />
+                <column label="Título2" hflex="3" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Conteúdo tabela" />
+                    <label value="O Teste" />
+                </row>
+            </rows>
+        </grid>
+ 
+    </groupbox>
+    Continuação da página independente do Ondemand
+</zk>
