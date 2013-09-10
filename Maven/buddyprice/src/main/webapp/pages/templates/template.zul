@@ -1,4 +1,4 @@
-<?link rel="shortcut icon" href="/images/icon/icon.ico" type="image/x-icon"?>
+
 <?page title="Template padrão" contentType="text/html;charset=UTF-8"?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>

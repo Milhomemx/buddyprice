@@ -26,16 +26,7 @@
                                                     label="Perfil" />
                                             </div>
                                         </row>
-                                        <row>
-                                            <div>
-                                                <image
-                                                    src='${c:getProperty("ProductsIcon")};' />
-                                                <separator
-                                                    orient="vertical" />
-                                                <toolbarbutton
-                                                    label="Produtos" disabled ="true" />
-                                            </div>
-                                        </row>
+
                                         <row>
                                             <div>
                                                 <image
@@ -44,6 +35,16 @@
                                                     orient="vertical" />
                                                 <toolbarbutton
                                                     label="Estabelecimentos"  disabled ="true"/>
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <image
+                                                    src='${c:getProperty("ProductsIcon")};' />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton
+                                                    label="Produtos" disabled ="true" />
                                             </div>
                                         </row>
                                         <row>

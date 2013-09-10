@@ -1,10 +1,8 @@
 <?link rel="shortcut icon" href="/images/icon/icon.ico" type="image/x-icon"?>
 <?link rel="icon" type="image/x-icon" href="/images/icon/icon.ico"?>
-<?page title="Buddy Price"?>
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-
-	 <div self="@define(content)">
-
-		    <include src="/pages/user/register.zul" /> 
-		</div>
+<window title="new page title" border="normal">
+New Content Here!
+</window>
 </zk>
