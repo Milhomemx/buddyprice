@@ -57,7 +57,8 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 
 	public Return registerUser() {
-		redirectToLogin();
+			if(getControl().registerUser().isValid())
+				redirectToLogin();
 		return getControl().registerUser();
 		
 	}

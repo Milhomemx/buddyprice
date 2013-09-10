@@ -29,7 +29,7 @@
 					</row>
 
 					<row spans="2" if="${not empty param.sucess}">
-						<label id="inputSuccess" value="Usuário alterado com sucesso!" />
+						<label id="inputSuccess" value='	${c:getProperty("NotificationUserAlterSucess")}' />
 					</row>
 
 					<row>
@@ -80,11 +80,6 @@
 							id="fldNasc" />
 							</hbox>
 					</row>
-<!-- 					<row>
-						<label value="Digite uma senha:" />
-						<textbox type="password" id="fldPass"
-							value="@{controller.entity.password}" />
-					</row>-->
 
 					<row>
 						<button sclass="btn btn-danger"
