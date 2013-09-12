@@ -82,66 +82,6 @@
                             </panelchildren>
                         </panel>
 
-
-
-
-
-<!--
-			<a
-				>
-				<div align="center" class="sidebar z-navbar z-navbar-vertical">
-					<label value="Perfil" />
-					<label value="[Alterar]" />
-
-
-
-					<div></div>
-				</div>
-			</a>
-			<separator width="13px" />
-			<a href="">
-				<div align="center" class="itens">
-					<label value="Produtos"
-						style="vertical-align:middle;" />
-				</div>
-			</a>
-			<separator width="13px" />
-			<a href="">
-				<div align="center" class="itens">
-					<label value="Estabelecimentos"
-						style="vertical-align:middle;" />
-				</div>
-			</a>
-			<separator width="13px" />
-			<a href="">
-				<div align="center" class="itens">
-					<label value="Ofertas"
-						style="vertical-align:middle;" />
-				</div>
-			</a>
-			<separator width="13px" />
-			<a href="">
-				<div align="center" class="itens">
-					<label value="Buddies"
-						style="vertical-align:middle;" />
-				</div>
-			</a>
-			<separator width="13px" />
-			<a href='${c:getProperty("ConfigurationPath")}'>
-				<div align="center" class="itens">
-					<label value="Configurações"
-						style="vertical-align:middle;" />
-				</div>
-			</a>
-			<separator width="13px" />
-
-
-
-
--->
-
-
-
 		</div>
 	</vlayout>
 </zk>
