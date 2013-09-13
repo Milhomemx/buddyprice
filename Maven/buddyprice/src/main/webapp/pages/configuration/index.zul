@@ -2,7 +2,6 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 <zk>
 	 <div self="@define(content)">
-		
-		    <include src="~./pages/configuration/configuration.zul" />
-	</div> 
+		    <include src="configuration.zul" />
+	</div>
 </zk>

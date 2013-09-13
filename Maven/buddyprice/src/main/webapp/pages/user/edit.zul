@@ -54,21 +54,21 @@
 					</row>
 					<row>
 						<hbox>
-							<textbox id="fldCidade" class="input-xlarge" width="100px"
-								value="@{controller.entity.cidade}"
+							<textbox id="fldCidade" class="input-xlarge"
+								width="100px" value="@{controller.entity.cidade}"
 								placeholder='${c:getProperty("HolderYourCity")}' />
 
-							<textbox id="fldEstado" class="input-xlarge" width="80px"
-								value="@{controller.entity.estado}"
+							<textbox id="fldEstado" class="input-xlarge"
+								width="80px" value="@{controller.entity.estado}"
 								placeholder='${c:getProperty("HolderYourState")}' />
-							<textbox id="fldPais" class="input-xlarge" width="95px"
-								value="@{controller.entity.pais}"
+							<textbox id="fldPais" class="input-xlarge"
+								width="95px" value="@{controller.entity.pais}"
 								placeholder='${c:getProperty("HolderYourCountry")}' />
 						</hbox>
 					</row>
 					<row>
-						<textbox id="fldtel" class="input-xlarge" width="282px"
-							value="@{controller.entity.tel}"
+						<textbox id="fldtel" class="input-xlarge"
+							width="282px" value="@{controller.entity.tel}"
 							placeholder='${c:getProperty("HolderYourCel")}' />
 
 					</row>
@@ -77,27 +77,32 @@
 						<hbox>
 							<label value="Data de Nascimento:" />
 							<datebox
-								value="@{controller.entity.birthDate}" id="fldNasc" width="170px"/>
+								value="@{controller.entity.birthDate}" id="fldNasc"
+								width="170px" />
 						</hbox>
 					</row>
 
-					<row>
-						<button sclass="btn btn-danger"
-							label="Salvar Alterações"
-							onClick='controller.doAction("updateInformation")' />
-					</row>
-
+					
 					<row>
 						<hbox>
-							<button sclass="btn btn-danger"
-								label="Desativar" onClick='controller.doAction("deactivate")' />
+							<button upload="true" label="Alterar Foto"
+								width="90px" onUpload='controller.changeProfileImage(event)' />
 
-							<button sclass="btn btn-danger"
+							<button sclass="btn btn-danger" width="90px"
+								label="Desativar Conta" onClick='controller.doAction("deactivate")' />
+
+								
+						</hbox>
+					</row>
+<row>
+						<hbox>
+							<button sclass="btn btn-danger" width="140px"
+								label="Salvar Alterações"
+								onClick='controller.doAction("updateInformation")' />
+
+							<button sclass="btn btn-danger" width="140px"
 								label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
-
-							<button upload="true" label="Alterar Foto"
-								onUpload='controller.changeProfileImage(event)' />
 						</hbox>
 					</row>
 
