@@ -29,56 +29,56 @@
 					</row>
 
 					<row spans="2" if="${not empty param.sucess}">
-						<label id="inputSuccess" value='	${c:getProperty("NotificationUserAlterSucess")}' />
+						<label id="inputSuccess"
+							value='	${c:getProperty("NotificationUserAlterSucess")}' />
 					</row>
 
 					<row>
 						<hbox>
 							<textbox id="fldNome"
-								value="@{controller.entity.name}" class="input-small" constraint="no empty"
+								value="@{controller.entity.name}" class="input-small"
+								constraint="no empty"
 								placeholder='${c:getProperty("HolderYourName")}' />
 							<textbox id="fldUltNome"
 								class="input-medium" value="@{controller.entity.sobreNome}"
-								placeholder='${c:getProperty("HolderYourLastName")}' constraint="no empty" />
+								placeholder='${c:getProperty("HolderYourLastName")}'
+								constraint="no empty" />
 						</hbox>
 					</row>
 					<row>
-						<textbox id="fldEmail" class="input-xlarge" constraint="no empty"
-							value="@{controller.entity.email}" disabled ="true"
+						<textbox id="fldEmail" class="input-xlarge"
+							constraint="no empty" width="282px"
+							value="@{controller.entity.email}" disabled="true"
 							placeholder='${c:getProperty("HolderYourEmail")}' />
 
 					</row>
 					<row>
-						<textbox id="fldCidade" class="input-xlarge"
-							value="@{controller.entity.cidade}"
-							placeholder='${c:getProperty("HolderYourCity")}' />
+						<hbox>
+							<textbox id="fldCidade" class="input-xlarge" width="100px"
+								value="@{controller.entity.cidade}"
+								placeholder='${c:getProperty("HolderYourCity")}' />
 
+							<textbox id="fldEstado" class="input-xlarge" width="80px"
+								value="@{controller.entity.estado}"
+								placeholder='${c:getProperty("HolderYourState")}' />
+							<textbox id="fldPais" class="input-xlarge" width="95px"
+								value="@{controller.entity.pais}"
+								placeholder='${c:getProperty("HolderYourCountry")}' />
+						</hbox>
 					</row>
 					<row>
-						<textbox id="fldEstado" class="input-xlarge"
-							value="@{controller.entity.estado}"
-							placeholder='${c:getProperty("HolderYourState")}' />
-
-					</row>
-					<row>
-						<textbox id="fldPais" class="input-xlarge"
-							value="@{controller.entity.pais}"
-							placeholder='${c:getProperty("HolderYourCountry")}' />
-
-					</row>
-					<row>
-						<textbox id="fldtel" class="input-xlarge"
+						<textbox id="fldtel" class="input-xlarge" width="282px"
 							value="@{controller.entity.tel}"
 							placeholder='${c:getProperty("HolderYourCel")}' />
 
 					</row>
 
 					<row>
-					<hbox>
-						<label value="Data de Nascimento:" />
-						<datebox value="@{controller.entity.birthDate}"
-							id="fldNasc" />
-							</hbox>
+						<hbox>
+							<label value="Data de Nascimento:" />
+							<datebox
+								value="@{controller.entity.birthDate}" id="fldNasc" width="170px"/>
+						</hbox>
 					</row>
 
 					<row>
