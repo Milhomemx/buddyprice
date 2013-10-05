@@ -35,12 +35,20 @@
 										</row>
 										<row spans="2" if="${not empty param.error}">
 											<hbox>
+
+												<label sclass="testecss3" style="color: #B94A48" value="Usuário/Senha estão incorretos"/>
+
 												<label sclass="testecss3" value='${c:getProperty("NotificationInvalidUserPass")}'/>
+
 											</hbox>
 										</row>
 										<row spans="2" if="${not empty param.sucess}">
 											<hbox>
+
+												<label sclass="testecss3" style="color: #468847" value="Bem vindo! Informe o usuário e senha cadastrados"/>
+
 												<label sclass="testecss3" value='${c:getProperty("NotificationWelCome")}'/>
+
 											</hbox>
 										</row>
 										<row>

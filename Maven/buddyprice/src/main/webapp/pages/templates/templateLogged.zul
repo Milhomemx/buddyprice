@@ -14,7 +14,7 @@
 			</div>
 			
 		</north>
-		<west width="13%" border="none" collapsible="true" droppable="true">
+		<west width="23%" border="none" collapsible="true" droppable="true">
 					<include src="/pages/components/leftsidebar.zul" />
 		</west>
 		<east width="8%" border="none"></east>
