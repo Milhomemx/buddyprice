@@ -32,8 +32,10 @@
                                                 <image
                                                     src='${c:getProperty("EstablishmentsIcon")};'/>
                                                 <separator
-                                                    orient="vertical" />
-                                                <toolbarbutton
+                                                    orient="vertical"/>
+                                                    <toolbarbutton style="font-size:14px"
+                                                    label="Estabelecimentos" disabled ="true" />
+                                                    
                                             </div>
                                         </row>
                                         <row>

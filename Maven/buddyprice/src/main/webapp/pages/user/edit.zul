@@ -30,7 +30,8 @@
 
 					<row spans="2" if="${not empty param.sucess}">
 
-						<label id="inputSuccess" value='	${c:getProperty("NotificationUserAlterSucess")}' />
+						<label id="inputSuccess"
+							value='	${c:getProperty("NotificationUserAlterSucess")}' />
 
 					</row>
 
@@ -83,40 +84,33 @@
 						</hbox>
 					</row>
 
-					
+
 					<row>
-<<<<<<< .mine
-					<hbox>
-					<button upload="true" label="Alterar Foto"
-								onUpload='controller.changeProfileImage(event)' />
-						<button sclass="btn btn-danger"
-							label="Salvar Alterações"
-							onClick='controller.doAction("updateInformation")' />
-					</hbox></row>
-					<row><separator></separator></row>
-					<row><label value="Desativar sua conta?" /><separator></separator></row>
-=======
 						<hbox>
 							<button upload="true" label="Alterar Foto"
-								width="90px" onUpload='controller.changeProfileImage(event)' />
-
->>>>>>> .r53
-							<button sclass="btn btn-danger" width="90px"
-								label="Desativar Conta" onClick='controller.doAction("deactivate")' />
-
-								
-						</hbox>
-					</row>
-<row>
-							<button sclass="btn btn-danger" width="140px"
+								onUpload='controller.changeProfileImage(event)' />
+							<button sclass="btn btn-danger"
 								label="Salvar Alterações"
 								onClick='controller.doAction("updateInformation")' />
-</row>
-					<row><separator></separator></row>
-	<row>	
-	<hbox>
-							<button sclass="btn btn-danger" width="140px"
-								label="Cancelar"
+						</hbox>
+					</row>
+					<row>
+						<separator></separator>
+					</row>
+					<row>
+						<label value="Desativar sua conta?" />
+						<separator></separator>
+					</row>
+					<row>
+						<button sclass="btn btn-danger" width="140px"
+							label="Desativar Conta"
+							onClick='controller.doAction("deactivate")' />
+					</row>
+
+					<row>
+						<hbox>
+							<button sclass="btn btn-danger"
+								width="70px" label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
 
 						</hbox>

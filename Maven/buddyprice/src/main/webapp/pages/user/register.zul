@@ -85,7 +85,7 @@
 
 						<textbox type="password" id="fldPass2" width="180px" constraint="no empty"
 							value="@{controller.pass2}"
-							placeholder='${c:getProperty("RepeatYourPass")}' />
+							placeholder='${c:getProperty("HolderYourPass2")}' />
 							</hbox>
 					</row>
 					<row>
