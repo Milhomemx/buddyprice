@@ -7,19 +7,19 @@ import org.zkoss.io.Files;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
 
+import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.control.util.Attachment;
-import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.ZKUtils;
 
-public class AttachmentMedia implements Attachment<Media> {
+public class AttachmentMedia implements Attachment<Media, Usuario> {
 
 	final String FOLDERATTACHMENTS = "profiles";
 	final String PATH = Executions.getCurrent().getDesktop().getWebApp().getRealPath("/");
 
 	@Override
-	public Return uploadAttachment(Media file, String name, UserBasic user) {
+	public Return uploadAttachment(Media file, String name, Usuario user) {
 		Return ret = new Return(true);
 		try {
 			InputStream in = ZKUtils.mediaToStream(file);
@@ -31,7 +31,7 @@ public class AttachmentMedia implements Attachment<Media> {
 	}
 
 	@Override
-	public Return deleteAttachment(String name, UserBasic user) {
+	public Return deleteAttachment(String name, Usuario user) {
 		Return ret = new Return(true);
 		try {
 			File f = getAttachment(name, user);
@@ -45,7 +45,7 @@ public class AttachmentMedia implements Attachment<Media> {
 	}
 
 	@Override
-	public File getAttachment(String name, UserBasic user) {
+	public File getAttachment(String name, Usuario user) {
 		File f = new File(PATH + File.separator + FOLDERATTACHMENTS + File.separator + user.getId() + File.separator + name); 
 		if(!f.exists()) return null;
 		return f;
