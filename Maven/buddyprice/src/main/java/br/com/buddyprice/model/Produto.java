@@ -4,13 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.ProdutoValidator")
 @Table(name="Produto")
-public class Produto {
+public class Produto extends CommonEntity{
 
 
 
