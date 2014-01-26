@@ -1,4 +1,4 @@
-<div hflex="1" vflex="1" style='background:${c:getProperty("ThemeColor")};'>
+<div hflex="0" vflex="0" style='background:${c:getProperty("ThemeColor")};'>
 <hbox>
 		<a href="/pages/dashboard/">
 			<image src='${c:getProperty("NormalLogo")};'/>

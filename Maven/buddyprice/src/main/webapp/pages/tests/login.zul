@@ -10,11 +10,10 @@
 		</zscript>
 		<vbox width="100%" align="center">
 			<groupbox sclass="frmGroupbox" width="1000px" style="overflow: auto;">
-				<caption sclass="myCaption">Acesso</caption>
 				<vbox width="100%" align="center">
 					<div width="820px" style="overflow: auto;">
 						<hbox>
-							<h:form name="f" action="/ezrides/j_spring_security_check" method="POST">
+							<h:form name="f" action="/buddyprice/j_spring_security_check" method="POST">
 								<grid sclass="nostyle" width="500px">
 									<columns>
 										<column width="100px"/>

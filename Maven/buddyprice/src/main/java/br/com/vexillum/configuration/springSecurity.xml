@@ -17,6 +17,7 @@
 		<security:intercept-url pattern="/pages/user/miniLogin.zul" access="ROLE_ANONYMOUS" />		
 		<security:intercept-url pattern="/pages/user/index.zul" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/pages/establishment/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/dashboard/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/errors/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/**" access="ROLE_ANONYMOUS,ROLE_USER" />		

@@ -34,7 +34,7 @@
                                                 <separator
                                                     orient="vertical"/>
                                                     <toolbarbutton style="font-size:14px"
-                                                    label="Estabelecimentos" disabled ="true" />
+                                                    label="Estabelecimentos" disabled ="false" />
                                                     
                                             </div>
                                         </row>

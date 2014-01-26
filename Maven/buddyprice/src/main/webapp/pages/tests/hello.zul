@@ -1,0 +1,17 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<div class="container" xmlns:n="native">
+	<n:h1>Hello, world!</n:h1>
+	<n:p>
+		This is a simple hero unit, a simple
+		jumbotron-style component for
+		calling extra attention to featured
+		content or information.
+	</n:p>
+	<n:p>
+		<a class="btn btn-primary btn-lg">
+			Learn more
+		</a>
+	</n:p>
+</div>
+</zk>

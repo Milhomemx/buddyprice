@@ -14,7 +14,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 @SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.OfertaValidator")
-@Table(name="Oferta")
+@Table(name="Ofertas")
 public class Oferta extends CommonEntity{
 
 @ManyToOne(fetch = FetchType.LAZY)

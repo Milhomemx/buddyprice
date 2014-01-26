@@ -10,7 +10,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.ProdutoValidator")
-@Table(name="Produto")
+@Table(name="Produtos")
 public class Produto extends CommonEntity{
 
 
