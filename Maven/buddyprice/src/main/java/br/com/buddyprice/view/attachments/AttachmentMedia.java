@@ -16,7 +16,7 @@ import br.com.vexillum.util.ZKUtils;
 public class AttachmentMedia implements Attachment<Media, Usuario> {
 
 	final String FOLDERATTACHMENTS = "profiles";
-	final String PATH = Executions.getCurrent().getDesktop().getWebApp().getRealPath("/");
+	final String PATH = "C:"+File.separator+"Images";
 
 	@Override
 	public Return uploadAttachment(Media file, String name, Usuario user) {

@@ -56,13 +56,6 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-	public Return registerUser() {
-			if(getControl().registerUser().isValid())
-				redirectToLogin();
-		return getControl().registerUser();
-		
-	}
-
 	public void loginUser() {
 		redirectToDash();
 
@@ -127,6 +120,14 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		}
 		return false;
 	}
+	
+	@Override
+	public Return saveEntity() {
+		Return ret = super.saveEntity(); //Chama o saveEntity original
+		if(ret.isValid())redirectToLogin();
+		return ret;
+	}
+	
 	@Override
 	public Usuario getEntityObject() {
 		return new Usuario();

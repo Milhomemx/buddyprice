@@ -1,5 +1,5 @@
 <zk>
-	<vlayout xmlns:h="native" vflex="1">
+	<vlayout xmlns:h="native" vflex="1" apply="${leftSidebarComposer}">
 		<hbox width="100%" height="150px" align="left"
 			pack="left">
 			<image src='${c:getProperty("DefaultAvatar")};'
@@ -23,7 +23,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToEdit();"
-                                                  style="font-size:14px"  label="Perfil" />
+                                                  style="font-size:14px"  label="@{controller.userInSession.name}" />
                                             </div>
                                         </row>
 

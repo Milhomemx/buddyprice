@@ -15,18 +15,6 @@ public class UsuarioController extends GenericControl<Usuario> {
                 super(Usuario.class);
         }
         
-        public Return registerUser() {
-            Return regReturn = new Return(true);
-            regReturn.concat(doAction("save"));
-            if (regReturn.isValid()){
-                    //TODO email?
-                    regReturn.addMessage(new Message(null, "Voce esta cadastrado! Seja bem vindo!"));
-                    
-                    
-            }
-            return regReturn;
-            
-    }
         @Override
         public Return save() {
         	entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));

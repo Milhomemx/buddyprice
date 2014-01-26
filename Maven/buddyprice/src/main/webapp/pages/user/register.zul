@@ -46,10 +46,10 @@
 					</row>
 					<row>
 						<hbox>
-							<textbox id="fldNome" value="@{controller.entity.name}" constraint="no empty"
+							<textbox id="fldName" value="@{controller.entity.name}" constraint="no empty"
 								placeholder='${c:getProperty("HolderYourName")}' />
 
-							<textbox id="fldUltNome" width="180px"
+							<textbox id="fldSobreNome" width="180px"
 								value="@{controller.entity.sobreNome}" constraint="no empty"
 								placeholder='${c:getProperty("HolderYourLastName")}' />
 						</hbox>
@@ -70,7 +70,7 @@
 
 					<row>
 					<hbox>
-						<textbox type="password" id="fldPass" constraint="no empty"
+						<textbox type="password" id="fldPassword" constraint="no empty"
 							value="@{controller.entity.password}"
 							placeholder='${c:getProperty("HolderYourPass")}' />
 
@@ -83,7 +83,7 @@
 						<datebox
 							placeholder='${c:getProperty("HolderYourDate")}' width="140px"
 							value="@{controller.entity.birthDate}"
-							constraint="no empty, no future: Data inválida" id="fldNasc" />
+							constraint="no empty, no future: Data inválida" id="fldBirthDate" />
 					</row>
 
 					<row>
@@ -96,7 +96,7 @@
 
 					<row>
 						<button
-							label="Cadastrar" sclass="btn-danger" onClick='controller.doAction("registerUser")' />
+							label="Cadastrar" sclass="btn-danger" onClick='controller.doAction("saveEntity")' />
 					</row>
 				</rows>
 
