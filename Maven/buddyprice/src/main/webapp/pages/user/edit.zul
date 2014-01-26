@@ -89,33 +89,27 @@
 						<hbox>
 							<button upload="true" label="Alterar Foto"
 								onUpload='controller.changeProfileImage(event)' />
-							<button sclass="btn btn-danger"
-								label="Salvar Alterações"
-								onClick='controller.doAction("updateInformation")' />
 						</hbox>
 					</row>
+
 					<row>
-						<separator></separator>
-					</row>
-					<row>
-						<label value="Desativar sua conta?" />
-						<separator></separator>
-					</row>
-					<row>
-						<button sclass="btn btn-danger" width="140px"
-							label="Desativar Conta"
-							onClick='controller.doAction("deactivate")' />
+				
 					</row>
 
 					<row>
 						<hbox>
+						<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("updateInformation")' />
 							<button sclass="btn btn-danger"
 								width="70px" label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
+								<button sclass="btn btn-danger" width="140px"
+							label="Desativar Conta"
+							onClick='controller.doAction("deactivate")' />
 
 						</hbox>
 					</row>
-
 
 				</rows>
 
