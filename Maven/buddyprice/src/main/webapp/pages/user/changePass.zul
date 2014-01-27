@@ -1,0 +1,18 @@
+<?page title="Mudar a Senha" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+		<window>
+
+Digite uma nova senha:
+
+<textbox id="fldCidade" class="input-xlarge"
+								width="100px" value="@{controller.entity.password}"/>
+								<!-- placeholder='${c:getProperty("HolderYourPass")}' --> 
+
+<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("updateInformation")' />
+
+</window>
+
+</zk>

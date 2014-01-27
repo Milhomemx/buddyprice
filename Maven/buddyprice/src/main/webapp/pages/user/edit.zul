@@ -7,10 +7,6 @@
 		.water-mark { color: gray; font-style: italic; }
 
 	</style>
-	<script type="text/javascript"
-		src="/scripts/maskedinput-1.2.2.min.js" />
-	<script type="text/javascript" src="/scripts/watermarkinput.js" />
-	<script type="text/javascript" src="/scripts/global.js" />
 
 	<div self="@define(content)">
 		<window apply="${profileComposer}">
@@ -89,6 +85,10 @@
 						<hbox>
 							<button upload="true" label="Alterar Foto"
 								onUpload='controller.changeProfileImage(event)' />
+						</hbox>
+						<hbox>
+							<button label="Alterar Senha"
+								onClick='controller.callModalWindow("./changePass.zul")' />
 						</hbox>
 					</row>
 
