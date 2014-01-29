@@ -9,8 +9,8 @@ import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 @Service
 @Scope("prototype")
-public class FriendshipController extends GenericControl<Relacionamento> {
-        public FriendshipController() {
+public class FriendshipBuddyPriceController extends GenericControl<Relacionamento> {
+        public FriendshipBuddyPriceController() {
                 super(Relacionamento.class);
         }
         

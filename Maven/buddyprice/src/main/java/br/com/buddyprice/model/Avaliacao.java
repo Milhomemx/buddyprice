@@ -25,5 +25,8 @@ private Oferta oferta;
 @Column(name="valor", nullable=false, updatable =true)
 	private Boolean valor;
 
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
+private Usuario usuario;
 
 }

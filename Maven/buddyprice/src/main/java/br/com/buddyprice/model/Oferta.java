@@ -22,6 +22,10 @@ public class Oferta extends CommonEntity{
 private Produto produto;
 
 @ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
+private Usuario usuario;
+
+@ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = "id_estabelecimento", insertable = true, updatable = true)
 private Estabelecimento estabelecimento;
 
