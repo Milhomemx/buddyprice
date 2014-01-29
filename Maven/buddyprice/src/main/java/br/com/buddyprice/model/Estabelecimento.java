@@ -10,7 +10,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 
 @SuppressWarnings("serial")
 @Entity
-@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.EstabelecimentoValidator")
+@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.EstablishmentValidator")
 @Table(name="Estabelecimentos")
 public class Estabelecimento extends CommonEntityActivated{
 

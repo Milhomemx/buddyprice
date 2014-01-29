@@ -5,9 +5,9 @@ import java.util.Map;
 import br.com.vexillum.control.validator.Validator;
 import br.com.vexillum.util.Return;
 
-public class EstabelecimentoValidator extends Validator {
+public class EstablishmentValidator extends Validator {
 
-	public EstabelecimentoValidator(Map<String, Object> mapData) {
+	public EstablishmentValidator(Map<String, Object> mapData) {
 		
 		super(mapData);
 	}

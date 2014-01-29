@@ -13,17 +13,17 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 
 @SuppressWarnings("serial")
 @Entity
-@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.AvaliacaoValidator")
-@Table(name="Avaliacoes")
-public class Avalicacao extends CommonEntity{
+@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.CommentValidator")
+@Table(name="Comentarios")
+public class Comentario extends CommonEntity{
 
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = "id_oferta", insertable = true, updatable = true)
 private Oferta oferta;
 
 @Validate(notNull = true)	
-@Column(name="valor", nullable=false, updatable =true)
-	private Boolean valor;
+@Column(name="comentario", nullable=false, updatable =true)
+	private String comentario;
 
 
 }
