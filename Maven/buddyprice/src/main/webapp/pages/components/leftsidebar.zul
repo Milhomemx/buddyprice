@@ -22,10 +22,11 @@
                                                     src='${c:getProperty("ProfileIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToEdit();"
+                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToUser();"
                                                   style="font-size:14px"  label="@{controller.userInSession.name}" />
                                             </div>
                                         </row>
+
 
                                         <row>
                                             <div>
@@ -33,7 +34,7 @@
                                                     src='${c:getProperty("EstablishmentsIcon")};'/>
                                                 <separator
                                                     orient="vertical"/>
-                                                    <toolbarbutton style="font-size:14px"
+                                                    <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToUser();"
                                                     label="Estabelecimentos" disabled ="false" />
                                                     
                                             </div>
@@ -44,7 +45,7 @@
                                                     src='${c:getProperty("ProductsIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px"
+                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToProduct();"
                                                     label="Produtos" disabled ="true" />
                                             </div>
                                         </row>
@@ -54,7 +55,7 @@
                                                     src='${c:getProperty("OffersIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px"
+                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToOffer();"
                                                     label="Ofertas" disabled ="true" />
                                             </div>
                                         </row>
@@ -64,7 +65,7 @@
                                                     src='${c:getProperty("BuddiesIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px"
+                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToFriend();"
                                                     label="Camaradas" disabled ="true" />
                                             </div>
                                         </row>

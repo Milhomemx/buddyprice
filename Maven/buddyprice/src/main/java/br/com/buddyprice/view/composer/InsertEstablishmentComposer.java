@@ -29,17 +29,12 @@ public class InsertEstablishmentComposer extends
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-	public Return insertEstablishment() {
-		Return ret =null;
-		ret = saveEntity();
-		if(ret.isValid())
-		{
-			Executions.sendRedirect("../dashboard/index.zul");
-		}else
-			//TODO retornar o erro aqui
-		component.detach();
+	@Override
+	public Return saveEntity() {
+		Return ret = super.saveEntity();
+		if(ret.isValid())Executions.sendRedirect("view.zul?sucess=true");
+			
 		return ret;
-		
 	}
 
 	public static void redirectToDash() {

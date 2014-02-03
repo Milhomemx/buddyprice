@@ -1,0 +1,106 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+
+
+<zk>
+	<style>
+		.water-mark { color: gray; font-style: italic; }
+
+	</style>
+	<script type="text/javascript"
+		src="/scripts/maskedinput-1.2.2.min.js" />
+	<script type="text/javascript" src="/scripts/global.js" />
+
+	<div self="@define(content)">
+		<window apply="${insertEstablishmentComposer}">
+
+			<grid style="width: 80%">
+				<rows>
+					<row>
+						<hbox>
+							<label
+								value="Adicionando um estabelecimento" style="font-size:18px" />
+						</hbox>
+
+					</row>
+
+					<row>
+						<textbox id="fldNome"
+							value="@{controller.entity.nome}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentName")}' />
+					</row>
+
+					<row>
+						<textbox id="fldEndereco"
+							value="@{controller.entity.endereco}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentAddress")}' />
+					</row>
+
+					<row>
+						<hbox>
+							<textbox id="fldCidade" class="input-xlarge"
+								width="100px" value="@{controller.entity.cidade}"
+								placeholder='${c:getProperty("HolderEstablishmentCity")}' />
+
+							<textbox id="fldEstado" class="input-xlarge"
+								width="80px" value="@{controller.entity.estado}"
+								placeholder='${c:getProperty("HolderEstablishmentState")}' />
+							<textbox id="fldPais" class="input-xlarge"
+								width="95px" value="@{controller.entity.pais}"
+								placeholder='${c:getProperty("HolderEstablishmentCountry")}' />
+						</hbox>
+					</row>
+
+					<row>
+						<textbox id="fldSite"
+							value="@{controller.entity.site}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentSite")}' />
+					</row>
+
+					<row>
+					
+						<textbox id="fldDescricao" rows="4"
+							value="@{controller.entity.site}" width="282px" tabindex="11"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
+					</row>
+
+
+					<row>
+						<hbox>
+							<button upload="true" label="Inserir Foto"
+								onUpload='controller.changeProfileImage(event)' />
+						</hbox>
+					</row>
+					<row>
+
+						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("saveEntity")' />
+							<button sclass="btn btn-danger" width="70px"
+								label="Cancelar"
+								onClick='controller.doAction("redirectToDash")' />
+
+						</hbox>
+						<hbox>
+
+
+						</hbox>
+
+					</row>
+					<row>
+
+					</row>
+
+				</rows>
+
+			</grid>
+
+		</window>
+	</div>
+
+</zk>

@@ -35,6 +35,10 @@ private String pais;
 @Column(name="site", nullable=true, updatable =true, length = 100)
 private String site;
 
+@Column(name="descricao", nullable=true, updatable =true, length = 500)
+private String descricao;
+
+
 public String getNome() {
 	return nome;
 }

@@ -4,35 +4,6 @@
 
 <zk xmlns:h="native">
 
-<div style="float:right">
-<zscript>
-		<![CDATA[
-			import br.com.vexillum.util.EncryptUtils;		
-		]]>
-		</zscript>
-		
-		<div>
-			<include src="miniLogin.zul" />
-		</div>
-		
-
-		<zscript>
-		<![CDATA[
-			public void encryptPassword(){
-				j_password.setValue(EncryptUtils.encryptOnSHA512(password.getValue()));	
-			}
-			
-			public void submitForm(){
- 				encryptPassword();	
- 				Clients.evalJavaScript("document.f.submit();");
-			}
-		]]>
-		</zscript>
-		</div>
-
-
-
-
 	<div >
 		<window
 			apply="br.com.buddyprice.view.composer.UsuarioComposer">
@@ -46,11 +17,11 @@
 					</row>
 					<row>
 						<hbox>
-							<textbox id="fldName" value="@{controller.entity.name}" constraint="no empty"
+							<textbox id="fldName" value="@{controller.entity.name}"
 								placeholder='${c:getProperty("HolderYourName")}' />
 
 							<textbox id="fldSobreNome" width="180px"
-								value="@{controller.entity.sobreNome}" constraint="no empty"
+								value="@{controller.entity.sobreNome}"
 								placeholder='${c:getProperty("HolderYourLastName")}' />
 						</hbox>
 					</row>
@@ -70,11 +41,11 @@
 
 					<row>
 					<hbox>
-						<textbox type="password" id="fldPassword" constraint="no empty"
+						<textbox type="password" id="fldPassword"
 							value="@{controller.entity.password}"
 							placeholder='${c:getProperty("HolderYourPass")}' />
 
-						<textbox type="password" id="fldPass2" width="180px" constraint="no empty"
+						<textbox type="password" id="fldPass2" width="180px"
 							value="@{controller.pass2}"
 							placeholder='${c:getProperty("HolderYourPass2")}' />
 							</hbox>
@@ -83,7 +54,7 @@
 						<datebox
 							placeholder='${c:getProperty("HolderYourDate")}' width="140px"
 							value="@{controller.entity.birthDate}"
-							constraint="no empty, no future: Data inválida" id="fldBirthDate" />
+							constraint="no future: Data inválida" id="fldBirthDate" />
 					</row>
 
 					<row>

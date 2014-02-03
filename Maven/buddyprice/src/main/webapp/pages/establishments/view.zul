@@ -68,19 +68,23 @@
 					</row>
 					<row>
 
-						<button sclass="btn btn-danger"
-							label="Salvar Alterações"
-							onClick='controller.doAction("insertEstablishment")' />
-
-
-					</row>
-					<row>
 						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("insertEstablishment")' />
 							<button sclass="btn btn-danger" width="70px"
 								label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
 
 						</hbox>
+						<hbox>
+
+
+						</hbox>
+
+					</row>
+					<row>
+
 					</row>
 
 				</rows>

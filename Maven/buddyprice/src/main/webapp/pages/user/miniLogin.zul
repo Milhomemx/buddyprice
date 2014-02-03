@@ -8,12 +8,12 @@
 		]]>
 		</zscript>
 		 <h:form name="f" action="/buddyprice/j_spring_security_check" method="POST">
-											<label value="E-mail"
+											<label value="E-mail" style="color: #FFFFFF"
 												onClick="j_username.focus();" />
 											<textbox id="j_username" constraint='/.+@.+\.[a-z]+/: ${c:getProperty("NotificationInvalidEmail")}'
 												name="j_username" onOK="password.focus()" placeholder='${c:getProperty("HolderYourEmail")}' />
 
-											<label value="Senha:"
+											<label style="color: #FFFFFF" value="Senha:"
 												onClick="password.focus();" />
 												<textbox id="password"
 													type="password" name="password" onOK="submitForm();" />

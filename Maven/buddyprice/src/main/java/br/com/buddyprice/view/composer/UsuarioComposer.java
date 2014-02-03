@@ -57,11 +57,11 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 
 	public void loginUser() {
-		redirectToDash();
+		LeftSidebarComposer.redirectToDash();
 
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void showImageProfile(Image comp) {
 		Attachment att = new AttachmentMedia();
 		try {
@@ -89,14 +89,6 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	}
 
 	
-	public static void redirectToConfig() {
-		Executions.sendRedirect("../configuration/");
-	}
-
-	public static void redirectToDash() {
-		Executions.sendRedirect("../dashboard/index.zul");
-	}
-
 	public static void redirectToLogin() {
 		Executions.sendRedirect("/pages/user/login.zul?sucess=true");
 	}

@@ -41,6 +41,10 @@ public class SearchEstablishmentComposer extends
 		return ret;
 		
 	}
+	
+	public static void redirectToSearch() {
+		Executions.sendRedirect("../establishment/index.zul");
+	}
 
 	public static void redirectToDash() {
 		Executions.sendRedirect("../dashboard/index.zul");

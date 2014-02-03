@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?page title="Login"?>
-<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/template.zul"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogin.zul"?>
 <zk xmlns:h="native">
 	<div self="@define(content)">
 		<zscript>

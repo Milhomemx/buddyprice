@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.EncryptUtils;
-import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 @Service
 @Scope("prototype")
@@ -43,8 +42,7 @@ public class UsuarioController extends GenericControl<Usuario> {
         Return regReturn = new Return(true);
         regReturn.concat(doAction("save"));
         if (regReturn.isValid()){
-                //TODO email?
-                regReturn.addMessage(new Message(null, "Voce esta logado! Seja bem vindo!"));
+        	return regReturn;
                 
                 
         }

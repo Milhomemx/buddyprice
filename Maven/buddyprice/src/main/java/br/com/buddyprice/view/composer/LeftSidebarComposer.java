@@ -4,36 +4,53 @@ import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 
-import br.com.buddyprice.control.EstablishmentController;
-import br.com.buddyprice.control.UsuarioController;
-import br.com.buddyprice.model.Estabelecimento;
-import br.com.buddyprice.model.Usuario;
-import br.com.vexillum.util.ReflectionUtils;
-import br.com.vexillum.util.Return;
-import br.com.vexillum.util.SpringFactory;
-import br.com.vexillum.view.CRUDComposer;
+import br.com.vexillum.view.GenericComposer;
 
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
 public class LeftSidebarComposer extends
-		CRUDComposer<Usuario, UsuarioController> {
+		GenericComposer {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		loadBinder();
 	}
 
-	@Override
-	public UsuarioController getControl() {
-		return SpringFactory.getController("usuarioController",
-				UsuarioController.class,
-				ReflectionUtils.prepareDataForPersistence(this));
+
+	public static void redirectToConfig() {
+		Executions.sendRedirect("../configuration/");
 	}
 
-	@Override
-	public Usuario getEntityObject() {
-		return new Usuario();
+	
+	public static void redirectToEdit() {
+		Executions.sendRedirect("../user/edit.zul");
+	}	
+	
+	public static void redirectToUser() {
+		Executions.sendRedirect("/pages/user/");
 	}
+	
+	public static void redirectToDash() {
+		Executions.sendRedirect("/pages/dashboard/");
+	}
+
+	public static void redirectToEstablishment() {
+		Executions.sendRedirect("/pages/establishments/");
+	}
+	
+	public static void redirectToProduct() {
+		Executions.sendRedirect("/pages/products/");
+	}	
+	
+	public static void redirectToOffer() {
+		Executions.sendRedirect("/pages/offers/");
+	}	
+		
+	public static void redirectToFriend() {
+		Executions.sendRedirect("/pages/friends/");
+	}	
+
+	
 
 }

@@ -1,15 +1,24 @@
 <zk xmlns:h="native">
 
-	<div hflex="0" vflex="0"
-		style='background:${c:getProperty("ThemeColor")};'>
-
-		<hbox>
+	<div hflex="0" vflex="0">
+<grid style='background:${c:getProperty("ThemeColor")};' hflex="0" vflex="0">
+<rows style='background:${c:getProperty("ThemeColor")};'>
+<row style='background:${c:getProperty("ThemeColor")};'>
+<hbox>
 			<a href="/index.html">
 				<image src='${c:getProperty("NormalLogo")};' />
 
 			</a>
-		</hbox>
-
+</hbox>
+<hbox style="float:right">			
+					<include src="miniLogin.zul" />
+</hbox>					
+</row>
+</rows>
+</grid>		
 	</div>
+
+
+	
 
 </zk>

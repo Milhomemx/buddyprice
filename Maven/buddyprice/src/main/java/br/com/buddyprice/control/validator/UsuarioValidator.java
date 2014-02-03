@@ -6,9 +6,9 @@ import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.validator.Validator;
 import br.com.vexillum.util.Return;
 
-public class UserValidator extends Validator {
+public class UsuarioValidator extends Validator {
 
-	public UserValidator(Map<String, Object> mapData) {
+	public UsuarioValidator(Map<String, Object> mapData) {
 		
 		super(mapData);
 	}
