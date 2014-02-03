@@ -8,7 +8,7 @@ import br.com.vexillum.view.GenericComposer;
 
 @org.springframework.stereotype.Component
 @Scope("prototype")
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "rawtypes" })
 public class LeftSidebarComposer extends
 		GenericComposer {
 

@@ -34,7 +34,7 @@
                                                     src='${c:getProperty("EstablishmentsIcon")};'/>
                                                 <separator
                                                     orient="vertical"/>
-                                                    <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToUser();"
+                                                    <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToEstablishment();"
                                                     label="Estabelecimentos" disabled ="false" />
                                                     
                                             </div>
@@ -46,7 +46,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToProduct();"
-                                                    label="Produtos" disabled ="true" />
+                                                    label="Produtos" disabled ="false" />
                                             </div>
                                         </row>
                                         <row>
@@ -56,7 +56,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToOffer();"
-                                                    label="Ofertas" disabled ="true" />
+                                                    label="Ofertas" disabled ="false" />
                                             </div>
                                         </row>
                                         <row>
@@ -66,7 +66,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToFriend();"
-                                                    label="Camaradas" disabled ="true" />
+                                                    label="Camaradas" disabled ="false" />
                                             </div>
                                         </row>
                                         <row>
