@@ -7,7 +7,6 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import br.com.buddyprice.model.Usuario;
@@ -27,7 +26,37 @@ public class ProfileComposer extends UsuarioComposer {
 		loadBinder();
 	}
 	
+	private String actualPassword;
+	private String newPassword;
+	private String confirmNewPassword;	
 	
+	
+	
+	public String getActualPassword() {
+		return actualPassword;
+	}
+
+	public void setActualPassword(String actualPassword) {
+		this.actualPassword = actualPassword;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public String getConfirmNewPassword() {
+		return confirmNewPassword;
+	}
+
+	public void setConfirmNewPassword(String confirmNewPassword) {
+		this.confirmNewPassword = confirmNewPassword;
+	}
+
+	@SuppressWarnings("unchecked")
 	public void deleteProfileImage(){
 		@SuppressWarnings("rawtypes")
 		Attachment att = new AttachmentMedia();
@@ -77,6 +106,13 @@ public class ProfileComposer extends UsuarioComposer {
 		}
 		return ret;
 	}
-	
+	public void changePasswordUser(){
+		Return ret = new Return(true);
+		ret.concat(getControl().doAction("changePasswordUser"));
+		if(ret.isValid())
+			getComponentById(getComponent(), "frmChangePassword").detach();
+		treatReturn(ret);
+	}
+
 	
 }

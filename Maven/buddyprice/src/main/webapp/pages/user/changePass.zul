@@ -1,18 +1,42 @@
-<?page title="Mudar a Senha" contentType="text/html;charset=UTF-8"?>
+<?page title="" contentType="text/html;charset=UTF-8"?>
 <zk>
-
-		<window>
-
-Digite uma nova senha:
-
-<textbox id="fldCidade" class="input-xlarge"
-								width="100px" value="@{controller.entity.password}"/>
-								<!-- placeholder='${c:getProperty("HolderYourPass")}' --> 
-
-<button sclass="btn btn-danger"
-								label="Salvar Alterações"
-								onClick='controller.doAction("updateInformation")' />
-
-</window>
-
+	<window id="frmChangePassword" title="Alteração de Senha" apply="${profileComposer}"
+		border="normal" width="420px" closable="true" mode="modal"
+		position="center" onCreate="fldActualPassword.focus();">
+		<grid>
+			<columns>
+				<column width="150px" />
+				<column width="250px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Senha Atual:"
+						onClick="fldActualPassword.focus();" />
+					<textbox id="fldActualPassword" type="text"
+						value="@{controller.actualPassword}" />
+				</row>
+				<row>
+					<label value="Nova Senha:"
+						onClick="fldNewPassword.focus();" />
+					<textbox id="fldNewPassword" type="text"
+						value="@{controller.newPassword}" />
+				</row>
+				<row>
+					<label value="Confirmar Nova Senha:"
+						onClick="fldConfirmNewPassword.focus();" />
+					<textbox id="fldConfirmNewPassword" type="text"
+						value="@{controller.confirmNewPassword}" />
+				</row>
+				<row>
+					<cell/>
+					<div align="right">
+						<button label="Alterar"
+							onClick="controller.changePasswordUser()" />
+						<button label="Cancelar"
+							onClick="frmChangePassword.detach()" />
+					</div>
+				</row>
+			</rows>
+		</grid>
+	</window>
 </zk>

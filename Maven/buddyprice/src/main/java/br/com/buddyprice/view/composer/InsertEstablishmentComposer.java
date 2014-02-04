@@ -37,10 +37,6 @@ public class InsertEstablishmentComposer extends
 		return ret;
 	}
 
-	public static void redirectToDash() {
-		Executions.sendRedirect("../dashboard/index.zul");
-	}
-
 	@Override
 	public Estabelecimento getEntityObject() {
 		return new Estabelecimento();

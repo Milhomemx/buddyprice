@@ -23,12 +23,8 @@ public class LeftSidebarComposer extends
 	}
 
 	
-	public static void redirectToEdit() {
-		Executions.sendRedirect("../user/edit.zul");
-	}	
-	
 	public static void redirectToUser() {
-		Executions.sendRedirect("/pages/user/");
+		Executions.sendRedirect("/pages/user/edit.zul");
 	}
 	
 	public static void redirectToDash() {

@@ -21,7 +21,7 @@ public class UsuarioController extends GenericControl<Usuario> {
         }
         
         public Return update() {
-
+        	
         return super.update();
         }
         
@@ -37,6 +37,13 @@ public class UsuarioController extends GenericControl<Usuario> {
         	
         	return ret;
         }
+        
+        public Return changePasswordUser() {
+        	Return ret = new Return(true);
+        	entity.setPassword(EncryptUtils.encryptOnSHA512((String) data.get("newPassword")));
+        	ret.concat(update());
+        	return ret;
+        	}
         
         public Return loginUser() {
         Return regReturn = new Return(true);

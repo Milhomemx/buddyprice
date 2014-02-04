@@ -63,7 +63,7 @@
 					<row>
 					
 						<textbox id="fldDescricao" rows="4"
-							value="@{controller.entity.site}" width="282px" tabindex="11"
+							value="@{controller.entity.descricao}" width="282px" tabindex="11"
 							class="input-xlarge" 
 							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
 					</row>

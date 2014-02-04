@@ -9,113 +9,92 @@
 	</style>
 	<script type="text/javascript"
 		src="/scripts/maskedinput-1.2.2.min.js" />
-	<script type="text/javascript" src="/scripts/watermarkinput.js" />
 	<script type="text/javascript" src="/scripts/global.js" />
 
 	<div self="@define(content)">
-		<window apply="${profileComposer}">
+		<window apply="${insertEstablishmentComposer}">
 
 			<grid style="width: 80%">
 				<rows>
-
 					<row>
 						<hbox>
-							<label value="Alterando conta de "
-								style="font-size:18px" />
-							<label value="@{controller.entity.name}"
-								style="font-size:18px" />
+							<label
+								value="Adicionando um estabelecimento" style="font-size:18px" />
 						</hbox>
 
 					</row>
 
-					<row spans="2" if="${not empty param.sucess}">
-
-						<label id="inputSuccess"
-							value='	${c:getProperty("NotificationUserAlterSucess")}' />
-
+					<row>
+						<textbox id="fldNome"
+							value="@{controller.entity.nome}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentName")}' />
 					</row>
 
 					<row>
-						<hbox>
-							<textbox id="fldNome"
-								value="@{controller.entity.name}" class="input-small"
-								constraint="no empty"
-								placeholder='${c:getProperty("HolderYourName")}' />
-							<textbox id="fldUltNome"
-								class="input-medium" value="@{controller.entity.sobreNome}"
-								placeholder='${c:getProperty("HolderYourLastName")}'
-								constraint="no empty" />
-						</hbox>
+						<textbox id="fldEndereco"
+							value="@{controller.entity.endereco}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentAddress")}' />
 					</row>
-					<row>
-						<textbox id="fldEmail" class="input-xlarge"
-							constraint="no empty" width="282px"
-							value="@{controller.entity.email}" disabled="true"
-							placeholder='${c:getProperty("HolderYourEmail")}' />
 
-					</row>
 					<row>
 						<hbox>
 							<textbox id="fldCidade" class="input-xlarge"
 								width="100px" value="@{controller.entity.cidade}"
-								placeholder='${c:getProperty("HolderYourCity")}' />
+								placeholder='${c:getProperty("HolderEstablishmentCity")}' />
 
 							<textbox id="fldEstado" class="input-xlarge"
 								width="80px" value="@{controller.entity.estado}"
-								placeholder='${c:getProperty("HolderYourState")}' />
+								placeholder='${c:getProperty("HolderEstablishmentState")}' />
 							<textbox id="fldPais" class="input-xlarge"
 								width="95px" value="@{controller.entity.pais}"
-								placeholder='${c:getProperty("HolderYourCountry")}' />
-						</hbox>
-					</row>
-					<row>
-						<textbox id="fldtel" class="input-xlarge"
-							width="282px" value="@{controller.entity.tel}"
-							placeholder='${c:getProperty("HolderYourCel")}' />
-
-					</row>
-
-					<row>
-						<hbox>
-							<label value="Data de Nascimento:" />
-							<datebox
-								value="@{controller.entity.birthDate}" id="fldNasc"
-								width="170px" />
+								placeholder='${c:getProperty("HolderEstablishmentCountry")}' />
 						</hbox>
 					</row>
 
+					<row>
+						<textbox id="fldSite"
+							value="@{controller.entity.site}" width="282px"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentSite")}' />
+					</row>
+
+					<row>
+					
+						<textbox id="fldDescricao" rows="4"
+							value="@{controller.entity.descricao}" width="282px" tabindex="11"
+							class="input-xlarge" 
+							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
+					</row>
+
 
 					<row>
 						<hbox>
-							<button upload="true" label="Alterar Foto"
+							<button upload="true" label="Inserir Foto"
 								onUpload='controller.changeProfileImage(event)' />
+						</hbox>
+					</row>
+					<row>
+
+						<hbox>
 							<button sclass="btn btn-danger"
 								label="Salvar Alterações"
-								onClick='controller.doAction("updateInformation")' />
-						</hbox>
-					</row>
-					<row>
-						<separator></separator>
-					</row>
-					<row>
-						<label value="Desativar sua conta?" />
-						<separator></separator>
-					</row>
-					<row>
-						<button sclass="btn btn-danger" width="140px"
-							label="Desativar Conta"
-							onClick='controller.doAction("deactivate")' />
-					</row>
-
-					<row>
-						<hbox>
-							<button sclass="btn btn-danger"
-								width="70px" label="Cancelar"
+								onClick='controller.doAction("saveEntity")' />
+							<button sclass="btn btn-danger" width="70px"
+								label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
 
 						</hbox>
-					</row>
+						<hbox>
 
+
+						</hbox>
+
+					</row>
+					<row>
+
+					</row>
 
 				</rows>
 

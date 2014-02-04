@@ -30,8 +30,8 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		loadBinder();
 	}
 	String email2 = new String();
-
 	String pass2 = new String();
+	
 	
 	public String getPass2() {
 		return pass2;
