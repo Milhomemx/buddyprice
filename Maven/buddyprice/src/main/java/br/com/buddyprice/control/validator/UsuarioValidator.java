@@ -34,7 +34,7 @@ public class UsuarioValidator extends Validator {
 		Return ret = new Return(true);
 		HashMap<String, Object> data = new HashMap<String, Object>();
 
-		data.put("sql", "FROM Users u WHERE u.email = '"
+		data.put("sql", "FROM Usuario u WHERE u.email = '"
 				+ ((Usuario) entity).getEmail() + "'");
 
 		UsuarioController controller = getUserController(data);
@@ -47,7 +47,7 @@ public class UsuarioValidator extends Validator {
 	
 	private UsuarioController getUserController(HashMap<String, Object> data) {
 		UsuarioController controller = SpringFactory.getController(
-				"userBookwayControl", UsuarioController.class, data);
+				"usuarioController", UsuarioController.class, data);
 		return controller;
 	}
 
