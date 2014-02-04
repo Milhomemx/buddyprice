@@ -1,11 +1,14 @@
 package br.com.buddyprice.control.validator;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.validator.Validator;
 import br.com.vexillum.util.EncryptUtils;
 import br.com.vexillum.util.Return;
+import br.com.vexillum.util.SpringFactory;
 
 public class UsuarioValidator extends Validator {
 
@@ -25,6 +28,29 @@ public class UsuarioValidator extends Validator {
 		Return ret = super.validateUpdate();
 		return ret;
 	};
+	
+	private Return existsEmail() {
+		Return ret = new Return(true);
+		HashMap<String, Object> data = new HashMap<String, Object>();
+
+		data.put("sql", "FROM Users u WHERE u.email = '"
+				+ ((Usuario) entity).getEmail() + "'");
+
+		UsuarioController controller = getUserController(data);
+		if (!controller.searchByHQL().getList().isEmpty()) {
+			ret.concat(creatReturn("email",
+					getValidationMessage("email", "exists", true)));
+		}
+		return ret;
+	}
+	
+	private UsuarioController getUserController(HashMap<String, Object> data) {
+		UsuarioController controller = SpringFactory.getController(
+				"userBookwayControl", UsuarioController.class, data);
+		return controller;
+	}
+
+	
 	
 	public Return equalsEmail(){
 		Return ret = equalsFields(((Usuario)entity).getEmail(), (String)mapData.get("email2"));
