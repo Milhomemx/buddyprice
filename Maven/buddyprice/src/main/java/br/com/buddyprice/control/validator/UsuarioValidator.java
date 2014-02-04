@@ -21,6 +21,7 @@ public class UsuarioValidator extends Validator {
 		Return ret = super.validateSave();
 		ret.concat(equalsEmail());
 		ret.concat(equalsPassWord());
+		ret.concat(existsEmail());
 		return ret;
 	};
 	
