@@ -15,23 +15,22 @@ import br.com.buddyprice.view.validator.ImageValidator;
 import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
+
 @SuppressWarnings("serial")
 @org.springframework.stereotype.Component
 @Scope("prototype")
 public class ProfileComposer extends UsuarioComposer {
 
-	public void doAfterCompose(Component comp) throws Exception{
-		super.doAfterCompose(comp);	
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
 		setEntity((Usuario) getUserInSession());
 		loadBinder();
 	}
-	
+
 	private String actualPassword;
 	private String newPassword;
-	private String confirmNewPassword;	
-	
-	
-	
+	private String confirmNewPassword;
+
 	public String getActualPassword() {
 		return actualPassword;
 	}
@@ -57,62 +56,63 @@ public class ProfileComposer extends UsuarioComposer {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void deleteProfileImage(){
+	public void deleteProfileImage() {
 		@SuppressWarnings("rawtypes")
 		Attachment att = new AttachmentMedia();
-        Return ret = new Return(true);
-        if(ret.isValid()){
-                att.deleteAttachment("image_profile", getUserInSession());
-                Executions.sendRedirect("");
-        }
-        treatReturn(ret);
-	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void changeProfileImage(UploadEvent event){
-        Media media = event.getMedia();
-        ImageValidator val = new ImageValidator(media);
-        Return ret = val.upload();
-        if(ret.isValid()){
-        		Attachment att = new AttachmentMedia();
-                att.uploadAttachment(media, "image_profile", getUserInSession());
-                Executions.sendRedirect("");
-        }
-        treatReturn(ret);
-	}
-	
-	public Return deactivate() {
-			Executions.sendRedirect("/buddyprice/logout");
-			return getControl().doAction("deactivate");
-			
+		Return ret = new Return(true);
+		if (ret.isValid()) {
+			att.deleteAttachment("image_profile", getUserInSession());
+			Executions.sendRedirect("");
+		}
+		treatReturn(ret);
 	}
 
-	public void callModalWindow(String page){
-		Map<String, Object> map = ReflectionUtils.prepareDataForPersistence(this);
-		
-		Component comp = Executions.createComponents(page, null, map);				
-         
-        if(comp instanceof Window) {
-            ((Window)comp).doModal();
-        }
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void changeProfileImage(UploadEvent event) {
+		Media media = event.getMedia();
+		ImageValidator val = new ImageValidator(media);
+		Return ret = val.upload();
+		if (ret.isValid()) {
+			Attachment att = new AttachmentMedia();
+			att.uploadAttachment(media, "image_profile", getUserInSession());
+			Executions.sendRedirect("");
+		}
+		treatReturn(ret);
 	}
-	
-	public Return updateInformation(){
-		Return ret =null;
+
+	public Return deactivate() {
+		Executions.sendRedirect("/buddyprice/logout");
+		return getControl().doAction("deactivate");
+
+	}
+
+	public void callModalWindow(String page) {
+		Map<String, Object> map = ReflectionUtils
+				.prepareDataForPersistence(this);
+
+		Component comp = Executions.createComponents(page, null, map);
+
+		if (comp instanceof Window) {
+			((Window) comp).doModal();
+		}
+	}
+
+	public Return updateInformation() {
+		Return ret = null;
 		ret = saveEntity();
-		if(ret.isValid()){
+		if (ret.isValid()) {
 			Executions.sendRedirect("edit.zul?sucess=true");
 			component.detach();
 		}
 		return ret;
 	}
-	public void changePasswordUser(){
+
+	public void changePasswordUser() {
 		Return ret = new Return(true);
 		ret.concat(getControl().doAction("changePasswordUser"));
-		if(ret.isValid())
+		if (ret.isValid())
 			getComponentById(getComponent(), "frmChangePassword").detach();
 		treatReturn(ret);
 	}
 
-	
 }
