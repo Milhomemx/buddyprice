@@ -35,6 +35,12 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         return super.update();
         }
         
+        public Return getEstablishmentId(Estabelecimento est){
+        	String sql = "from Estabelecimento where nome = '"+est.getNome()+"'";
+        	data.put("sql", sql);
+        	
+        	return searchByHQL();
+        }
         
         
         public Return deactivate() {
