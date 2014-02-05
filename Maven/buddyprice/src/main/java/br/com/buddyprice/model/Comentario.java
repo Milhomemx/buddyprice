@@ -14,7 +14,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 @SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.CommentValidator")
-@Table(name="Comentarios")
+@Table(name="Comentario")
 public class Comentario extends CommonEntity{
 
 @ManyToOne(fetch = FetchType.LAZY)
