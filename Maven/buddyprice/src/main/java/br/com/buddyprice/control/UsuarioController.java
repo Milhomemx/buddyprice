@@ -7,25 +7,24 @@ import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.EncryptUtils;
 import br.com.vexillum.util.Return;
+
 @Service
 @Scope("prototype")
 public class UsuarioController extends GenericControl<Usuario> {
-        public UsuarioController() {
-                super(Usuario.class);
-        }
-        
-        @Override
-        public Return save() {
-        	entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
-        return super.save();
-        }
-        
-        public Return update() {
-        	
-        return super.update();
-        }
-        
-        
+	public UsuarioController() {
+		super(Usuario.class);
+	}
+
+	@Override
+	public Return save() {
+		entity.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
+		return super.save();
+	}
+
+	public Return update() {
+
+		return super.update();
+	}
         
         public Return deactivate() {
         	entity.setActive(false);

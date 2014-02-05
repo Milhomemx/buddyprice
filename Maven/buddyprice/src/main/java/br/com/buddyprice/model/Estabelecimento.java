@@ -17,7 +17,7 @@ public class Estabelecimento extends CommonEntityActivated{
 
 
 @Validate(notNull = true, min = 2, max = 50)	
-@Column(name="nome", nullable=false, updatable =true, length = 40)
+@Column(name="nome", nullable=false, updatable =true, length = 40, unique=true)
 	private String nome;
 
 @Column(name="endereco", nullable=true, updatable =true, length = 100)

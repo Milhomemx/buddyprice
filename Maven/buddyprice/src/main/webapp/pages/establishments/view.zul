@@ -3,16 +3,9 @@
 
 
 <zk>
-	<style>
-		.water-mark { color: gray; font-style: italic; }
-
-	</style>
-	<script type="text/javascript"
-		src="/scripts/maskedinput-1.2.2.min.js" />
-	<script type="text/javascript" src="/scripts/global.js" />
 
 	<div self="@define(content)">
-		<window apply="${maintainEstablishmentComposer}">
+		<window apply="${establishmentComposer}">
 
 			<grid style="width: 80%">
 				<rows>
@@ -82,7 +75,7 @@
 						<hbox>
 							<button sclass="btn btn-danger"
 								label="Editar"
-								onClick='controller.doAction("editEstablishment")' />
+								onClick='controller.editEstablishment()' />
 							<button sclass="btn btn-danger" width="70px"
 								label="Cancelar"
 								onClick='controller.doAction("redirectToDash")' />
@@ -102,3 +95,4 @@
 	</div>
 
 </zk>
+

@@ -1,18 +1,5 @@
-<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
-<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
-
-<zk>
-	<style>
-		.water-mark { color: gray; font-style: italic; }
-
-	</style>
-	<script type="text/javascript"
-		src="/scripts/maskedinput-1.2.2.min.js" />
-	<script type="text/javascript" src="/scripts/global.js" />
-
-	<div self="@define(content)">
-		<window apply="${insertEstablishmentComposer}">
+<div apply="${establishmentComposer}">
 
 			<grid style="width: 80%">
 				<rows>
@@ -86,10 +73,7 @@
 								onClick='controller.doAction("redirectToDash")' />
 
 						</hbox>
-						<hbox>
 
-
-						</hbox>
 
 					</row>
 					<row>
@@ -100,7 +84,4 @@
 
 			</grid>
 
-		</window>
 	</div>
-
-</zk>
