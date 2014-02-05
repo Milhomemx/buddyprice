@@ -10,7 +10,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 @SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.FriendshipValidator")
-@Table(name="Relacionamentos")
+@Table(name="Relacionamento")
 public class Relacionamento extends Friendship {
 
 	public Relacionamento() {

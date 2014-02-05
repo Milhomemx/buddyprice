@@ -5,7 +5,7 @@
 <zk>
 
 	<div self="@define(content)">
-		<window apply="${establishmentComposer}">
+		<window apply="${viewEstablishmentComposer}">
 
 			<grid style="width: 80%">
 				<rows>

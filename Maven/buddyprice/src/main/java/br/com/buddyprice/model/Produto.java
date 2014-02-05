@@ -8,9 +8,10 @@ import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
+@SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.ProdutoValidator")
-@Table(name="Produtos")
+@Table(name="Produto")
 public class Produto extends CommonEntity{
 
 
