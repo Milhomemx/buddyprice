@@ -32,7 +32,7 @@ public class LeftSidebarComposer extends
 	}
 
 	public static void redirectToEstablishment() {
-		Executions.sendRedirect("/pages/establishments/");
+		Executions.sendRedirect("/pages/establishments/search.zul");
 	}
 	
 	public static void redirectToProduct() {

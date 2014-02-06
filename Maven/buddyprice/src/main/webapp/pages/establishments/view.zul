@@ -73,12 +73,9 @@
 					<row>
 
 						<hbox>
-							<button sclass="btn btn-danger"
-								label="Editar"
-								onClick='controller.editEstablishment()' />
 							<button sclass="btn btn-danger" width="70px"
-								label="Cancelar"
-								onClick='controller.doAction("redirectToDash")' />
+								label="Voltar"
+								onClick="${redirectToDash}" />
 
 						</hbox>
 

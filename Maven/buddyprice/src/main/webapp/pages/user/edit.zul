@@ -3,10 +3,6 @@
 
 
 <zk>
-	<style>
-		.water-mark { color: gray; font-style: italic; }
-
-	</style>
 
 	<div self="@define(content)">
 		<window apply="${profileComposer}">

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import br.com.vexillum.model.CommonEntityActivated;
+import br.com.vexillum.model.annotations.SearchField;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
@@ -15,7 +16,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 public class Estabelecimento extends CommonEntityActivated{
 
 
-
+@SearchField
 @Validate(notNull = true, min = 2, max = 50)	
 @Column(name="nome", nullable=false, updatable =true, length = 40, unique=true)
 	private String nome;

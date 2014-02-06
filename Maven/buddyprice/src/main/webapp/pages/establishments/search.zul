@@ -1,104 +1,71 @@
-<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?page title="Busca Estabelecimento"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
-
-
+ 
 <zk>
 	<style>
-		.water-mark { color: gray; font-style: italic; }
-
+		.message.z-label{
+			font-size: 20px;
+		}
 	</style>
-	<script type="text/javascript"
-		src="/scripts/maskedinput-1.2.2.min.js" />
-	<script type="text/javascript" src="/scripts/global.js" />
-
-	<div self="@define(content)">
-		<window apply="${maintainEstablishmentComposer}">
-
-			<grid style="width: 80%">
-				<rows>
-					<row>
-						<hbox>
-							<label
-								value="Visualizando um estabelecimento" style="font-size:18px" />
-						</hbox>
-
-					</row>
-					<row spans="2" if="${not empty param.sucess}">
-						<hbox>
-
-							<label sclass="testecss3"
-								style="color: #468847"
-								value='${c:getProperty("NotificationEstablishmentSucess")}' />
-
-						</hbox>
-					</row>
-
-					<row>
-						<label id="fldNometitle"
-							value="Estabelecimento:" width="282px" />
-						<label id="fldNome"
-							value="@{controller.entity.nome}" width="282px" />
-
-					</row>
-
-					<row>
-						<label id="fldEnderecotitle" value="Endereço:"
-							width="282px" />
-						<label id="fldEndereco"
-							value="@{controller.entity.endereco}" width="282px" />
-					</row>
-
-					<row>
-						<hbox>
-							<label id="fldCidadetitle" value="Cidade:"
-								width="282px" />
-							<label id="fldCidade"
-								value="@{controller.entity.cidade}" width="282px" />
-
-							<label id="fldEstadotitle" value="Estado:"
-								width="282px" />
-							<label id="fldEstado"
-								value="@{controller.entity.estado}" width="282px" />
-
-							<label id="fldPaistitle" value="País:"
-								width="282px" />
-							<label id="fldPais"
-								value="@{controller.entity.pais}" width="282px" />
-
-						</hbox>
-					</row>
-
-					<row>
-
-						<label id="fldSitetitle" value="Site:"
-							width="282px" />
-						<label id="fldSite"
-							value="@{controller.entity.site}" width="282px" />
-
-					</row>
-
-					<row>
-
-						<hbox>
-							<button sclass="btn btn-danger"
-								label="Editar"
-								onClick='controller.doAction("editEstablishment")' />
-							<button sclass="btn btn-danger" width="70px"
-								label="Cancelar"
-								onClick='controller.doAction("redirectToDash")' />
-
-						</hbox>
-
-					</row>
-					<row>
-
-					</row>
-
-				</rows>
-
-			</grid>
-
-		</window>
+	<div self="@define(content)" height="100">
+		<hbox width="100%" height="100%" pack="center" apply="${searchEstablishmentComposer}">
+			<groupbox closable="false" width="100%" height="548px">
+				<caption label="Busca Estabelecimento" />
+				<vbox width="100%" height="100%" align="center">
+					<grid hflex="min">
+						<columns>
+							<column hflex="min" />
+						</columns>
+						<rows>
+							<row height="250px" style="color: black;">
+								<hlayout>
+									<textbox width="700px"
+										value="@{controller.searchField}" placeholder="Digite algum dado do estabelecimento aqui!" onChange='controller.doAction("searchEstablishments")' onOK='controller.doAction("searchEstablishments")'/>
+								</hlayout>
+							</row>
+<!-- 							<row height="250px" style="color: black;">
+								<hbox width="100%" pack="center">
+									<label value="Categoria:" hflex="min"/>
+									<combobox width="150px" model="@{controller.routeCategories}" selectedItem="@{controller.searchCategory}"
+										placeholder="Todos..." onChange='controller.doAction("searchRoutes")'/>
+									<hbox hflex="1" pack="end">
+										<separator hflex="1"/>
+										<checkbox label="Mostrar rotas indisponíveis" checked="@{controller.disponibility}" onCheck='controller.doAction("searchRoutes")' hflex="min"/>
+									</hbox>
+								</hbox>
+							</row> -->
+						</rows>
+					</grid>
+					<separator width="700px" bar="true"/>
+					<grid id="resultList" model="@{controller.listEntity}" hflex="min" mold="paging" pageSize="5" visible="false">
+						<rows>
+							<row self="@{each=establishment}" value="@{establishment}">
+								<vbox align="center">
+									<borderlayout width="515px" height="98px">
+										<west>
+											<vbox width="100%" vflex="1">
+												<hlayout vflex="1"><label value="@{establishment.nome}"/></hlayout>
+											</vbox>
+										</west>
+										<center>
+											
+										</center>
+										<east>
+											<vbox width="100%" height="100%" align="center" pack="center">
+												<button sclass="btn btn-success reduced" image="/imagens/perfil_20X20.png" onClick="" width="30px" tooltiptext=""/>
+												<button sclass="btn btn-success reduced" image="/imagens/lupa_20X20.png" onClick="" width="30px" tooltiptext=""/>
+												<button sclass="btn btn-success reduced" image="/imagens/gmaps_20X20.png" onClick="" width="30px" tooltiptext=""/>
+											</vbox>
+										</east>
+									</borderlayout>
+									<separator width="700px" bar="true"/>
+								</vbox>
+							</row>
+						</rows>
+					</grid>
+				</vbox>
+					<label id="noResultMessage" value="Nada foi encontrado!" style="color: red;" visible="false"/>
+			</groupbox>
+		</hbox>
 	</div>
-
 </zk>
