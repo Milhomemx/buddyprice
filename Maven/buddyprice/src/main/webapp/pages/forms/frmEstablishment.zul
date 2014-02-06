@@ -50,18 +50,12 @@
 					<row>
 					
 						<textbox id="fldDescricao" rows="4"
-							value="@{controller.entity.descricao}" width="282px" tabindex="11"
+							value="@{controller.entity.descricao}" width="282px" 
 							class="input-xlarge" 
 							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
 					</row>
 
 
-					<row>
-						<hbox>
-							<button upload="true" label="Inserir Foto"
-								onUpload='controller.changeProfileImage(event)' />
-						</hbox>
-					</row>
 					<row>
 
 						<hbox>
@@ -70,7 +64,7 @@
 								onClick='controller.doAction("saveEntity")' />
 							<button sclass="btn btn-danger" width="70px"
 								label="Cancelar"
-								onClick='controller.doAction("redirectToDash")' />
+								onClick='controller.doAction("redirectToBack")' />
 
 						</hbox>
 

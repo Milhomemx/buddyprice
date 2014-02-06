@@ -13,8 +13,9 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         public EstablishmentController() {
                 super(Estabelecimento.class);
         }
-        
-        public Return InsertEstablishment() {
+
+
+		public Return InsertEstablishment() {
             Return regReturn = new Return(true);
             regReturn.concat(doAction("save"));
             if (regReturn.isValid()){
