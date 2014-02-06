@@ -51,6 +51,7 @@ public class EstablishmentComposer extends
             return ret;
     }
     
+   
 	public void changeEstablishmentImage(UploadEvent event) {
 		Media media = event.getMedia();
 		ImageValidator val = new ImageValidator(media);
@@ -79,6 +80,10 @@ public class EstablishmentComposer extends
 		entity = (Estabelecimento) session.getAttribute("estabelecimento");
 		callModalWindow("/pages/forms/modalEstablishment.zul");
 		
+	}
+	
+	public static void redirectToBack() {
+		Executions.sendRedirect("../establishment/");
 	}
 	
 

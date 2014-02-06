@@ -26,19 +26,31 @@
 						</hbox>
 					</row>
 
-					<row>
-						<label id="fldNometitle"
-							value="Estabelecimento:" width="282px" />
-						<label id="fldNome"
-							value="@{controller.entity.nome}" width="282px" />
+					<row spans="2" if="${empty param.sucess}">
+						<hbox>
 
+							<label sclass="testecss3"
+								style="color: #468847" value="" />
+
+						</hbox>
 					</row>
 
 					<row>
-						<label id="fldEnderecotitle" value="Endereço:"
-							width="282px" />
-						<label id="fldEndereco"
-							value="@{controller.entity.endereco}" width="282px" />
+						<hbox>
+							<label id="fldNometitle"
+								value="Estabelecimento:" width="282px" />
+							<label id="fldNome"
+								value="@{controller.entity.nome}" width="282px" />
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldEnderecotitle"
+								value="Endereço:" width="282px" />
+							<label id="fldEndereco"
+								value="@{controller.entity.endereco}" width="282px" />
+						</hbox>
 					</row>
 
 					<row>
@@ -47,35 +59,53 @@
 								width="282px" />
 							<label id="fldCidade"
 								value="@{controller.entity.cidade}" width="282px" />
-
+						</hbox>
+					</row>
+					<row>
+						<hbox>
 							<label id="fldEstadotitle" value="Estado:"
 								width="282px" />
 							<label id="fldEstado"
 								value="@{controller.entity.estado}" width="282px" />
 
+						</hbox>
+					</row>
+					<row>
+						<hbox>
 							<label id="fldPaistitle" value="País:"
 								width="282px" />
 							<label id="fldPais"
 								value="@{controller.entity.pais}" width="282px" />
+
+
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldSitetitle" value="Site:"
+								width="282px" />
+							<label id="fldSite"
+								value="@{controller.entity.site}" width="282px" />
+
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldDescricaotitle" value="Site:"
+								width="282px" />
+							<label id="fldDescricao"
+								value="@{controller.entity.descricao}" width="282px" />
 
 						</hbox>
 					</row>
 
 					<row>
 
-						<label id="fldSitetitle" value="Site:"
-							width="282px" />
-						<label id="fldSite"
-							value="@{controller.entity.site}" width="282px" />
-
-					</row>
-
-					<row>
-
 						<hbox>
 							<button sclass="btn btn-danger" width="70px"
-								label="Voltar"
-								onClick="${redirectToDash}" />
+								label="Voltar" onClick="${redirectToBack}" />
 
 						</hbox>
 
