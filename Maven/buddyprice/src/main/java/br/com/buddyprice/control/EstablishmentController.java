@@ -42,6 +42,17 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         	return searchByHQL();
         }
         
+    	public Return searchEstablishments(){
+    		Return ret = new Return(true);
+    		String searchKey = (String) data.get("searchField");
+    		if((searchKey == null || searchKey.isEmpty()) || !(searchKey.indexOf("%") != 0) || !(searchKey.indexOf("%") != searchKey.length() - 1)){
+    			return ret;
+    		}
+    		String sql = "FROM Estabelecimento WHERE (nome like '%" + searchKey + "%') ";
+    		
+    		data.put("sql", sql);
+    		return super.searchByHQL();
+    	}
         
         public Return deactivate() {
         	entity.setActive(false);
