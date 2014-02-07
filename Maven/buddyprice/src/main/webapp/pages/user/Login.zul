@@ -53,7 +53,7 @@
 											<hbox>
 												<button onClick="submitForm();" label="Login"/>
 												<separator/>
-									<a href="/pages/user/" label="Não tem cadastro ainda?"/>
+									<button href="/pages/user/" label="Cadastre-se"/>
 									<separator height="10px"/>
 
 											</hbox>

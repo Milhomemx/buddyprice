@@ -19,7 +19,7 @@ public class LeftSidebarComposer extends
 
 
 	public static void redirectToConfig() {
-		Executions.sendRedirect("../configuration/");
+		Executions.sendRedirect("/pages/configuration/");
 	}
 
 	

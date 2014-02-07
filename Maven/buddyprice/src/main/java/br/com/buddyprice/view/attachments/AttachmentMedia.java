@@ -5,7 +5,6 @@ import java.io.InputStream;
 
 import org.zkoss.io.Files;
 import org.zkoss.util.media.Media;
-import org.zkoss.zk.ui.Executions;
 
 import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.manager.ExceptionManager;

@@ -75,7 +75,7 @@
                                                     src='${c:getProperty("ConfigurationIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.UsuarioComposer.redirectToConfig();"
+                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToConfig();"
                                                     label="Configurações" style="font-size:14px" />
                                             </div>
                                         </row>
