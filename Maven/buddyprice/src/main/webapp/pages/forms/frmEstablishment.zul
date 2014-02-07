@@ -3,11 +3,12 @@
 	<grid style="width: 80%">
 		<rows>
 			<row>
-				<hbox>
-					<label value="Adicionando um estabelecimento"
-						style="font-size:18px" />
-				</hbox>
-
+				<borderlayout>
+					<hbox>
+						<label value="Adicionando um estabelecimento"
+							style="font-size:18px" />
+					</hbox>
+				</borderlayout>
 			</row>
 
 			<row>
@@ -53,7 +54,8 @@
 			</row>
 
 			<row id="inserir" visible="false">
-				
+				<button upload="true" label="Alterar Foto"
+					onUpload='controller.changeProfileImage(event)' />
 			</row>
 
 			<row>
@@ -62,8 +64,6 @@
 					<button sclass="btn btn-danger"
 						label="Salvar Alterações"
 						onClick='controller.doAction("saveEntity")' />
-					<button upload="true" label="Alterar Foto"
-						onUpload='controller.changeProfileImage(event)' />
 					<button sclass="btn btn-danger" width="70px"
 						label="Cancelar" onClick='controller.doAction("redirectToBack")' />
 
