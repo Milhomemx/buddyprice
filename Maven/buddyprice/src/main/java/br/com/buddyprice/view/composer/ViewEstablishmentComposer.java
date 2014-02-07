@@ -14,6 +14,7 @@ public class ViewEstablishmentComposer extends EstablishmentComposer {
 		super.doAfterCompose(comp);
 		if(session.getAttribute("estabelecimento")!=null)
 			setEntity((Estabelecimento) session.getAttribute("estabelecimento"));
+			session.setAttribute("estabelecimento", null);
 		loadBinder();
 	}
 

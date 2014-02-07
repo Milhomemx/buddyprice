@@ -19,23 +19,22 @@ public class SearchEstablishmentComposer extends ViewEstablishmentComposer {
 
 	private String searchField;
 
-	
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		loadBinder();
 	}
 
 	@SuppressWarnings("unchecked")
-	public Return searchEstablishments(){
+	public Return searchEstablishments() {
 		Return ret = getControl().doAction("searchEstablishments");
-		if(ret.getList() != null && !ret.getList().isEmpty()){
+		if (ret.getList() != null && !ret.getList().isEmpty()) {
 			setListEntity((List<Estabelecimento>) ret.getList());
 			loadBinder();
 			resultList.setVisible(true);
 		} else {
 			resultList.setVisible(false);
 		}
-		
+
 		return ret;
 	}
 
@@ -47,18 +46,16 @@ public class SearchEstablishmentComposer extends ViewEstablishmentComposer {
 		this.searchField = searchField;
 	}
 
-	public static void redirectToView() {
+	public void redirectToView(Estabelecimento estabelecimento) {
+
+		session.setAttribute("estabelecimento", estabelecimento);
 		Executions.sendRedirect("view.zul");
 	}
-	
-	public void redirectToUpdate(){
-		Return ret = validateSelectedEntity();
-		if(ret.isValid()){
-			Executions.sendRedirect("include.zul?id=" + getSelectedEntity().getId());
-		}
-		treatReturn(ret);
+
+	public void redirectToUpdate(Estabelecimento estabelecimento) {
+		session.setAttribute("estabelecimento", estabelecimento);
+		Executions.sendRedirect("include.zul");
+
 	}
-	
-	
-	
+
 }
