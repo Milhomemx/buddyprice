@@ -71,8 +71,8 @@
 						<hbox>
 							<label value="Data de Nascimento:" />
 							<datebox
-								value="@{controller.entity.birthDate}" id="fldNasc" constraint="no future: Data inválida"
-								width="170px" />
+								value="@{controller.entity.birthDate}" id="fldNasc"
+								constraint="no future: Data inválida" width="170px" />
 						</hbox>
 					</row>
 
@@ -81,9 +81,9 @@
 						<hbox>
 							<button upload="true" label="Alterar Foto"
 								onUpload='controller.changeProfileImage(event)' />
-								
+
 							<button label="Alterar Senha"
-								onClick='controller.callModalWindow("./changePass.zul")' />								
+								onClick='controller.callModalWindow("./changePass.zul")' />
 
 						</hbox>
 
@@ -93,16 +93,16 @@
 							<button sclass="btn btn-danger"
 								label="Salvar Alterações"
 								onClick='controller.doAction("updateInformation")' />
-							<button sclass="btn btn-danger" width="70px"
-								label="Cancelar"
-								onClick='controller.doAction("redirectToDash")' />
 							<button sclass="btn btn-danger"
 								width="140px" label="Desativar Conta"
 								onClick='controller.doAction("deactivate")' />
 
 						</hbox>
 					</row>
-
+					<row>
+						<button
+							label="Cancelar" href="/pages/dashboard/" width="130px" />
+					</row>
 				</rows>
 
 			</grid>
