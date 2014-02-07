@@ -25,6 +25,12 @@ public class EstablishmentComposer extends
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
+		if (session.getAttribute("estabelecimento") != null) {
+			setEntity((Estabelecimento) session.getAttribute("estabelecimento"));
+			session.setAttribute("estabelecimento", null);
+			getComponentById("inserir").setVisible(true);
+		}
+		
 		loadBinder();
 	}
 
@@ -35,23 +41,22 @@ public class EstablishmentComposer extends
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-    @Override
-    public Return saveEntity() {
-            Estabelecimento estabelecimento = entity;
-            Return ret = super.saveEntity();
-            if(ret.isValid()){
-                    ret.concat(getControl().getEstablishmentId(estabelecimento));
-                    if(ret.isValid() && !ret.getList().isEmpty())
-                    estabelecimento = (Estabelecimento) ret.getList().get(0);
-                    session.setAttribute("estabelecimento", estabelecimento);
-                    Executions.sendRedirect("view.zul?sucess=true");
-                    
-            }
-                    
-            return ret;
-    }
-    
-   
+	@Override
+	public Return saveEntity() {
+		Estabelecimento estabelecimento = entity;
+		Return ret = super.saveEntity();
+		if (ret.isValid()) {
+			ret.concat(getControl().getEstablishmentId(estabelecimento));
+			if (ret.isValid() && !ret.getList().isEmpty())
+				estabelecimento = (Estabelecimento) ret.getList().get(0);
+			session.setAttribute("estabelecimento", estabelecimento);
+			Executions.sendRedirect("view.zul?sucess=true");
+
+		}
+
+		return ret;
+	}
+
 	public void changeEstablishmentImage(UploadEvent event) {
 		Media media = event.getMedia();
 		ImageValidator val = new ImageValidator(media);
@@ -63,7 +68,7 @@ public class EstablishmentComposer extends
 		}
 		treatReturn(ret);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void deleteProfileImage() {
 		@SuppressWarnings("rawtypes")
@@ -75,17 +80,16 @@ public class EstablishmentComposer extends
 		}
 		treatReturn(ret);
 	}
-	
-	public void editEstablishment(){
+
+	public void editEstablishment() {
 		entity = (Estabelecimento) session.getAttribute("estabelecimento");
 		callModalWindow("/pages/forms/modalEstablishment.zul");
-		
+
 	}
-	
+
 	public static void redirectToBack() {
 		Executions.sendRedirect("../establishment/");
 	}
-	
 
 	@Override
 	public Estabelecimento getEntityObject() {

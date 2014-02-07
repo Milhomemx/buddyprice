@@ -59,9 +59,9 @@
 											<vbox width="100%"
 												align="center" pack="center">
 												<button
-													label="Visualizar" tooltiptext="" onClick='controller.redirectToView()'/>
+													label="Visualizar" tooltiptext="" onClick='controller.redirectToView(self.getParent().getParent().getParent().getParent().getParent().getValue())'/>
 												<button
-													label="Editar" tooltiptext="" onClick='controller.redirectToUpdate();'/>
+													label="Editar" tooltiptext="" onClick='controller.redirectToUpdate(self.getParent().getParent().getParent().getParent().getParent().getValue());'/>
 											</vbox>
 
 										</east>
