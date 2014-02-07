@@ -115,7 +115,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	
 	@Override
 	public Return saveEntity() {
-		Return ret = super.saveEntity(); //Chama o saveEntity original
+		Return ret = super.saveEntity();
 		if(ret.isValid())redirectToLogin();
 		return ret;
 	}

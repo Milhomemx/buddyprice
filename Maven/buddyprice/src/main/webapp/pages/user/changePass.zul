@@ -12,19 +12,19 @@
 				<row>
 					<label value="Senha Atual:"
 						onClick="fldActualPassword.focus();" />
-					<textbox id="fldActualPassword" type="text"
+					<textbox id="fldActualPassword" type="password"
 						value="@{controller.actualPassword}" />
 				</row>
 				<row>
 					<label value="Nova Senha:"
 						onClick="fldNewPassword.focus();" />
-					<textbox id="fldNewPassword" type="text"
+					<textbox id="fldNewPassword" type="password"
 						value="@{controller.newPassword}" />
 				</row>
 				<row>
 					<label value="Confirmar Nova Senha:"
 						onClick="fldConfirmNewPassword.focus();" />
-					<textbox id="fldConfirmNewPassword" type="text"
+					<textbox id="fldConfirmNewPassword" type="password"
 						value="@{controller.confirmNewPassword}" />
 				</row>
 				<row>
