@@ -1,0 +1,120 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+
+
+<zk>
+
+	<div self="@define(content)">
+		<window apply="${viewProductComposer}">
+
+			<grid style="width: 80%">
+				<rows>
+					<row>
+						<hbox>
+							<label
+								value="Visualizando um Produto" style="font-size:18px" />
+						</hbox>
+
+					</row>
+					<row spans="2" if="${not empty param.sucess}">
+						<hbox>
+
+							<label sclass="testecss3"
+								style="color: #468847"
+								value="Produto cadastrado/alterado com sucesso" />
+
+						</hbox>
+					</row>
+
+					<row spans="2" if="${empty param.sucess}">
+						<hbox>
+
+							<label sclass="testecss3"
+								style="color: #468847" value="" />
+
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldNometitle"
+								value="Produto" width="282px" />
+							<label id="fldNome"
+								value="@{controller.entity.nome}" width="282px" />
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldTamanhotitle"
+								value="Tamanho:" width="282px" />
+							<label id="fldTamanho"
+								value="@{controller.entity.tamanho}" width="282px" />
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldPesotitle" value="Peso:"
+								width="282px" />
+							<label id="fldPeso"
+								value="@{controller.entity.peso}" width="282px" />
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label id="fldCortitle" value="Cor:"
+								width="282px" />
+							<label id="fldCor"
+								value="@{controller.entity.cor}" width="282px" />
+
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label id="fldversaotitle" value="Versão:"
+								width="282px" />
+							<label id="fldVersao"
+								value="@{controller.entity.versao}" width="282px" />
+
+
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldMarcatitle" value="Marca:"
+								width="282px" />
+							<label id="fldMarca"
+								value="@{controller.entity.marca}" width="282px" />
+
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<label id="fldDescricaotitle" value="Site:"
+								width="282px" />
+							<label id="fldDescricao"
+								value="@{controller.entity.descricao}" width="282px" />
+
+						</hbox>
+					</row>
+
+					<row>
+						<button label="Cancelar"
+							href="search.zul" width="130px" />
+					</row>
+					<row>
+
+					</row>
+
+				</rows>
+
+			</grid>
+
+		</window>
+	</div>
+
+</zk>
+
