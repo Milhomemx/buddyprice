@@ -28,7 +28,6 @@ public class EstablishmentComposer extends
 		if (session.getAttribute("estabelecimento") != null) {
 			setEntity((Estabelecimento) session.getAttribute("estabelecimento"));
 			session.setAttribute("estabelecimento", null);
-			getComponentById("inserir").setVisible(true);
 		}
 		
 		loadBinder();
@@ -90,6 +89,18 @@ public class EstablishmentComposer extends
 	public static void redirectToBack() {
 		Executions.sendRedirect("../establishment/");
 	}
+	
+//	public static void showImageEstablishment(Image comp) {
+//		AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
+//		try {
+//			File image = att.getAttachment("image_establishment", getEntityObject());
+//			if (image != null) {
+//				comp.setContent(new AImage(image));
+//			}
+//		} catch (Exception e) {
+//			new ExceptionManager(e).treatException();
+//		}
+//	}
 
 	@Override
 	public Estabelecimento getEntityObject() {

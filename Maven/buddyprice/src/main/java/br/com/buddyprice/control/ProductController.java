@@ -14,11 +14,12 @@ public class ProductController extends GenericControl<Produto> {
                 super(Produto.class);
         }
         
-        public Return InsertProduct() {
+
+		public Return InsertProduct() {
             Return regReturn = new Return(true);
             regReturn.concat(doAction("save"));
             if (regReturn.isValid()){
-                    regReturn.addMessage(new Message(null, "Produto cadastrado!"));
+                    regReturn.addMessage(new Message(null, "Produto Cadastrado!"));
                     
                     
             }
@@ -35,10 +36,30 @@ public class ProductController extends GenericControl<Produto> {
         return super.update();
         }
         
+        public Return getProductId(Produto prod){
+        	String sql = "from Produto where nome = '"+prod.getNome()+"'";
+        	data.put("sql", sql);
+        	
+        	return searchByHQL();
+        }
+        
+    	public Return searchProducts(){
+    		Return ret = new Return(true);
+    		String searchKey = (String) data.get("searchField");
+    		if((searchKey == null || searchKey.isEmpty()) || !(searchKey.indexOf("%") != 0) || !(searchKey.indexOf("%") != searchKey.length() - 1)){
+    			return ret;
+    		}
+    		String sql = "FROM Produto WHERE (nome like '%" + searchKey + "%') ";
+    		
+    		data.put("sql", sql);
+    		return super.searchByHQL();
+    	}
+        
         public Return nullit() {
         	Return ret = new Return(false);
         	
         	return ret;
         }
+        
         
 }

@@ -3,18 +3,24 @@
 	<grid style="width: 80%">
 		<rows>
 			<row>
-				<borderlayout>
-					<hbox>
-						<label value="Adicionando um estabelecimento"
-							style="font-size:18px" />
-					</hbox>
-				</borderlayout>
+				<hbox>
+					<label value="Adicionando um estabelecimento"
+						style="font-size:18px" />
+				</hbox>
 			</row>
 
 			<row>
-				<textbox id="fldNome" value="@{controller.entity.nome}"
-					width="282px" class="input-xlarge"
-					placeholder='${c:getProperty("HolderEstablishmentName")}' />
+				<hbox>
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" width="282px"
+						class="input-xlarge"
+						placeholder='${c:getProperty("HolderEstablishmentName")}' />
+				</hbox>
+<!-- 				<hbox width="100%" height="150px" align="right"
+					pack="right">
+					<image src='${c:getProperty("DefaultEstablishment")};'
+						onCreate="br.com.buddyprice.view.composer.EstablishmentComposer.showImageEstablishment(self);" />
+				</hbox> -->
 			</row>
 
 			<row>
@@ -64,8 +70,8 @@
 					<button sclass="btn btn-danger"
 						label="Salvar Alterações"
 						onClick='controller.doAction("saveEntity")' />
-					<button sclass="btn btn-danger" width="70px"
-						label="Cancelar" onClick='controller.doAction("redirectToBack")' />
+						<button
+							label="Cancelar" href="search.zul" width="130px" />
 
 				</hbox>
 
