@@ -102,13 +102,8 @@
 					</row>
 
 					<row>
-
-						<hbox>
-							<button sclass="btn btn-danger" width="70px"
-								label="Voltar" onClick="${redirectToBack}" />
-
-						</hbox>
-
+						<button label="Cancelar"
+							href="search.zul" width="130px" />
 					</row>
 					<row>
 
