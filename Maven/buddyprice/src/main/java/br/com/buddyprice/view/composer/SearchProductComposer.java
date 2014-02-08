@@ -7,7 +7,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Grid;
 
-import br.com.buddyprice.model.Estabelecimento;
 import br.com.buddyprice.model.Produto;
 import br.com.vexillum.util.Return;
 
@@ -53,8 +52,8 @@ public class SearchProductComposer extends ViewProductComposer {
 		Executions.sendRedirect("view.zul");
 	}
 
-	public void redirectToUpdate(Estabelecimento estabelecimento) {
-		session.setAttribute("estabelecimento", estabelecimento);
+	public void redirectToUpdate(Produto produto) {
+		session.setAttribute("produto", produto);
 		Executions.sendRedirect("include.zul");
 
 	}

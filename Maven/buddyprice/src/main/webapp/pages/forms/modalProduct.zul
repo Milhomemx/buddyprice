@@ -1,0 +1,3 @@
+<window mode="modal" closable="true">
+<include src="./frmProduct.zul"/>
+</window>

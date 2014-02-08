@@ -1,13 +1,13 @@
-<?page title="Busca Estabelecimento"?>
+<?page title="Busca Produto"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
 	<style>.message.z-label{ font-size: 20px; }</style>
 	<div self="@define(content)" height="100">
 		<hbox width="100%" height="100%" pack="center"
-			apply="${searchEstablishmentComposer}">
+			apply="${searchProductComposer}">
 			<groupbox closable="false" width="100%" height="500px">
-				<caption label="Busca Estabelecimento" />
+				<caption label="Busca Produto" />
 				<vbox width="100%" height="100%" align="center">
 					<grid hflex="min">
 						<columns>
@@ -18,9 +18,9 @@
 								<hlayout>
 									<textbox width="900px"
 										value="@{controller.searchField}"
-										placeholder="Digite algum dado do estabelecimento aqui!"
-										onChange='controller.doAction("searchEstablishments")'
-										onOK='controller.doAction("searchEstablishments")' />
+										placeholder="Digite algum dado do produto aqui!"
+										onChange='controller.doAction("searchProducts")'
+										onOK='controller.doAction("searchProducts")' />
 								</hlayout>
 							</row>
 						</rows>
@@ -30,8 +30,8 @@
 						model="@{controller.listEntity}" hflex="min" mold="paging"
 						pageSize="3" visible="false">
 						<rows>
-							<row self="@{each=establishment}"
-								value="@{establishment}">
+							<row self="@{each=product}"
+								value="@{product}">
 
 								<vbox align="center">
 									<borderlayout width="750px"
@@ -42,7 +42,7 @@
 												vflex="1">
 												<hlayout vflex="1">
 													<label
-														value="@{establishment.nome}" />
+														value="@{product.nome}" />
 												</hlayout>
 											</vbox>
 										</west>
@@ -50,7 +50,7 @@
 											<vbox vflex="0">
 												<hlayout vflex="1">
 													<label
-														value="@{establishment.descricao}" />
+														value="@{product.descricao}" />
 												</hlayout>
 											</vbox>
 										</center>
