@@ -42,7 +42,6 @@
 												<hbox>
 													<label
 														value="@{establishment.nome}" />
-
 												</hbox>
 												<hbox>
 													<image
