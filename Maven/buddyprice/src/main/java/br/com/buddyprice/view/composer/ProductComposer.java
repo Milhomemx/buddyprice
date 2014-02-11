@@ -1,15 +1,20 @@
 package br.com.buddyprice.view.composer;
 
+import java.io.File;
+
 import org.springframework.context.annotation.Scope;
+import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zul.Image;
 
 import br.com.buddyprice.control.ProductController;
 import br.com.buddyprice.model.Produto;
 import br.com.buddyprice.view.attachments.AttachmentMediaProduct;
 import br.com.buddyprice.view.validator.ImageValidator;
+import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
@@ -26,6 +31,7 @@ public class ProductComposer extends
 		if (session.getAttribute("produto") != null) {
 			setEntity((Produto) session.getAttribute("produto"));
 			session.setAttribute("produto", null);
+			showAlterProduct();		
 		}
 		
 		loadBinder();
@@ -61,7 +67,7 @@ public class ProductComposer extends
 		if (ret.isValid()) {
 			AttachmentMediaProduct att = new AttachmentMediaProduct();
 			att.uploadAttachment(media, "image_product", entity);
-			Executions.sendRedirect("");
+//			Executions.sendRedirect("");
 		}
 		treatReturn(ret);
 	}
@@ -77,17 +83,25 @@ public class ProductComposer extends
 		Executions.sendRedirect("../product/");
 	}
 	
-//	public static void showImageEstablishment(Image comp) {
-//		AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
-//		try {
-//			File image = att.getAttachment("image_establishment", getEstablishmentInSession());
-//			if (image != null) {
-//				comp.setContent(new AImage(image));
-//			}
-//		} catch (Exception e) {
-//			new ExceptionManager(e).treatException();
-//		}
-//	}
+	public static void showImageProduct(Image comp, Produto entity) {
+		AttachmentMediaProduct att = new AttachmentMediaProduct();
+		if(entity != null){
+			try {
+				File image = att.getAttachment("image_product", entity);
+				if (image != null) {
+					comp.setContent(new AImage(image));
+				}
+			} catch (Exception e) {
+				new ExceptionManager(e).treatException();
+			}
+		}
+	}
+	
+	private void showAlterProduct(){
+		Component foto = getComponentById("foto");
+		foto.setVisible(true);
+	}
+	
 
 	@Override
 	public Produto getEntityObject() {

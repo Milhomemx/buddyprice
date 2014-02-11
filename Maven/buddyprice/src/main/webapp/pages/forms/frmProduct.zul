@@ -1,6 +1,8 @@
 <div apply="${productComposer}">
+<borderlayout height="800px">
+	<west border="none" style="width: 25%">
 
-	<grid style="width: 80%">
+	<grid>
 		<rows>
 			<row>
 				<hbox>
@@ -84,5 +86,31 @@
 		</rows>
 
 	</grid>
+	</west>
+		<center border="none">
+		<grid style="width: 20%">
+			<rows>
+				<row>
+					<hbox height="150px" align="left"
+						pack="left">
+						<image
+							src='${c:getProperty("DefaultProduct")};'>
+							<attribute name="onCreate">
+	controller.showImageProduct(self, controller.getEntity());
+</attribute>
+						</image>
+					</hbox>
+				</row>
+				<row>
+					<button upload="true" label="Alterar Foto"
+						id="foto" visible="false"
+						onUpload='controller.changeProductImage(event)' />
+				</row>
 
+			</rows>
+		</grid>
+	</center>
+	
+	
+</borderlayout>
 </div>

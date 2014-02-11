@@ -5,8 +5,8 @@
 <zk>
 
 	<div self="@define(content)">
-		<window apply="${viewProductComposer}">
-
+		<borderlayout height="600px" apply="${viewProductComposer}">
+<west border="none" style="width: 40%">
 			<grid style="width: 80%">
 				<rows>
 					<row>
@@ -21,16 +21,7 @@
 
 							<label sclass="testecss3"
 								style="color: #468847"
-								value="Produto cadastrado/alterado com sucesso" />
-
-						</hbox>
-					</row>
-
-					<row spans="2" if="${empty param.sucess}">
-						<hbox>
-
-							<label sclass="testecss3"
-								style="color: #468847" value="" />
+								value='${c:getProperty("NotificationProductSucess")}' />
 
 						</hbox>
 					</row>
@@ -105,15 +96,34 @@
 						<button label="Voltar"
 							href="search.zul" width="130px" />
 					</row>
-					<row>
-
-					</row>
 
 				</rows>
 
 			</grid>
 
-		</window>
+</west>
+
+<center border="none" style="width: 50%">
+				<grid style="width: 20%">
+					<rows>
+						<row>
+							<hbox height="150px" align="left"
+								pack="left">
+								<image
+									src='${c:getProperty("DefaultProduct")};'>
+									<attribute name="onCreate">
+	controller.showImageProduct(self, controller.getEntity());
+</attribute>
+								</image>
+							</hbox>
+						</row>
+
+
+					</rows>
+				</grid>
+			</center>
+
+</borderlayout>
 	</div>
 
 </zk>
