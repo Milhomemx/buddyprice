@@ -1,20 +1,98 @@
-<zk>
-    <groupbox id="root" mold="3d" open="false" width="420px">
-        <caption label="Cadastrar Produto"></caption>
-        <label value="Teste" fulfill="root.onOpen" />
-        <grid fulfill="root.onOpen">
-            <columns>
-                <column label="Título" hflex="1" />
-                <column label="Título2" hflex="3" />
-            </columns>
-            <rows>
-                <row>
-                    <label value="Conteúdo tabela" />
-                    <label value="O Teste" />
-                </row>
-            </rows>
-        </grid>
- 
-    </groupbox>
-    Continuação da página independente do Ondemand
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogin.zul"?>
+<zk apply="${establishmentComposer}">
+	<borderlayout hflex="0" vflex="0">
+		<north border="none">
+
+			<label value="Adicionando um estabelecimento"
+				style="font-size:18px" />
+		</north>
+		<west border="none" maxsize="30" style="width: 20%">
+			<grid>
+				<rows>
+					<row>
+						<hbox>
+							<textbox id="fldNome"
+								value="@{controller.entity.nome}" width="282px"
+								class="input-xlarge" />
+						</hbox>
+					</row>
+
+					<row>
+						<textbox id="fldEndereco"
+							value="@{controller.entity.endereco}" width="282px"
+							class="input-xlarge" />
+					</row>
+
+					<row>
+						<hbox>
+							<textbox id="fldCidade" class="input-xlarge"
+								width="100px" value="@{controller.entity.cidade}" />
+
+							<textbox id="fldEstado" class="input-xlarge"
+								width="80px" value="@{controller.entity.estado}" />
+							<textbox id="fldPais" class="input-xlarge"
+								width="95px" value="@{controller.entity.pais}" />
+						</hbox>
+					</row>
+
+					<row>
+						<textbox id="fldSite"
+							value="@{controller.entity.site}" width="282px"
+							class="input-xlarge" />
+					</row>
+
+					<row>
+
+						<textbox id="fldDescricao" rows="4"
+							value="@{controller.entity.descricao}" width="282px"
+							class="input-xlarge" />
+					</row>
+					<row id="inserir" visible="false">
+						<button upload="true" label="Alterar Foto"
+							onUpload='controller.changeProfileImage(event)' />
+					</row>
+
+					<row>
+
+						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações" />
+							<button label="Cancelar" href="search.zul"
+								width="130px" />
+
+						</hbox>
+
+
+					</row>
+
+				</rows>
+			</grid>
+
+		</west>
+		<center border="none">
+			<grid style="width: 20%">
+				<rows>
+					<row>
+						<hbox align="left" pack="left" style="width: 20px">
+							<image
+								src="/images/establishments/defaultPicture.png">
+								<!--					<attribute name="onCreate">
+									controller.showImageEstablishment(self, controller.getEntity());
+									</attribute>-->
+							</image>
+						</hbox>
+					</row>
+					<row>
+					<button upload="true" label="Alterar Foto"
+								onUpload='controller.changeProfileImage(event)' />
+					</row>
+				</rows>
+			</grid>
+		</center>
+		<south border="none">
+			<grid>
+				<rows></rows>
+			</grid>
+		</south>
+	</borderlayout>
 </zk>
