@@ -86,8 +86,8 @@
 				</row>
 				<row>
 					<button upload="true" label="Alterar Foto"
-						id="inserir" visible="false"
-						onUpload='controller.changeProfileImage(event)' />
+						id="foto" visible="false"
+						onUpload='controller.changeEstablishmentImage(event)' />
 				</row>
 
 			</rows>

@@ -33,6 +33,7 @@ public class EstablishmentComposer extends
 		if (session.getAttribute("estabelecimento") != null) {
 			setEntity((Estabelecimento) session.getAttribute("estabelecimento"));
 			session.setAttribute("estabelecimento", null);
+			showAlterImageEstablishment();
 		}
 		
 		loadBinder();
@@ -68,7 +69,7 @@ public class EstablishmentComposer extends
 		if (ret.isValid()) {
 			AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
 			att.uploadAttachment(media, "image_establishment", entity);
-			Executions.sendRedirect("");
+			//Executions.sendRedirect("");
 		}
 		treatReturn(ret);
 	}
@@ -108,6 +109,12 @@ public class EstablishmentComposer extends
 			}
 		}
 	}
+	
+	private void showAlterImageEstablishment(){
+		Component foto = getComponentById("foto");
+		foto.setVisible(true);
+	}
+	
 
 	@Override
 	public Estabelecimento getEntityObject() {

@@ -5,115 +5,129 @@
 <zk>
 
 	<div self="@define(content)">
-		<window apply="${viewEstablishmentComposer}">
+		<borderlayout height="600px"
+			apply="${viewEstablishmentComposer}">
+			<west border="none" style="width: 40%">
+				<grid>
+					<rows>
+						<row>
+							<hbox>
+								<label
+									value="Visualizando um estabelecimento" style="font-size:18px" />
+							</hbox>
 
-			<grid style="width: 80%">
-				<rows>
-					<row>
-						<hbox>
-							<label
-								value="Visualizando um estabelecimento" style="font-size:18px" />
-						</hbox>
+						</row>
+						<row if="${not empty param.sucess}">
+							<hbox>
 
-					</row>
-					<row spans="2" if="${not empty param.sucess}">
-						<hbox>
+								<label sclass="testecss3"
+									style="color: #468847"
+									value='${c:getProperty("NotificationEstablishmentSucess")}' />
 
-							<label sclass="testecss3"
-								style="color: #468847"
-								value='${c:getProperty("NotificationEstablishmentSucess")}' />
+							</hbox>
+						</row>
 
-						</hbox>
-					</row>
+						<row>
+							<hbox>
+								<label id="fldNometitle"
+									value="Estabelecimento:" width="282px" />
+								<label id="fldNome"
+									value="@{controller.entity.nome}" width="282px" />
+							</hbox>
+						</row>
 
-					<row spans="2" if="${empty param.sucess}">
-						<hbox>
+						<row>
+							<hbox>
+								<label id="fldEnderecotitle"
+									value="Endereço:" width="282px" />
+								<label id="fldEndereco"
+									value="@{controller.entity.endereco}" width="282px" />
+							</hbox>
+						</row>
 
-							<label sclass="testecss3"
-								style="color: #468847" value="" />
+						<row>
+							<hbox>
+								<label id="fldCidadetitle"
+									value="Cidade:" width="282px" />
+								<label id="fldCidade"
+									value="@{controller.entity.cidade}" width="282px" />
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldEstadotitle"
+									value="Estado:" width="282px" />
+								<label id="fldEstado"
+									value="@{controller.entity.estado}" width="282px" />
 
-						</hbox>
-					</row>
-
-					<row>
-						<hbox>
-							<label id="fldNometitle"
-								value="Estabelecimento:" width="282px" />
-							<label id="fldNome"
-								value="@{controller.entity.nome}" width="282px" />
-						</hbox>
-					</row>
-
-					<row>
-						<hbox>
-							<label id="fldEnderecotitle"
-								value="Endereço:" width="282px" />
-							<label id="fldEndereco"
-								value="@{controller.entity.endereco}" width="282px" />
-						</hbox>
-					</row>
-
-					<row>
-						<hbox>
-							<label id="fldCidadetitle" value="Cidade:"
-								width="282px" />
-							<label id="fldCidade"
-								value="@{controller.entity.cidade}" width="282px" />
-						</hbox>
-					</row>
-					<row>
-						<hbox>
-							<label id="fldEstadotitle" value="Estado:"
-								width="282px" />
-							<label id="fldEstado"
-								value="@{controller.entity.estado}" width="282px" />
-
-						</hbox>
-					</row>
-					<row>
-						<hbox>
-							<label id="fldPaistitle" value="País:"
-								width="282px" />
-							<label id="fldPais"
-								value="@{controller.entity.pais}" width="282px" />
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldPaistitle" value="País:"
+									width="282px" />
+								<label id="fldPais"
+									value="@{controller.entity.pais}" width="282px" />
 
 
-						</hbox>
-					</row>
+							</hbox>
+						</row>
 
-					<row>
-						<hbox>
-							<label id="fldSitetitle" value="Site:"
-								width="282px" />
-							<label id="fldSite"
-								value="@{controller.entity.site}" width="282px" />
+						<row>
+							<hbox>
+								<label id="fldSitetitle" value="Site:"
+									width="282px" />
+								<label id="fldSite"
+									value="@{controller.entity.site}" width="282px" />
 
-						</hbox>
-					</row>
+							</hbox>
+						</row>
 
-					<row>
-						<hbox>
-							<label id="fldDescricaotitle" value="Site:"
-								width="282px" />
-							<label id="fldDescricao"
-								value="@{controller.entity.descricao}" width="282px" />
+						<row>
+							<hbox>
+								<label id="fldDescricaotitle"
+									value="Descrição:" width="282px" />
+								<label id="fldDescricao"
+									value="@{controller.entity.descricao}" width="282px" />
+								<label id="foto" value=""
+									visible="false" />
+							</hbox>
+						</row>
 
-						</hbox>
-					</row>
+						<row>
+							<button label="Voltar" href="search.zul"
+								width="130px" />
+						</row>
+						<row>
 
-					<row>
-						<button label="Voltar"
-							href="search.zul" width="130px" />
-					</row>
-					<row>
+						</row>
 
-					</row>
+					</rows>
 
-				</rows>
+				</grid>
+			</west>
 
-			</grid>
+			<center border="none" style="width: 50%">
+				<grid style="width: 20%">
+					<rows>
+						<row>
+							<hbox height="150px" align="left"
+								pack="left">
+								<image
+									src='${c:getProperty("DefaultEstablishment")};'>
+									<attribute name="onCreate">
+	controller.showImageEstablishment(self, controller.getEntity());
+</attribute>
+								</image>
+							</hbox>
+						</row>
 
-		</window>
+
+					</rows>
+				</grid>
+			</center>
+
+		</borderlayout>
 	</div>
 
 </zk>
