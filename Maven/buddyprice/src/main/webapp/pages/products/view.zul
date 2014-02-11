@@ -88,7 +88,8 @@
 								width="282px" />
 							<label id="fldDescricao"
 								value="@{controller.entity.descricao}" width="282px" />
-
+<label id="foto" value=""
+									visible="false" />
 						</hbox>
 					</row>
 
