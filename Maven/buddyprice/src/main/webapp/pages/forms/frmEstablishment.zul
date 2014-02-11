@@ -16,11 +16,14 @@
 						class="input-xlarge"
 						placeholder='${c:getProperty("HolderEstablishmentName")}' />
 				</hbox>
-<!-- 				<hbox width="100%" height="150px" align="right"
+ 				<hbox width="100%" height="150px" align="right"
 					pack="right">
-					<image src='${c:getProperty("DefaultEstablishment")};'
-						onCreate="br.com.buddyprice.view.composer.EstablishmentComposer.showImageEstablishment(self);" />
-				</hbox> -->
+					<image src='${c:getProperty("DefaultEstablishment")};'>
+						<attribute name="onCreate">
+							controller.showImageEstablishment(self,controller.getEntity());
+						</attribute>
+					</image>
+				</hbox>
 			</row>
 
 			<row>

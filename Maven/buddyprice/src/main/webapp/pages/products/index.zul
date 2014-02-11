@@ -5,6 +5,6 @@
 
 	 <div self="@define(content)">
 
-		    <include src="/pages/establishments/search.zul" /> 
+		    <include src="/pages/products/search.zul" /> 
 		</div>
 </zk>
