@@ -102,7 +102,7 @@
 					</row>
 
 					<row>
-						<button label="Cancelar"
+						<button label="Voltar"
 							href="search.zul" width="130px" />
 					</row>
 					<row>
