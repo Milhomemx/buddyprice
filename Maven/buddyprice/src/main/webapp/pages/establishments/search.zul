@@ -25,7 +25,7 @@
 							</row>
 						</rows>
 					</grid>
-					<separator width="700px"/>
+					<separator width="700px" />
 					<grid id="resultList"
 						model="@{controller.listEntity}" hflex="min" mold="paging"
 						pageSize="3" visible="false">
@@ -36,17 +36,16 @@
 								<vbox align="center">
 									<borderlayout width="700px"
 										height="150px">
-										<west width="20%"
+										<west width="18%"
 											border="none">
-											<vbox width="100%"
-												vflex="1">
+											<vbox width="90%">
 												<hbox>
 													<label
 														value="@{establishment.nome}" />
-													
+
 												</hbox>
 												<hbox>
-												<image
+													<image
 														src='${c:getProperty("DefaultEstablishment")};'>
 														<attribute name="onCreate">
 	controller.showImageEstablishment(self, controller.getEntity());
@@ -55,7 +54,7 @@
 												</hbox>
 											</vbox>
 										</west>
-										<center>
+										<center border="none">
 											<vbox vflex="0">
 												<hlayout vflex="1">
 													<label
