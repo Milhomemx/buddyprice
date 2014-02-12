@@ -47,7 +47,8 @@
 													<image
 														src='${c:getProperty("DefaultEstablishment")};'>
 														<attribute name="onCreate">
-														controller.showImageEstablishment(self.getParent().getParent().getParent().getParent().getParent().getValue(), controller.getEntity());
+ 														controller.showImageEstablishment(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
+															
 														</attribute>
 													</image>
 												</hbox>
