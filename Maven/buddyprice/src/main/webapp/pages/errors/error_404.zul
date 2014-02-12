@@ -1,0 +1,12 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogin.zul"?>
+
+<zk xmlns:h="native">
+
+	<div self="@define(content)">
+		<window>
+			<label value="Página não encontrada!"
+							style="font-size:24px"></label>
+		</window>
+	</div>
+</zk>
