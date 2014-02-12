@@ -158,7 +158,7 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/buddyprice/pages/errors/error_404.htm</location>
+		<location>/pages/errors/error_404.zul</location>
 	</error-page>
 
 </web-app>
