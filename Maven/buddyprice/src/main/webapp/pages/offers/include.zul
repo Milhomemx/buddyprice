@@ -1,0 +1,65 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+
+
+<zk>
+
+	<div self="@define(content)">
+		<window>
+
+			<grid style="width: 80%">
+				<rows>
+
+					<row>
+						<hbox>
+							<label value="Criando uma oferta"
+								style="font-size:18px" />
+							<label value="@{controller.entity.name}"
+								style="font-size:18px" />
+						</hbox>
+
+					</row>
+					<row>
+						<hbox>
+							<textbox id="fldProduto"
+								value="@{controller.entity.produto}" class="input-small"
+								width="242px" constraint="no empty"
+								placeholder='${c:getProperty("HolderYourProduct")}' />
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<textbox id="fldEstabelecimento"
+								width="242px" class="input-medium"
+								value="@{controller.entity.estabelecimento}"
+								placeholder='${c:getProperty("HolderYourEstablishment")}'
+								constraint="no empty" />
+						</hbox>
+					</row>
+
+					<row>
+						<hbox>
+							<textbox id="fldValor" width="242px"
+								class="input-medium" value="@{controller.entity.valor}"
+								placeholder='${c:getProperty("HolderYourValue")}'
+								constraint="no empty" />
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações" width="121px"
+								onClick='controller.doAction("updateInformation")' />
+							<button label="Cancelar"
+								href="/pages/dashboard/" width="121px" />
+						</hbox>
+					</row>
+				</rows>
+
+			</grid>
+
+		</window>
+	</div>
+
+</zk>

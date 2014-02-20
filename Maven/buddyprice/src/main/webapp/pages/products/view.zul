@@ -6,106 +6,97 @@
 
 	<div self="@define(content)">
 		<borderlayout height="600px" apply="${viewProductComposer}">
-<west border="none" style="width: 40%">
-			<grid style="width: 80%">
-				<rows>
-					<row>
-						<hbox>
-							<label
-								value="Visualizando um Produto" style="font-size:18px" />
-						</hbox>
+			<west border="none" style="width: 40%">
+				<grid>
+					<rows>
+						<row>
+							<hbox>
+								<label value="Visualizando um Produto"
+									style="font-size:18px" />
+							</hbox>
 
-					</row>
-					<row spans="2" if="${not empty param.sucess}">
-						<hbox>
+						</row>
 
-							<label sclass="testecss3"
-								style="color: #468847"
-								value='${c:getProperty("NotificationProductSucess")}' />
+						<row>
+							<hbox>
+								<label id="fldNometitle" value="Produto"
+									width="242px" />
+								<label id="fldNome"
+									value="@{controller.entity.nome}" width="242px" />
+							</hbox>
+						</row>
 
-						</hbox>
-					</row>
+						<row>
+							<hbox>
+								<label id="fldTamanhotitle"
+									value="Tamanho:" width="242px" />
+								<label id="fldTamanho"
+									value="@{controller.entity.tamanho}" width="242px" />
+							</hbox>
+						</row>
 
-					<row>
-						<hbox>
-							<label id="fldNometitle"
-								value="Produto" width="282px" />
-							<label id="fldNome"
-								value="@{controller.entity.nome}" width="282px" />
-						</hbox>
-					</row>
+						<row>
+							<hbox>
+								<label id="fldPesotitle" value="Peso:"
+									width="242px" />
+								<label id="fldPeso"
+									value="@{controller.entity.peso}" width="242px" />
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldCortitle" value="Cor:"
+									width="242px" />
+								<label id="fldCor"
+									value="@{controller.entity.cor}" width="242px" />
 
-					<row>
-						<hbox>
-							<label id="fldTamanhotitle"
-								value="Tamanho:" width="282px" />
-							<label id="fldTamanho"
-								value="@{controller.entity.tamanho}" width="282px" />
-						</hbox>
-					</row>
-
-					<row>
-						<hbox>
-							<label id="fldPesotitle" value="Peso:"
-								width="282px" />
-							<label id="fldPeso"
-								value="@{controller.entity.peso}" width="282px" />
-						</hbox>
-					</row>
-					<row>
-						<hbox>
-							<label id="fldCortitle" value="Cor:"
-								width="282px" />
-							<label id="fldCor"
-								value="@{controller.entity.cor}" width="282px" />
-
-						</hbox>
-					</row>
-					<row>
-						<hbox>
-							<label id="fldversaotitle" value="Versão:"
-								width="282px" />
-							<label id="fldVersao"
-								value="@{controller.entity.versao}" width="282px" />
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldversaotitle"
+									value="Versão:" width="242px" />
+								<label id="fldVersao"
+									value="@{controller.entity.versao}" width="242px" />
 
 
-						</hbox>
-					</row>
+							</hbox>
+						</row>
 
-					<row>
-						<hbox>
-							<label id="fldMarcatitle" value="Marca:"
-								width="282px" />
-							<label id="fldMarca"
-								value="@{controller.entity.marca}" width="282px" />
+						<row>
+							<hbox>
+								<label id="fldMarcatitle" value="Marca:"
+									width="242px" />
+								<label id="fldMarca"
+									value="@{controller.entity.marca}" width="242px" />
 
-						</hbox>
-					</row>
+							</hbox>
+						</row>
 
-					<row>
-						<hbox>
-							<label id="fldDescricaotitle" value="Site:"
-								width="282px" />
-							<label id="fldDescricao"
-								value="@{controller.entity.descricao}" width="282px" />
-<label id="foto" value=""
+						<row>
+							<hbox>
+								<label id="fldDescricaotitle"
+									value="Site:" width="242px" />
+								<label id="fldDescricao"
+									value="@{controller.entity.descricao}" width="242px" />
+								<label id="foto" value=""
 									visible="false" />
-						</hbox>
-					</row>
+							</hbox>
+						</row>
 
-					<row>
-						<button label="Voltar"
-							href="search.zul" width="130px" />
-					</row>
+						<row>
+							<button label="Voltar" href="search.zul"
+								width="130px" />
+						</row>
 
-				</rows>
+					</rows>
 
-			</grid>
+				</grid>
 
-</west>
+			</west>
 
-<center border="none" style="width: 50%">
-				<grid style="width: 20%">
+			<center border="none" style="width: 50%">
+				<grid style="width: 40%">
 					<rows>
 						<row>
 							<hbox height="150px" align="left"
@@ -124,7 +115,7 @@
 				</grid>
 			</center>
 
-</borderlayout>
+		</borderlayout>
 	</div>
 
 </zk>

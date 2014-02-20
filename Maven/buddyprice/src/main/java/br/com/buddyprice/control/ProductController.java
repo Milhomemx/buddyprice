@@ -49,7 +49,7 @@ public class ProductController extends GenericControl<Produto> {
     		if((searchKey == null || searchKey.isEmpty()) || !(searchKey.indexOf("%") != 0) || !(searchKey.indexOf("%") != searchKey.length() - 1)){
     			return ret;
     		}
-    		String sql = "FROM Produto WHERE (nome like '%" + searchKey + "%') ";
+    		String sql = "FROM Produto WHERE (upper(nome) like upper('%" + searchKey + "%')) ";
     		
     		data.put("sql", sql);
     		return super.searchByHQL();
