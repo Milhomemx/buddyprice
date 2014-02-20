@@ -1,6 +1,6 @@
 <div apply="${productComposer}">
 <borderlayout height="800px">
-	<west border="none" style="width: 25%">
+	<west border="none" style="width: 40%">
 
 	<grid>
 		<rows>
@@ -14,7 +14,7 @@
 			<row>
 				<hbox>
 					<textbox id="fldNome"
-						value="@{controller.entity.nome}" width="282px"
+						value="@{controller.entity.nome}" width="242px"
 						class="input-xlarge"
 						placeholder="Nome" />
 				</hbox>
@@ -27,7 +27,7 @@
 
 			<row>
 				<textbox id="fldTamanho"
-					value="@{controller.entity.tamanho}" width="282px"
+					value="@{controller.entity.tamanho}" width="242px"
 					class="input-xlarge"
 					placeholder="Tamanho" />
 			</row>
@@ -35,28 +35,28 @@
 			<row>
 				<hbox>
 					<textbox id="fldPeso" class="input-xlarge"
-						width="100px" value="@{controller.entity.peso}"
+						width="79px" value="@{controller.entity.peso}"
 						placeholder="Peso" />
 
 					<textbox id="fldCor" class="input-xlarge"
-						width="80px" value="@{controller.entity.cor}"
+						width="79px" value="@{controller.entity.cor}"
 						placeholder="Cor" />
 					<textbox id="fldVersao" class="input-xlarge"
-						width="95px" value="@{controller.entity.versao}"
+						width="79px" value="@{controller.entity.versao}"
 						placeholder="Versão" />
 				</hbox>
 			</row>
 
 			<row>
 				<textbox id="fldMarca" value="@{controller.entity.marca}"
-					width="282px" class="input-xlarge"
+					width="242px" class="input-xlarge"
 					placeholder="Marca" />
 			</row>
 
 			<row>
 
 				<textbox id="fldDescricao" rows="4"
-					value="@{controller.entity.descricao}" width="282px"
+					value="@{controller.entity.descricao}" width="242px"
 					class="input-xlarge"
 					placeholder="Descrição" />
 			</row>
@@ -88,7 +88,7 @@
 	</grid>
 	</west>
 		<center border="none">
-		<grid style="width: 20%">
+		<grid style="width: 40%">
 			<rows>
 				<row>
 					<hbox height="150px" align="left"

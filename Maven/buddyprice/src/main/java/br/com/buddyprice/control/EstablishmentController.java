@@ -49,7 +49,7 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
     		if((searchKey == null || searchKey.isEmpty()) || !(searchKey.indexOf("%") != 0) || !(searchKey.indexOf("%") != searchKey.length() - 1)){
     			return ret;
     		}
-    		String sql = "FROM Estabelecimento WHERE (nome like '%" + searchKey + "%') ";
+    		String sql = "FROM Estabelecimento WHERE (upper(nome) like upper('%" + searchKey + "%')) ";
     		
     		data.put("sql", sql);
     		return super.searchByHQL();

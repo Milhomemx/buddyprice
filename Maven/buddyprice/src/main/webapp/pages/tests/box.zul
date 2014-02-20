@@ -1,0 +1,18 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+		<grid>
+			<rows>
+				<row>
+					<hbox><vbox>
+					Vbox dentro da Hbox1
+					</vbox><vbox>
+					Vbox dentro da Hbox2
+					</vbox>teste</hbox>
+				</row>
+				
+				<row>
+				Linha 2
+				</row>
+			</rows>
+		</grid>
+</zk>

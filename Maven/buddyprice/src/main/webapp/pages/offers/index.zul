@@ -3,5 +3,8 @@
 <?page title="Buddy Price"?>
 <zk>
 
-	Em construção
+	 <div self="@define(content)">
+
+		    <include src="/pages/offers/include.zul" /> 
+		</div>
 </zk>

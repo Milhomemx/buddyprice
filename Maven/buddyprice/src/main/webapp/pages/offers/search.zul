@@ -1,13 +1,12 @@
-<?page title="Busca Produto"?>
+<?page title="Busca Estabelecimento"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
 	<style>.message.z-label{ font-size: 20px; }</style>
 	<div self="@define(content)" height="100">
-		<hbox width="100%" height="100%" pack="left"
-			apply="${searchProductComposer}">
+		<hbox width="100%" height="100%" pack="left">
 			<groupbox closable="false" width="100%" height="500px">
-				<caption label="Busca Produto" />
+				<caption label="Busca Oferta" />
 				<vbox width="100%" height="100%" align="center">
 					<grid hflex="min">
 						<columns>
@@ -18,9 +17,9 @@
 								<hlayout>
 									<textbox width="400px"
 										value="@{controller.searchField}"
-										placeholder="Digite algum dado do produto aqui!"
-										onChange='controller.doAction("searchProducts")'
-										onOK='controller.doAction("searchProducts")' />
+										placeholder="Digite algum dado da oferta aqui!"
+										onChange='controller.doAction("searchEstablishments")'
+										onOK='controller.doAction("searchEstablishments")' />
 								</hlayout>
 							</row>
 						</rows>
@@ -30,8 +29,8 @@
 						model="@{controller.listEntity}" hflex="min" mold="paging"
 						pageSize="3" visible="false">
 						<rows>
-							<row self="@{each=product}"
-								value="@{product}">
+							<row self="@{each=establishment}"
+								value="@{establishment}">
 
 								<vbox align="center">
 									<borderlayout width="700px"
@@ -41,13 +40,14 @@
 											<vbox width="90%">
 												<hbox>
 													<label
-														value="@{product.nome}" />
+														value="@{establishment.nome}" />
 												</hbox>
 												<hbox>
 													<image
-														src='${c:getProperty("DefaultProduct")};'>
+														src='${c:getProperty("DefaultEstablishment")};'>
 														<attribute name="onCreate">
-														controller.showImageProduct(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
+ 														controller.showImageEstablishment(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
+															
 														</attribute>
 													</image>
 												</hbox>
@@ -57,7 +57,7 @@
 											<vbox vflex="0">
 												<hlayout vflex="1">
 													<label
-														value="@{product.descricao}" />
+														value="@{establishment.descricao}" />
 												</hlayout>
 											</vbox>
 										</center>
@@ -84,7 +84,7 @@
 		</hbox>
 		<separator />
 		<hbox>
-			<button label="Adicionar Produto"
+			<button label="Adicionar Oferta"
 				href="include.zul" />
 			<button label="Voltar" href="../dashboard/" />
 
