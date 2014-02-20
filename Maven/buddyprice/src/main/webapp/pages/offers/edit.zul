@@ -1,0 +1,113 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+
+
+<zk>
+
+	<div self="@define(content)">
+		<window apply="${profileComposer}">
+
+			<grid style="width: 80%">
+				<rows>
+
+					<row>
+						<hbox>
+							<label value="Alterando conta de "
+								style="font-size:18px" />
+							<label value="@{controller.entity.name}"
+								style="font-size:18px" />
+						</hbox>
+
+					</row>
+
+					<row spans="2" if="${not empty param.sucess}">
+
+						<label id="inputSuccess"
+							value='	${c:getProperty("NotificationUserAlterSucess")}' />
+
+					</row>
+
+					<row>
+						<hbox>
+							<textbox id="fldNome"
+								value="@{controller.entity.name}" class="input-small"
+								constraint="no empty"
+								placeholder='${c:getProperty("HolderYourName")}' />
+							<textbox id="fldUltNome"
+								class="input-medium" value="@{controller.entity.sobreNome}"
+								placeholder='${c:getProperty("HolderYourLastName")}'
+								constraint="no empty" />
+						</hbox>
+					</row>
+					<row>
+						<textbox id="fldEmail" class="input-xlarge"
+							constraint="no empty" width="282px"
+							value="@{controller.entity.email}" disabled="true"
+							placeholder='${c:getProperty("HolderYourEmail")}' />
+
+					</row>
+					<row>
+						<hbox>
+							<textbox id="fldCidade" class="input-xlarge"
+								width="100px" value="@{controller.entity.cidade}"
+								placeholder='${c:getProperty("HolderYourCity")}' />
+
+							<textbox id="fldEstado" class="input-xlarge"
+								width="80px" value="@{controller.entity.estado}"
+								placeholder='${c:getProperty("HolderYourState")}' />
+							<textbox id="fldPais" class="input-xlarge"
+								width="95px" value="@{controller.entity.pais}"
+								placeholder='${c:getProperty("HolderYourCountry")}' />
+						</hbox>
+					</row>
+					<row>
+						<textbox id="fldtel" class="input-xlarge"
+							width="282px" value="@{controller.entity.tel}"
+							placeholder='${c:getProperty("HolderYourCel")}' />
+
+					</row>
+
+					<row>
+						<hbox>
+							<label value="Data de Nascimento:" />
+							<datebox
+								value="@{controller.entity.birthDate}" id="fldNasc"
+								constraint="no future: Data inválida" width="170px" />
+						</hbox>
+					</row>
+
+
+					<row>
+						<hbox>
+							<button upload="true" label="Alterar Foto"
+								onUpload='controller.changeProfileImage(event)' />
+
+							<button label="Alterar Senha"
+								onClick='controller.callModalWindow("./changePass.zul")' />
+
+						</hbox>
+
+					</row>
+					<row>
+						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("updateInformation")' />
+							<button sclass="btn btn-danger"
+								width="140px" label="Desativar Conta"
+								onClick='controller.doAction("deactivate")' />
+
+						</hbox>
+					</row>
+					<row>
+						<button
+							label="Cancelar" href="/pages/dashboard/" width="130px" />
+					</row>
+				</rows>
+
+			</grid>
+
+		</window>
+	</div>
+
+</zk>
