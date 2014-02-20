@@ -1,97 +1,100 @@
 <div apply="${establishmentComposer}">
-<borderlayout height="800px">
-	<west border="none" style="width: 25%">
-		<grid>
-			<rows>
-				<row>
-					<hbox>
-						<label value="Adicionando um estabelecimento"
-							style="font-size:18px" />
-					</hbox>
-				</row>
+	<borderlayout height="800px">
+		<west border="none" style="width: 40%">
+			<grid>
+				<rows>
+					<row>
+						<hbox>
+							<label
+								value="Adicionando um estabelecimento" style="font-size:18px" />
+						</hbox>
+					</row>
 
-				<row>
-					<hbox>
-						<textbox id="fldNome"
-							value="@{controller.entity.nome}" width="282px"
+					<row>
+						<hbox>
+							<textbox id="fldNome"
+								value="@{controller.entity.nome}" width="242px"
+								class="input-xlarge"
+								placeholder='${c:getProperty("HolderEstablishmentName")}' />
+						</hbox>
+					</row>
+
+					<row>
+						<textbox id="fldEndereco"
+							value="@{controller.entity.endereco}" width="242px"
 							class="input-xlarge"
-							placeholder='${c:getProperty("HolderEstablishmentName")}' />
-					</hbox>
-				</row>
+							placeholder='${c:getProperty("HolderEstablishmentAddress")}' />
+					</row>
 
-				<row>
-					<textbox id="fldEndereco"
-						value="@{controller.entity.endereco}" width="282px"
-						class="input-xlarge"
-						placeholder='${c:getProperty("HolderEstablishmentAddress")}' />
-				</row>
+					<row>
+						<hbox>
+							<textbox id="fldCidade" class="input-xlarge"
+								width="79px" value="@{controller.entity.cidade}"
+								placeholder='${c:getProperty("HolderEstablishmentCity")}' />
 
-				<row>
-					<hbox>
-						<textbox id="fldCidade" class="input-xlarge"
-							width="100px" value="@{controller.entity.cidade}"
-							placeholder='${c:getProperty("HolderEstablishmentCity")}' />
+							<textbox id="fldEstado" class="input-xlarge"
+								width="79px" value="@{controller.entity.estado}"
+								placeholder='${c:getProperty("HolderEstablishmentState")}' />
+							<textbox id="fldPais" class="input-xlarge"
+								width="79px" value="@{controller.entity.pais}"
+								placeholder='${c:getProperty("HolderEstablishmentCountry")}' />
+						</hbox>
+					</row>
 
-						<textbox id="fldEstado" class="input-xlarge"
-							width="80px" value="@{controller.entity.estado}"
-							placeholder='${c:getProperty("HolderEstablishmentState")}' />
-						<textbox id="fldPais" class="input-xlarge"
-							width="95px" value="@{controller.entity.pais}"
-							placeholder='${c:getProperty("HolderEstablishmentCountry")}' />
-					</hbox>
-				</row>
+					<row>
+						<textbox id="fldSite"
+							value="@{controller.entity.site}" width="242px"
+							class="input-xlarge"
+							placeholder='${c:getProperty("HolderEstablishmentSite")}' />
+					</row>
 
-				<row>
-					<textbox id="fldSite"
-						value="@{controller.entity.site}" width="282px"
-						class="input-xlarge"
-						placeholder='${c:getProperty("HolderEstablishmentSite")}' />
-				</row>
+					<row>
 
-				<row>
+						<textbox id="fldDescricao" rows="4"
+							value="@{controller.entity.descricao}" width="242px"
+							class="input-xlarge"
+							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
+					</row>
 
-					<textbox id="fldDescricao" rows="4"
-						value="@{controller.entity.descricao}" width="282px"
-						class="input-xlarge"
-						placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
-				</row>
+					<row>
+						<hbox>
+							<button sclass="btn btn-danger"
+								label="Salvar Alterações"
+								onClick='controller.doAction("saveEntity")' />
+							<button label="Cancelar" href="search.zul"
+								width="130px" />
 
-				<row>
-					<hbox>
-						<button sclass="btn btn-danger"
-							label="Salvar Alterações"
-							onClick='controller.doAction("saveEntity")' />
-						<button label="Cancelar" href="search.zul"
-							width="130px" />
+						</hbox>
+					</row>
 
-					</hbox>
-				</row>
-
-			</rows>
-		</grid>
-	</west>
-	<center border="none">
-		<grid style="width: 20%">
-			<rows>
-				<row>
-					<hbox height="150px" align="left"
-						pack="left">
-						<image
-							src='${c:getProperty("DefaultEstablishment")};'>
-							<attribute name="onCreate">
+				</rows>
+			</grid>
+		</west>
+		<center border="none">
+			<grid style="width: 40%">
+				<rows>
+					<row>
+						<hbox height="150px" align="left" pack="left">
+							<image
+								src='${c:getProperty("DefaultEstablishment")};'>
+								<attribute name="onCreate">
 	controller.showImageEstablishment(self, controller.getEntity());
 </attribute>
-						</image>
-					</hbox>
-				</row>
-				<row>
-					<button upload="true" label="Alterar Foto"
-						id="foto" visible="false"
-						onUpload='controller.changeEstablishmentImage(event)' />
-				</row>
+							</image>
+						</hbox>
 
-			</rows>
-		</grid>
-	</center>
-</borderlayout>
+					</row>
+					<row>
+						<hbox>
+							<button upload="true" label="Alterar Foto"
+								id="foto" visible="false"
+								onUpload='controller.changeEstablishmentImage(event)' />
+						</hbox>
+
+					</row>
+
+				</rows>
+			</grid>
+		</center>
+	</borderlayout>
 </div>
