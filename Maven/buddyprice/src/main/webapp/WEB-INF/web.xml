@@ -156,6 +156,28 @@
 		<welcome-file>index.htm</welcome-file>
 	</welcome-file-list>
 
+<bean id="socialConnections" class="br.com.vexillum.vexsocial.core.SocialConnections" scope="session"/>
+<!-- Servlets de callback das redes sociais -->
+ 
+ <servlet>
+        <servlet-name>callbackFacebook</servlet-name>
+        <servlet-class>br.com.vexillum.vexsocial.view.servlet.CallbackFacebook</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>callbackFacebook</servlet-name>
+        <url-pattern>/callbackFacebook</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>callbackTwitter</servlet-name>
+        <servlet-class>br.com.vexillum.vexsocial.view.servlet.CallbackTwitter</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>callbackTwitter</servlet-name>
+        <url-pattern>/callbackTwitter</url-pattern>
+    </servlet-mapping>
+
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/pages/errors/error_404.zul</location>
