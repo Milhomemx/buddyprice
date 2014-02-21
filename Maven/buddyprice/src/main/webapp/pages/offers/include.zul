@@ -21,10 +21,12 @@
 					</row>
 					<row>
 						<hbox>
-							<textbox id="fldProduto"
-								value="@{controller.entity.produto}" class="input-small"
-								width="242px" constraint="no empty"
-								placeholder='${c:getProperty("HolderYourProduct")}' />
+								
+								<combobox id="fldProduto" width="124px" model="@{controller.produtos}" selectedItem="@{controller.pesqProduto}" placeholder='${c:getProperty("HolderYourProduct")}'>
+							<comboitem self="@{each=produto}" label="@{produto.nome}" />
+						</combobox>
+						<textbox id="fldProdutoHidden" value="@{controller.entity.produto}" visible="false"/>
+								
 						</hbox>
 					</row>
 

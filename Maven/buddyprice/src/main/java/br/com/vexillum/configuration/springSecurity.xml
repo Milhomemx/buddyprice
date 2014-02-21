@@ -18,6 +18,7 @@
 		<security:intercept-url pattern="/pages/user/index.zul" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/establishments/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/pages/offers/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/dashboard/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/errors/**" access="ROLE_ANONYMOUS,ROLE_USER" />
 		<security:intercept-url pattern="/pages/**" access="ROLE_ANONYMOUS,ROLE_USER" />		
