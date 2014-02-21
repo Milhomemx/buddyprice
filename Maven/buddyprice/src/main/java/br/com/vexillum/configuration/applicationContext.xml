@@ -1,4 +1,5 @@
-	<beans xmlns="http://www.springframework.org/schema/beans"
+
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -59,6 +60,12 @@
 	</bean>
 	<bean id="emailProperties" class="br.com.vexillum.configuration.Properties">
 		<property name="pathName" value="properties/email/email.properties" />
+	</bean>
+	<bean id="socialConnections" class="br.com.vexillum.vexsocial.core.SocialConnections"
+		scope="session" />
+
+	<bean id="socialProperties" class="br.com.vexillum.configuration.Properties">
+		<property name="pathName" value="properties/social/social.properties" />
 	</bean>
 
 
