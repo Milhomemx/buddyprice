@@ -31,6 +31,11 @@ public class OfferComposer extends CRUDComposer<Oferta, OfferController> {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
+		if (session.getAttribute("oferta") != null) {
+			setEntity((Oferta) session.getAttribute("oferta"));
+			session.setAttribute("oferta", null);
+		}
+		
 		loadBinder();
 	}
 	
