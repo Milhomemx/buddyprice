@@ -33,7 +33,7 @@
 								value="@{offer">
 
 								<vbox align="center">
-									<borderlayout width="700px"
+									<borderlayout width="700px"	
 										height="150px">
 										<west width="18%"
 											border="none">
@@ -41,15 +41,18 @@
 												<hbox>
 													<label
 														value="@{offer.produto}" />
+												</hbox><hbox>
+													<label
+														value="@{offer.valor}" />
 												</hbox>
 												<hbox>
-													<image
+													<!--  <image
 														src='${c:getProperty("DefaultEstablishment")};'>
 														<attribute name="onCreate">
  														controller.showImageOffer(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
 															
 														</attribute>
-													</image>
+													</image> -->
 												</hbox>
 											</vbox>
 										</west>
@@ -57,7 +60,7 @@
 											<vbox vflex="0">
 												<hlayout vflex="1">
 													<label
-														value="@{establishment.estabelecimento}" />
+														value="@{offer.estabelecimento}" />
 												</hlayout>
 											</vbox>
 										</center>
@@ -65,13 +68,13 @@
 											border="none">
 											<vbox width="100%"
 												align="center" pack="center">
-												<button
+												<!-- <button
 													label="Visualizar" tooltiptext=""
 													onClick='controller.redirectToView(self.getParent().getParent().getParent().getParent().getParent().getValue())' />
 												<button label="Editar"
 													tooltiptext=""
 													onClick='controller.redirectToUpdate(self.getParent().getParent().getParent().getParent().getParent().getValue());' />
-											</vbox>
+											 --></vbox>
 
 										</east>
 									</borderlayout>

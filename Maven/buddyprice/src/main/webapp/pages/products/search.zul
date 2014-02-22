@@ -6,7 +6,7 @@
 	<div self="@define(content)" height="100">
 		<hbox width="100%" height="100%" pack="left"
 			apply="${searchProductComposer}">
-			<groupbox closable="false" width="100%" height="500px">
+			<groupbox closable="false" width="100%" height="530px">
 				<caption label="Busca Produto" />
 				<vbox width="100%" height="100%" align="center">
 					<grid hflex="min">
@@ -25,17 +25,17 @@
 							</row>
 						</rows>
 					</grid>
-					<separator width="700px" />
+					<separator width="800px" />
 					<grid id="resultList"
 						model="@{controller.listEntity}" hflex="min" mold="paging"
-						pageSize="3" visible="false">
+						pageSize="2" visible="false">
 						<rows>
 							<row self="@{each=product}"
 								value="@{product}">
 
 								<vbox align="center">
-									<borderlayout width="700px"
-										height="150px">
+									<borderlayout width="790px"
+										height="170px">
 										<west width="18%"
 											border="none">
 											<vbox width="90%">
