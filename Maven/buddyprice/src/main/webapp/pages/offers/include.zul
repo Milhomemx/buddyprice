@@ -5,7 +5,7 @@
 <zk>
 
 	<div self="@define(content)">
-		<window>
+		<window apply="br.com.buddyprice.view.composer.OfferComposer">
 
 			<grid style="width: 80%">
 				<rows>
@@ -14,29 +14,28 @@
 						<hbox>
 							<label value="Criando uma oferta"
 								style="font-size:18px" />
-							<label value="@{controller.entity.name}"
-								style="font-size:18px" />
 						</hbox>
 
 					</row>
 					<row>
 						<hbox>
+
+							<combobox id="fldProduto" width="242px"
+								model="@{controller.produtos}"
+								placeholder='${c:getProperty("HolderYourProduct")}' selectedItem="@{controller.entity.produto}">
 								
-								<combobox id="fldProduto" width="124px" model="@{controller.produtos}" selectedItem="@{controller.pesqProduto}" placeholder='${c:getProperty("HolderYourProduct")}'>
-							<comboitem self="@{each=produto}" label="@{produto.nome}" />
-						</combobox>
-						<textbox id="fldProdutoHidden" value="@{controller.entity.produto}" visible="false"/>
-								
+							</combobox>
 						</hbox>
 					</row>
 
 					<row>
 						<hbox>
-							<textbox id="fldEstabelecimento"
-								width="242px" class="input-medium"
-								value="@{controller.entity.estabelecimento}"
-								placeholder='${c:getProperty("HolderYourEstablishment")}'
-								constraint="no empty" />
+
+							<combobox id="fldEstabelecimento"
+								width="242px" model="@{controller.estabelecimentos}"
+								placeholder='${c:getProperty("HolderYourEstablishment")}' selectedItem="@{controller.entity.estabelecimento}">
+								
+							</combobox>
 						</hbox>
 					</row>
 
@@ -44,15 +43,14 @@
 						<hbox>
 							<textbox id="fldValor" width="242px"
 								class="input-medium" value="@{controller.entity.valor}"
-								placeholder='${c:getProperty("HolderYourValue")}'
-								constraint="no empty" />
+								placeholder='${c:getProperty("HolderYourValue")}'/>
 						</hbox>
 					</row>
 					<row>
 						<hbox>
 							<button sclass="btn btn-danger"
 								label="Salvar Alterações" width="121px"
-								onClick='controller.doAction("updateInformation")' />
+								onClick='controller.doAction("saveEntity")' />
 							<button label="Cancelar"
 								href="/pages/dashboard/" width="121px" />
 						</hbox>

@@ -46,21 +46,7 @@ public class EstablishmentComposer extends
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-	@Override
-	public Return saveEntity() {
-		Estabelecimento estabelecimento = entity;
-		Return ret = super.saveEntity();
-		if (ret.isValid()) {
-			ret.concat(getControl().getEstablishmentId(estabelecimento));
-			if (ret.isValid() && !ret.getList().isEmpty())
-				estabelecimento = (Estabelecimento) ret.getList().get(0);
-			session.setAttribute("estabelecimento", estabelecimento);
-			Executions.sendRedirect("view.zul?sucess=true");
 
-		}
-
-		return ret;
-	}
 
 	public void changeEstablishmentImage(UploadEvent event) {
 		Media media = event.getMedia();

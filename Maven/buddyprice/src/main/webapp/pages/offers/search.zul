@@ -4,7 +4,7 @@
 <zk>
 	<style>.message.z-label{ font-size: 20px; }</style>
 	<div self="@define(content)" height="100">
-		<hbox width="100%" height="100%" pack="left">
+		<hbox width="100%" height="100%" pack="left" apply="${searchOfferComposer}">
 			<groupbox closable="false" width="100%" height="500px">
 				<caption label="Busca Oferta" />
 				<vbox width="100%" height="100%" align="center">
@@ -18,8 +18,8 @@
 									<textbox width="400px"
 										value="@{controller.searchField}"
 										placeholder="Digite algum dado da oferta aqui!"
-										onChange='controller.doAction("searchEstablishments")'
-										onOK='controller.doAction("searchEstablishments")' />
+										onChange='controller.doAction("searchOffers")'
+										onOK='controller.doAction("searchOffers")' />
 								</hlayout>
 							</row>
 						</rows>
@@ -29,8 +29,8 @@
 						model="@{controller.listEntity}" hflex="min" mold="paging"
 						pageSize="3" visible="false">
 						<rows>
-							<row self="@{each=establishment}"
-								value="@{establishment}">
+							<row self="@{each=offer}"
+								value="@{offer">
 
 								<vbox align="center">
 									<borderlayout width="700px"
@@ -40,13 +40,13 @@
 											<vbox width="90%">
 												<hbox>
 													<label
-														value="@{establishment.nome}" />
+														value="@{offer.produto}" />
 												</hbox>
 												<hbox>
 													<image
 														src='${c:getProperty("DefaultEstablishment")};'>
 														<attribute name="onCreate">
- 														controller.showImageEstablishment(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
+ 														controller.showImageOffer(self, self.getParent().getParent().getParent().getParent().getParent().getParent().getValue());
 															
 														</attribute>
 													</image>
@@ -57,7 +57,7 @@
 											<vbox vflex="0">
 												<hlayout vflex="1">
 													<label
-														value="@{establishment.descricao}" />
+														value="@{establishment.estabelecimento}" />
 												</hlayout>
 											</vbox>
 										</center>

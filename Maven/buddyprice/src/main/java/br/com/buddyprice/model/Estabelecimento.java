@@ -15,7 +15,6 @@ import br.com.vexillum.model.annotations.ValidatorClass;
 @Table(name="Estabelecimento")
 public class Estabelecimento extends CommonEntityActivated{
 
-
 @SearchField
 @Validate(notNull = true, min = 2, max = 50)	
 @Column(name="nome", nullable=false, updatable =true, length = 40, unique=true)
@@ -96,5 +95,10 @@ public void setSite(String site) {
 	this.site = site;
 }
 
+@Override
+public String toString() {
+	
+	return getNome();
+}
 
 }
