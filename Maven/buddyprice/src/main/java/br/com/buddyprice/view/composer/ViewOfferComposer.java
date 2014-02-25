@@ -21,13 +21,13 @@ public class ViewOfferComposer extends OfferComposer {
 	}
 	
 
-	public void publishRouteOnFacebook(){
+	public void publishOfferOnFacebook(){
 		postStatusMessageFacebook(getPostMessage());
 		showMessagePublish();
 	}
 	
 
-	public void publishRouteOnTwitter(){
+	public void publishOfferOnTwitter(){
 		updateStatusTwitter(getPostMessage());
 		showMessagePublish();
 	}
@@ -42,7 +42,7 @@ public class ViewOfferComposer extends OfferComposer {
 
 	private String getPostMessage(){
 		Oferta oferta = getEntity();
-		String post = oferta.getUsuario() + " encontrou uma oferta!\n\n"+oferta.getProduto() + " por apenas " + oferta.getValor();
+		String post = "Veja o que encontrei: \n\n"+oferta.getProduto() + " por apenas " + oferta.getValor() + " em " + oferta.getEstabelecimento();
 		return post;
 	}
 	
