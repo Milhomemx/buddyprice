@@ -5,106 +5,13 @@
 <zk>
 
 	<div self="@define(content)">
-		<borderlayout height="600px">
-			
-			<north border="none">
-								<label value="Visualizando uma oferta"
-									style="font-size:18px" />
-
-			</north>
-			
+		<borderlayout height="600px" apply="${viewOfferComposer}">
 			<west border="none" style="width: 40%">
 				<grid>
 					<rows>
 						<row>
-
-							<label value="Informações da Oferta"
-								style="font-size:18px" />
-
-						</row>
-						<row>
 							<hbox>
-								<label id="fldNometitle"
-									value="Estabelecimento:" width="242px" />
-								<label id="fldNome"
-									value="@{controller.entity.nome}" width="242px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldEnderecotitle"
-									value="Endereço:" width="242px" />
-								<label id="fldEndereco"
-									value="@{controller.entity.endereco}" width="242px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldCidadetitle"
-									value="Cidade:" width="242px" />
-								<label id="fldCidade"
-									value="@{controller.entity.cidade}" width="242px" />
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldEstadotitle"
-									value="Estado:" width="242px" />
-								<label id="fldEstado"
-									value="@{controller.entity.estado}" width="242px" />
-
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldPaistitle" value="País:"
-									width="242px" />
-								<label id="fldPais"
-									value="@{controller.entity.pais}" width="242px" />
-
-
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldSitetitle" value="Site:"
-									width="242px" />
-								<label id="fldSite"
-									value="@{controller.entity.site}" width="242px" />
-
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldDescricaotitle"
-									value="Descrição:" width="242px" />
-								<label id="fldDescricao"
-									value="@{controller.entity.descricao}" width="242px" />
-								<label id="foto" value=""
-									visible="false" />
-							</hbox>
-						</row>
-
-						<row>
-
-						</row>
-
-					</rows>
-
-				</grid>
-			</west>
-			
-						<center border="none" style="width: 40%">
-						
-						<grid>
-					<rows>
-						<row>
-							<hbox>
-								<label value="Visualizando um Produto"
+								<label value="Visualizando uma Oferta"
 									style="font-size:18px" />
 							</hbox>
 
@@ -112,9 +19,9 @@
 
 						<row>
 							<hbox>
-								<label id="fldProdutotitle" value="Produto"
-									width="242px" />
-								<label id="fldProduto"
+								<label id="fldNometitle"
+									value="Produto:" width="242px" />
+								<label id="fldNome"
 									value="@{controller.entity.nome}" width="242px" />
 							</hbox>
 						</row>
@@ -168,24 +75,46 @@
 
 						<row>
 							<hbox>
-								<label id="fldDescricaoprodutotitle"
+								<label id="fldDescricaotitle"
 									value="Site:" width="242px" />
-								<label id="fldDescricaoProduto"
+								<label id="fldDescricao"
 									value="@{controller.entity.descricao}" width="242px" />
-								<label id="foto2" value=""
+								<label id="foto" value=""
 									visible="false" />
 							</hbox>
+						</row>
+
+						<row>
+							<button label="Voltar" href="search.zul"
+								width="130px" />
 						</row>
 
 					</rows>
 
 				</grid>
-						
-						
-							</center>
-			
 
-		
+			</west>
+
+			<center border="none" style="width: 50%">
+				<grid style="width: 40%">
+					<rows>
+						<row>
+							<hbox height="150px" align="left"
+								pack="left">
+								<image
+									src='${c:getProperty("DefaultProduct")};'>
+									<!-- <attribute name="onCreate">
+	controller.showImageOffer(self, controller.getEntity());
+</attribute> -->
+								</image>
+							</hbox>
+						</row>
+
+
+					</rows>
+				</grid>
+			</center>
+
 		</borderlayout>
 	</div>
 
