@@ -14,7 +14,7 @@ import br.com.vexillum.util.Return;
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
-public class SearchOfferComposer extends OfferComposer {
+public class SearchOfferComposer extends ViewOfferComposer {
 
 	
 	private Grid resultList;
