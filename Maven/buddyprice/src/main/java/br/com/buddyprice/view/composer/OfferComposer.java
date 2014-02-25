@@ -22,12 +22,11 @@ import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
-import br.com.vexillum.view.CRUDComposer;
 
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
-public class OfferComposer extends CRUDComposer<Oferta, OfferController> {
+public class OfferComposer extends BaseComposerSocial<Oferta, OfferController> {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);

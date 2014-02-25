@@ -6,7 +6,7 @@
 
 	<div self="@define(content)">
 		<borderlayout height="600px" apply="${viewOfferComposer}">
-			<west border="none" style="width: 40%">
+			<west border="none" style="width: 30%">
 				<grid>
 					<rows>
 						<row>
@@ -20,44 +20,44 @@
 						<row>
 							<hbox>
 								<label id="fldNometitle"
-									value="Produto:" width="242px" />
+									value="Produto:" width="142px" />
 								<label id="fldNome"
-									value="@{controller.entity.nome}" width="242px" />
+									value="@{controller.entity.produto.nome}" width="142px" />
 							</hbox>
 						</row>
 
 						<row>
 							<hbox>
 								<label id="fldTamanhotitle"
-									value="Tamanho:" width="242px" />
+									value="Tamanho:" width="142px" />
 								<label id="fldTamanho"
-									value="@{controller.entity.tamanho}" width="242px" />
+									value="@{controller.entity.produto.tamanho}" width="142px" />
 							</hbox>
 						</row>
 
 						<row>
 							<hbox>
 								<label id="fldPesotitle" value="Peso:"
-									width="242px" />
+									width="142px" />
 								<label id="fldPeso"
-									value="@{controller.entity.peso}" width="242px" />
+									value="@{controller.entity.produto.peso}" width="142px" />
 							</hbox>
 						</row>
 						<row>
 							<hbox>
 								<label id="fldCortitle" value="Cor:"
-									width="242px" />
+									width="142px" />
 								<label id="fldCor"
-									value="@{controller.entity.cor}" width="242px" />
+									value="@{controller.entity.produto.cor}" width="142px" />
 
 							</hbox>
 						</row>
 						<row>
 							<hbox>
 								<label id="fldversaotitle"
-									value="Versão:" width="242px" />
+									value="Versão:" width="142px" />
 								<label id="fldVersao"
-									value="@{controller.entity.versao}" width="242px" />
+									value="@{controller.entity.produto.versao}" width="142px" />
 
 
 							</hbox>
@@ -66,21 +66,10 @@
 						<row>
 							<hbox>
 								<label id="fldMarcatitle" value="Marca:"
-									width="242px" />
+									width="142px" />
 								<label id="fldMarca"
-									value="@{controller.entity.marca}" width="242px" />
+									value="@{controller.entity.produto.marca}" width="142px" />
 
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldDescricaotitle"
-									value="Site:" width="242px" />
-								<label id="fldDescricao"
-									value="@{controller.entity.descricao}" width="242px" />
-								<label id="foto" value=""
-									visible="false" />
 							</hbox>
 						</row>
 
@@ -94,18 +83,105 @@
 				</grid>
 
 			</west>
+			<center  border="none" style="width: 30%">
+			<grid>
+					<rows>
+			
+								<row>
+							<hbox>
+								<label value=""
+									style="font-size:18px" />
+							</hbox>
 
-			<center border="none" style="width: 50%">
-				<grid style="width: 40%">
+						</row>
+			
+			<row>
+							<hbox>
+								<label id="fldNomeProdtitle"
+									value="Estabelecimento:" width="142px" />
+								<label id="fldNomeProd"
+									value="@{controller.entity.estabelecimento.nome}" width="142px" />
+							</hbox>
+						</row>
+
+						<row>
+							<hbox>
+								<label id="fldEnderecotitle"
+									value="Endereço:" width="142px" />
+								<label id="fldEndereco"
+									value="@{controller.entity.estabelecimento.endereco}" width="142px" />
+							</hbox>
+						</row>
+
+						<row>
+							<hbox>
+								<label id="fldCidadetitle"
+									value="Cidade:" width="142px" />
+								<label id="fldCidade"
+									value="@{controller.entity.estabelecimento.cidade}" width="142px" />
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldEstadotitle"
+									value="Estado:" width="142px" />
+								<label id="fldEstado"
+									value="@{controller.entity.estabelecimento.estado}" width="142px" />
+
+							</hbox>
+						</row>
+						<row>
+							<hbox>
+								<label id="fldPaistitle" value="País:"
+									width="142px" />
+								<label id="fldPais"
+									value="@{controller.entity.estabelecimento.pais}" width="142px" />
+
+
+							</hbox>
+						</row>
+
+						<row>
+							<hbox>
+								<label id="fldSitetitle" value="Site:"
+									width="142px" />
+								<label id="fldSite"
+									value="@{controller.entity.estabelecimento.site}" width="142px" />
+
+							</hbox>
+						</row>
+
+						
+						<row>
+							<hbox>
+								<label id="fldValortitle"
+									value="Valor:" width="142px" />
+								<label id="fldValor"
+									value="@{controller.entity.valor}" width="142px" />
+							</hbox>
+						</row>
+						
+						<row>
+				<image id="toolFacebook" src="/images/social/facebook.jpg" onClick="controller.publishOfferOnFacebook()" tooltiptext="Publicar no Facebook"/>
+				<image id="toolTwitter" src="/images/social/twitter.jpg" onClick="controller.publishOfferOnTwitter()" tooltiptext="Publicar no Twitter"/>
+		</row>
+						
+			</rows>
+			</grid>
+			
+			</center>
+
+			<east border="none" style="width: 30%">
+				<grid>
 					<rows>
 						<row>
 							<hbox height="150px" align="left"
 								pack="left">
 								<image
 									src='${c:getProperty("DefaultProduct")};'>
-									<!-- <attribute name="onCreate">
+									 <attribute name="onCreate">
 	controller.showImageOffer(self, controller.getEntity());
-</attribute> -->
+</attribute>
 								</image>
 							</hbox>
 						</row>
@@ -113,7 +189,7 @@
 
 					</rows>
 				</grid>
-			</center>
+			</east>
 
 		</borderlayout>
 	</div>
