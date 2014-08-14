@@ -7,15 +7,16 @@
 
 	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/PostgresDS" />
 
-    <bean id="VXAuthenticatorProvider" class="br.com.vexillum.control.security.AuthenticatorProvider"/>
+    <bean id="BuddyPriceAuth" class="br.com.buddyprice.security.BuddyPriceAuth"/>
+    <bean id="authenticationFailureHandler" class="br.com.buddyprice.security.BuddyPriceAuthenticationFailureHandler" />
     
 	<!-- Parte do Spring Security -->
 	<security:http auto-config="true">
-		
  		<security:intercept-url pattern="/pages/configuration/**" access="ROLE_ADMIN,ROLE_USER" />
 		<security:intercept-url pattern="/pages/user/login.zul" access="ROLE_ANONYMOUS" />		
 		<security:intercept-url pattern="/pages/user/miniLogin.zul" access="ROLE_ANONYMOUS" />		
 		<security:intercept-url pattern="/pages/user/index.zul" access="ROLE_ANONYMOUS" />
+		<security:intercept-url pattern="/pages/user/validateaccount.zul" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/pages/user/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/establishments/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/products/**" access="ROLE_USER" />
@@ -24,23 +25,23 @@
 		<security:intercept-url pattern="/pages/errors/**" access="ROLE_ANONYMOUS,ROLE_USER" />
 		<security:intercept-url pattern="/pages/**" access="ROLE_ANONYMOUS,ROLE_USER" />		
 				
-		<security:form-login login-page="/pages/user/login.zul"
+		<security:form-login login-page="/pages/user/login.zul" authentication-failure-handler-ref="authenticationFailureHandler" 
 			default-target-url="/pages/dashboard/" authentication-failure-url="/pages/user/login.zul?error=true"  />
 	<security:logout logout-success-url="/pages/user/login.zul" invalidate-session="true" logout-url="/logout"/>
-	
-	 <security:access-denied-handler error-page="/pages/errors/"/>
+
+	<security:access-denied-handler	error-page="/pages/errors/" />
 	
 	</security:http>
 	
 		<security:authentication-manager>
-		<security:authentication-provider ref="VXAuthenticatorProvider"/>
+		<security:authentication-provider ref="BuddyPriceAuth"/>
 		<security:authentication-provider>
 			<!-- A query users-by-username-query deve retorna as colunas username, 
 				password e enable username-query deve trazer o nome de usuário e o tipo de 
 				autenticação (username, authority) (OBRIGATORIAMENTE) -->
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="select email as username, password, 'true' AS enable from users where ativo = '1' and email=?"
+				users-by-username-query="select email as username, password, 'true' AS enable from users where email=?"
 				authorities-by-username-query="select u.email as username, c.name as authority from users as u inner join category as c on c.id = u.id_category where u.email=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>

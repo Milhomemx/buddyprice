@@ -1,20 +1,13 @@
-
 package br.com.buddyprice.view.composer;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
-import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zul.Image;
 
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
-import br.com.buddyprice.view.attachments.AttachmentMedia;
-import br.com.vexillum.control.manager.ExceptionManager;
-import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
@@ -25,21 +18,8 @@ import br.com.vexillum.view.CRUDComposer;
 @SuppressWarnings("serial")
 public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
-	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);
-		loadBinder();
-	}
 	String email2 = new String();
 	String pass2 = new String();
-	
-	
-	public String getPass2() {
-		return pass2;
-	}
-
-	public void setPass2(String pass2) {
-		this.pass2 = pass2;
-	}
 
 	public String getEmail2() {
 		return email2;
@@ -49,29 +29,24 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		this.email2 = email2;
 	}
 
+	public String getPass2() {
+		return pass2;
+	}
+
+	public void setPass2(String pass2) {
+		this.pass2 = pass2;
+	}
+
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		loadBinder();
+	}
+
 	@Override
 	public UsuarioController getControl() {
 		return SpringFactory.getController("usuarioController",
 				UsuarioController.class,
 				ReflectionUtils.prepareDataForPersistence(this));
-	}
-
-	public void loginUser() {
-		LeftSidebarComposer.redirectToDash();
-
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void showImageProfile(Image comp) {
-		Attachment att = new AttachmentMedia();
-		try {
-			File image = att.getAttachment("image_profile", getUserInSession());
-			if (image != null) {
-				comp.setContent(new AImage(image));
-			}
-		} catch (Exception e) {
-			new ExceptionManager(e).treatException();
-		}
 	}
 
 	public static boolean isAdministrator() {
@@ -83,23 +58,19 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 	public static void redirectToEdit() {
 		Executions.sendRedirect("../user/edit.zul");
 	}
-	
+
 	public static void redirectToRegister() {
 		Executions.sendRedirect("pages/user/");
 	}
 
-	
 	public static void redirectToLogin() {
 		Executions.sendRedirect("/pages/user/login.zul?sucess=true");
 	}
-
-
 
 	public static Boolean haveIdOnRequest() {
 		String id = Executions.getCurrent().getParameter("id");
 		return ((id != null && Integer.parseInt(id) >= 0));
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	public boolean initUserById(String id) {
@@ -112,17 +83,24 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 		}
 		return false;
 	}
-	
-	@Override
-	public Return saveEntity() {
-		Return ret = super.saveEntity();
-		if(ret.isValid())redirectToLogin();
-		return ret;
+
+	public void register() {
+		Return retRegister = new Return(true);
+		retRegister = getControl().doAction("registerUser");
+		if (retRegister.isValid()) {
+			resetEntity();
+			redirectToLogin();
+		}
+		treatReturn(retRegister);
 	}
-	
+
+	public void resetEntity() {
+		entity = getEntityObject();
+		loadBinder();
+	}
+
 	@Override
 	public Usuario getEntityObject() {
 		return new Usuario();
 	}
-
 }

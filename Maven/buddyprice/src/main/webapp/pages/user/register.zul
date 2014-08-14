@@ -66,8 +66,7 @@
 					</row>
 
 					<row>
-						<button
-							label="Cadastrar" sclass="btn-danger" onClick='controller.doAction("saveEntity")' />
+						<button label="Cadastrar" sclass="btn-danger" onClick='controller.register();'/>
 					</row>
 				</rows>
 
