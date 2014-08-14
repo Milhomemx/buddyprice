@@ -3,11 +3,6 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogin.zul"?>
 <zk xmlns:h="native">
 	<div self="@define(content)">
-		<zscript>
-		<![CDATA[
-			import br.com.vexillum.util.EncryptUtils;		
-		]]>
-		</zscript>
 		<vbox width="100%" align="center">
 			<groupbox sclass="frmGroupbox" width="500px" style="overflow: auto;">
 
@@ -28,9 +23,7 @@
 										<row>
 											<label value="Senha:" onClick="password.focus();" />
 											<div>
-												<textbox id="password" type="password" name="password" onOK="submitForm();"/>
-													
-												<textbox id="j_password" name="j_password" visible="false"/>
+												<textbox id="j_password" name="j_password" type="password"/>
 											</div>
 										</row>
 										<row spans="2" if="${not empty param.error}">
@@ -47,15 +40,34 @@
 
 											</hbox>
 										</row>
+										<row spans="2" if="${not empty param.inactiveaccount}">
+											<div align="center">
+
+												<label sclass="testecss3" style="color: #468847" value='${c:getProperty("NotificationInactiveAccount")}'/>
+
+											</div>
+										</row>										
+										<row spans="2" if="${not empty param.validationsucess}">
+											<div align="center">
+												<label sclass="testecss3" style="color: #468847" value="Conta validada com sucesso! Seja bem-vindo(a)"/>
+											</div>
+										</row>
+										
+										<row spans="2" if="${not empty param.validationfailure}">
+											<div align="center">
+												<label sclass="testecss3" style="color: #468847" value="Código inválido ou incorreto, contate o administrador!"/>
+											</div>
+										</row>
+										
 										<row>
 										</row>
+										
 										<row spans="2">
 											<hbox>
-												<button onClick="submitForm();" label="Login"/>
+												<button type="submit" label="Login"/>
 												<separator/>
-									<button href="/pages/user/" label="Cadastre-se"/>
-									<separator height="10px"/>
-
+												<button href="/pages/user/" label="Cadastre-se"/>
+												<separator height="10px"/>
 											</hbox>
 										</row>
 									</rows>
@@ -66,17 +78,5 @@
 				</vbox>
 			</groupbox>
 		</vbox>
-		<zscript>
-		<![CDATA[
-			public void encryptPassword(){
-				j_password.setValue(EncryptUtils.encryptOnSHA512(password.getValue()));	
-			}
-			
-			public void submitForm(){
- 				encryptPassword();	
- 				Clients.evalJavaScript("document.f.submit();");
-			}
-		]]>
-		</zscript>
 	</div>
 </zk>

@@ -9,27 +9,49 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Window;
 
+import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.view.attachments.AttachmentMedia;
 import br.com.buddyprice.view.validator.ImageValidator;
 import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
+import br.com.vexillum.util.SpringFactory;
+import br.com.vexillum.view.CRUDComposer;
 
 @SuppressWarnings("serial")
 @org.springframework.stereotype.Component
 @Scope("prototype")
-public class ProfileComposer extends UsuarioComposer {
+public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		setEntity((Usuario) getUserInSession());
+		setUser((Usuario) getUserInSession());
+		setNameUser(getUser().getName());
 		loadBinder();
 	}
 
 	private String actualPassword;
 	private String newPassword;
 	private String confirmNewPassword;
+	private String nameUser;
+	private Usuario user;
+	
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
+	public String getNameUser() {
+		return nameUser;
+	}
+
+	public void setNameUser(String nameUser) {
+		this.nameUser = nameUser;
+	}
 
 	public String getActualPassword() {
 		return actualPassword;
@@ -80,10 +102,16 @@ public class ProfileComposer extends UsuarioComposer {
 		treatReturn(ret);
 	}
 
-	public Return deactivate() {
-		Executions.sendRedirect("/buddyprice/logout");
-		return getControl().doAction("deactivate");
-
+	public void deactivate() {
+		showActionConfirmation("Deseja realmente desativar sua conta?", "realyDeactivate");
+	}
+	
+	public Return realyDeactivate(){
+		entity = user;
+		Return ret = getControl().doAction("deactivate");
+		if(ret.isValid())
+			Executions.sendRedirect("/buddyprice/logout");
+		return ret;
 	}
 
 	public void callModalWindow(String page) {
@@ -97,14 +125,16 @@ public class ProfileComposer extends UsuarioComposer {
 		}
 	}
 
-	public Return updateInformation() {
-		Return ret = null;
-		ret = saveEntity();
+	public void updateInformation() {
+		Return ret = new Return(true);
+		entity = getUser();
+		ret = getControl().doAction("updateInformation");
 		if (ret.isValid()) {
 			Executions.sendRedirect("edit.zul?sucess=true");
 			component.detach();
 		}
-		return ret;
+		treatReturn(ret);
+		loadBinder();
 	}
 
 	public void changePasswordUser() {
@@ -113,6 +143,19 @@ public class ProfileComposer extends UsuarioComposer {
 		if (ret.isValid())
 			getComponentById(getComponent(), "frmChangePassword").detach();
 		treatReturn(ret);
+	}
+
+	@Override
+	public UsuarioController getControl() {
+		return SpringFactory.getController("usuarioController",
+				UsuarioController.class,
+				ReflectionUtils.prepareDataForPersistence(this));
+	}
+
+
+	@Override
+	public Usuario getEntityObject() {
+		return new Usuario();
 	}
 
 }

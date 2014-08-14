@@ -13,22 +13,20 @@ import br.com.vexillum.util.SpringFactory;
 public class UsuarioValidator extends Validator {
 
 	public UsuarioValidator(Map<String, Object> mapData) {
-
 		super(mapData);
 	}
 
-	public Return validateSave() {
+	public Return validateRegisterUser() {
 		Return ret = super.validateSave();
 		ret.concat(equalsEmail());
 		ret.concat(equalsPassWord());
 		ret.concat(existsEmail());
 		return ret;
-	};
+	}
 
-	public Return validateUpdate() {
-		Return ret = super.validateUpdate();
-		return ret;
-	};
+	public Return validateUpdateInformation() {
+		return validateModel();
+	}
 
 	private Return existsEmail() {
 		Return ret = new Return(true);
@@ -106,5 +104,4 @@ public class UsuarioValidator extends Validator {
 
 		return ret;
 	}
-
 }

@@ -2,8 +2,7 @@
 	<vlayout xmlns:h="native" vflex="1" apply="${leftSidebarComposer}">
 		<hbox width="100%" height="150px" align="left"
 			pack="left">
-			<image src='${c:getProperty("DefaultAvatar")};'
-				onCreate="br.com.buddyprice.view.composer.UsuarioComposer.showImageProfile(self);" />
+			<image id="igmProfileUser" src='${c:getProperty("DefaultAvatar")};' />
 		</hbox>
 		<separator width="20px" />
 		<div class="menuSidebar">

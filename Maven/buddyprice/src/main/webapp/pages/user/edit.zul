@@ -5,65 +5,55 @@
 <zk>
 
 	<div self="@define(content)">
-		<window apply="${profileComposer}">
+		<window apply="br.com.buddyprice.view.composer.ProfileComposer">
 
 			<grid style="width: 80%">
 				<rows>
 
 					<row>
-						<hbox>
+						<hbox>	
 							<label value="Alterando conta de "
 								style="font-size:18px" />
-							<label value="@{controller.entity.name}"
+							<label value="@{controller.nameUser}"
 								style="font-size:18px" />
 						</hbox>
-
-					</row>
-
-					<row spans="2" if="${not empty param.sucess}">
-
-						<label id="inputSuccess"
-							value='	${c:getProperty("NotificationUserAlterSucess")}' />
 
 					</row>
 
 					<row>
 						<hbox>
 							<textbox id="fldNome"
-								value="@{controller.entity.name}" class="input-small"
-								constraint="no empty"
-								placeholder='${c:getProperty("HolderYourName")}' />
-							<textbox id="fldUltNome"
-								class="input-medium" value="@{controller.entity.sobreNome}"
-								placeholder='${c:getProperty("HolderYourLastName")}'
-								constraint="no empty" />
+								value="@{controller.user.name}" class="input-small"
+								placeholder='Seu nome' />
+							<textbox id="fldSobreNome"
+								class="input-medium" value="@{controller.user.sobreNome}"
+								placeholder='Seu sobrenome'/>
 						</hbox>
 					</row>
 					<row>
-						<textbox id="fldEmail" class="input-xlarge"
-							constraint="no empty" width="282px"
-							value="@{controller.entity.email}" disabled="true"
-							placeholder='${c:getProperty("HolderYourEmail")}' />
+						<textbox id="fldEmail" class="input-xlarge" width="282px"
+							value="@{controller.user.email}" disabled="true"
+							placeholder='Seu e-mail' />
 
 					</row>
 					<row>
 						<hbox>
 							<textbox id="fldCidade" class="input-xlarge"
-								width="100px" value="@{controller.entity.cidade}"
-								placeholder='${c:getProperty("HolderYourCity")}' />
+								width="100px" value="@{controller.user.cidade}"
+								placeholder='Sua cidade' />
 
 							<textbox id="fldEstado" class="input-xlarge"
-								width="80px" value="@{controller.entity.estado}"
-								placeholder='${c:getProperty("HolderYourState")}' />
+								width="80px" value="@{controller.user.estado}"
+								placeholder='Seu estado' />
 							<textbox id="fldPais" class="input-xlarge"
-								width="95px" value="@{controller.entity.pais}"
-								placeholder='${c:getProperty("HolderYourCountry")}' />
+								width="95px" value="@{controller.user.pais}"
+								placeholder='Seu país' />
 						</hbox>
 					</row>
 					<row>
 						<textbox id="fldtel" class="input-xlarge"
-							width="282px" value="@{controller.entity.tel}"
-							placeholder='${c:getProperty("HolderYourCel")}' />
+							width="282px" value="@{controller.user.tel}"
+							placeholder='Seu n° de celular' />
 
 					</row>
 
@@ -71,7 +61,7 @@
 						<hbox>
 							<label value="Data de Nascimento:" />
 							<datebox
-								value="@{controller.entity.birthDate}" id="fldNasc"
+								value="@{controller.user.birthDate}" id="fldNasc"
 								constraint="no future: Data inválida" width="170px" />
 						</hbox>
 					</row>
@@ -92,10 +82,10 @@
 						<hbox>
 							<button sclass="btn btn-danger"
 								label="Salvar Alterações"
-								onClick='controller.doAction("updateInformation")' />
+								onClick='controller.updateInformation();' />
 							<button sclass="btn btn-danger"
 								width="140px" label="Desativar Conta"
-								onClick='controller.doAction("deactivate")' />
+								onClick='controller.deactivate();' />
 
 						</hbox>
 					</row>

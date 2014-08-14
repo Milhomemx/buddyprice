@@ -1,0 +1,6 @@
+<?page title="Validação de conta" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<div id="validateaccount" apply="br.com.buddyprice.view.composer.AccountValidationComposer">
+			
+	</div>
+</zk>
