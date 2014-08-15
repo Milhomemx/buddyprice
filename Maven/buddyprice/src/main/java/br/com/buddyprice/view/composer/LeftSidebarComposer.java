@@ -4,14 +4,18 @@ import java.io.File;
 
 import org.springframework.context.annotation.Scope;
 import org.zkoss.image.AImage;
+import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Image;
 
 import br.com.buddyprice.view.attachments.AttachmentMedia;
+import br.com.buddyprice.view.validator.ImageValidator;
 import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.model.UserBasic;
+import br.com.vexillum.util.Return;
 import br.com.vexillum.view.GenericComposer;
 
 @org.springframework.stereotype.Component
@@ -26,6 +30,19 @@ public class LeftSidebarComposer extends
 		if(img != null)
 			showImageProfile(img);
 		loadBinder();
+	}
+	
+	@SuppressWarnings({ "unchecked" })
+	public void changeProfileImage(UploadEvent event) {
+		Media media = event.getMedia();
+		ImageValidator val = new ImageValidator(media);
+		Return ret = val.upload();
+		if (ret.isValid()) {
+			Attachment att = new AttachmentMedia();
+			att.uploadAttachment(media, "image_profile", getUserInSession());
+			Executions.sendRedirect("");
+		}
+		treatReturn(ret);
 	}
 	
 	@SuppressWarnings({ "unchecked" })

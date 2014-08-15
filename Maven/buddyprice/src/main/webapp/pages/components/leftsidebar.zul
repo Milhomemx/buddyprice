@@ -1,9 +1,25 @@
 <zk>
-	<vlayout xmlns:h="native" vflex="1" apply="${leftSidebarComposer}">
-		<hbox width="100%" height="150px" align="left"
-			pack="left">
-			<image id="igmProfileUser" src='${c:getProperty("DefaultAvatar")};' />
-		</hbox>
+ 	<style>
+ 	<![CDATA[
+ 	        .showme{ 
+				display: none;
+			}
+			.showhim:hover .showme{
+				display : block;
+			}     
+			]]>
+	</style>
+	
+	<vlayout xmlns:h="native" vflex="1" apply="br.com.buddyprice.view.composer.LeftSidebarComposer">
+			<hbox width="100%" height="150px" align="left" pack="left">
+				<div class="showhim">
+					<image id="igmProfileUser" src='${c:getProperty("DefaultAvatar")};' />
+					<div  class="showmed" align="center">
+						<button id="photoButton" upload="true" class="showmed" label="Alterar Foto"
+							onUpload="controller.changeProfileImage(event);" />
+					</div>
+				</div>
+			</hbox>
 		<separator width="20px" />
 		<div class="menuSidebar">
 
@@ -21,7 +37,7 @@
                                                     src='${c:getProperty("ProfileIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToUser();"
+                                                <toolbarbutton onClick="controller.redirectToUser();"
                                                   style="font-size:14px"  label="@{controller.userInSession.name}" />
                                             </div>
                                         </row>
@@ -33,7 +49,7 @@
                                                     src='${c:getProperty("EstablishmentsIcon")};'/>
                                                 <separator
                                                     orient="vertical"/>
-                                                    <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToEstablishment();"
+                                                    <toolbarbutton style="font-size:14px" onClick="controller.redirectToEstablishment();"
                                                     label="Estabelecimentos" disabled ="false" />
                                                     
                                             </div>
@@ -44,7 +60,7 @@
                                                     src='${c:getProperty("ProductsIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToProduct();"
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToProduct();"
                                                     label="Produtos" disabled ="false" />
                                             </div>
                                         </row>
@@ -54,7 +70,7 @@
                                                     src='${c:getProperty("OffersIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToOffer();"
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToOffer();"
                                                     label="Ofertas" disabled ="false" />
                                             </div>
                                         </row>
@@ -64,7 +80,7 @@
                                                     src='${c:getProperty("BuddiesIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px" onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToFriend();"
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToFriend();"
                                                     label="Camaradas" disabled ="false" />
                                             </div>
                                         </row>
@@ -74,7 +90,7 @@
                                                     src='${c:getProperty("ConfigurationIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton onClick="br.com.buddyprice.view.composer.LeftSidebarComposer.redirectToConfig();"
+                                                <toolbarbutton onClick="controller.redirectToConfig();"
                                                     label="Configurações" style="font-size:14px" />
                                             </div>
                                         </row>

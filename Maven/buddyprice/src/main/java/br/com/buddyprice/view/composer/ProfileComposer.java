@@ -24,18 +24,42 @@ import br.com.vexillum.view.CRUDComposer;
 @Scope("prototype")
 public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 
-	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);
-		setUser((Usuario) getUserInSession());
-		setNameUser(getUser().getName());
-		loadBinder();
-	}
-
 	private String actualPassword;
 	private String newPassword;
 	private String confirmNewPassword;
 	private String nameUser;
 	private Usuario user;
+	
+	private String thisContextPath;
+	
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		setThisContextPath(getContextPath());
+		setUser((Usuario) getUserInSession());
+		setNameUser(getUser().getName());
+		loadBinder();
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void changeProfileImage(UploadEvent event) {
+		Media media = event.getMedia();
+		ImageValidator val = new ImageValidator(media);
+		Return ret = val.upload();
+		if (ret.isValid()) {
+			Attachment att = new AttachmentMedia();
+			att.uploadAttachment(media, "image_profile", getUserInSession());
+			Executions.sendRedirect("");
+		}
+		treatReturn(ret);
+	}
+
+	public String getThisContextPath() {
+		return thisContextPath;
+	}
+
+	public void setThisContextPath(String thisContextPath) {
+		this.thisContextPath = thisContextPath;
+	}
 	
 	public Usuario getUser() {
 		return user;
@@ -84,19 +108,6 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		Return ret = new Return(true);
 		if (ret.isValid()) {
 			att.deleteAttachment("image_profile", getUserInSession());
-			Executions.sendRedirect("");
-		}
-		treatReturn(ret);
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void changeProfileImage(UploadEvent event) {
-		Media media = event.getMedia();
-		ImageValidator val = new ImageValidator(media);
-		Return ret = val.upload();
-		if (ret.isValid()) {
-			Attachment att = new AttachmentMedia();
-			att.uploadAttachment(media, "image_profile", getUserInSession());
 			Executions.sendRedirect("");
 		}
 		treatReturn(ret);
