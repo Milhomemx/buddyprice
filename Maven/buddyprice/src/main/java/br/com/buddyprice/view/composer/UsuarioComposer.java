@@ -20,6 +20,16 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	String email2 = new String();
 	String pass2 = new String();
+	
+	private String thisContextPath;
+	
+	public String getThisContextPath() {
+		return thisContextPath;
+	}
+
+	public void setThisContextPath(String thisContextPath) {
+		this.thisContextPath = thisContextPath;
+	}
 
 	public String getEmail2() {
 		return email2;
@@ -39,6 +49,7 @@ public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
+		setThisContextPath(getContextPath());
 		loadBinder();
 	}
 
