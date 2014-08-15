@@ -70,8 +70,8 @@
 					<row>
 						<hbox>
 							<button upload="true" label="Alterar Foto"
-								onUpload='controller.changeProfileImage(event)' />
-
+								onUpload="controller.changeProfileImage(event);" />
+						
 							<button label="Alterar Senha"
 								onClick='controller.callModalWindow("./changePass.zul")' />
 

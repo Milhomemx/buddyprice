@@ -1,12 +1,12 @@
 package br.com.buddyprice.control;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Random;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +32,10 @@ public class UsuarioController extends GenericControl<Usuario> {
 		entity.setActive(false);
 		entity.setVerificationCode(generateVerificationCode());
 		Return ret = super.update();
-		if(ret.isValid()){
-			sendValidationEmailAccount(entity.getEmail(), entity.getVerificationCode(), "Reative sua conta BuddyPrice!");
+		if (ret.isValid()) {
+			sendValidationEmailAccount(entity.getEmail(),
+					entity.getVerificationCode(),
+					"Reative sua conta BuddyPrice!");
 		}
 		return ret;
 	}
@@ -67,34 +69,51 @@ public class UsuarioController extends GenericControl<Usuario> {
 		retRegister.concat(save());
 		if (retRegister.isValid()) {
 			sendValidationEmailAccount(entity.getEmail(),
-					entity.getVerificationCode(), "Conta criada com sucesso, Bem vindo(a) a BuddyPrice!");
+					entity.getVerificationCode(),
+					"Conta criada com sucesso, Bem vindo(a) a BuddyPrice!");
 		}
 		return retRegister;
 	}
 
-	//TODO Colocar para carregar o arquivo com HTML do email de acordo com o tipo de mensagem se ativacao ou reativacao
-	private void sendValidationEmailAccount(String emailAdres, String code, String subject) {
+	private void sendValidationEmailAccount(String emailAdres, String code,
+			String subject) {
 		EmailManager email = new EmailManager("HtmlEmail");
-		// String message = loadHmtlForEmail();
-		String link = "<a href='http://localhost:8080/buddyprice/pages/user/validateaccount.zul?code="
-				+ code + "'>aqui</a>";
-		String message = "Clique " + link;
+		String link = (String) data.get("thisContextPath") + "/pages/user/validateaccount.zul?code=" + code;
+		String initialPage = (String) data.get("thisContextPath");
+		String message = loadHmtlForEmail("ConfirmRegistering.html", link, initialPage);
 		email.sendEmail(emailAdres, subject, message);
 	}
 
-	public String loadHmtlForEmail() {
-		String aux = "";
+	public String loadHmtlForEmail(String name, String link, String initialPage) {
+		StringBuilder aux = new StringBuilder();
+		String folder = "/resources/email/";
+		String absolutePath = data.get("thisContextPath") + folder	+ name;
+		Document doc;
 		try {
-			String absolutePath = "D:/Program Files/JBoss/jboss-as-7.1.1.Final/standalone/deployments/buddyprice.war/resources/email/ConfirmRegistering.html";
-			List<String> lines = Files.readAllLines(Paths.get(absolutePath),
-					StandardCharsets.UTF_8);
-			for (String string : lines) {
-				aux += string;
-			}
+			doc = Jsoup.connect(absolutePath).get();
+			doc.getElementById("link").attr("href", link);
+			doc.getElementById("initialpage").attr("href", initialPage);
+			aux.append(doc.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return aux;
+		
+		return aux.toString();
+	}
+	
+	public String getHtmlFile(String name){
+		StringBuilder contentBuilder = new StringBuilder();
+		try {
+			String aux = "/resources/email/";
+		    BufferedReader in = new BufferedReader(new FileReader(aux + name));
+		    String str;
+		    while ((str = in.readLine()) != null) {
+		        contentBuilder.append(str);
+		    }
+		    in.close();
+		} catch (IOException e) {
+		}
+		return contentBuilder.toString();
 	}
 
 	private Usuario novoUsuarioBuddyPrice() {
