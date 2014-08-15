@@ -137,6 +137,7 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 
 	public void changePasswordUser() {
 		Return ret = new Return(true);
+		entity = user;
 		ret.concat(getControl().doAction("changePasswordUser"));
 		if (ret.isValid())
 			getComponentById(getComponent(), "frmChangePassword").detach();

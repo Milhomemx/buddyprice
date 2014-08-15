@@ -87,13 +87,17 @@ public class UsuarioValidator extends Validator {
 		if (confirmNewPassword == null || confirmNewPassword.equalsIgnoreCase(""))
 			ret.concat(creatReturn("confirmNewPassword",
 					getValidationMessage("", "notnull", false)));
-		if (!equalsFields(password,
-				EncryptUtils.encryptOnSHA512(actualPassword)).isValid())
-			ret.concat(creatReturn("actualPassword",
-					getValidationMessage("actualPassword", "equals", false)));
-		if (!equalsFields(newPassword, confirmNewPassword).isValid())
-			ret.concat(creatReturn("confirmNewPassword",
-					getValidationMessage("password", "equals", false)));
+		
+		if(actualPassword != null){
+			if (!equalsFields(password,	EncryptUtils.encryptOnSHA512(actualPassword)).isValid())
+				ret.concat(creatReturn("actualPassword",
+						getValidationMessage("actualPassword", "equals", false)));
+		}
+		if(confirmNewPassword != null){
+			if (confirmNewPassword != null && !equalsFields(newPassword, confirmNewPassword).isValid())
+				ret.concat(creatReturn("confirmNewPassword",
+						getValidationMessage("password", "equals", false)));
+		}
 
 		if (newPassword != null && newPassword.length() < 6)
 			ret.concat(creatReturn("newPassword",
