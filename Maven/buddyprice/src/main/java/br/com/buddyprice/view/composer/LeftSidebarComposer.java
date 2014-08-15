@@ -29,6 +29,11 @@ public class LeftSidebarComposer extends
 		Image img = (Image) getComponentById("igmProfileUser");
 		if(img != null)
 			showImageProfile(img);
+		  String page = Executions.getCurrent().getDesktop().getRequestPath();
+          if (!page.equalsIgnoreCase("/pages/user/edit.zul")){
+        	  getComponentById("photoButton").detach();
+          }
+        	  
 		loadBinder();
 	}
 	

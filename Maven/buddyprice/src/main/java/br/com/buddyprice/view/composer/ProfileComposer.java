@@ -40,19 +40,6 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		loadBinder();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void changeProfileImage(UploadEvent event) {
-		Media media = event.getMedia();
-		ImageValidator val = new ImageValidator(media);
-		Return ret = val.upload();
-		if (ret.isValid()) {
-			Attachment att = new AttachmentMedia();
-			att.uploadAttachment(media, "image_profile", getUserInSession());
-			Executions.sendRedirect("");
-		}
-		treatReturn(ret);
-	}
-
 	public String getThisContextPath() {
 		return thisContextPath;
 	}
