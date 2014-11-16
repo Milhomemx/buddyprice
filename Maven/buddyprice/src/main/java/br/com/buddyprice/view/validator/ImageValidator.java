@@ -8,6 +8,12 @@ import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.ZKUtils;
 
+
+/**
+ * @author Natan
+ * Classe responsável por validar dimensões, tamanho e extensão da imagem enviada via upload HTTP.
+ * Os parâmetros para tais informações podem ser alterados na própria classe ou poderá ser definido via arquivo .properties
+ */
 public class ImageValidator{
 	
 	Media media;
@@ -16,6 +22,10 @@ public class ImageValidator{
 		this.media = media;
 	}
 	
+	/**
+	 * @return
+	 * Retorna o resultado das validações efetuadas nesta classe,
+	 */
 	public Return upload(){
 		Return ret = new Return(true);
 		ret.concat(maxSize());
@@ -24,6 +34,10 @@ public class ImageValidator{
 		return ret;
 	}
 	
+	/**
+	 * @return
+	 * Verifica se a imagem enviada possui o tamanho igual ou menor ao mínimo definido.
+	 */
 	private Return maxSize(){
 		Return ret = new Return(true);
 		if(media.getByteData().length > 1000*500){
@@ -32,6 +46,10 @@ public class ImageValidator{
 		return ret;
 	}
 	
+	/**
+	 * @return
+	 * Verifica se a imagem enviada se enquadra nos formatos parametrizados.
+	 */
 	private Return contentType(){
 		Return ret = new Return(true);
 		if(!media.getFormat().equalsIgnoreCase("png") && !media.getFormat().equalsIgnoreCase("gif") && !media.getFormat().equalsIgnoreCase("jpg") && !media.getFormat().equalsIgnoreCase("jpeg")){
@@ -40,6 +58,10 @@ public class ImageValidator{
 		return ret;
 	}
 	
+	/**
+	 * @return
+	 * Verifica se a imagem enviada possui o dimensões iguais ou menores ao mínimo definido.
+	 */
 	private Return maxHeightAndWidth(){
 		Return ret = new Return(true);
 		try {

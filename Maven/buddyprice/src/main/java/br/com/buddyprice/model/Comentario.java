@@ -11,6 +11,11 @@ import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
+/**
+ * @author Natan
+ * Classe de modelo que abstrai o conceito de Comentário no sistema. Recursos básicos de get/set, seus atributos e suas respectivas validações.
+ * Abstração do multi-relacionamento com o modelo Oferta, uma vez que um comentário é efetuado numa oferta.
+ */
 @SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.CommentValidator")

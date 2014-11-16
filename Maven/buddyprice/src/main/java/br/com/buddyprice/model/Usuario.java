@@ -8,6 +8,11 @@ import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
+/**
+ * @author Natan
+ * Classe de modelo que abstrai o conceito de Usuário no sistema. Recursos básicos de get/set, seus atributos e suas respectivas validações.
+ * Extende da classe UserBasic, de acordo com o padrão Vexillium.
+ */
 @SuppressWarnings("serial")
 @Entity
 @ValidatorClass(validatorClass="br.com.buddyprice.control.validator.UsuarioValidator")
