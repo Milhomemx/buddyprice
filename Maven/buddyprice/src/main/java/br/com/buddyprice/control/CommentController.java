@@ -7,6 +7,11 @@ import br.com.buddyprice.model.Comentario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
+/**
+ * @author Natan
+ * Controlador da abstração Comentário. Gere todos os cenários relacionado à ação de comentar.
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class CommentController extends GenericControl<Comentario> {
@@ -14,6 +19,10 @@ public class CommentController extends GenericControl<Comentario> {
                 super(Comentario.class);
         }
         
+        /**
+         * @return
+         * Insere um comentário.
+         */
         public Return InsertComment() {
             Return regReturn = new Return(true);
             regReturn.concat(doAction("save"));

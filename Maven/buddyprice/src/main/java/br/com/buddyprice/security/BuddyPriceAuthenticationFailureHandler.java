@@ -11,6 +11,11 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
+/**
+ * @author Natan
+ * Classe responsável pelo gerenciamento de falha do sistema de autenticação.
+ * A falha pode ser decorrente do usuário/senha incorretos ou conta inativa.
+ */
 public class BuddyPriceAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	@Override

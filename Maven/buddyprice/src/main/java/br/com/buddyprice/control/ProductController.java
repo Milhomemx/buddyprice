@@ -7,6 +7,11 @@ import br.com.buddyprice.model.Produto;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
+/**
+ * @author Natan
+ * Controlador da abstração Produto. Gere todos os cenários relacionado à gestão do produto (cadastro de produtos, manutenção de produtos, etc).
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class ProductController extends GenericControl<Produto> {
@@ -15,6 +20,10 @@ public class ProductController extends GenericControl<Produto> {
         }
         
 
+		/**
+		 * @return
+		 * Insere o produto.
+		 */
 		public Return InsertProduct() {
             Return regReturn = new Return(true);
             regReturn.concat(doAction("save"));
@@ -36,6 +45,11 @@ public class ProductController extends GenericControl<Produto> {
         return super.update();
         }
         
+        /**
+         * @param prod
+         * @return
+         * Retorna o ID de um produto pela pesquisa de seu respectivo nome. 
+         */
         public Return getProductId(Produto prod){
         	String sql = "from Produto where nome = '"+prod.getNome()+"'";
         	data.put("sql", sql);
@@ -43,6 +57,11 @@ public class ProductController extends GenericControl<Produto> {
         	return searchByHQL();
         }
         
+        /**
+    	 * @return
+    	 * Pesquisa por produtos. Ignora maiúsculas/minúsculas.
+    	 * A palavra chave de pesquisa pode ser apenas um pedaço da String armazenada.
+    	 */
     	public Return searchProducts(){
     		Return ret = new Return(true);
     		String searchKey = (String) data.get("searchField");

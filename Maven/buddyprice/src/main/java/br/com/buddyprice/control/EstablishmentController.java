@@ -7,6 +7,11 @@ import br.com.buddyprice.model.Estabelecimento;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
+/**
+ * @author Natan
+ * Controlador da abstração Estabelecimento. Gere todos os cenários relacionado à gestão do estabelecimento (cadastro de estabelecimentos, manutenção de estabelecimentos, etc).
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class EstablishmentController extends GenericControl<Estabelecimento> {
@@ -15,6 +20,10 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         }
 
 
+		/**
+		 * @return
+		 * Insere um novo estabelecimento.
+		 */
 		public Return InsertEstablishment() {
             Return regReturn = new Return(true);
             regReturn.concat(doAction("save"));
@@ -36,6 +45,11 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         return super.update();
         }
         
+        /**
+         * @param est
+         * @return
+         * Retorna o ID de um estabelecimento pela pesquisa de seu respectivo nome.
+         */
         public Return getEstablishmentId(Estabelecimento est){
         	String sql = "from Estabelecimento where nome = '"+est.getNome()+"'";
         	data.put("sql", sql);
@@ -43,6 +57,11 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
         	return searchByHQL();
         }
         
+    	/**
+    	 * @return
+    	 * Pesquisa por estabelecimentos. Ignora maiúsculas/minúsculas.
+    	 * A palavra chave de pesquisa pode ser apenas um pedaço da String armazenada.
+    	 */
     	public Return searchEstablishments(){
     		Return ret = new Return(true);
     		String searchKey = (String) data.get("searchField");

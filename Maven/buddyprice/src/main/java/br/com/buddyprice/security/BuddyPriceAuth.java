@@ -19,6 +19,11 @@ import br.com.vexillum.util.HibernateUtils;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
 
+/**
+ * @author Natan
+ * Esta classe é responsável por prover a autenticação do sistema. ELa verificará se o usuário existe, e se a senha informada é igual a senha criptografada no banco de dados.
+ * Ela verificará também se a cont está inativa.
+ */
 public class BuddyPriceAuth extends AuthenticatorProvider<Usuario> {
 
 	private LoginController control;

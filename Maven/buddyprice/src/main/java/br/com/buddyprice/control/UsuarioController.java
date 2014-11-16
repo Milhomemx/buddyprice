@@ -17,6 +17,11 @@ import br.com.vexillum.model.Category;
 import br.com.vexillum.util.EncryptUtils;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Controlador da abstração Usuário. Gere todos os cenários relacionados ao perfil do usuário (criação de contas, alteração de atributos, etc).
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class UsuarioController extends GenericControl<Usuario> {
@@ -24,10 +29,18 @@ public class UsuarioController extends GenericControl<Usuario> {
 		super(Usuario.class);
 	}
 
+	/**
+	 * @return
+	 * Sobe os dados alterados pelo usuário.
+	 */
 	public Return updateInformation() {
 		return update();
 	}
 
+	/* (non-Javadoc)
+	 * @see br.com.vexillum.control.GenericControl#deactivate()
+	 * Desativa a conta do usuário e envia um e-mail para reativação.
+	 */
 	public Return deactivate() {
 		entity.setActive(false);
 		entity.setVerificationCode(generateVerificationCode());
@@ -40,12 +53,20 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return ret;
 	}
 
+	/**
+	 * @return
+	 * Limpa o retorno e faz um <i>refresh</i> na entidade.
+	 */
 	public Return nullit() {
 		Return ret = new Return(false);
 
 		return ret;
 	}
 
+	/**
+	 * @return
+	 * Altera o PassWord do usuário. Encripta o novo PassWord antes de salvá-lo.
+	 */
 	public Return changePasswordUser() {
 		Return ret = new Return(true);
 		entity.setPassword(EncryptUtils.encryptOnSHA512((String) data
@@ -54,6 +75,11 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return ret;
 	}
 
+	/**
+	 * @param code
+	 * @return
+	 * Retorna um usuário através do ID informado.
+	 */
 	public Usuario getUserByCode(String code) {
 		String hql = "from Usuario where verificationCode ='" + code + "'";
 		data.put("sql", hql);
@@ -63,6 +89,10 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return null;
 	}
 
+	/**
+	 * @return
+	 * Cria um novo usuário, conforme parâmetros informados. Retorna mensagem de sucesso da criação.
+	 */
 	public Return registerUser() {
 		Return retRegister = new Return(true);
 		entity = novoUsuarioBuddyPrice();
@@ -75,6 +105,13 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return retRegister;
 	}
 
+	/**
+	 * @param emailAdres
+	 * @param code
+	 * @param subject
+	 * Envia um e-mail de validação para o Usuário ativar sua própria conta.
+	 * Este recurso permite que seja possível validar a autenticidade do e-mail informado.
+	 */
 	private void sendValidationEmailAccount(String emailAdres, String code,
 			String subject) {
 		EmailManager email = new EmailManager("HtmlEmail");
@@ -84,6 +121,13 @@ public class UsuarioController extends GenericControl<Usuario> {
 		email.sendEmail(emailAdres, subject, message);
 	}
 
+	/**
+	 * @param name
+	 * @param link
+	 * @param initialPage
+	 * @return
+	 * Carrega o HTML para o envio do e-mail do método sendValidationEmailAccount
+	 */
 	public String loadHmtlForEmail(String name, String link, String initialPage) {
 		StringBuilder aux = new StringBuilder();
 		String folder = "/resources/email/";
@@ -101,6 +145,11 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return aux.toString();
 	}
 	
+	/**
+	 * @param name
+	 * @return
+	 * Carrega um arquivo HTML para a construção do e-mail a ser enviado pelo método loadHmtlForEmail.
+	 */
 	public String getHtmlFile(String name){
 		StringBuilder contentBuilder = new StringBuilder();
 		try {
@@ -116,6 +165,10 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return contentBuilder.toString();
 	}
 
+	/**
+	 * @return
+	 * Cria um novo usuário.
+	 */
 	private Usuario novoUsuarioBuddyPrice() {
 		Usuario user = entity;
 		user.setPassword(EncryptUtils.encryptOnSHA512(entity.getPassword()));
@@ -125,6 +178,11 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return user;
 	}
 
+	/**
+	 * @param name
+	 * @return
+	 * Retorna a categoria do usuário pela pesquisa do nome do mesmo.
+	 */
 	private Category buscaCategoriaByName(String name) {
 		String hql = "from Category where name ='" + name + "'";
 		data.put("sql", hql);
@@ -132,6 +190,10 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return (Category) retCategory.getList().get(0);
 	}
 
+	/**
+	 * @return
+	 * Gera o código de verificação do usuário para validação da autenticidade feita pelo método validateAccountUser.
+	 */
 	private String generateVerificationCode() {
 		Random rand = new Random();
 		String code = "";
@@ -144,6 +206,10 @@ public class UsuarioController extends GenericControl<Usuario> {
 		return code;
 	}
 
+	/**
+	 * @return
+	 * Valida se o código fornecido via parâmetro get HTTP request é igual ao parâmetro esperado pela relação de contas inativas.
+	 */
 	public Return validateAccountUser() {
 		String code = (String) data.get("code");
 		Return retValid = new Return(true);

@@ -5,6 +5,11 @@ import java.util.Map;
 import br.com.vexillum.control.validator.Validator;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Validador da abstração Oferta. Valida todas as limitações determinadas para os atributos do modelo.
+ * Extende do Validator.
+ */
 public class OfferValidator extends Validator {
 
 	public OfferValidator(Map<String, Object> mapData) {
