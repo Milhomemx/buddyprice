@@ -6,6 +6,13 @@ import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.model.ICommonEntity;
 import br.com.vexillum.vexsocial.view.composer.SocialComposer;
 
+/**
+ * @author Natan
+ *
+ * @param <E>
+ * @param <G>
+ * Classe que faz a integração do GenericControl de SocialComposer (Vexillium).
+ */
 @SuppressWarnings("serial")
 public abstract class BaseComposerSocial<E extends ICommonEntity, G extends GenericControl<E>> extends SocialComposer<E, G> {
 

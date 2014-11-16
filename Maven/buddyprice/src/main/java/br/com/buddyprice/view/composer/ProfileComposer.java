@@ -3,22 +3,25 @@ package br.com.buddyprice.view.composer;
 import java.util.Map;
 
 import org.springframework.context.annotation.Scope;
-import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Window;
 
 import br.com.buddyprice.control.UsuarioController;
 import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.view.attachments.AttachmentMedia;
-import br.com.buddyprice.view.validator.ImageValidator;
 import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração do perfil de um Usuário cadastrado.
+ * Permite alterações de dados dos atributos.
+ * Este Composer se diferencia do UsuarioComposer pelo fato de que o Profile será específico da gestão da conta já criada.
+ */
 @SuppressWarnings("serial")
 @org.springframework.stereotype.Component
 @Scope("prototype")
@@ -88,6 +91,9 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		this.confirmNewPassword = confirmNewPassword;
 	}
 
+	/**
+	 * Deleta imagem do perfil.
+	 */
 	@SuppressWarnings("unchecked")
 	public void deleteProfileImage() {
 		@SuppressWarnings("rawtypes")
@@ -100,10 +106,17 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		treatReturn(ret);
 	}
 
+	/**
+	 * Desativa a conta do usuário.
+	 */
 	public void deactivate() {
 		showActionConfirmation("Deseja realmente desativar sua conta?", "realyDeactivate");
 	}
 	
+	/**
+	 * @return
+	 * Confirma ação de desativar a conta.
+	 */
 	public Return realyDeactivate(){
 		entity = user;
 		Return ret = getControl().doAction("deactivate");
@@ -123,6 +136,9 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		}
 	}
 
+	/**
+	 * Altera os dados do usuário conforme o formulário preenchido.
+	 */
 	public void updateInformation() {
 		Return ret = new Return(true);
 		entity = getUser();
@@ -135,6 +151,9 @@ public class ProfileComposer extends CRUDComposer<Usuario, UsuarioController> {
 		loadBinder();
 	}
 
+	/**
+	 * Altera o passWord do usuário.
+	 */
 	public void changePasswordUser() {
 		Return ret = new Return(true);
 		entity = user;

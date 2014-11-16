@@ -12,6 +12,10 @@ import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.ZKUtils;
 
+/**
+ * @author Natan
+ * Classe que anexa imagens. Recebe um parâmetro de caminho (dinâmico) e nome da imagem.
+ */
 public class AttachmentMedia implements Attachment<Media, Usuario> {
 
 	final String FOLDERATTACHMENTS = "profiles";

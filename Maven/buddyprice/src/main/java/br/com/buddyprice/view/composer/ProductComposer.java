@@ -20,6 +20,10 @@ import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração Produto. Cadastra e altera os daddos relacionados ao mesmo.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -60,6 +64,10 @@ public class ProductComposer extends
 		return ret;
 	}
 
+	/**
+	 * @param event
+	 * Altera imagem do produto.
+	 */
 	public void changeProductImage(UploadEvent event) {
 		Media media = event.getMedia();
 		ImageValidator val = new ImageValidator(media);
@@ -73,16 +81,27 @@ public class ProductComposer extends
 	}
 
 
+	/**
+	 * Direciona para a tela de edição do produto.
+	 */
 	public void editEstablishmentProduct() {
 		entity = (Produto) session.getAttribute("produto");
 		callModalWindow("/pages/forms/modalProduct.zul");
 
 	}
 
+	/**
+	 * Voltar para a tela anterior.
+	 */
 	public static void redirectToBack() {
 		Executions.sendRedirect("../product/");
 	}
 	
+	/**
+	 * @param comp
+	 * @param entity
+	 * Exibe a imagem do produto.
+	 */
 	public static void showImageProduct(Image comp, Produto entity) {
 		AttachmentMediaProduct att = new AttachmentMediaProduct();
 		if(entity != null){
@@ -97,6 +116,9 @@ public class ProductComposer extends
 		}
 	}
 	
+	/**
+	 * Exibe o botão para a alteração da imagem.
+	 */
 	private void showAlterProduct(){
 		Component foto = getComponentById("foto");
 		foto.setVisible(true);

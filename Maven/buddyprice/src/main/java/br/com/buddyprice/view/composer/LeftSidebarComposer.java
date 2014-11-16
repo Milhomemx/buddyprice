@@ -18,6 +18,11 @@ import br.com.vexillum.model.UserBasic;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.view.GenericComposer;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da da barra lateral esquerda do DashBoard.
+ * Exibe botões do menu e permite a edição da foto de perfil.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings({ "serial", "rawtypes" })
@@ -37,6 +42,10 @@ public class LeftSidebarComposer extends
 		loadBinder();
 	}
 	
+	/**
+	 * @param event
+	 * Permite que o usuário altere a foto de perfil.
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public void changeProfileImage(UploadEvent event) {
 		Media media = event.getMedia();
@@ -50,6 +59,10 @@ public class LeftSidebarComposer extends
 		treatReturn(ret);
 	}
 	
+	/**
+	 * @param comp
+	 * Exibe a imagem de perfil do usuário.
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public void showImageProfile(Image comp) {
 		Attachment att = new AttachmentMedia();
@@ -67,31 +80,47 @@ public class LeftSidebarComposer extends
 	}
 
 
+	/**
+	 * Direciona para o menu "Configurações".
+	 */
 	public static void redirectToConfig() {
 		Executions.sendRedirect("/pages/configuration/");
 	}
 
-	
+	/**
+	 * Direciona para o menu "Usuário".
+	 */
 	public static void redirectToUser() {
 		Executions.sendRedirect("/pages/user/edit.zul");
 	}
 	
+	/**
+	 * Direciona para o menu "Dashboard".
+	 */
 	public static void redirectToDash() {
 		Executions.sendRedirect("/pages/dashboard/");
 	}
-
+	/**
+	 * Direciona para o menu "Estabelecimento".
+	 */
 	public static void redirectToEstablishment() {
 		Executions.sendRedirect("/pages/establishments/");
 	}
-	
+	/**
+	 * Direciona para o menu "Produtos".
+	 */
 	public static void redirectToProduct() {
 		Executions.sendRedirect("/pages/products/");
 	}	
-	
+	/**
+	 * Direciona para o menu "Ofertas".
+	 */
 	public static void redirectToOffer() {
 		Executions.sendRedirect("/pages/offers/");
 	}	
-		
+	/**
+	 * Direciona para o menu "Camaradas".
+	 */	
 	public static void redirectToFriend() {
 		Executions.sendRedirect("/pages/friends/");
 	}	

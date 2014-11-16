@@ -5,6 +5,11 @@ import org.zkoss.zk.ui.Component;
 
 import br.com.buddyprice.model.Estabelecimento;
 
+
+/**
+ * @author Natan
+ * Exibe a "consulta detalhada" da abstração Estabelecimento. 
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")

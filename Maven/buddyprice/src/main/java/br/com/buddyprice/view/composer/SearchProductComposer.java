@@ -10,6 +10,10 @@ import org.zkoss.zul.Grid;
 import br.com.buddyprice.model.Produto;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor do abstração Produto. Busca os estabelecimentos conforme palavras-chave.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -24,6 +28,10 @@ public class SearchProductComposer extends ViewProductComposer {
 		loadBinder();
 	}
 
+	/**
+	 * @return
+	 * Busca o(s) produto(s) conforme palavra chave informada. Monta e exibe uma lista em ordem alfabética.
+	 */
 	@SuppressWarnings("unchecked")
 	public Return searchProducts() {
 		Return ret = getControl().doAction("searchProducts");
@@ -46,12 +54,20 @@ public class SearchProductComposer extends ViewProductComposer {
 		this.searchField = searchField;
 	}
 
+	/**
+	 * @param produto
+	 * Redireciona para a tela de visualização do produto.
+	 */
 	public void redirectToView(Produto produto) {
 
 		session.setAttribute("produto", produto);
 		Executions.sendRedirect("view.zul");
 	}
 
+	/**
+	 * @param produto
+	 * Redireciona para a tela de alteração do produto.
+	 */
 	public void redirectToUpdate(Produto produto) {
 		session.setAttribute("produto", produto);
 		Executions.sendRedirect("include.zul");
