@@ -8,6 +8,12 @@ import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.model.Category;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Controlador da ação de efetuar login no sistema. Por definição, alguém que está usando a Rede Social e que ainda não se cadastrou não possui um usuário,
+ * logo este controlador controla as telas acessíveis a futuros usuários (A tela de cadastro, por exemplo).
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class LoginController extends GenericControl<Usuario> {

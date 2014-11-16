@@ -8,6 +8,11 @@ import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Controlador da abstração Oferta. Gere todos os cenários relacionado a ação de ofertar.
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class OfferController extends GenericControl<Oferta> {
@@ -15,6 +20,10 @@ public class OfferController extends GenericControl<Oferta> {
 		super(Oferta.class);
 	}
 
+	/**
+	 * @return
+	 * Insere uma oferta.
+	 */
 	public Return InsertOffert() {
 		Return regReturn = new Return(true);
 		regReturn.concat(doAction("save"));
@@ -31,6 +40,10 @@ public class OfferController extends GenericControl<Oferta> {
 		return super.save();
 	}
 
+	/**
+	 * @return
+	 * Busca por ofertas conforme palavra chave relacionada ao produto ou palavra chave relacionada à oferta.
+	 */
 	public Return searchOffers() {
 		Return ret = new Return(true);
 		String searchKey = (String) data.get("searchField");

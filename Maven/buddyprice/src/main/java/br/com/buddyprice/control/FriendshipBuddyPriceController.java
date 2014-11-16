@@ -7,6 +7,11 @@ import br.com.buddyprice.model.Relacionamento;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
+/**
+ * @author Natan
+ * Controlador da abstração Amizade. Gere todos os cenários relacionado à gestão de amizade (Solicitar amigo, aceitar amizade, recusar amizade, etc).
+ * Extende do controle genérico.
+ */
 @Service
 @Scope("prototype")
 public class FriendshipBuddyPriceController extends GenericControl<Relacionamento> {
