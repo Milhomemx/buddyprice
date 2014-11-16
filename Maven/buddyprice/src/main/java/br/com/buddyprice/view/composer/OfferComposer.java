@@ -23,6 +23,11 @@ import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração Oferta.
+ * Permite que o usuário Oferte um produto num estabelecimento de um determinado valor.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -71,6 +76,11 @@ public class OfferComposer extends BaseComposerSocial<Oferta, OfferController> {
 		return ret; 
 	}
 	
+	/**
+	 * @param comp
+	 * @param entity
+	 * Exibe a imagem do produto da oferta.
+	 */
 	public static void showImageOffer(Image comp, Oferta entity) {
 		AttachmentMediaProduct att = new AttachmentMediaProduct();
 		if(entity != null){

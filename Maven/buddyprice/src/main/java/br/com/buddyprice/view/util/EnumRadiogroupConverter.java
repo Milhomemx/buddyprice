@@ -3,7 +3,12 @@ package br.com.buddyprice.view.util;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zkplus.databind.RadiogroupSelectedItemConverter;
 
-@SuppressWarnings({ "serial", "rawtypes" })
+/**
+ * @author Natan
+ * @param <T>
+ * Utilitário para enumerar um radioGroup de dados.
+ */
+@SuppressWarnings({ "serial", "rawtypes", "deprecation" })
 public class EnumRadiogroupConverter<T extends Enum> extends RadiogroupSelectedItemConverter {
     private final Class<T> className;
 

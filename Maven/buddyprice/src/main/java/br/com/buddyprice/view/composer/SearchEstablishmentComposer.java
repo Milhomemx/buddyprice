@@ -10,6 +10,10 @@ import org.zkoss.zul.Grid;
 import br.com.buddyprice.model.Estabelecimento;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração Estabelecimento. Busca os estabelecimentos conforme palavras-chave.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -24,6 +28,10 @@ public class SearchEstablishmentComposer extends ViewEstablishmentComposer {
 		loadBinder();
 	}
 
+	/**
+	 * @return
+	 * Busca o(s) estabelecimento(s) conforme palavra chave informada. Monta e exibe uma lista em ordem alfabética.
+	 */
 	@SuppressWarnings("unchecked")
 	public Return searchEstablishments() {
 		Return ret = getControl().doAction("searchEstablishments");
@@ -46,12 +54,20 @@ public class SearchEstablishmentComposer extends ViewEstablishmentComposer {
 		this.searchField = searchField;
 	}
 
+	/**
+	 * @param estabelecimento
+	 * Redireciona para a tela de visualização.
+	 */
 	public void redirectToView(Estabelecimento estabelecimento) {
 
 		session.setAttribute("estabelecimento", estabelecimento);
 		Executions.sendRedirect("view.zul");
 	}
 
+	/**
+	 * @param estabelecimento
+	 * Redireciona para a tela de edição.
+	 */
 	public void redirectToUpdate(Estabelecimento estabelecimento) {
 		session.setAttribute("estabelecimento", estabelecimento);
 		Executions.sendRedirect("include.zul");

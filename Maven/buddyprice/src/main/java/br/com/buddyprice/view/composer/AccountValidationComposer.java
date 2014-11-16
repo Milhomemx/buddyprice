@@ -10,6 +10,10 @@ import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
 
+/**
+ * @author Natan
+ * Compositor de validação da conta. Redireciona para as telas de sucesso/fracasso conforme o ocorrido na validação.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -35,6 +39,9 @@ public class AccountValidationComposer extends
 		loadBinder();
 	}
 
+	/**
+	 * Direciona o usuário para a mensagem de sucesso/fracasso.
+	 */
 	private void validateAccount() {
 		if (getControl().doAction("validateAccountUser").isValid()) {
 			Executions.sendRedirect("/pages/user/login.zul?validationsucess=true");

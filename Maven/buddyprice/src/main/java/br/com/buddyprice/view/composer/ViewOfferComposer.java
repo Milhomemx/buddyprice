@@ -7,6 +7,10 @@ import br.com.buddyprice.model.Oferta;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Exibe a "consulta detalhada" da abstração Oferta. 
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")

@@ -22,6 +22,10 @@ import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 import br.com.vexillum.view.CRUDComposer;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração Estabelecimento. Cadastra e altera os daddos relacionados ao mesmo.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -48,6 +52,10 @@ public class EstablishmentComposer extends
 
 
 
+	/**
+	 * @param event
+	 * Altera a imagem do estabelecimento.
+	 */
 	public void changeEstablishmentImage(UploadEvent event) {
 		Media media = event.getMedia();
 		ImageValidator val = new ImageValidator(media);
@@ -60,6 +68,9 @@ public class EstablishmentComposer extends
 		treatReturn(ret);
 	}
 
+	/**
+	 * Deleta foto do estabelecimento.
+	 */
 	@SuppressWarnings("unchecked")
 	public void deleteProfileImage() {
 		@SuppressWarnings("rawtypes")
@@ -72,16 +83,27 @@ public class EstablishmentComposer extends
 		treatReturn(ret);
 	}
 
+	/**
+	 * Direciona para a tela de edição do estabelecimento
+	 */
 	public void editEstablishment() {
 		entity = (Estabelecimento) session.getAttribute("estabelecimento");
 		callModalWindow("/pages/forms/modalEstablishment.zul");
 
 	}
 
+	/**
+	 * Redireciona a tela.
+	 */
 	public static void redirectToBack() {
 		Executions.sendRedirect("../establishment/");
 	}
 	
+	/**
+	 * @param comp
+	 * @param entity
+	 * Exibe a imagem do estabelecimento.
+	 */
 	public static void showImageEstablishment(Image comp, Estabelecimento entity) {
 		AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
 		if(entity != null){
@@ -96,6 +118,9 @@ public class EstablishmentComposer extends
 		}
 	}
 	
+	/**
+	 * Exibe botão para alteração da imagem.
+	 */
 	private void showAlterImageEstablishment(){
 		Component foto = getComponentById("foto");
 		foto.setVisible(true);

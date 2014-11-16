@@ -11,6 +11,10 @@ import org.zkoss.zul.Grid;
 import br.com.buddyprice.model.Oferta;
 import br.com.vexillum.util.Return;
 
+/**
+ * @author Natan
+ * Classe responsável pelo compositor da abstração Oferta. Busca as ofertas conforme palavras-chave.
+ */
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
@@ -34,6 +38,10 @@ public class SearchOfferComposer extends ViewOfferComposer {
 		loadBinder();
 	}
 	
+	/**
+	 * @return
+	 * Busca a(s) oferta(s) conforme palavra chave informada. Monta e exibe uma lista em ordem alfabética.
+	 */
 	@SuppressWarnings("unchecked")
 	public Return searchOffers() {
 		Return ret = getControl().doAction("searchOffers");
@@ -48,12 +56,20 @@ public class SearchOfferComposer extends ViewOfferComposer {
 		return ret;
 	}
 	
+	/**
+	 * @param oferta
+	 * Redireciona para a tela de visualização da oferta.
+	 */
 	public void redirectToView(Oferta oferta) {
 
 		session.setAttribute("oferta", oferta);
 		Executions.sendRedirect("view.zul");
 	}
 
+	/**
+	 * @param oferta
+	 * Redireciona para a tela de alteração da oferta.
+	 */
 	public void redirectToUpdate(Oferta oferta) {
 		session.setAttribute("oferta", oferta);
 		Executions.sendRedirect("include.zul");

@@ -12,6 +12,10 @@ import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.ZKUtils;
 
+/**
+ * @author Natan
+ * Classe que faz upload das imagens de produtos cadastrados/alterados.
+ */
 public class AttachmentMediaProduct implements Attachment<Media, Produto>{
 	
 	
