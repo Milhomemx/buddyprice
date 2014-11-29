@@ -18,7 +18,6 @@ import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
-import br.com.vexillum.view.CRUDComposer;
 
 /**
  * @author Natan
@@ -28,7 +27,7 @@ import br.com.vexillum.view.CRUDComposer;
 @Scope("prototype")
 @SuppressWarnings("serial")
 public class ProductComposer extends
-		CRUDComposer<Produto, ProductController> {
+		CommonEntityDatedHasAtrrExtComposer<Produto, ProductController> {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);

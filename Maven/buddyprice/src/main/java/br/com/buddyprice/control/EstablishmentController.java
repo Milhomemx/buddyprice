@@ -74,11 +74,11 @@ public class EstablishmentController extends GenericControl<Estabelecimento> {
     		return super.searchByHQL();
     	}
         
-        public Return deactivate() {
-        	entity.setActive(false);
-        	
-        	return super.update();
-        }
+//        public Return deactivate() {
+//        	entity.setActive(false);
+//        	
+//        	return super.update();
+//        }
         public Return nullit() {
         	Return ret = new Return(false);
         	

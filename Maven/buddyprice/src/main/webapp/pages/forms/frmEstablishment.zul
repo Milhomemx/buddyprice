@@ -1,9 +1,11 @@
+<?component name="atributoextra" macroURI="/macros/atributoextra.zul" class="br.com.buddyprice.view.macros.AtributoExtra"?>
+
 <div apply="${establishmentComposer}">
-	<borderlayout height="800px">
-		<west border="none" style="width: 40%">
+	<borderlayout height="500px" >
+		<west border="none" style="width: 60%">
 			<grid>
-				<rows>
-					<row>
+				<rows width="500px">
+					<row width="500px"> 
 						<hbox>
 							<label
 								value="Adicionando um estabelecimento" style="font-size:18px" />
@@ -55,6 +57,56 @@
 							class="input-xlarge"
 							placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
 					</row>
+					
+					<row>
+						<hlayout>
+							<image id="imageAtrrExtra" src="/images/icon/down.png" width="20px" height="20px" onClick="controller.showHidePanelAtributoExtra();" />
+							<label>Outros Atributos</label>
+						</hlayout>						
+					</row>
+					
+					<row>
+						<vlayout id="panelAtrrExtra" visible="false" width="600px" height="125px" style="overflow: auto;" >
+							<hlayout>
+								<combobox id="combo" model="@{controller.listTipoAtributoExtra}"
+									autocomplete="true" autodrop="true" selectedItem="@{controller.atributoExtra.tipoAtributoExtra}">
+									<comboitem self="@{each=tipo}" label="@{tipo.value}"
+										value="@{tipo}" />
+								</combobox>
+								<button id="btnNovoTipo" label="NT" onClick="controller.novoTipoAtributo();" />
+								<textbox id="fldValor" value="@{controller.atributoExtra.valor}" />
+								<button id="btnSalvar" label="S" onClick="controller.salvarElemento();" />
+							</hlayout>
+							<listbox id="atributoExtrasList" model="@{controller.entity.atributoExtras}" width="500px"
+										selectedItem="@{controller.atributoExtra}" hflex="min"
+										onAfterRender='self.clearSelection();' 
+										mold="paging" pageSize='10'>
+								<listhead>
+									<listheader label="Tipo" width="150px"/>
+									<listheader label="Valor" width="150px"/>
+									<listheader label="Ação" width="100px"/>
+								</listhead>
+								<listitem self="@{each=itm}">
+								 	<listcell label="@{itm.tipoAtributoExtra.nome}"/>
+								 	<listcell label="@{itm.valor}"/>
+								 	<listcell>
+								 		<button label="E">
+								 			<attribute name="onClick">
+								 				atributoExtrasList.setSelectedItem((Listitem)self.getParent().getParent());
+								 				controller.editarElemento();
+								 			</attribute>
+								 		</button>
+								 		<button label="R">
+									 		<attribute name="onClick">
+												atributoExtrasList.setSelectedItem((Listitem) self.getParent().getParent());
+												controller.removerElemento();
+											</attribute>
+								 		</button>
+								 	</listcell>
+								</listitem>
+							</listbox>
+						</vlayout>					
+					</row>
 
 					<row>
 						<hbox>
@@ -75,7 +127,7 @@
 				<rows>
 					<row>
 						<hbox height="150px" align="left" pack="left">
-							<image
+							<image id="imagePanel"
 								src='${c:getProperty("DefaultEstablishment")};'>
 								<attribute name="onCreate">
 	controller.showImageEstablishment(self, controller.getEntity());
@@ -89,6 +141,11 @@
 							<button upload="true" label="Alterar Foto"
 								id="foto" visible="false"
 								onUpload='controller.changeEstablishmentImage(event)' />
+								
+							<button upload="true" label="Inserir Foto"
+								id="foto_create" visible="false"
+								onUpload='controller.uploadEstablishmentImage(event)' />
+								
 						</hbox>
 
 					</row>

@@ -1,0 +1,7 @@
+<window id="modalTipoAtributo" title="Cadastro de Tipo Atributo"
+	border="normal" position="center, center" closable="true"
+	apply="br.com.buddyprice.view.composer.TypeAttributeExtraComposer">
+	<label value="Nome" />
+	<textbox type="text" value="@{controller.entity.nome}" />
+	<button label="Salvar" onClick='controller.doAction("saveEntity");modalTipoAtributo.detach();' />
+</window>

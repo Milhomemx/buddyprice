@@ -7,7 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
 
@@ -18,60 +17,58 @@ import br.com.vexillum.model.annotations.ValidatorClass;
  */
 @SuppressWarnings("serial")
 @Entity
-@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.OfferValidator")
-@Table(name="Oferta")
-public class Oferta extends CommonEntity{
+@ValidatorClass(validatorClass = "br.com.buddyprice.control.validator.OfferValidator")
+@Table(name = "Oferta")
+public class Oferta extends CommonEntityDated {
 
-@Validate(notNull = true)	
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_produto", insertable = true, updatable = true)
-private Produto produto;
-	
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
-private Usuario usuario;
+	@Validate(notNull = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_produto", insertable = true, updatable = true)
+	private Produto produto;
 
-@Validate(notNull = true)	
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_estabelecimento", insertable = true, updatable = true)
-private Estabelecimento estabelecimento;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
+	private Usuario usuario;
 
-@Validate(notNull = true)	
-@Column(name="valor", nullable=false, updatable =true)
-private String valor;
+	@Validate(notNull = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_estabelecimento", insertable = true, updatable = true)
+	private Estabelecimento estabelecimento;
 
-public Produto getProduto() {
-	return produto;
-}
+	@Validate(notNull = true)
+	@Column(name = "valor", nullable = false, updatable = true)
+	private String valor;
 
-public void setProduto(Produto produto) {
-	this.produto = produto;
-}
+	public Produto getProduto() {
+		return produto;
+	}
 
-public Usuario getUsuario() {
-	return usuario;
-}
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
-public void setUsuario(Usuario usuario) {
-	this.usuario = usuario;
-}
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
-public Estabelecimento getEstabelecimento() {
-	return estabelecimento;
-}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
-public void setEstabelecimento(Estabelecimento estabelecimento) {
-	this.estabelecimento = estabelecimento;
-}
+	public Estabelecimento getEstabelecimento() {
+		return estabelecimento;
+	}
 
-public String getValor() {
-	return valor;
-}
+	public void setEstabelecimento(Estabelecimento estabelecimento) {
+		this.estabelecimento = estabelecimento;
+	}
 
-public void setValor(String valor) {
-	this.valor = valor;
-}
+	public String getValor() {
+		return valor;
+	}
 
-
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
 
 }

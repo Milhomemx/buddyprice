@@ -1,10 +1,13 @@
 package br.com.buddyprice.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.annotations.SearchField;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
@@ -15,94 +18,114 @@ import br.com.vexillum.model.annotations.ValidatorClass;
  */
 @SuppressWarnings("serial")
 @Entity
-@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.ProductValidator")
-@Table(name="Produto")
-public class Produto extends CommonEntity{
+@ValidatorClass(validatorClass = "br.com.buddyprice.control.validator.ProductValidator")
+@Table(name = "Produto")
+public class Produto extends CommonEntityDated {
 
-
-@SearchField
-@Validate(notNull = true, min = 2, max = 50)	
-@Column(name="nome", nullable=false, updatable =true, length = 30)
+	@SearchField
+	@Validate(notNull = true, min = 2, max = 50)
+	@Column(name = "nome", nullable = false, updatable = true, length = 30)
 	private String nome;
 
-@Column(name="tamanho", nullable=true, updatable =true, length = 10)
-private String tamanho;
+	@Column(name = "tamanho", nullable = true, updatable = true, length = 10)
+	private String tamanho;
 
-@Column(name="peso", nullable=true, updatable =true, length = 20)
-private String peso;
+	@Column(name = "peso", nullable = true, updatable = true, length = 20)
+	private String peso;
 
-@Column(name="cor", nullable=true, updatable =true, length = 15)
-private String cor;
+	@Column(name = "cor", nullable = true, updatable = true, length = 15)
+	private String cor;
 
-@Column(name="versao", nullable=true, updatable =true, length = 10)
-private String versao;
+	@Column(name = "versao", nullable = true, updatable = true, length = 10)
+	private String versao;
 
-@Column(name="marca", nullable=true, updatable =true, length = 15)
-private String marca;
+	@Column(name = "marca", nullable = true, updatable = true, length = 15)
+	private String marca;
 
-@Column(name="descricao", nullable=true, updatable =true, length = 100)
-private String descricao;
+	@Column(name = "descricao", nullable = true, updatable = true, length = 100)
+	private String descricao;
 
-public String getNome() {
-	return nome;
-}
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
+	private List<Oferta> ofertas;
 
-public void setNome(String nome) {
-	this.nome = nome;
-}
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
+	private List<AtributoExtra> atributoExtras;
 
-public String getTamanho() {
-	return tamanho;
-}
+	public String getNome() {
+		return nome;
+	}
 
-public void setTamanho(String tamanho) {
-	this.tamanho = tamanho;
-}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-public String getPeso() {
-	return peso;
-}
+	public String getTamanho() {
+		return tamanho;
+	}
 
-public void setPeso(String peso) {
-	this.peso = peso;
-}
+	public void setTamanho(String tamanho) {
+		this.tamanho = tamanho;
+	}
 
-public String getCor() {
-	return cor;
-}
+	public String getPeso() {
+		return peso;
+	}
 
-public void setCor(String cor) {
-	this.cor = cor;
-}
+	public void setPeso(String peso) {
+		this.peso = peso;
+	}
 
-public String getVersao() {
-	return versao;
-}
+	public String getCor() {
+		return cor;
+	}
 
-public void setVersao(String versao) {
-	this.versao = versao;
-}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
 
-public String getMarca() {
-	return marca;
-}
+	public String getVersao() {
+		return versao;
+	}
 
-public void setMarca(String marca) {
-	this.marca = marca;
-}
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
 
-public String getDescricao() {
-	return descricao;
-}
+	public String getMarca() {
+		return marca;
+	}
 
-public void setDescricao(String descricao) {
-	this.descricao = descricao;
-}
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 
-@Override
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	@Override
 	public String toString() {
-		
 		return getNome();
+	}
+
+	public List<Oferta> getOfertas() {
+		return ofertas;
+	}
+
+	public void setOfertas(List<Oferta> ofertas) {
+		this.ofertas = ofertas;
+	}
+
+	public List<AtributoExtra> getAtributoExtras() {
+		return atributoExtras;
+	}
+
+	public void setAtributoExtras(List<AtributoExtra> atributoExtras) {
+		this.atributoExtras = atributoExtras;
 	}
 
 }
