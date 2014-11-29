@@ -18,11 +18,8 @@ import br.com.vexillum.util.SpringFactory;
 public class ProductValidator extends Validator {
 
 	public ProductValidator(Map<String, Object> mapData) {
-		
 		super(mapData);
 	}
-
-	
 
 	public Return validateSave() {
 		Return ret = super.validateSave();

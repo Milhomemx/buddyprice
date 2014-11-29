@@ -18,20 +18,43 @@ import br.com.vexillum.model.annotations.ValidatorClass;
  */
 @SuppressWarnings("serial")
 @Entity
-@ValidatorClass(validatorClass="br.com.buddyprice.control.validator.EvaluationValidator")
-@Table(name="Avaliacoes")
-public class Avaliacao extends CommonEntity{
+@ValidatorClass(validatorClass = "br.com.buddyprice.control.validator.EvaluationValidator")
+@Table(name = "Avaliacoes")
+public class Avaliacao extends CommonEntity {
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_oferta", insertable = true, updatable = true)
-private Oferta oferta;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_oferta", insertable = true, updatable = true)
+	private Oferta oferta;
 
-@Validate(notNull = true)	
-@Column(name="valor", nullable=false, updatable =true)
+	@Validate(notNull = true)
+	@Column(name = "valor", nullable = false, updatable = true)
 	private Boolean valor;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
-private Usuario usuario;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
+	private Usuario usuario;
 
+	public Oferta getOferta() {
+		return oferta;
+	}
+
+	public void setOferta(Oferta oferta) {
+		this.oferta = oferta;
+	}
+
+	public Boolean getValor() {
+		return valor;
+	}
+
+	public void setValor(Boolean valor) {
+		this.valor = valor;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

@@ -1,11 +1,14 @@
 package br.com.buddyprice.control.validator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.buddyprice.control.EstablishmentController;
 import br.com.buddyprice.model.Estabelecimento;
+import br.com.buddyprice.model.Oferta;
 import br.com.vexillum.control.validator.Validator;
+import br.com.vexillum.util.HibernateUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
 
@@ -57,6 +60,22 @@ public class EstablishmentValidator extends Validator {
 		EstablishmentController controller = SpringFactory.getController(
 				"establishmentController", EstablishmentController.class, data);
 		return controller;
+	}
+
+	public Return validateDelete() {
+		Return ret = new Return(true);
+		Estabelecimento estabelecimento = (Estabelecimento) HibernateUtils
+				.materializeProxy(entity);
+		List<Oferta> ofertas = estabelecimento.getOfertas();
+		if (ofertas != null) {
+			ofertas = (List<Oferta>) HibernateUtils.materializeProxy(ofertas);
+			if (ofertas.size() > 0) {
+				ret.setValid(false);
+				ret.concat(creatReturn("",
+						getValidationMessage("", "existsOffer", true)));
+			}
+		}
+		return ret;
 	}
 
 }

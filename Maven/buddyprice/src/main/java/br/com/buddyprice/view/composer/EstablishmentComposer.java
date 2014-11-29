@@ -1,6 +1,7 @@
 package br.com.buddyprice.view.composer;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.springframework.context.annotation.Scope;
 import org.zkoss.image.AImage;
@@ -20,7 +21,6 @@ import br.com.vexillum.control.util.Attachment;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
 import br.com.vexillum.util.SpringFactory;
-import br.com.vexillum.view.CRUDComposer;
 
 /**
  * @author Natan
@@ -30,17 +30,35 @@ import br.com.vexillum.view.CRUDComposer;
 @Scope("prototype")
 @SuppressWarnings("serial")
 public class EstablishmentComposer extends
-		CRUDComposer<Estabelecimento, EstablishmentController> {
+		CommonEntityDatedHasAtrrExtComposer<Estabelecimento, EstablishmentController> {
+
+	private Media fotoEstabelecimento;
+
+	public Media getFotoEstabelecimento() {
+		return fotoEstabelecimento;
+	}
+
+	public void setFotoEstabelecimento(Media fotoEstabelecimento) {
+		this.fotoEstabelecimento = fotoEstabelecimento;
+	}
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		if (session.getAttribute("estabelecimento") != null) {
 			setEntity((Estabelecimento) session.getAttribute("estabelecimento"));
 			session.setAttribute("estabelecimento", null);
+			initListAtributosExtras();
 			showAlterImageEstablishment();
+		} else {
+			showCreateImageEstablishment();
 		}
-		
 		loadBinder();
+	}
+
+	private void showCreateImageEstablishment() {
+		Component foto = getComponentById("foto_create");
+		if (foto != null)
+			foto.setVisible(true);
 	}
 
 	@Override
@@ -50,22 +68,57 @@ public class EstablishmentComposer extends
 				ReflectionUtils.prepareDataForPersistence(this));
 	}
 
-
-
 	/**
 	 * @param event
 	 * Altera a imagem do estabelecimento.
 	 */
 	public void changeEstablishmentImage(UploadEvent event) {
 		Media media = event.getMedia();
+		if (media != null) {
+			Return uploadImage = uploadImage(media);
+			if (uploadImage.isValid()) {
+				Component comp = getComponentById("imagePanel");
+				showImageEstablishment((Image) comp, entity);
+				treatReturn(uploadImage);
+			}
+		}
+	}
+
+	private Return uploadImage(Media media) {
 		ImageValidator val = new ImageValidator(media);
 		Return ret = val.upload();
 		if (ret.isValid()) {
 			AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
 			att.uploadAttachment(media, "image_establishment", entity);
-			//Executions.sendRedirect("");
+			// Executions.sendRedirect("");
 		}
-		treatReturn(ret);
+		return ret;
+	}
+
+	public void uploadEstablishmentImage(UploadEvent event) throws IOException {
+		Media media = event.getMedia();
+		ImageValidator val = new ImageValidator(media);
+		Return ret = val.upload();
+		if (ret.isValid()) {
+			setFotoEstabelecimento(media);
+			Component image = getComponentById("imagePanel");
+			if (image != null) {
+				((Image) image).setContent((org.zkoss.image.Image) media);
+			}
+		} else {
+			treatReturn(ret);
+		}
+	}
+
+	@Override
+	public Return saveEntity() {
+		Estabelecimento estabelecimento = entity;
+		Return ret = super.saveEntity();
+		ret = getControl().getEstablishmentId(estabelecimento);
+		setEntity((Estabelecimento) ret.getList().get(0));
+		if (ret.isValid() && fotoEstabelecimento != null)
+			ret.concat(uploadImage(getFotoEstabelecimento()));
+		return ret;
 	}
 
 	/**
@@ -98,7 +151,7 @@ public class EstablishmentComposer extends
 	public static void redirectToBack() {
 		Executions.sendRedirect("../establishment/");
 	}
-	
+
 	/**
 	 * @param comp
 	 * @param entity
@@ -106,7 +159,7 @@ public class EstablishmentComposer extends
 	 */
 	public static void showImageEstablishment(Image comp, Estabelecimento entity) {
 		AttachmentMediaEstablishment att = new AttachmentMediaEstablishment();
-		if(entity != null){
+		if (entity != null) {
 			try {
 				File image = att.getAttachment("image_establishment", entity);
 				if (image != null) {
@@ -117,15 +170,14 @@ public class EstablishmentComposer extends
 			}
 		}
 	}
-	
+
 	/**
 	 * Exibe botão para alteração da imagem.
 	 */
-	private void showAlterImageEstablishment(){
+	private void showAlterImageEstablishment() {
 		Component foto = getComponentById("foto");
 		foto.setVisible(true);
 	}
-	
 
 	@Override
 	public Estabelecimento getEntityObject() {

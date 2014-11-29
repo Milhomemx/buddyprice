@@ -73,5 +73,22 @@ public class SearchEstablishmentComposer extends ViewEstablishmentComposer {
 		Executions.sendRedirect("include.zul");
 
 	}
+	
+	public void redirectToDelete(Estabelecimento estabelecimento){
+		if(estabelecimento != null)
+			setEntity(estabelecimento);
+		showActionConfirmation("Deseja excluir este Estabelecimento?", "excluirEstabelecimento");
+	}
+	
+	public Return excluirEstabelecimento(){
+		Estabelecimento est = entity;
+		Return ret = getControl().doAction("delete");
+		if(ret.isValid()){
+			getListEntity().remove(est);
+		}
+		loadBinder();
+		return ret;
+	}
 
+	
 }
