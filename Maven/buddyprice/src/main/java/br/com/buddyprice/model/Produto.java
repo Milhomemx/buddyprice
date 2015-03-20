@@ -48,9 +48,6 @@ public class Produto extends CommonEntityDated {
 	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
 	private List<Oferta> ofertas;
 
-	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
-	private List<AtributoExtra> atributoExtras;
-
 	public String getNome() {
 		return nome;
 	}
@@ -118,14 +115,6 @@ public class Produto extends CommonEntityDated {
 
 	public void setOfertas(List<Oferta> ofertas) {
 		this.ofertas = ofertas;
-	}
-
-	public List<AtributoExtra> getAtributoExtras() {
-		return atributoExtras;
-	}
-
-	public void setAtributoExtras(List<AtributoExtra> atributoExtras) {
-		this.atributoExtras = atributoExtras;
 	}
 
 }

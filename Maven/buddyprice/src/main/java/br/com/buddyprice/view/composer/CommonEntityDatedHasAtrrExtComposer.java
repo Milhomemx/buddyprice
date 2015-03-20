@@ -1,125 +1,58 @@
 package br.com.buddyprice.view.composer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Image;
-import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listitem;
 
-import br.com.buddyprice.control.AttributeExtraController;
-import br.com.buddyprice.control.TypeAttributeExtraController;
-import br.com.buddyprice.model.AtributoExtra;
-import br.com.buddyprice.model.CommonEntityDated;
-import br.com.buddyprice.model.Estabelecimento;
-import br.com.buddyprice.model.Produto;
-import br.com.buddyprice.model.TipoAtributoExtra;
-import br.com.vexillum.control.GenericControl;
+import br.com.buddyprice.control.BaseController;
+import br.com.buddyprice.model.AtributoExtraValor;
 import br.com.vexillum.model.ICommonEntity;
-import br.com.vexillum.util.HibernateUtils;
-import br.com.vexillum.util.Message;
-import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.Return;
-import br.com.vexillum.util.SpringFactory;
 
 @SuppressWarnings("serial")
-public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntity, G extends GenericControl<E>>
+public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntity, G extends BaseController<E>>
 		extends BaseComposer<E, G> {
 
-	private List<TipoAtributoExtra> listTipoAtributoExtra;
+	private List<AtributoExtraValor> atributosExtras;
+	
+	private AtributoExtraValor atributoExtra = new AtributoExtraValor();
 
-	private TipoAtributoExtra tipoAtributoSelected;
-
-	private AtributoExtra atributoExtra;
-
-	private CommonEntityDatedHasAtrrExtComposer<E, G> parentComposer;
-
-	public CommonEntityDatedHasAtrrExtComposer<E, G> getParentComposer() {
-		return parentComposer;
+	public List<AtributoExtraValor> getAtributosExtras() {
+		return atributosExtras;
 	}
 
-	public void setParentComposer(
-			CommonEntityDatedHasAtrrExtComposer<E, G> parentComposer) {
-		this.parentComposer = parentComposer;
+	public void setAtributosExtras(List<AtributoExtraValor> atributosExtras) {
+		this.atributosExtras = atributosExtras;
 	}
 
-	public AtributoExtra getAtributoExtra() {
+	public AtributoExtraValor getAtributoExtra() {
 		return atributoExtra;
 	}
 
-	public void setAtributoExtra(AtributoExtra atributoExtra) {
+	public void setAtributoExtra(AtributoExtraValor atributoExtra) {
 		this.atributoExtra = atributoExtra;
-	}
-
-	public TipoAtributoExtra getTipoAtributoSelected() {
-		return tipoAtributoSelected;
-	}
-
-	public void setTipoAtributoSelected(TipoAtributoExtra tipoAtributoSelected) {
-		this.tipoAtributoSelected = tipoAtributoSelected;
-	}
-
-	public List<TipoAtributoExtra> getListTipoAtributoExtra() {
-		return listTipoAtributoExtra;
-	}
-
-	public void setListTipoAtributoExtra(
-			List<TipoAtributoExtra> listTipoAtributoExtra) {
-		this.listTipoAtributoExtra = listTipoAtributoExtra;
 	}
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		initVariaveisLocais();
-		loadBinder();
+		initListAtributosExtras();
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected void initListAtributosExtras() {
-		List<AtributoExtra> atributos = null;
-		if(entity instanceof Estabelecimento){
-			atributos = ((Estabelecimento)entity).getAtributoExtras();
-			((Estabelecimento)entity).setAtributoExtras(HibernateUtils.transaformBagInList(atributos));
-		}
-		if(entity instanceof Produto){
-			atributos = ((Produto)entity).getAtributoExtras();
-			((Produto)entity).setAtributoExtras(HibernateUtils.transaformBagInList(atributos));
-		}
+		setAtributosExtras(getControl().getAtributosExtras());
 	}
 	
-	protected void resetListAtributoExtra(){
-		List<AtributoExtra> atributos = getControlAttributeExtra().getAtributosByEntity((CommonEntityDated) entity);
-		if(entity instanceof Estabelecimento){
-			((Estabelecimento)entity).setAtributoExtras(atributos);
-		}
-		if(entity instanceof Produto){
-			((Produto)entity).setAtributoExtras(atributos);
-		}
-	}
-
-	public TypeAttributeExtraController getControlTypeAttributeExtraController() {
-		return SpringFactory.getController("typeAttributeExtraController",
-				TypeAttributeExtraController.class,
-				ReflectionUtils.prepareDataForPersistence(this));
-	}
-
-	private void initVariaveisLocais() {
-		if (tipoAtributoSelected == null) {
-			tipoAtributoSelected = new TipoAtributoExtra();
-		}
-		if (atributoExtra == null) {
-			atributoExtra = new AtributoExtra();
-		}
-		initiListaTipoAtributoExtra();
-	}
-
-	@SuppressWarnings("unchecked")
-	protected void initiListaTipoAtributoExtra() {
-		setListTipoAtributoExtra((List<TipoAtributoExtra>) getControlTypeAttributeExtraController()
-				.listAll().getList());
-	}
+//	protected void resetListAtributoExtra(){
+//		List<AtributoExtra> atributos = getControlAttributeExtra().getAtributosByEntity((CommonEntityDated) entity);
+//		if(entity instanceof Estabelecimento){
+//			((Estabelecimento)entity).setAtributoExtras(atributos);
+//		}
+//		if(entity instanceof Produto){
+//			((Produto)entity).setAtributoExtras(atributos);
+//		}
+//	}
 
 	public void showHidePanelAtributoExtra() {
 		Image image = (Image) getComponentById("imageAtrrExtra");
@@ -134,8 +67,28 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 			}
 		}
 	}
+	
+	public Return adicionarAtributoExtra(){
+		Return ret;
+		ret = getControl().addAtributoExtra();
+//		if(!ret.isValid()){
+//			treatReturn(ret);
+//			ret.setValid(false);
+//		} else {
+//			
+//		}
+		if(ret.isValid()){
+			resetAtributoExtra();
+		}
+		loadBinder();
+		return ret;
+	}
 
-	public AttributeExtraController getControlAttributeExtra() {
+	protected void resetAtributoExtra() {
+		setAtributoExtra(new AtributoExtraValor());
+	}
+
+	/*public AttributeExtraController getControlAttributeExtra() {
 		return SpringFactory.getController("attributeExtraController",
 				AttributeExtraController.class,
 				ReflectionUtils.prepareDataForPersistence(this));
@@ -176,9 +129,9 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 							"Salve o objeto antes de adicionar atributos extras!!"));
 		}
 		treatReturn(ret);
-	}
+	}*/
 	
-	private void getSelectedEntityFromListbox() {
+	/*private void getSelectedEntityFromListbox() {
 		Listbox listbox = (Listbox) getComponentById("atributoExtrasList");
 		int index = 0;
 		if (listbox != null) {
@@ -198,5 +151,5 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 
 	public void novoTipoAtributo() {
 		callModalWindow("/pages/forms/modalTipoatributo.zul");
-	}
+	}*/
 }

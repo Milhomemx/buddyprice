@@ -68,18 +68,12 @@
 					<row>
 						<vlayout id="panelAtrrExtra" visible="false" width="600px" height="125px" style="overflow: auto;" >
 							<hlayout>
-								<combobox id="combo" model="@{controller.listTipoAtributoExtra}"
-									autocomplete="true" autodrop="true" selectedItem="@{controller.atributoExtra.tipoAtributoExtra}">
-									<comboitem self="@{each=tipo}" label="@{tipo.value}"
-										value="@{tipo}" />
-								</combobox>
-								<button id="btnNovoTipo" label="NT" onClick="controller.novoTipoAtributo();" />
+								<textbox id="fldAtributo" value="@{controller.atributoExtra.atributoExtra}" style="text-transform: uppercase;"/>
 								<textbox id="fldValor" value="@{controller.atributoExtra.valor}" />
-								<button id="btnSalvar" label="S" onClick="controller.salvarElemento();" />
+								<button id="btnSalvar" label="S" onClick='controller.doAction("adicionarAtributoExtra");' />
 							</hlayout>
-							<listbox id="atributoExtrasList" model="@{controller.entity.atributoExtras}" width="500px"
-										selectedItem="@{controller.atributoExtra}" hflex="min"
-										onAfterRender='self.clearSelection();' 
+							<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" width="500px"
+										hflex="min" onAfterRender='self.clearSelection();' 
 										mold="paging" pageSize='10'>
 								<listhead>
 									<listheader label="Tipo" width="150px"/>
@@ -87,7 +81,7 @@
 									<listheader label="Ação" width="100px"/>
 								</listhead>
 								<listitem self="@{each=itm}">
-								 	<listcell label="@{itm.tipoAtributoExtra.nome}"/>
+								 	<listcell label="@{itm.atributoExtra.nome}"/>
 								 	<listcell label="@{itm.valor}"/>
 								 	<listcell>
 								 		<button label="E">

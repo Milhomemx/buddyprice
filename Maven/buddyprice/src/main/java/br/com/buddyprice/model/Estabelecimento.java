@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.buddyprice.model.annotations.AtributosExtras;
 import br.com.vexillum.model.annotations.SearchField;
 import br.com.vexillum.model.annotations.Validate;
 import br.com.vexillum.model.annotations.ValidatorClass;
@@ -17,6 +18,7 @@ import br.com.vexillum.model.annotations.ValidatorClass;
  * Classe de modelo que abstrai o conceito de Estabelecimento no sistema. Recursos básicos de get/set, seus atributos e suas respectivas validações.
  */
 @SuppressWarnings("serial")
+@AtributosExtras
 @Entity
 @ValidatorClass(validatorClass = "br.com.buddyprice.control.validator.EstablishmentValidator")
 @Table(name = "Estabelecimento")
@@ -47,9 +49,6 @@ public class Estabelecimento extends CommonEntityDated {
 
 	@OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY)
 	private List<Oferta> ofertas;
-
-	@OneToMany(mappedBy = "estabelecimento", fetch = FetchType.LAZY)
-	private List<AtributoExtra> atributoExtras;
 
 	public String getDescricao() {
 		return descricao;
@@ -118,14 +117,6 @@ public class Estabelecimento extends CommonEntityDated {
 
 	public void setOfertas(List<Oferta> ofertas) {
 		this.ofertas = ofertas;
-	}
-
-	public List<AtributoExtra> getAtributoExtras() {
-		return atributoExtras;
-	}
-
-	public void setAtributoExtras(List<AtributoExtra> atributoExtras) {
-		this.atributoExtras = atributoExtras;
 	}
 
 }
