@@ -72,7 +72,7 @@
 								<textbox id="fldValor" value="@{controller.atributoExtra.valor}" />
 								<button id="btnSalvar" label="S" onClick='controller.doAction("adicionarAtributoExtra");' />
 							</hlayout>
-							<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" width="500px"
+							<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" width="500px" selectedItem="@{controller.selectedAtributoExtra}"
 										hflex="min" onAfterRender='self.clearSelection();' 
 										mold="paging" pageSize='10'>
 								<listhead>
@@ -80,28 +80,31 @@
 									<listheader label="Valor" width="150px"/>
 									<listheader label="Ação" width="100px"/>
 								</listhead>
-								<listitem self="@{each=itm}">
-								 	<listcell label="@{itm.atributoExtra.nome}"/>
-								 	<listcell label="@{itm.valor}"/>
+								<listitem self="@{each=itm}" value="@{itm}">
+								 	<listcell label="@{itm.atributoExtra.nome}">
+								 	</listcell>
 								 	<listcell>
-								 		<button label="E">
-								 			<attribute name="onClick">
-								 				atributoExtrasList.setSelectedItem((Listitem)self.getParent().getParent());
-								 				controller.editarElemento();
-								 			</attribute>
-								 		</button>
+								 		<textbox value="@{itm.valor}" inplace="true" hflex="1"/>
+								 	</listcell>
+								 	<listcell>
+<!-- 								 		<button label="E"> -->
+<!-- 								 			<attribute name="onClick"> -->
+<!-- 								 				controller.setSelectedAtributoExtra(self.getParent().getParent().getValue()); -->
+<!-- 								 				controller.editarElemento(); -->
+<!-- 								 			</attribute> -->
+<!-- 								 		</button> -->
 								 		<button label="R">
 									 		<attribute name="onClick">
-												atributoExtrasList.setSelectedItem((Listitem) self.getParent().getParent());
+									 			controller.setSelectedAtributoExtra(self.getParent().getParent().getValue());
 												controller.removerElemento();
 											</attribute>
 								 		</button>
 								 	</listcell>
 								</listitem>
 							</listbox>
+							<label value="*Clique no valor que deseja mudar para modifica-lo!" style="color: red;font-weight: bold;"/>
 						</vlayout>					
 					</row>
-
 					<row>
 						<hbox>
 							<button sclass="btn btn-danger"

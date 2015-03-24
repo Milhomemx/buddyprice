@@ -20,7 +20,7 @@ import br.com.vexillum.util.SpringFactory;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "atributo_extra_valor")
-public class AtributoExtraValor extends CommonEntity {
+public class AtributoExtraValor extends CommonEntity implements Comparable<AtributoExtraValor> {
 
 	@ManyToOne(fetch=FetchType.LAZY, targetEntity=AtributoExtra.class)
 	@Cascade(value={CascadeType.SAVE_UPDATE, CascadeType.PERSIST, CascadeType.MERGE})
@@ -96,6 +96,11 @@ public class AtributoExtraValor extends CommonEntity {
 	
 	public void setClassName(Class<? extends ICommonEntity> classz) {
 		this.className = classz.getName();
+	}
+
+	@Override
+	public int compareTo(AtributoExtraValor o) {
+		return this.getAtributoExtra().getNome().compareToIgnoreCase(o.getAtributoExtra().getNome());
 	}
 	
 }

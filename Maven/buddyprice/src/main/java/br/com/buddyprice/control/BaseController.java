@@ -1,6 +1,7 @@
 package br.com.buddyprice.control;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.buddyprice.model.AtributoExtraValor;
@@ -26,6 +27,15 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 		return ret;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public Return removeAtributoExtra(){
+		Return ret = new Return(true);
+		AtributoExtraValor aev = (AtributoExtraValor) getData().get("selectedAtributoExtra");
+		List<AtributoExtraValor> list = (List<AtributoExtraValor>) getData().get("atributosExtras");
+		list.remove(aev);
+		return ret;
+	}
+	
 	public List<AtributoExtraValor> getAtributosExtras(){
 		return getAtributosExtras((CommonEntity) getEntity());
 	}
@@ -38,29 +48,32 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 		if(entity.getId() != null){
 			AtributoExtraValor atributo = new AtributoExtraValor(entity, entity.getClass());
 			Return ret = searchByHQL(atributo);
-			return (List<AtributoExtraValor>) ret.getList();
+			List<AtributoExtraValor> list = (List<AtributoExtraValor>) ret.getList();
+			Collections.sort(list);
+			return list;
 		}
 		return new ArrayList<AtributoExtraValor>();
 	}
 	
 	@Override
-	public Return save(E entity) {
+	public Return save(ICommonEntity entity) {
 		Return ret = super.save(entity);
-		if(ret.isValid()){
-			saveAtributosExtra((Long) ret.getSerializable());
-		}
-		return ret;
-	}
-	
-	public Return update(E entity) {
-		Return ret = super.update(entity);
 		if(ret.isValid()){
 			saveAtributosExtra(entity);
 		}
 		return ret;
 	}
+	
+	public Return update(ICommonEntity entity) {
+		Return ret = super.update(entity);
+		if(ret.isValid()){
+			deleteAtributosExtras(entity);
+			saveAtributosExtra(entity);
+		}
+		return ret;
+	}
 
-	private void saveAtributosExtra(E entity){
+	private void saveAtributosExtra(ICommonEntity entity){
 		saveAtributosExtra(entity.getId());
 	}
 	
@@ -73,6 +86,17 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 					atributoExtraValor.setIdEntidade(entity);
 				}
 				saveOrUpdate(atributoExtraValor);
+			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void deleteAtributosExtras(ICommonEntity entity){
+		List<AtributoExtraValor> oldList = this.getAtributosExtras((CommonEntity) entity);
+		List<AtributoExtraValor> updatedList = (List<AtributoExtraValor>) getData().get("atributosExtras");
+		for (AtributoExtraValor aev : oldList) {
+			if(!updatedList.contains(aev)){
+				delete(aev);
 			}
 		}
 	}

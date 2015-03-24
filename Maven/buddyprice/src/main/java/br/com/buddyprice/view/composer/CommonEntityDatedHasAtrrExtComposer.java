@@ -17,6 +17,8 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 	private List<AtributoExtraValor> atributosExtras;
 	
 	private AtributoExtraValor atributoExtra = new AtributoExtraValor();
+	
+	private AtributoExtraValor selectedAtributoExtra = new AtributoExtraValor();
 
 	public List<AtributoExtraValor> getAtributosExtras() {
 		return atributosExtras;
@@ -32,6 +34,14 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 
 	public void setAtributoExtra(AtributoExtraValor atributoExtra) {
 		this.atributoExtra = atributoExtra;
+	}
+
+	public AtributoExtraValor getSelectedAtributoExtra() {
+		return selectedAtributoExtra;
+	}
+
+	public void setSelectedAtributoExtra(AtributoExtraValor selectedAtributoExtra) {
+		this.selectedAtributoExtra = selectedAtributoExtra;
 	}
 
 	@Override
@@ -87,7 +97,18 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 	protected void resetAtributoExtra() {
 		setAtributoExtra(new AtributoExtraValor());
 	}
+	
+	public void editarElemento(){
+		callModalWindow("/teste");
+	}
 
+	public Return removerElemento() {
+		Return ret;
+		ret = getControl().removeAtributoExtra();
+		loadBinder();
+		return ret;
+	}
+	
 	/*public AttributeExtraController getControlAttributeExtra() {
 		return SpringFactory.getController("attributeExtraController",
 				AttributeExtraController.class,
@@ -98,9 +119,7 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 
 	}
 	
-	public void editarElemento(){
-		
-	}
+	
 
 	public void salvarElemento() {
 		Return ret = new Return(true);
@@ -143,10 +162,6 @@ public abstract class CommonEntityDatedHasAtrrExtComposer<E extends ICommonEntit
 				atributoExtra = ant;
 			}
 		}
-	}
-
-	public void removerElemento() {
-
 	}
 
 	public void novoTipoAtributo() {
