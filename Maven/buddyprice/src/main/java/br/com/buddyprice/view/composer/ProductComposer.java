@@ -34,6 +34,7 @@ public class ProductComposer extends
 		if (session.getAttribute("produto") != null) {
 			setEntity((Produto) session.getAttribute("produto"));
 			session.setAttribute("produto", null);
+			initListAtributosExtras();
 			showAlterProduct();		
 		}
 		

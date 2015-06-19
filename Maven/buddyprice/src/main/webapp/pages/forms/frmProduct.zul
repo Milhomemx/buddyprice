@@ -60,12 +60,23 @@
 					class="input-xlarge"
 					placeholder="Descrição" />
 			</row>
-
+			
 			<row id="inserir" visible="false">
 				<button upload="true" label="Alterar Foto"
 					onUpload='controller.changeProfileImage(event)' />
 			</row>
-
+			
+			<row>
+				<hlayout>
+					<image id="imageAtrrExtra" src="/images/icon/down.png" width="20px" height="20px" onClick="controller.showHidePanelAtributoExtra();" />
+					<label>Outros Atributos</label>
+				</hlayout>						
+			</row>
+			
+			<row>
+				<include src="/pages/forms/panelAtrrExtra.zul" />	
+			</row>
+			
 			<row>
 
 				<hbox>

@@ -59,7 +59,7 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 	public Return save(ICommonEntity entity) {
 		Return ret = super.save(entity);
 		if(ret.isValid()){
-			saveAtributosExtra(entity);
+			saveAtributosExtra((Long) ret.getSerializable());
 		}
 		return ret;
 	}
@@ -72,8 +72,21 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 		}
 		return ret;
 	}
+	
+	@Override
+	public Return delete(ICommonEntity entity) {
+		Return ret = super.delete(entity);
+		if(ret.isValid()){
+			deleteAllAtributosExtras(entity);
+		}
+		return ret;
+	}
+	
+	public Return deleteAtributoExtra(AtributoExtraValor aev) {
+		return super.delete(aev);
+	}
 
-	private void saveAtributosExtra(ICommonEntity entity){
+	protected void saveAtributosExtra(ICommonEntity entity){
 		saveAtributosExtra(entity.getId());
 	}
 	
@@ -96,8 +109,15 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 		List<AtributoExtraValor> updatedList = (List<AtributoExtraValor>) getData().get("atributosExtras");
 		for (AtributoExtraValor aev : oldList) {
 			if(!updatedList.contains(aev)){
-				delete(aev);
+				deleteAtributoExtra(aev);
 			}
+		}
+	}
+	
+	private void deleteAllAtributosExtras(ICommonEntity entity){
+		List<AtributoExtraValor> list = this.getAtributosExtras((CommonEntity) entity);
+		for (AtributoExtraValor aev : list) {
+			deleteAtributoExtra(aev);
 		}
 	}
 	

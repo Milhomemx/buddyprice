@@ -66,44 +66,7 @@
 					</row>
 					
 					<row>
-						<vlayout id="panelAtrrExtra" visible="false" width="600px" height="125px" style="overflow: auto;" >
-							<hlayout>
-								<textbox id="fldAtributo" value="@{controller.atributoExtra.atributoExtra}" style="text-transform: uppercase;"/>
-								<textbox id="fldValor" value="@{controller.atributoExtra.valor}" />
-								<button id="btnSalvar" label="S" onClick='controller.doAction("adicionarAtributoExtra");' />
-							</hlayout>
-							<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" width="500px" selectedItem="@{controller.selectedAtributoExtra}"
-										hflex="min" onAfterRender='self.clearSelection();' 
-										mold="paging" pageSize='10'>
-								<listhead>
-									<listheader label="Tipo" width="150px"/>
-									<listheader label="Valor" width="150px"/>
-									<listheader label="Ação" width="100px"/>
-								</listhead>
-								<listitem self="@{each=itm}" value="@{itm}">
-								 	<listcell label="@{itm.atributoExtra.nome}">
-								 	</listcell>
-								 	<listcell>
-								 		<textbox value="@{itm.valor}" inplace="true" hflex="1"/>
-								 	</listcell>
-								 	<listcell>
-<!-- 								 		<button label="E"> -->
-<!-- 								 			<attribute name="onClick"> -->
-<!-- 								 				controller.setSelectedAtributoExtra(self.getParent().getParent().getValue()); -->
-<!-- 								 				controller.editarElemento(); -->
-<!-- 								 			</attribute> -->
-<!-- 								 		</button> -->
-								 		<button label="R">
-									 		<attribute name="onClick">
-									 			controller.setSelectedAtributoExtra(self.getParent().getParent().getValue());
-												controller.removerElemento();
-											</attribute>
-								 		</button>
-								 	</listcell>
-								</listitem>
-							</listbox>
-							<label value="*Clique no valor que deseja mudar para modifica-lo!" style="color: red;font-weight: bold;"/>
-						</vlayout>					
+						<include src="/pages/forms/panelAtrrExtra.zul" />	
 					</row>
 					<row>
 						<hbox>
