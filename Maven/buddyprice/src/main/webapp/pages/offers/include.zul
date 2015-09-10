@@ -1,4 +1,4 @@
-<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+ <?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 
@@ -25,6 +25,7 @@
 								placeholder='${c:getProperty("HolderYourProduct")}' selectedItem="@{controller.entity.produto}">
 								
 							</combobox>
+							<button label="Adicionar Produto" onClick="controller.openModalProduto()"/>
 						</hbox>
 					</row>
 
@@ -36,6 +37,7 @@
 								placeholder='${c:getProperty("HolderYourEstablishment")}' selectedItem="@{controller.entity.estabelecimento}">
 								
 							</combobox>
+							<button label="Adicionar Estabelecimento" onClick="controller.openModalEstabelecimento()"/>
 						</hbox>
 					</row>
 

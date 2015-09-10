@@ -95,6 +95,14 @@ public class OfferComposer extends BaseComposerSocial<Oferta, OfferController> {
 		}
 	}
 	
+	public void openModalProduto(){
+		callModalWindow("/pages/offers/modalProduto.zul");
+	}
+	
+	public void openModalEstabelecimento(){
+		callModalWindow("/pages/offers/modalEstabelecimento.zul");
+	}
+	
 	@Override
 	public Oferta getEntityObject() {
 		return new Oferta();

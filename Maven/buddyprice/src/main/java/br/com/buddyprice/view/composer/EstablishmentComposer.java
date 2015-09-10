@@ -114,10 +114,17 @@ public class EstablishmentComposer extends
 	public Return saveEntity() {
 		Estabelecimento estabelecimento = entity;
 		Return ret = super.saveEntity();
-		ret = getControl().getEstablishmentId(estabelecimento);
-		setEntity((Estabelecimento) ret.getList().get(0));
-		if (ret.isValid() && fotoEstabelecimento != null)
-			ret.concat(uploadImage(getFotoEstabelecimento()));
+		if(ret.isValid()){
+			if(getComponentById("modalEstabelecimento") != null){
+				getComponentById("modalEstabelecimento").detach();
+				getParentComposer().loadBinder();
+			} else {
+				ret = getControl().getEstablishmentId(estabelecimento);
+				setEntity((Estabelecimento) ret.getList().get(0));
+				if (ret.isValid() && fotoEstabelecimento != null)
+					ret.concat(uploadImage(getFotoEstabelecimento()));
+			}
+		}
 		return ret;
 	}
 

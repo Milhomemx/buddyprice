@@ -1,0 +1,66 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Adicionar Estabelecimento" id="modalEstabelecimento" border="normal" apply="${establishmentComposer}" closable="true" width="306px">
+	<grid>
+		<rows width="500px">
+			<row>
+				<hbox>
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" width="242px"
+						class="input-xlarge"
+						placeholder='${c:getProperty("HolderEstablishmentName")}' />
+				</hbox>
+			</row>
+
+			<row>
+				<textbox id="fldEndereco"
+					value="@{controller.entity.endereco}" width="242px"
+					class="input-xlarge"
+					placeholder='${c:getProperty("HolderEstablishmentAddress")}' />
+			</row>
+
+			<row>
+				<hbox>
+					<textbox id="fldCidade" class="input-xlarge"
+						width="79px" value="@{controller.entity.cidade}"
+						placeholder='${c:getProperty("HolderEstablishmentCity")}' />
+
+					<textbox id="fldEstado" class="input-xlarge"
+						width="79px" value="@{controller.entity.estado}"
+						placeholder='${c:getProperty("HolderEstablishmentState")}' />
+					<textbox id="fldPais" class="input-xlarge"
+						width="79px" value="@{controller.entity.pais}"
+						placeholder='${c:getProperty("HolderEstablishmentCountry")}' />
+				</hbox>
+			</row>
+
+			<row>
+				<textbox id="fldSite"
+					value="@{controller.entity.site}" width="242px"
+					class="input-xlarge"
+					placeholder='${c:getProperty("HolderEstablishmentSite")}' />
+			</row>
+
+			<row>
+
+				<textbox id="fldDescricao" rows="4"
+					value="@{controller.entity.descricao}" width="242px"
+					class="input-xlarge"
+					placeholder='${c:getProperty("HolderEstablishmentDescription")}' />
+			</row>
+			
+			<row>
+				<hbox>
+					<button sclass="btn btn-danger"
+						label="Salvar Alterações" width="121px"
+						onClick='controller.doAction("saveEntity")' />
+					<button label="Cancelar" onClick="modalEstabelecimento.detach()"
+						width="121px" />
+
+				</hbox>
+			</row>
+
+		</rows>
+	</grid>
+</window>
+</zk>

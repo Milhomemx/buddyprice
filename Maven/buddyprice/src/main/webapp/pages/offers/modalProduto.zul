@@ -1,0 +1,72 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Adicionar Produto" id="modalProduto" border="normal" apply="${productComposer}" closable="true" width="306px">
+	<grid>
+		<rows>
+			<row>
+				<hbox>
+					<textbox id="fldNome"
+						value="@{controller.entity.nome}" width="242px"
+						class="input-xlarge"
+						placeholder="Nome" />
+				</hbox>
+<!-- 				<hbox width="100%" height="150px" align="right"
+					pack="right">
+					<image src='${c:getProperty("DefaultProduct")};'
+						onCreate="br.com.buddyprice.view.composer.ProductComposer.showImageEstablishment(self);" />
+				</hbox> -->
+			</row>
+
+			<row>
+				<textbox id="fldTamanho"
+					value="@{controller.entity.tamanho}" width="242px"
+					class="input-xlarge"
+					placeholder="Tamanho" />
+			</row>
+
+			<row>
+				<hbox>
+					<textbox id="fldPeso" class="input-xlarge"
+						width="79px" value="@{controller.entity.peso}"
+						placeholder="Peso" />
+
+					<textbox id="fldCor" class="input-xlarge"
+						width="79px" value="@{controller.entity.cor}"
+						placeholder="Cor" />
+					<textbox id="fldVersao" class="input-xlarge"
+						width="79px" value="@{controller.entity.versao}"
+						placeholder="Versão" />
+				</hbox>
+			</row>
+
+			<row>
+				<textbox id="fldMarca" value="@{controller.entity.marca}"
+					width="242px" class="input-xlarge"
+					placeholder="Marca" />
+			</row>
+
+			<row>
+
+				<textbox id="fldDescricao" rows="4"
+					value="@{controller.entity.descricao}" width="242px"
+					class="input-xlarge"
+					placeholder="Descrição" />
+			</row>
+			
+			<row id="inserir" visible="false">
+				<button upload="true" label="Alterar Foto"
+					onUpload='controller.changeProfileImage(event)' />
+			</row>
+			<row>
+				<hbox>
+					<button sclass="btn btn-danger"
+						label="Salvar Alterações" width="121px"
+						onClick='controller.doAction("saveEntity")' />
+					<button label="Cancelar"
+						onClick="modalProduto.detach()" width="121px" />
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+</window>
+</zk>

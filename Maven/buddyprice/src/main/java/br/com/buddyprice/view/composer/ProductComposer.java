@@ -53,12 +53,16 @@ public class ProductComposer extends
 		Produto produto = entity;
 		Return ret = super.saveEntity();
 		if (ret.isValid()) {
-			ret.concat(getControl().getProductId(produto));
-			if (ret.isValid() && !ret.getList().isEmpty())
-				produto = (Produto) ret.getList().get(0);
-			session.setAttribute("produto", produto);
-			Executions.sendRedirect("view.zul?sucess=true");
-
+			if(getComponentById("modalProduto") != null){
+				getComponentById("modalProduto").detach();
+				getParentComposer().loadBinder();
+			} else {
+				ret.concat(getControl().getProductId(produto));
+				if (ret.isValid() && !ret.getList().isEmpty())
+					produto = (Produto) ret.getList().get(0);
+				session.setAttribute("produto", produto);
+				Executions.sendRedirect("view.zul?sucess=true");
+			}
 		}
 
 		return ret;

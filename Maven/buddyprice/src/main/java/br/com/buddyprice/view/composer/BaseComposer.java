@@ -10,13 +10,13 @@ import br.com.vexillum.view.CRUDComposer;
 public abstract class BaseComposer<E extends ICommonEntity, G extends GenericControl<E>>
 		extends CRUDComposer<E, G> {
 
-	private BaseComposer<E, G> parentComposer;
+	private CRUDComposer<E, G> parentComposer;
 
-	public BaseComposer<E, G> getParentComposer() {
+	public CRUDComposer<E, G> getParentComposer() {
 		return parentComposer;
 	}
 
-	public void setParentComposer(BaseComposer<E, G> parentComposer) {
+	public void setParentComposer(CRUDComposer<E, G> parentComposer) {
 		this.parentComposer = parentComposer;
 	}
 
@@ -24,7 +24,7 @@ public abstract class BaseComposer<E extends ICommonEntity, G extends GenericCon
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		setParentComposer((BaseComposer<E, G>) arg.get("thisComposer"));
+		setParentComposer((CRUDComposer<E, G>) arg.get("thisComposer"));
 	}
 	
 	protected void loadBinderParentComposer() {
