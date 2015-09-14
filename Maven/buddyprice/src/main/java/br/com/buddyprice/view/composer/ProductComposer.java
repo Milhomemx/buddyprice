@@ -7,6 +7,7 @@ import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Image;
 
@@ -36,6 +37,9 @@ public class ProductComposer extends
 			session.setAttribute("produto", null);
 			initListAtributosExtras();
 			showAlterProduct();		
+		} else if(arg.containsKey("nomeProduto")){
+			getEntity().setNome((String) arg.get("nomeProduto"));
+			((HtmlBasedComponent) getComponentById("fldTamanho")).focus();
 		}
 		
 		loadBinder();
@@ -53,13 +57,12 @@ public class ProductComposer extends
 		Produto produto = entity;
 		Return ret = super.saveEntity();
 		if (ret.isValid()) {
+			produto = (Produto) getControl().getProductId(ret.getSerializable()).getList().get(0);
 			if(getComponentById("modalProduto") != null){
 				getComponentById("modalProduto").detach();
+				((OfferComposer)getParentComposer()).getEntity().setProduto(produto);
 				getParentComposer().loadBinder();
 			} else {
-				ret.concat(getControl().getProductId(produto));
-				if (ret.isValid() && !ret.getList().isEmpty())
-					produto = (Produto) ret.getList().get(0);
 				session.setAttribute("produto", produto);
 				Executions.sendRedirect("view.zul?sucess=true");
 			}

@@ -1,5 +1,7 @@
 package br.com.buddyprice.control;
 
+import java.io.Serializable;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +51,8 @@ public class EstablishmentController extends BaseController<Estabelecimento> {
          * @return
          * Retorna o ID de um estabelecimento pela pesquisa de seu respectivo nome.
          */
-        public Return getEstablishmentId(Estabelecimento est){
-        	String sql = "from Estabelecimento where nome = '"+est.getNome()+"'";
+        public Return getEstablishmentId(Serializable id){
+        	String sql = "from Estabelecimento where id = '"+id+"'";
         	data.put("sql", sql);
         	
         	return searchByHQL();

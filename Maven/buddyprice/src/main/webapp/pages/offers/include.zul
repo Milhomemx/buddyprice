@@ -22,10 +22,10 @@
 
 							<combobox id="fldProduto" width="242px"
 								model="@{controller.produtos}"
-								placeholder='${c:getProperty("HolderYourProduct")}' selectedItem="@{controller.entity.produto}">
+								placeholder='${c:getProperty("HolderYourProduct")}' selectedItem="@{controller.entity.produto}" value="@{controller.nomeProduto}">
 								
 							</combobox>
-							<button label="Adicionar Produto" onClick="controller.openModalProduto()"/>
+<!-- 							<button label="Adicionar Produto" onClick="controller.openModalProduto()"/> -->
 						</hbox>
 					</row>
 
@@ -34,10 +34,10 @@
 
 							<combobox id="fldEstabelecimento"
 								width="242px" model="@{controller.estabelecimentos}"
-								placeholder='${c:getProperty("HolderYourEstablishment")}' selectedItem="@{controller.entity.estabelecimento}">
+								placeholder='${c:getProperty("HolderYourEstablishment")}' selectedItem="@{controller.entity.estabelecimento}" value="@{controller.nomeEstabelecimento}">
 								
 							</combobox>
-							<button label="Adicionar Estabelecimento" onClick="controller.openModalEstabelecimento()"/>
+<!-- 							<button label="Adicionar Estabelecimento" onClick="controller.openModalEstabelecimento()"/> -->
 						</hbox>
 					</row>
 

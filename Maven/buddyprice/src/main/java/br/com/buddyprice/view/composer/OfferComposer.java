@@ -33,6 +33,32 @@ import br.com.vexillum.util.SpringFactory;
 @SuppressWarnings("serial")
 public class OfferComposer extends BaseComposerSocial<Oferta, OfferController> {
 
+	private String nomeProduto;
+	
+	private String nomeEstabelecimento;
+	
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+		if(this.nomeProduto != null && getEntity().getProduto() == null){
+			openModalProduto();
+		}
+	}
+
+	public String getNomeEstabelecimento() {
+		return nomeEstabelecimento;
+	}
+
+	public void setNomeEstabelecimento(String nomeEstabelecimento) {
+		this.nomeEstabelecimento = nomeEstabelecimento;
+		if(this.nomeEstabelecimento != null && getEntity().getEstabelecimento() == null){
+			openModalEstabelecimento();
+		}
+	}
+
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		if (session.getAttribute("oferta") != null) {
@@ -42,7 +68,6 @@ public class OfferComposer extends BaseComposerSocial<Oferta, OfferController> {
 		
 		loadBinder();
 	}
-	
 	
 	@Override
 	public OfferController getControl() {

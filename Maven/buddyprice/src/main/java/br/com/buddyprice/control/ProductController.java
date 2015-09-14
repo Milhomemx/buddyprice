@@ -1,5 +1,7 @@
 package br.com.buddyprice.control;
 
+import java.io.Serializable;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +51,8 @@ public class ProductController extends BaseController<Produto> {
          * @return
          * Retorna o ID de um produto pela pesquisa de seu respectivo nome. 
          */
-        public Return getProductId(Produto prod){
-        	String sql = "from Produto where nome = '"+prod.getNome()+"'";
+        public Return getProductId(Serializable id){
+        	String sql = "from Produto where id = '"+id+"'";
         	data.put("sql", sql);
         	
         	return searchByHQL();

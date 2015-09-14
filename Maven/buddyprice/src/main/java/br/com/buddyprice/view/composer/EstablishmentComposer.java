@@ -8,6 +8,7 @@ import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Image;
 
@@ -49,6 +50,9 @@ public class EstablishmentComposer extends
 			session.setAttribute("estabelecimento", null);
 			initListAtributosExtras();
 			showAlterImageEstablishment();
+		} else if(arg.containsKey("nomeEstabelecimento")) {
+			getEntity().setNome((String) arg.get("nomeEstabelecimento"));
+			((HtmlBasedComponent) getComponentById("fldEndereco")).focus();
 		} else {
 			showCreateImageEstablishment();
 		}
@@ -115,12 +119,13 @@ public class EstablishmentComposer extends
 		Estabelecimento estabelecimento = entity;
 		Return ret = super.saveEntity();
 		if(ret.isValid()){
+			estabelecimento = (Estabelecimento) getControl().getEstablishmentId(ret.getSerializable()).getList().get(0);
 			if(getComponentById("modalEstabelecimento") != null){
 				getComponentById("modalEstabelecimento").detach();
+				((OfferComposer)getParentComposer()).getEntity().setEstabelecimento(estabelecimento);
 				getParentComposer().loadBinder();
 			} else {
-				ret = getControl().getEstablishmentId(estabelecimento);
-				setEntity((Estabelecimento) ret.getList().get(0));
+				setEntity(estabelecimento);
 				if (ret.isValid() && fotoEstabelecimento != null)
 					ret.concat(uploadImage(getFotoEstabelecimento()));
 			}
