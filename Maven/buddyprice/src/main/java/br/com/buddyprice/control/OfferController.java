@@ -1,12 +1,17 @@
 package br.com.buddyprice.control;
 
+import java.util.HashMap;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import br.com.buddyprice.model.Avaliacao;
 import br.com.buddyprice.model.Oferta;
+import br.com.buddyprice.model.Usuario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
+import br.com.vexillum.util.SpringFactory;
 
 /**
  * @author Natan
@@ -71,6 +76,46 @@ public class OfferController extends GenericControl<Oferta> {
 		Return ret = new Return(false);
 
 		return ret;
+	}
+	
+	public Return evaluateOfferPositive(){
+		Avaliacao avaliacao = getEvaluateFromUser();
+		if(avaliacao != null){
+			return delete(avaliacao);
+		}
+		avaliacao = getAvaliacaoEntity(true);
+		return save(avaliacao);
+	}
+	
+	public Return evaluateOfferNegative(){
+		Avaliacao avaliacao = getEvaluateFromUser();
+		if(avaliacao != null){
+			return delete(avaliacao);
+		}
+		avaliacao = getAvaliacaoEntity(false);
+		return save(avaliacao);
+	}
+
+	private Avaliacao getAvaliacaoEntity(Boolean valor) {
+		Avaliacao avaliacao = new Avaliacao();
+		avaliacao.setUsuario((Usuario) data.get("userLogged"));
+		avaliacao.setOferta((Oferta) data.get("entity"));
+		avaliacao.setValor(valor);
+		return avaliacao;
+	}
+	
+	private Avaliacao getEvaluateFromUser() {
+		Return ret = new Return(true);
+		HashMap<String, Object> data = new HashMap<String, Object>();
+
+		data.put("sql",	"FROM Avaliacao a WHERE a.oferta = '" + getEntity().getId() + "' AND a.usuario = '" + ((Usuario)getData().get("userLogged")).getId() + "'");
+
+		OfferController controller = SpringFactory.getController("offerController", OfferController.class, data);
+		ret = controller.searchByHQL();
+		if (!ret.getList().isEmpty()) {
+			return (Avaliacao) ret.getList().iterator().next();
+		}
+		return null;
 	}
 
 }

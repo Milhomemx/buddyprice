@@ -72,6 +72,15 @@
 
 							</hbox>
 						</row>
+						<row>
+							<hbox>
+								<button id="positiveEvaluate" label="Positiva" onClick='controller.evaluateOffer(true)'/>
+								<label value="@{controller.entity.numAvaliacoesPositivas}"/>
+								<separator width="20px"/>
+								<button id="negativeEvaluate" label="Negativa" onClick='controller.evaluateOffer(false)'/>
+								<label value="@{controller.entity.numAvaliacoesNegativas}"/>
+							</hbox>
+						</row>
 
 						<row>
 							<button label="Voltar" href="search.zul"

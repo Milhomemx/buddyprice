@@ -1,10 +1,13 @@
 package br.com.buddyprice.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.vexillum.model.annotations.Validate;
@@ -38,6 +41,9 @@ public class Oferta extends CommonEntityDated {
 	@Validate(notNull = true)
 	@Column(name = "valor", nullable = false, updatable = true)
 	private String valor;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="oferta")
+	private List<Avaliacao> avaliacoes;
 
 	public Produto getProduto() {
 		return produto;
@@ -71,4 +77,37 @@ public class Oferta extends CommonEntityDated {
 		this.valor = valor;
 	}
 
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+
+	public Integer getNumAvaliacoesPositivas(){
+		Integer num = 0;
+		if(avaliacoes == null){
+			return num;
+		}
+		for (Avaliacao avaliacao : avaliacoes) {
+			if(avaliacao.getValor()){
+				num++;
+			}
+		}
+		return num;
+	}
+	
+	public Integer getNumAvaliacoesNegativas(){
+		Integer num = 0;
+		if(avaliacoes == null){
+			return num;
+		}
+		for (Avaliacao avaliacao : avaliacoes) {
+			if(!avaliacao.getValor()){
+				num++;
+			}
+		}
+		return num;
+	}
 }
