@@ -22,7 +22,7 @@ import br.com.vexillum.view.CRUDComposer;
 @org.springframework.stereotype.Component
 @Scope("prototype")
 @SuppressWarnings("serial")
-public class UsuarioComposer extends CRUDComposer<Usuario, UsuarioController> {
+public class UsuarioComposer extends BaseComposer<Usuario, UsuarioController> {
 
 	String email2 = new String();
 	String pass2 = new String();

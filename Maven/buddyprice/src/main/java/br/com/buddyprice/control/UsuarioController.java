@@ -223,5 +223,18 @@ public class UsuarioController extends GenericControl<Usuario> {
 		retValid.concat(update());
 		return retValid;
 	}
+	
+	public Return searchUsers(){
+		Return ret = new Return(true);
+		String searchKey = (String) data.get("searchField");
+		Usuario userLogged =  (Usuario) data.get("userLogged");
+		if(searchKey == null || searchKey.isEmpty() || !(searchKey.indexOf("%") != 0) || !(searchKey.indexOf("%") != searchKey.length() - 1)){
+			return ret;
+		}
+		String sql = "FROM Usuario WHERE (name like '" + searchKey + "%' OR email like '" + searchKey + "%' OR cidade like '" + searchKey + "%') "
+					+ "AND id <> " + userLogged.getId() + " AND active = true ORDER BY name";
+		data.put("sql", sql);
+		return super.searchByHQL();
+	}
 
 }

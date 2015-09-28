@@ -21,6 +21,7 @@
 		<security:intercept-url pattern="/pages/establishments/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/products/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/offers/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/pages/friends/**" access="ROLE_ADMIN,ROLE_USER" />
 		<security:intercept-url pattern="/pages/dashboard/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/pages/errors/**" access="ROLE_ANONYMOUS,ROLE_USER" />
 		<security:intercept-url pattern="/pages/**" access="ROLE_ANONYMOUS,ROLE_USER" />		

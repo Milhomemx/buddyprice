@@ -1,0 +1,84 @@
+<?page title="BuddyPrice" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+<zk>
+	<style>
+		.message.z-label{
+			font-size: 20px;
+		}
+	</style>
+	<div self="@define(content)" height="100%" apply="${requestsComposer}">
+<!-- 		<include src="/paginas/template/topPages.zul" backHref="/paginas/amizades/amizades.zul"/> -->
+		<tabbox height="100%">
+			<tabs>
+				<tab label="Solicitações Pendentes" style="font-size: 18px;"/>
+				<tab label="Solicitações em aberto" style="font-size: 18px;"/>
+			</tabs>
+			<tabpanels>
+			<tabpanel>
+					<hbox width="100%" height="100%" >
+						<grid model="@{controller.openRequests}" hflex="min" mold="paging" pageSize="5" sclass="nostyle" onAfterRender="">
+							<rows>
+								<row self="@{each=fri}" value="@{fri}">
+									<vbox align="center">
+										<borderlayout width="400px" height="72px" sclass="pesqUsuario">
+											<west>
+												<image id="imageProfile" src="/imagens/fotopadrao.png" width="67px" height="67px"/>
+											</west>
+											<center>
+												<vbox width="100%">
+													<label value="@{fri.owner.name }"/>
+													<label value="@{fri.owner.email }"/>
+													<label value="@{fri.owner.cidade }"/>
+												</vbox>
+											</center>
+											<east>
+												<vbox height="100%" width="30px" align="center" pack="center">
+													<button zclass="btn btn-block btn-success reduced" image="/imagens/Ok-icon24x24.png" onClick="controller.acceptFriendship(self)"/>
+													<separator height="10px"/>
+													<button zclass="btn btn-block btn-success reduced" image="/imagens/Close-2-icon24x24.png" onClick="controller.refuseFriendship(self)"/>
+												</vbox>
+											</east>
+										</borderlayout>
+										<separator width="400" bar="true"/>
+									</vbox>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</tabpanel>
+				<tabpanel>
+					<hbox width="100%" height="100%" >
+						<grid model="@{controller.pendents}" hflex="min" mold="paging" pageSize="5" sclass="nostyle" onAfterRender="">
+							<rows>
+								<row self="@{each=fri}" value="@{fri}">
+									<vbox align="center">
+										<borderlayout width="400px" height="72px" sclass="pesqUsuario">
+											<west>
+												<image src="/imagens/fotopadrao.png" width="67px" height="67px"/>
+											</west>
+											<center>
+												<vbox width="100%">
+													<label value="@{fri.friend.name }"/>
+													<label value="@{fri.friend.email }"/>
+													<label value="@{fri.friend.cidade }"/>
+												</vbox>
+											</center>
+											<east>
+												<vbox height="100%" width="30px" align="center" pack="center">
+													<button zclass="btn btn-block btn-success reduced" image="/imagens/user24x24.png" onClick="controller.redirectToProfile(self)"/>
+													<separator height="10px"/>
+													<button zclass="btn btn-block btn-success reduced" image="/imagens/Close-2-icon24x24.png" onClick="controller.refuseFriendship(self)"/>
+												</vbox>
+											</east>
+										</borderlayout>
+										<separator width="400" bar="true"/>
+									</vbox>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</div>
+</zk>
