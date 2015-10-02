@@ -74,11 +74,15 @@
 						</row>
 						<row>
 							<hbox>
-								<button id="positiveEvaluate" label="Positiva" onClick='controller.evaluateOffer(true)'/>
-								<label value="@{controller.entity.numAvaliacoesPositivas}"/>
-								<separator width="20px"/>
-								<button id="negativeEvaluate" label="Negativa" onClick='controller.evaluateOffer(false)'/>
-								<label value="@{controller.entity.numAvaliacoesNegativas}"/>
+								<button id="positiveEvaluate"
+									label="Positiva" onClick='controller.evaluateOffer(true)' />
+								<label
+									value="@{controller.entity.numAvaliacoesPositivas}" />
+								<separator width="20px" />
+								<button id="negativeEvaluate"
+									label="Negativa" onClick='controller.evaluateOffer(false)' />
+								<label
+									value="@{controller.entity.numAvaliacoesNegativas}" />
 							</hbox>
 						</row>
 
@@ -92,24 +96,24 @@
 				</grid>
 
 			</west>
-			<center  border="none" style="width: 30%">
-			<grid>
+			<center border="none" style="width: 30%">
+				<grid>
 					<rows>
-			
-								<row>
+
+						<row>
 							<hbox>
-								<label value=""
-									style="font-size:18px" />
+								<label value="" style="font-size:18px" />
 							</hbox>
 
 						</row>
-			
-			<row>
+
+						<row>
 							<hbox>
 								<label id="fldNomeProdtitle"
 									value="Estabelecimento:" width="142px" />
 								<label id="fldNomeProd"
-									value="@{controller.entity.estabelecimento.nome}" width="142px" />
+									value="@{controller.entity.estabelecimento.nome}"
+									width="142px" />
 							</hbox>
 						</row>
 
@@ -118,7 +122,8 @@
 								<label id="fldEnderecotitle"
 									value="Endereço:" width="142px" />
 								<label id="fldEndereco"
-									value="@{controller.entity.estabelecimento.endereco}" width="142px" />
+									value="@{controller.entity.estabelecimento.endereco}"
+									width="142px" />
 							</hbox>
 						</row>
 
@@ -127,7 +132,8 @@
 								<label id="fldCidadetitle"
 									value="Cidade:" width="142px" />
 								<label id="fldCidade"
-									value="@{controller.entity.estabelecimento.cidade}" width="142px" />
+									value="@{controller.entity.estabelecimento.cidade}"
+									width="142px" />
 							</hbox>
 						</row>
 						<row>
@@ -135,7 +141,8 @@
 								<label id="fldEstadotitle"
 									value="Estado:" width="142px" />
 								<label id="fldEstado"
-									value="@{controller.entity.estabelecimento.estado}" width="142px" />
+									value="@{controller.entity.estabelecimento.estado}"
+									width="142px" />
 
 							</hbox>
 						</row>
@@ -144,7 +151,8 @@
 								<label id="fldPaistitle" value="País:"
 									width="142px" />
 								<label id="fldPais"
-									value="@{controller.entity.estabelecimento.pais}" width="142px" />
+									value="@{controller.entity.estabelecimento.pais}"
+									width="142px" />
 
 
 							</hbox>
@@ -155,29 +163,36 @@
 								<label id="fldSitetitle" value="Site:"
 									width="142px" />
 								<label id="fldSite"
-									value="@{controller.entity.estabelecimento.site}" width="142px" />
+									value="@{controller.entity.estabelecimento.site}"
+									width="142px" />
 
 							</hbox>
 						</row>
 
-						
+
 						<row>
 							<hbox>
-								<label id="fldValortitle"
-									value="Valor:" width="142px" />
+								<label id="fldValortitle" value="Valor:"
+									width="142px" />
 								<label id="fldValor"
 									value="@{controller.entity.valor}" width="142px" />
 							</hbox>
 						</row>
-						
+
 						<row>
-				<image id="toolFacebook" src="/images/social/facebook.jpg" onClick="controller.publishOfferOnFacebook()" tooltiptext="Publicar no Facebook"/>
-				<image id="toolTwitter" src="/images/social/twitter.jpg" onClick="controller.publishOfferOnTwitter()" tooltiptext="Publicar no Twitter"/>
-		</row>
-						
-			</rows>
-			</grid>
-			
+							<image id="toolFacebook"
+								src="/images/social/facebook.jpg"
+								onClick="controller.publishOfferOnFacebook()"
+								tooltiptext="Publicar no Facebook" />
+							<image id="toolTwitter"
+								src="/images/social/twitter.jpg"
+								onClick="controller.publishOfferOnTwitter()"
+								tooltiptext="Publicar no Twitter" />
+						</row>
+
+					</rows>
+				</grid>
+
 			</center>
 
 			<east border="none" style="width: 30%">
@@ -188,9 +203,9 @@
 								pack="left">
 								<image
 									src='${c:getProperty("DefaultProduct")};'>
-									 <attribute name="onCreate">
-	controller.showImageOffer(self, controller.getEntity());
-</attribute>
+									<attribute name="onCreate">
+										controller.showImageOffer(self, controller.getEntity());
+									</attribute>
 								</image>
 							</hbox>
 						</row>
@@ -201,6 +216,35 @@
 			</east>
 
 		</borderlayout>
+		
+		<groupbox width="100%">
+			<caption label="Fazer Comentário"/>
+			<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1"/>
+			<hbox>
+				<listbox model="@{controller.listAvaliacaoComentarios}" selectedItem="@{controller.fldAvaliacao}"/>
+				<separator hflex="1"/>
+				<button label="Comentar" onClick="manager.saveComentary()"/>
+			</hbox>
+		</groupbox>
+		
+		<listbox id="boxComentarios " width="100%" model="@{controller.listComentarios}">
+			<listitem self="@{each=item}" value="@{item}">
+				<listcell >
+					<grid hflex="1">
+						<rows>
+							<row>
+								<label value="@{item.usuario.nome}"/> 
+								<label value="@{item.data}"/> 
+								<label value="@{item.avaliacao}"/> 
+							</row>
+							<row spans="3">
+								<label value="@{item.comentario}"/>  
+							</row>
+						</rows>
+					</grid>
+				</listcell>
+			</listitem>
+		</listbox>
 	</div>
 
 </zk>

@@ -1,11 +1,15 @@
 package br.com.buddyprice.view.composer;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Button;
 
 import br.com.buddyprice.model.Avaliacao;
+import br.com.buddyprice.model.Comentario;
 import br.com.buddyprice.model.Oferta;
+import br.com.buddyprice.model.enums.AvaliacaoComentario;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 
@@ -17,6 +21,26 @@ import br.com.vexillum.util.Return;
 @Scope("prototype")
 @SuppressWarnings("serial")
 public class ViewOfferComposer extends OfferComposer {
+
+	private String fldComentario;
+	
+	private String fldAvaliacao;
+	
+	public String getFldComentario() {
+		return fldComentario;
+	}
+
+	public void setFldComentario(String fldComentario) {
+		this.fldComentario = fldComentario;
+	}
+
+	public String getFldAvaliacao() {
+		return fldAvaliacao;
+	}
+
+	public void setFldAvaliacao(String fldAvaliacao) {
+		this.fldAvaliacao = fldAvaliacao;
+	}
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -83,6 +107,24 @@ public class ViewOfferComposer extends OfferComposer {
 
 	public Return evaluateOfferPositive() {
 		return getControl().doAction("evaluateOfferPositive");
+	}
+	
+	public AvaliacaoComentario[] getListAvaliacaoComentarios(){
+		return AvaliacaoComentario.values();
+	}
+	
+	public List<Comentario> getListComentario(){
+		List<Comentario> list = getControl().getCommentsFromOffer();
+		if(list != null && !list.isEmpty()){
+			getComponentById("boxComentario").setVisible(true);
+		} else {
+			getComponentById("boxComentario").setVisible(false);
+		}
+		return list;
+	}
+	
+	public Return saveComentary(){
+		return getControl().saveComentary();
 	}
 
 }

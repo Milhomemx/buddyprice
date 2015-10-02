@@ -1,13 +1,17 @@
 package br.com.buddyprice.control;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import br.com.buddyprice.model.Avaliacao;
+import br.com.buddyprice.model.Comentario;
 import br.com.buddyprice.model.Oferta;
 import br.com.buddyprice.model.Usuario;
+import br.com.buddyprice.model.enums.AvaliacaoComentario;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
@@ -116,6 +120,29 @@ public class OfferController extends GenericControl<Oferta> {
 			return (Avaliacao) ret.getList().iterator().next();
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Comentario> getCommentsFromOffer(){
+		String sql = "FROM Comentario c WHERE c.usuario= '" + getEntity().getId() + "'";
+		getData().put("sql", sql);
+		
+		CommentController controller = SpringFactory.getController("commentController", CommentController.class, data);
+		Return ret = controller.searchByHQL();
+		if (!ret.getList().isEmpty()) {
+			return new ArrayList<>();
+		}
+		return (List<Comentario>) ret.getList();
+	}
+	
+	public Return saveComentary(){
+		Comentario coment = new Comentario();
+		coment.setUsuario((Usuario) getData().get("userLogged"));
+		coment.setOferta(getEntity()); 
+		coment.setComentario((String) getData().get("fldComentario"));
+		coment.setAvaliacao((AvaliacaoComentario) getData().get("fldAvaliacao"));
+		
+		return save(coment);
 	}
 
 }
