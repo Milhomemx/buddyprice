@@ -4,8 +4,8 @@
 
 <zk>
 
-	<div self="@define(content)">
-		<borderlayout height="600px" apply="${viewOfferComposer}">
+	<div self="@define(content)" apply="${viewOfferComposer}">
+		<borderlayout height="600px" >
 			<west border="none" style="width: 30%">
 				<grid>
 					<rows>
@@ -219,12 +219,14 @@
 		
 		<groupbox width="100%">
 			<caption label="Fazer Comentário"/>
-			<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1"/>
-			<hbox>
-				<listbox model="@{controller.listAvaliacaoComentarios}" selectedItem="@{controller.fldAvaliacao}"/>
-				<separator hflex="1"/>
-				<button label="Comentar" onClick="manager.saveComentary()"/>
-			</hbox>
+			<vbox width="100%">
+				<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1"/>
+				<hbox width="100%">
+					<combobox model="@{controller.listAvaliacaoComentariosrerg}" selectedItem="@{controller.fldAvaliacao}" />
+					<separator hflex="1"/>
+					<button label="Comentar" onClick="controller.saveComentary()"/>
+				</hbox>
+			</vbox>
 		</groupbox>
 		
 		<listbox id="boxComentarios " width="100%" model="@{controller.listComentarios}">
