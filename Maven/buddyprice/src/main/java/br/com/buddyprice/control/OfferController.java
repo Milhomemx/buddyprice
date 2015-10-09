@@ -124,12 +124,12 @@ public class OfferController extends GenericControl<Oferta> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Comentario> getCommentsFromOffer(){
-		String sql = "FROM Comentario c WHERE c.usuario= '" + getEntity().getId() + "'";
+		String sql = "FROM Comentario c WHERE c.oferta= '" + getEntity().getId() + "'";
 		getData().put("sql", sql);
 		
 		CommentController controller = SpringFactory.getController("commentController", CommentController.class, data);
 		Return ret = controller.searchByHQL();
-		if (!ret.getList().isEmpty()) {
+		if (ret.getList() == null) {
 			return new ArrayList<>();
 		}
 		return (List<Comentario>) ret.getList();

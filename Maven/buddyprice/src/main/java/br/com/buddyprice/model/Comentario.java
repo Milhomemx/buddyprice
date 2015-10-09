@@ -41,7 +41,7 @@ public class Comentario extends CommonEntity {
 	private AvaliacaoComentario avaliacao;
 
 	@Validate(notNull = true)
-	@Column(name = "comentario", nullable = false, updatable = true)
+	@Column(name = "comentario", nullable = false, updatable = true, length=100)
 	private String comentario;
 
 	@Column(name = "data", nullable = false, updatable = true)

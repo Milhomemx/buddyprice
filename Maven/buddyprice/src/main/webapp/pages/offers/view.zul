@@ -4,8 +4,8 @@
 
 <zk>
 
-	<div self="@define(content)" apply="${viewOfferComposer}">
-		<borderlayout height="600px" >
+	<div self="@define(content)" apply="${viewOfferComposer}" hflex="1">
+		<borderlayout height="450px" >
 			<west border="none" style="width: 30%">
 				<grid>
 					<rows>
@@ -219,33 +219,39 @@
 		
 		<groupbox width="100%">
 			<caption label="Fazer Comentário"/>
-			<vbox width="100%">
-				<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1"/>
-				<hbox width="100%">
-					<combobox model="@{controller.listAvaliacaoComentariosrerg}" selectedItem="@{controller.fldAvaliacao}" />
-					<separator hflex="1"/>
-					<button label="Comentar" onClick="controller.saveComentary()"/>
-				</hbox>
-			</vbox>
+			<hbox width="100%">
+				<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1" maxlength="100"/>
+				<combobox model="@{controller.listAvaliacaoComentarios}" selectedItem="@{controller.fldAvaliacao}" />
+				<button label="Comentar" onClick="controller.saveComentary()"/>
+			</hbox>
 		</groupbox>
 		
-		<listbox id="boxComentarios " width="100%" model="@{controller.listComentarios}">
-			<listitem self="@{each=item}" value="@{item}">
-				<listcell >
-					<grid hflex="1">
-						<rows>
-							<row>
-								<label value="@{item.usuario.nome}"/> 
-								<label value="@{item.data}"/> 
-								<label value="@{item.avaliacao}"/> 
-							</row>
-							<row spans="3">
-								<label value="@{item.comentario}"/>  
-							</row>
-						</rows>
-					</grid>
-				</listcell>
-			</listitem>
+		<separator height="10px"/>
+		<hbox width="100%" pack="center">
+			<label value="Comentários" style="font-weight: bold;font-size: 16px;"/>
+		</hbox>
+		<separator height="10px"/>
+		
+		<listbox id="boxComentarios" width="100%" model="@{controller.listComentarios}" itemRenderer="@{controller.comentaryRenderer}">
+			<listhead>
+				<listheader hflex="min"/>
+				<listheader hflex="min"/>
+				<listheader hflex="1"/>
+				<listheader hflex="min"/>
+			</listhead>
+<!-- 			<listitem self="@{each=item}" value="@{item}"> -->
+<!-- 				<listcell label="@{item.avaliacao}"/> -->
+<!-- 				<listcell label="@{item.usuario.name}"/> -->
+<!-- 				<listcell label="diz:"/> -->
+<!-- 				<listcell label="@{item.comentario}"/> -->
+<!-- 				<listcell> -->
+<!-- 					<hbox visible="@{controller.sameUser}"> -->
+<!-- 						<a label="Editar"/> -->
+<!-- 						<separator width="10px"/> -->
+<!-- 						<a label="Excluir"/> -->
+<!-- 					</hbox> -->
+<!-- 				</listcell> -->
+<!-- 			</listitem> -->
 		</listbox>
 	</div>
 

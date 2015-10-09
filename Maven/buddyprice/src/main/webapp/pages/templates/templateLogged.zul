@@ -18,7 +18,7 @@
 					<include src="/pages/components/leftsidebar.zul" />
 		</west>
 		<east width="8%" border="none"></east>
-		<center self="@insert(content)" border="none">
+		<center self="@insert(content)" border="none" hflex="1" vflex="1" autoscroll="true">
 
 		</center>
 		<south height="3%" border="none">

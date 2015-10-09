@@ -18,8 +18,14 @@ public class OfferValidator extends Validator {
 	}
 
 	
-	public Return validateSave() {
-		Return ret = super.validateSave();
+	public Return validateSaveComentary() {
+		Return ret = new Return(true);
+		if(mapData.get("fldAvaliacao") == null){
+			ret.concat(creatReturn("", getValidationMessage("comentario_avaliacao", "notNull", false)));
+		} 
+		if(mapData.get("fldComentario") == null || ((String) mapData.get("fldComentario")).isEmpty()){
+			ret.concat(creatReturn("", getValidationMessage("comentario_comentario", "notNull", false)));
+		}
 		return ret;
 	}
 	

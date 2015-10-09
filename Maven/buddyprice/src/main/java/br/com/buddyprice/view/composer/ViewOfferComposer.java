@@ -9,7 +9,9 @@ import org.zkoss.zul.Button;
 import br.com.buddyprice.model.Avaliacao;
 import br.com.buddyprice.model.Comentario;
 import br.com.buddyprice.model.Oferta;
+import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.model.enums.AvaliacaoComentario;
+import br.com.buddyprice.view.renderer.ComentaryRenderer;
 import br.com.vexillum.util.Message;
 import br.com.vexillum.util.Return;
 
@@ -22,9 +24,13 @@ import br.com.vexillum.util.Return;
 @SuppressWarnings("serial")
 public class ViewOfferComposer extends OfferComposer {
 
+	private ComentaryRenderer comentaryRenderer;
+	
 	private String fldComentario;
 	
-	private String fldAvaliacao;
+	private AvaliacaoComentario fldAvaliacao;
+	
+	private Comentario selectedComentario;
 	
 	public String getFldComentario() {
 		return fldComentario;
@@ -34,12 +40,27 @@ public class ViewOfferComposer extends OfferComposer {
 		this.fldComentario = fldComentario;
 	}
 
-	public String getFldAvaliacao() {
+	public AvaliacaoComentario getFldAvaliacao() {
 		return fldAvaliacao;
 	}
 
-	public void setFldAvaliacao(String fldAvaliacao) {
+	public void setFldAvaliacao(AvaliacaoComentario fldAvaliacao) {
 		this.fldAvaliacao = fldAvaliacao;
+	}
+
+	public Comentario getSelectedComentario() {
+		return selectedComentario;
+	}
+
+	public void setSelectedComentario(Comentario selectedComentario) {
+		this.selectedComentario = selectedComentario;
+	}
+	
+	public ComentaryRenderer getComentaryRenderer(){
+		if(comentaryRenderer == null){
+			comentaryRenderer = new ComentaryRenderer((Usuario) getUserLogged(), this);
+		}
+		return comentaryRenderer;
 	}
 
 	public void doAfterCompose(Component comp) throws Exception {
@@ -113,18 +134,31 @@ public class ViewOfferComposer extends OfferComposer {
 		return AvaliacaoComentario.values();
 	}
 	
-	public List<Comentario> getListComentario(){
+	public List<Comentario> getListComentarios(){
 		List<Comentario> list = getControl().getCommentsFromOffer();
 		if(list != null && !list.isEmpty()){
-			getComponentById("boxComentario").setVisible(true);
+			getComponentById("boxComentarios").setVisible(true);
 		} else {
-			getComponentById("boxComentario").setVisible(false);
+			getComponentById("boxComentarios").setVisible(false);
 		}
 		return list;
 	}
 	
 	public Return saveComentary(){
-		return getControl().saveComentary();
+		Return ret = getControl().doAction("saveComentary");
+		if(ret.isValid()){
+			loadBinder();
+		} else {
+			treatReturn(ret);
+		}
+		return ret;
 	}
 
+	public Return editComentary(){
+		return null;
+	}
+	
+	public Return deleteComentary(){
+		return null;
+	}
 }
