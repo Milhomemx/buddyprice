@@ -9,6 +9,7 @@ import br.com.buddyprice.model.annotations.AtributosExtras;
 import br.com.vexillum.control.GenericControl;
 import br.com.vexillum.model.CommonEntity;
 import br.com.vexillum.model.ICommonEntity;
+import br.com.vexillum.util.HibernateUtils;
 import br.com.vexillum.util.Return;
 
 public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
@@ -42,6 +43,7 @@ public class BaseController<E extends ICommonEntity> extends GenericControl<E> {
 
 	@SuppressWarnings("unchecked")
 	public List<AtributoExtraValor> getAtributosExtras(CommonEntity entity){
+		entity = HibernateUtils.materializeProxy(entity);
 		if(!entity.getClass().isAnnotationPresent(AtributosExtras.class)){
 			throw new UnsupportedOperationException("A entitidade deve estar anotada com @AtributosExtras");
 		}

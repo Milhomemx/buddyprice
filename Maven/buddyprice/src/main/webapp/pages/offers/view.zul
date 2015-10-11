@@ -5,219 +5,124 @@
 <zk>
 
 	<div self="@define(content)" apply="${viewOfferComposer}" hflex="1">
-		<borderlayout height="450px" >
-			<west border="none" style="width: 30%">
-				<grid>
-					<rows>
-						<row>
-							<hbox>
-								<label value="Visualizando uma Oferta"
-									style="font-size:18px" />
-							</hbox>
-
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldNometitle"
-									value="Produto:" width="142px" />
-								<label id="fldNome"
-									value="@{controller.entity.produto.nome}" width="142px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldTamanhotitle"
-									value="Tamanho:" width="142px" />
-								<label id="fldTamanho"
-									value="@{controller.entity.produto.tamanho}" width="142px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldPesotitle" value="Peso:"
-									width="142px" />
-								<label id="fldPeso"
-									value="@{controller.entity.produto.peso}" width="142px" />
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldCortitle" value="Cor:"
-									width="142px" />
-								<label id="fldCor"
-									value="@{controller.entity.produto.cor}" width="142px" />
-
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldversaotitle"
-									value="Versão:" width="142px" />
-								<label id="fldVersao"
-									value="@{controller.entity.produto.versao}" width="142px" />
-
-
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldMarcatitle" value="Marca:"
-									width="142px" />
-								<label id="fldMarca"
-									value="@{controller.entity.produto.marca}" width="142px" />
-
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<button id="positiveEvaluate"
-									label="Positiva" onClick='controller.evaluateOffer(true)' />
-								<label
-									value="@{controller.entity.numAvaliacoesPositivas}" />
-								<separator width="20px" />
-								<button id="negativeEvaluate"
-									label="Negativa" onClick='controller.evaluateOffer(false)' />
-								<label
-									value="@{controller.entity.numAvaliacoesNegativas}" />
-							</hbox>
-						</row>
-
-						<row>
-							<button label="Voltar" href="search.zul"
-								width="130px" />
-						</row>
-
-					</rows>
-
-				</grid>
-
-			</west>
-			<center border="none" style="width: 30%">
-				<grid>
-					<rows>
-
-						<row>
-							<hbox>
-								<label value="" style="font-size:18px" />
-							</hbox>
-
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldNomeProdtitle"
-									value="Estabelecimento:" width="142px" />
-								<label id="fldNomeProd"
-									value="@{controller.entity.estabelecimento.nome}"
-									width="142px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldEnderecotitle"
-									value="Endereço:" width="142px" />
-								<label id="fldEndereco"
-									value="@{controller.entity.estabelecimento.endereco}"
-									width="142px" />
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldCidadetitle"
-									value="Cidade:" width="142px" />
-								<label id="fldCidade"
-									value="@{controller.entity.estabelecimento.cidade}"
-									width="142px" />
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldEstadotitle"
-									value="Estado:" width="142px" />
-								<label id="fldEstado"
-									value="@{controller.entity.estabelecimento.estado}"
-									width="142px" />
-
-							</hbox>
-						</row>
-						<row>
-							<hbox>
-								<label id="fldPaistitle" value="País:"
-									width="142px" />
-								<label id="fldPais"
-									value="@{controller.entity.estabelecimento.pais}"
-									width="142px" />
-
-
-							</hbox>
-						</row>
-
-						<row>
-							<hbox>
-								<label id="fldSitetitle" value="Site:"
-									width="142px" />
-								<label id="fldSite"
-									value="@{controller.entity.estabelecimento.site}"
-									width="142px" />
-
-							</hbox>
-						</row>
-
-
-						<row>
-							<hbox>
-								<label id="fldValortitle" value="Valor:"
-									width="142px" />
-								<label id="fldValor"
-									value="@{controller.entity.valor}" width="142px" />
-							</hbox>
-						</row>
-
-						<row>
-							<image id="toolFacebook"
-								src="/images/social/facebook.jpg"
-								onClick="controller.publishOfferOnFacebook()"
-								tooltiptext="Publicar no Facebook" />
-							<image id="toolTwitter"
-								src="/images/social/twitter.jpg"
-								onClick="controller.publishOfferOnTwitter()"
-								tooltiptext="Publicar no Twitter" />
-						</row>
-
-					</rows>
-				</grid>
-
-			</center>
-
-			<east border="none" style="width: 30%">
-				<grid>
-					<rows>
-						<row>
-							<hbox height="150px" align="left"
-								pack="left">
-								<image
-									src='${c:getProperty("DefaultProduct")};'>
-									<attribute name="onCreate">
-										controller.showImageOffer(self, controller.getEntity());
-									</attribute>
-								</image>
-							</hbox>
-						</row>
-
-
-					</rows>
-				</grid>
-			</east>
-
-		</borderlayout>
-		
 		<groupbox width="100%">
+			<hbox width="100%" pack="center">
+				<label value="@{controller.titlePage}" style="font-weight: bold;font-size: 20px;"/>
+			</hbox>
+			
+			<separator height="10px"/>
+			
+			<hbox width="100%" pack="center">
+				<image
+					src='${c:getProperty("DefaultProduct")};'>
+					<attribute name="onCreate">
+						controller.showImageOffer(self, controller.getEntity());
+					</attribute>
+				</image>
+				<grid>
+					<columns>
+						<column hflex="min"/>
+						<column width="200px"/>
+						<column hflex="min"/>
+						<column width="200px"/>
+					</columns>
+					<rows>
+						<row>
+							<label id="fldNometitle"
+								value="Produto:"/>
+							<label id="fldNome"
+								value="@{controller.entity.produto.nome}"/>
+							<label id="fldNomeProdtitle"
+								value="Estabelecimento:" />
+							<label id="fldNomeProd"
+								value="@{controller.entity.estabelecimento.nome}" />
+						</row>
+						<row>
+							<label id="fldTamanhotitle"
+								value="Tamanho:"/>
+							<label id="fldTamanho"
+								value="@{controller.entity.produto.tamanho}" />
+							<label id="fldEnderecotitle"
+								value="Endereço:" />
+							<label id="fldEndereco"
+								value="@{controller.entity.estabelecimento.endereco}"/>
+						</row>
+						<row>
+							<label id="fldPesotitle" value="Peso:"/>
+							<label id="fldPeso"
+								value="@{controller.entity.produto.peso}"/>
+							<label id="fldCidadetitle"
+								value="Cidade:" />
+							<label id="fldCidade"
+								value="@{controller.entity.estabelecimento.cidade}"/>
+						</row>
+						<row>
+							<label id="fldCortitle" value="Cor:"/>
+							<label id="fldCor"
+								value="@{controller.entity.produto.cor}" />
+							<label id="fldEstadotitle"
+								value="Estado:" />
+							<label id="fldEstado"
+								value="@{controller.entity.estabelecimento.estado}" />
+						</row>
+						<row>
+							<label id="fldversaotitle"
+								value="Versão:" />
+							<label id="fldVersao"
+								value="@{controller.entity.produto.versao}" />
+							<label id="fldPaistitle" value="País:"/>
+							<label id="fldPais"
+								value="@{controller.entity.estabelecimento.pais}"/>
+						</row>
+						<row>
+							<label id="fldMarcatitle" value="Marca:" />
+							<label id="fldMarca"
+								value="@{controller.entity.produto.marca}" />
+							<label id="fldSitetitle" value="Site:"/>
+							<label id="fldSite"
+								value="@{controller.entity.estabelecimento.site}"/>
+						</row>
+						<row>
+							<label id="fldValortitle" value="Valor:"/>
+							<label id="fldValor"
+								value="@{controller.entity.valor}" />
+						</row>
+					</rows>
+				</grid>
+			</hbox>
+			
+			<separator height="20px"/>
+			
+			<hbox width="100%" pack="center" align="center">
+				<button id="positiveEvaluate"
+					label="Positiva" onClick='controller.evaluateOffer(true)' />
+				<label
+					value="@{controller.entity.numAvaliacoesPositivas}" />
+				<separator width="20px" />
+				<button id="negativeEvaluate"
+					label="Negativa" onClick='controller.evaluateOffer(false)' />
+				<label
+					value="@{controller.entity.numAvaliacoesNegativas}" />
+			</hbox>
+			
+			<separator height="10px"/>
+			
+			<hbox width="100%" pack="center">
+				<button label="Voltar" href="search.zul" width="130px" />
+			</hbox>
+			
+			<hbox width="100%" pack="end">
+				<image id="toolFacebook"
+					src="/images/social/facebook.jpg"
+					onClick="controller.publishOfferOnFacebook()"
+					tooltiptext="Publicar no Facebook" />
+				<image id="toolTwitter"
+					src="/images/social/twitter.jpg"
+					onClick="controller.publishOfferOnTwitter()"
+					tooltiptext="Publicar no Twitter" />
+			</hbox>
+		</groupbox>
+		<groupbox width="100%" closable="false">
 			<caption label="Fazer Comentário"/>
 			<hbox width="100%">
 				<textbox value="@{controller.fldComentario}" placeholder="Comentario..." hflex="1" maxlength="100"/>
@@ -226,33 +131,35 @@
 			</hbox>
 		</groupbox>
 		
-		<separator height="10px"/>
-		<hbox width="100%" pack="center">
-			<label value="Comentários" style="font-weight: bold;font-size: 16px;"/>
-		</hbox>
-		<separator height="10px"/>
-		
-		<listbox id="boxComentarios" width="100%" model="@{controller.listComentarios}" itemRenderer="@{controller.comentaryRenderer}">
-			<listhead>
-				<listheader hflex="min"/>
-				<listheader hflex="min"/>
-				<listheader hflex="1"/>
-				<listheader hflex="min"/>
-			</listhead>
-<!-- 			<listitem self="@{each=item}" value="@{item}"> -->
-<!-- 				<listcell label="@{item.avaliacao}"/> -->
-<!-- 				<listcell label="@{item.usuario.name}"/> -->
-<!-- 				<listcell label="diz:"/> -->
-<!-- 				<listcell label="@{item.comentario}"/> -->
-<!-- 				<listcell> -->
-<!-- 					<hbox visible="@{controller.sameUser}"> -->
-<!-- 						<a label="Editar"/> -->
-<!-- 						<separator width="10px"/> -->
-<!-- 						<a label="Excluir"/> -->
-<!-- 					</hbox> -->
-<!-- 				</listcell> -->
-<!-- 			</listitem> -->
-		</listbox>
+		<vbox id="boxComentarios" width="100%">
+			<separator height="10px"/>
+			<hbox width="100%" pack="center">
+				<label value="Comentários" style="font-weight: bold;font-size: 16px;"/>
+			</hbox>
+			<separator height="10px"/>
+			
+			<listbox width="100%" model="@{controller.listComentarios}" itemRenderer="@{controller.comentaryRenderer}">
+				<listhead>
+					<listheader hflex="min"/>
+					<listheader hflex="min"/>
+					<listheader hflex="1"/>
+					<listheader width="100px"/>
+				</listhead>
+	<!-- 			<listitem self="@{each=item}" value="@{item}"> -->
+	<!-- 				<listcell label="@{item.avaliacao}"/> -->
+	<!-- 				<listcell label="@{item.usuario.name}"/> -->
+	<!-- 				<listcell label="diz:"/> -->
+	<!-- 				<listcell label="@{item.comentario}"/> -->
+	<!-- 				<listcell> -->
+	<!-- 					<hbox visible="@{controller.sameUser}"> -->
+	<!-- 						<a label="Editar"/> -->
+	<!-- 						<separator width="10px"/> -->
+	<!-- 						<a label="Excluir"/> -->
+	<!-- 					</hbox> -->
+	<!-- 				</listcell> -->
+	<!-- 			</listitem> -->
+			</listbox>
+		</vbox>
 	</div>
 
 </zk>

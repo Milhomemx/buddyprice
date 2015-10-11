@@ -145,4 +145,14 @@ public class OfferController extends GenericControl<Oferta> {
 		return save(coment);
 	}
 
+	public Return editComentary(){
+		Comentario coment = (Comentario) getData().get("selectedComentario");
+		return update(coment);
+	}
+	
+	public Return deleteComentary(){
+		Comentario coment = (Comentario) getData().get("selectedComentario");
+		return delete(coment);
+	}
+	
 }

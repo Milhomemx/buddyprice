@@ -1,10 +1,15 @@
 package br.com.buddyprice.view.composer;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Listitem;
 
 import br.com.buddyprice.model.Avaliacao;
 import br.com.buddyprice.model.Comentario;
@@ -70,6 +75,10 @@ public class ViewOfferComposer extends OfferComposer {
 			session.setAttribute("oferta", null);
 		initEvaluateButtons();
 		loadBinder();
+	}
+	
+	public String getTitlePage(){
+		return getEntity().getProduto().getNome() + " - " + getEntity().getProduto().getMarca() + "," + getEntity().getProduto().getVersao();
 	}
 
 	public void publishOfferOnFacebook(){
@@ -138,6 +147,12 @@ public class ViewOfferComposer extends OfferComposer {
 		List<Comentario> list = getControl().getCommentsFromOffer();
 		if(list != null && !list.isEmpty()){
 			getComponentById("boxComentarios").setVisible(true);
+			Collections.sort(list, new Comparator<Comentario>() {
+				@Override
+				public int compare(Comentario o1, Comentario o2) {
+					return o2.getData().compareTo(o1.getData());
+				}
+			});
 		} else {
 			getComponentById("boxComentarios").setVisible(false);
 		}
@@ -155,10 +170,32 @@ public class ViewOfferComposer extends OfferComposer {
 	}
 
 	public Return editComentary(){
-		return null;
+		Return ret = getControl().doAction("editComentary");
+		if(!ret.isValid()){
+			treatReturn(ret);
+		}
+		return ret;
 	}
 	
 	public Return deleteComentary(){
-		return null;
+		Return ret = getControl().doAction("deleteComentary");
+		if(!ret.isValid()){
+			treatReturn(ret);
+		}
+		return ret;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void showModalDeleteComentary(final Listitem item){
+		showWindowConfirmation("Deseja excluir seu comentário?", new EventListener<Event>() {
+			@Override
+			public void onEvent(Event event) throws Exception {
+				if(event.getName().equals("onOK")){
+					if(deleteComentary().isValid()){
+						loadBinder();
+					}
+				}
+			}
+		});
 	}
 }
