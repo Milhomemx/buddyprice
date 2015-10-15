@@ -31,6 +31,18 @@
                             <panelchildren>
                                 <grid style="border:0;">
                                     <rows>
+                                    
+                                    <row>
+                                            <div>
+                                                <image
+                                                    src='${c:getProperty("FeedIcon")};' />
+                                                <separator
+                                                    orient="vertical" />
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToPDash();"
+                                                    label="Feed de Ofertas" disabled ="false" />
+                                            </div>
+                                        </row>
+                                    
                                         <row>
                                             <div>
                                                 <image
