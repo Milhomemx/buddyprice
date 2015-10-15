@@ -1,5 +1,7 @@
 package br.com.buddyprice.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +35,14 @@ public class Avaliacao extends CommonEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario", insertable = true, updatable = false)
 	private Usuario usuario;
+	
+	@Column(name = "data", nullable = false, updatable = true)
+	private Date data;
 
+	public Avaliacao() {
+		this.data = new Date();
+	}
+	
 	public Oferta getOferta() {
 		return oferta;
 	}

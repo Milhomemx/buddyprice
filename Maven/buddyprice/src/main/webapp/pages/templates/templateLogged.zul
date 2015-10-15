@@ -3,6 +3,9 @@
 <zk>
 	<?xel-method prefix="c" name="getProperty" class="br.com.vexillum.view.GenericComposer" signature="java.lang.String getProperty(java.lang.String)"?>
 	<include src="/style/default.zul"></include>
+	
+	 <style src="/style/bootstrap.css"/>
+	
 	<script src="/scripts/bootstrap.js" type="text/javascript"
 		charset="UTF-8">
 	</script>

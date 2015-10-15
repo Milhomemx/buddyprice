@@ -108,7 +108,7 @@
 			<separator height="10px"/>
 			
 			<hbox width="100%" pack="center">
-				<button label="Voltar" href="search.zul" width="130px" />
+				<button label="Voltar" href="search.zul" width="130px" zclass="btn btn-danger"/>
 			</hbox>
 			
 			<hbox width="100%" pack="end">
