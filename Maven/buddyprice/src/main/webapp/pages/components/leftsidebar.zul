@@ -38,7 +38,7 @@
                                                     src='${c:getProperty("FeedIcon")};' />
                                                 <separator
                                                     orient="vertical" />
-                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToPDash();"
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToDash();"
                                                     label="Feed de Ofertas" disabled ="false" />
                                             </div>
                                         </row>
@@ -84,6 +84,8 @@
                                                     orient="vertical" />
                                                 <toolbarbutton style="font-size:14px" onClick="controller.redirectToOffer();"
                                                     label="Ofertas" disabled ="false" />
+                                                <toolbarbutton style="font-size:14px" onClick="controller.redirectToOfferNew();"
+                                                    label="[+]" disabled ="false" />
                                             </div>
                                         </row>
                                         <row>
@@ -103,7 +105,7 @@
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton onClick="controller.redirectToConfig();"
-                                                    label="Configurações" style="font-size:14px" />
+                                                    label="Configurações" style="font-size:14px" disabled ="true"/>
                                             </div>
                                         </row>
                                     </rows>

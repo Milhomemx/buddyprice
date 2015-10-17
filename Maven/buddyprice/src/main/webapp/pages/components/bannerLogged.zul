@@ -1,6 +1,6 @@
 <div hflex="0" vflex="0" style='background:${c:getProperty("ThemeColor")};'>
 <hbox>
-		<a href="/pages/dashboard/">
+		<a href="/pages/timeline/">
 			<image src='${c:getProperty("NormalLogo")};'/>
 			
 			<a class="btn" style="float:right font-color" href="/buddyprice/logout">Sair!</a>

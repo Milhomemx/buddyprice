@@ -85,7 +85,7 @@ public class LeftSidebarComposer extends
 	 * Direciona para o menu "Dashboard".
 	 */
 	public static void redirectToDash() {
-		Executions.sendRedirect("/pages/dashboard/");
+		Executions.sendRedirect("/pages/timeline/");
 	}
 	/**
 	 * Direciona para o menu "Estabelecimento".
@@ -104,6 +104,12 @@ public class LeftSidebarComposer extends
 	 */
 	public static void redirectToOffer() {
 		Executions.sendRedirect("/pages/offers/");
+	}
+	/**
+	 * Direciona para o cenário adicionar Oferta.
+	 */
+	public static void redirectToOfferNew() {
+		Executions.sendRedirect("/pages/offers/include.zul");
 	}	
 	/**
 	 * Direciona para o menu "Camaradas".
