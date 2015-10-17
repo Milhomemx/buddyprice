@@ -33,7 +33,7 @@ public class MediaUtils {
 	public static void setImageProduct(Image comp, Produto produto) {
 		Attachment att = new AttachmentMediaProduct();
 		try {
-			File image = att.getAttachment("image_profile", produto);
+			File image = att.getAttachment("image_product", produto);
 			if (image != null) {
 				comp.setContent(new AImage(image));
 			}

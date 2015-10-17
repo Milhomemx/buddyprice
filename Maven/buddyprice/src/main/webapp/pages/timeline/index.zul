@@ -2,9 +2,11 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
-	<div self="@define(content)" apply="${timelineComposer}" >  
-		<hbox width="100%" pack="center">
-			<listbox model="@{controller.timelineItens}" itemRenderer="@{controller.timelineRenderer}" width="600px" emptyMessage="Sem itens para exibir em sua timeline!"/>
+	<div self="@define(content)" apply="${timelineComposer}" vflex="1">  
+		<hbox width="100%" vflex="1" pack="center">
+			<listbox model="@{controller.timelineItens}" itemRenderer="@{controller.timelineRenderer}" 
+					width="600px" vflex="1" emptyMessage="Sem itens para exibir em sua timeline!"
+					mold="paging" autopaging="true"/>
 		</hbox>
 	</div>
 </zk>
