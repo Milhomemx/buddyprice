@@ -2,11 +2,53 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
+	<style>
+		.z-vlayout-inner {
+			padding-bottom: 0px !IMPORTANT; 
+		}
+	</style>
 	<div self="@define(content)" apply="${timelineComposer}" vflex="1">  
 		<hbox width="100%" vflex="1" pack="center">
 			<listbox model="@{controller.timelineItens}" itemRenderer="@{controller.timelineRenderer}" 
 					width="600px" vflex="1" emptyMessage="Sem itens para exibir em sua timeline!"
 					mold="paging" autopaging="true"/>
+			
+			<groupbox vflex="1" width="200px">
+				<vbox width="100%" align="center">
+					<label value="Sua Reputação" style="font-size: 18px;font-weight: bold;"/>
+				</vbox>
+				<separator height="30px"/>
+				<vlayout style="padding-left: 20px">
+				<hlayout>
+					<label value="Nota: " style="font-weight: bold;"/>
+					<label value="@{controller.userTimeline.reputacao.nota}"/>
+				</hlayout>
+				<separator height="15px"/>
+				<label value="Avaliações" style="font-weight: bold;"/>
+				<hlayout>
+					<label value="Positivas: "/>
+					<label value="@{controller.userTimeline.reputacao.avaliacoesPositivas}"/>
+				</hlayout>
+				<hlayout>
+					<label value="Negativas: "/>
+					<label value="@{controller.userTimeline.reputacao.avaliacoesNegativas}"/>
+				</hlayout>
+				<separator height="15px"/>
+				<label value="Comentários" style="font-weight: bold;"/>
+				<hlayout>
+					<label value="Positivos: "/>
+					<label value="@{controller.userTimeline.reputacao.comentariosPositivos}"/>
+				</hlayout>
+				<hlayout>
+					<label value="Negativos: "/>
+					<label value="@{controller.userTimeline.reputacao.comentariosNegativos}"/>
+				</hlayout>
+				<hlayout>
+					<label value="Neutros: "/>
+					<label value="@{controller.userTimeline.reputacao.comentariosNeutros}"/>
+				</hlayout>
+				</vlayout>
+			</groupbox>
 		</hbox>
 	</div>
 </zk>

@@ -36,8 +36,8 @@ public class TimelineController extends GenericControl<Timeline> {
 	@SuppressWarnings("unchecked")
 	public List<Timeline<?>> getTimelineItens(){
 		String sql = "from Timeline t";
-		if(getData().get("userTimeline") != null && !((String) getData().get("userTimeline")).isEmpty()){
-			sql += " where t.usuarioDono <> " + ((Usuario) getData().get("userLogged")).getId() + " and t.usuarioDono.id = " + getData().get("userTimeline");
+		if(!getData().get("userTimeline").equals(getData().get("userLogged"))){
+			sql += " where t.usuarioDono <> " + ((Usuario) getData().get("userLogged")).getId() + " and t.usuarioDono.id = " + ((Usuario) getData().get("userTimeline")).getId();
 			getData().put("sql", sql);
 		} else {
 			List<Usuario> listFriendsUsuario = getListFriendsUsuario();
@@ -90,6 +90,12 @@ public class TimelineController extends GenericControl<Timeline> {
 	public Return evaluateOfferNegative(){
 		Oferta oferta = (Oferta) getData().get("selectedOffer");
 		return getOfferController().evaluateOfferNegative(oferta);
+	}
+	
+	public Usuario getUserById(Long id){
+		UsuarioController controller = SpringFactory.getController("usuarioController",
+				UsuarioController.class, getData());
+		return controller.searchById(id);
 	}
 	
 	private OfferController getOfferController() {

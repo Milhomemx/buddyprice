@@ -15,6 +15,7 @@ import br.com.buddyprice.model.Avaliacao;
 import br.com.buddyprice.model.Comentario;
 import br.com.buddyprice.model.Oferta;
 import br.com.buddyprice.model.Timeline;
+import br.com.buddyprice.model.Usuario;
 import br.com.buddyprice.view.renderer.TimelineRenderer;
 import br.com.vexillum.util.ReflectionUtils;
 import br.com.vexillum.util.SpringFactory;
@@ -26,15 +27,15 @@ public class TimelineComposer extends BaseComposer<Timeline, TimelineController>
 
 	private TimelineRenderer renderer;
 	
-	private String userTimeline;
+	private Usuario userTimeline;
 	
 	private Oferta selectedOffer;
 	
-	public String getUserTimeline() {
+	public Usuario getUserTimeline() {
 		return userTimeline;
 	}
 
-	public void setUserTimeline(String userTimeline) {
+	public void setUserTimeline(Usuario userTimeline) {
 		this.userTimeline = userTimeline;
 	}
 
@@ -55,9 +56,18 @@ public class TimelineComposer extends BaseComposer<Timeline, TimelineController>
 	
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
-		userTimeline = Executions.getCurrent().getParameter("userId");
 		super.doAfterCompose(comp);
+		initUserTimeline();
 		loadBinder();
+	}
+	
+	private void initUserTimeline(){
+		try {
+			userTimeline = getControl().getUserById(Long.parseLong(Executions.getCurrent().getParameter("userId")));
+		} catch (Exception e) {} 
+		if(userTimeline == null){
+			userTimeline = (Usuario) getUserLogged();
+		}
 	}
 	
 	public List<Timeline<?>> getTimelineItens(){
