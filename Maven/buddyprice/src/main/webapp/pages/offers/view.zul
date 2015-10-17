@@ -4,7 +4,7 @@
 
 <zk>
 
-	<div self="@define(content)" apply="${viewOfferComposer}" hflex="1">
+	<div self="@define(content)" apply="${viewOfferComposer}" hflex="1" >
 		<groupbox width="100%">
 			<hbox width="100%" pack="center">
 				<label value="@{controller.titlePage}" style="font-weight: bold;font-size: 20px;"/>
