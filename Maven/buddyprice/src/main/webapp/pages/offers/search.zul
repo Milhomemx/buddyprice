@@ -80,6 +80,7 @@
 													onClick='controller.redirectToView(self.getParent().getParent().getParent().getParent().getParent().getValue())' />
 												<button label="Editar"
 													tooltiptext=""
+													onCreate='controller.validateButtonForOwner(self, self.getParent().getParent().getParent().getParent().getParent().getValue());'
 													onClick='controller.redirectToUpdate(self.getParent().getParent().getParent().getParent().getParent().getValue());' />
 											</vbox>
 

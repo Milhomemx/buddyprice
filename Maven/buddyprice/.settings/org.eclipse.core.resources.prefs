@@ -2,7 +2,6 @@ eclipse.preferences.version=1
 encoding//src/main/java/br/com/buddyprice/control/CommentController.java=UTF-8
 encoding//src/main/java/br/com/buddyprice/control/EstablishmentController.java=UTF-8
 encoding//src/main/java/br/com/buddyprice/control/EvaluationController.java=UTF-8
-encoding//src/main/java/br/com/buddyprice/control/FriendshipBuddyPriceController.java=UTF-8
 encoding//src/main/java/br/com/buddyprice/control/OfferController.java=UTF-8
 encoding//src/main/java/br/com/buddyprice/control/ProductController.java=UTF-8
 encoding//src/main/java/br/com/buddyprice/control/TimelineController.java=UTF-8

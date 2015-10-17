@@ -138,6 +138,7 @@ public class OfferController extends GenericControl<Oferta> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Comentario> getCommentsFromOffer(Oferta oferta){
+		if(oferta == null || oferta.getId() == null) return new ArrayList<>();
 		String sql = "FROM Comentario c WHERE c.oferta= '" + oferta.getId() + "'";
 		getData().put("sql", sql);
 		

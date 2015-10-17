@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Grid;
 
 import br.com.buddyprice.model.Oferta;
@@ -63,8 +64,8 @@ public class SearchOfferComposer extends ViewOfferComposer {
 	 */
 	public void redirectToView(Oferta oferta) {
 
-		session.setAttribute("oferta", oferta);
-		Executions.sendRedirect("view.zul");
+//		session.setAttribute("oferta", oferta);
+		Executions.sendRedirect("view.zul?id=" + oferta.getId());
 	}
 
 	/**
@@ -77,5 +78,9 @@ public class SearchOfferComposer extends ViewOfferComposer {
 
 	}
 
-
+	public void validateButtonForOwner(Button button, Oferta of){
+		if(!of.getUsuario().equals(getUserLogged())){
+			button.detach();
+		}
+	}
 }

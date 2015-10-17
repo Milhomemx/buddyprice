@@ -71,6 +71,9 @@
 												<button label="Editar"
 													tooltiptext=""
 													onClick='controller.redirectToUpdate(self.getParent().getParent().getParent().getParent().getParent().getValue());' />
+												<button label="Excluir"
+													tooltiptext=""
+													onClick='controller.redirectToDelete(self.getParent().getParent().getParent().getParent().getParent().getValue());' />
 											</vbox>
 
 										</east>

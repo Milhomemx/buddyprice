@@ -1,6 +1,6 @@
 <div apply="${productComposer}">
 <borderlayout height="800px">
-	<west border="none" style="width: 40%">
+	<west border="none" style="overflow-y: auto;" size="500px">
 
 	<grid>
 		<rows>
@@ -74,13 +74,13 @@
 			</row>
 			
 			<row>
-				<include src="/pages/forms/panelAtrrExtra.zul" />	
+				<include src="/pages/forms/panelAtrrExtra.zul" style="overflow-y:auto"/>	
 			</row>
 			
 			<row>
 
 				<hbox>
-					<button sclass="btn btn-danger"
+					<button zclass="btn btn-danger"
 						label="Salvar Alterações"
 						onClick='controller.doAction("saveEntity")' />
 						<button

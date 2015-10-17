@@ -118,7 +118,7 @@ public class EstablishmentComposer extends
 	public Return saveEntity() {
 		Estabelecimento estabelecimento = entity;
 		Return ret = super.saveEntity();
-		if(ret.isValid()){
+		if(ret.isValid() && getParentComposer() instanceof OfferComposer){
 			estabelecimento = (Estabelecimento) getControl().getEstablishmentId(ret.getSerializable()).getList().get(0);
 			if(getComponentById("modalEstabelecimento") != null){
 				getComponentById("modalEstabelecimento").detach();
@@ -195,5 +195,5 @@ public class EstablishmentComposer extends
 	public Estabelecimento getEntityObject() {
 		return new Estabelecimento();
 	}
-
+	
 }

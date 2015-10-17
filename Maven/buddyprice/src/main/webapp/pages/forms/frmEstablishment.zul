@@ -1,8 +1,8 @@
 <?component name="atributoextra" macroURI="/macros/atributoextra.zul" class="br.com.buddyprice.view.macros.AtributoExtra"?>
 
-<div apply="${establishmentComposer}">
+<div apply="${establishmentComposer}" height="100%" style="overflow: auto">
 	<borderlayout height="500px" >
-		<west border="none" style="width: 60%">
+		<west border="none" style="overflow-y: auto;" width="500px">
 			<grid>
 				<rows width="500px">
 					<row width="500px"> 
@@ -66,7 +66,7 @@
 					</row>
 					
 					<row>
-						<include src="/pages/forms/panelAtrrExtra.zul" />	
+						<include src="/pages/forms/panelAtrrExtra.zul" style="overflow-y:auto"/>	
 					</row>
 					<row>
 						<hbox>

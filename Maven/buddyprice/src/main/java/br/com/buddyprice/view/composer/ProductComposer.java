@@ -56,7 +56,7 @@ public class ProductComposer extends
 	public Return saveEntity() {
 		Produto produto = entity;
 		Return ret = super.saveEntity();
-		if (ret.isValid()) {
+		if (ret.isValid() && getParentComposer() instanceof OfferComposer) {
 			produto = (Produto) getControl().getProductId(ret.getSerializable()).getList().get(0);
 			if(getComponentById("modalProduto") != null){
 				getComponentById("modalProduto").detach();

@@ -74,4 +74,20 @@ public class SearchProductComposer extends ViewProductComposer {
 
 	}
 
+	public void redirectToDelete(Produto produto){
+		if(produto != null)
+			setEntity(produto);
+		showActionConfirmation("Deseja excluir este Estabelecimento?", "excluirProduto");
+	}
+	
+	public Return excluirProduto(){
+		Produto pro = entity;
+		Return ret = getControl().doAction("delete");
+		if(ret.isValid()){
+			getListEntity().remove(pro);
+		}
+		loadBinder();
+		return ret;
+	}
+	
 }

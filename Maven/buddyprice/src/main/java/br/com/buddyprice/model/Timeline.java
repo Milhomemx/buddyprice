@@ -19,7 +19,7 @@ import br.com.vexillum.model.CommonEntity;
 @Table(name="timeline")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="interacao", discriminatorType=DiscriminatorType.STRING)
-public abstract class Timeline<T> extends CommonEntity  {
+public abstract class Timeline<T> extends CommonEntity implements Comparable<Timeline<?>>  {
 	
 	/**
 	 * 
@@ -61,4 +61,8 @@ public abstract class Timeline<T> extends CommonEntity  {
 		this.momento = momento;
 	}
 	
+	@Override
+	public int compareTo(Timeline<?> o) {
+		return o.getData().compareTo(getData());
+	}
 }

@@ -1,6 +1,7 @@
 package br.com.buddyprice.control;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -49,8 +50,9 @@ public class TimelineController extends GenericControl<Timeline> {
 		if(ret.getList() == null){
 			return new ArrayList<>();
 		}
-		
-		return (List<Timeline<?>>) ret.getList();
+		List<Timeline<?>> timleineList = (List<Timeline<?>>) ret.getList();
+		Collections.sort(timleineList);
+		return timleineList;
 	}
 	
 	private List<Usuario> getListFriendsUsuario(){

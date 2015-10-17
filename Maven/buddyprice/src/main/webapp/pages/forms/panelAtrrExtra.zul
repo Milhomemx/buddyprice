@@ -1,10 +1,10 @@
-<vlayout id="panelAtrrExtra" visible="false" width="600px" height="125px" style="overflow: auto;" >
+<vlayout id="panelAtrrExtra" visible="false" hflex="1" height="125px" style="overflow: auto;" >
 	<hlayout>
 		<textbox id="fldAtributo" value="@{controller.atributoExtra.atributoExtra}" style="text-transform: uppercase;"/>
 		<textbox id="fldValor" value="@{controller.atributoExtra.valor}" />
 		<button id="btnSalvar" label="S" onClick='controller.doAction("adicionarAtributoExtra");' />
 	</hlayout>
-	<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" width="500px" selectedItem="@{controller.selectedAtributoExtra}"
+	<listbox id="atributoExtrasList" model="@{controller.atributosExtras}" selectedItem="@{controller.selectedAtributoExtra}"
 				hflex="min" onAfterRender='self.clearSelection();' 
 				mold="paging" pageSize='10'>
 		<listhead>
@@ -13,8 +13,7 @@
 			<listheader label="Ação" width="100px"/>
 		</listhead>
 		<listitem self="@{each=itm}" value="@{itm}">
-		 	<listcell label="@{itm.atributoExtra.nome}">
-		 	</listcell>
+		 	<listcell label="@{itm.atributoExtra.nome}"/>
 		 	<listcell>
 		 		<textbox value="@{itm.valor}" inplace="true" hflex="1"/>
 		 	</listcell>

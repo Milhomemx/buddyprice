@@ -43,7 +43,7 @@ public class TimelineRenderer implements ListitemRenderer<Timeline<?>> {
 		
 		Groupbox groupbox = new Groupbox();
 		groupbox.setHflex("1");
-		groupbox.setHeight("250px");
+		groupbox.setHeight("260px");
 		
 		if(tl instanceof TimelineAmizade){
 			groupbox.appendChild(fillAmizadeTimeline(tl));
@@ -148,6 +148,7 @@ public class TimelineRenderer implements ListitemRenderer<Timeline<?>> {
 		
 		Hbox hboxButton = new Hbox();
 		hboxButton.setWidth("100%");
+		hboxButton.setAlign("center");
 		
 		Hbox hboxEvaluations = new Hbox();
 		Button buttonEvaluatePositive = new Button("Positiva");
