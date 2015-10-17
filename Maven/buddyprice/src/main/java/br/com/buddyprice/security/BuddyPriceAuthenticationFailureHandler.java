@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.AuthenticationException;
@@ -22,11 +23,11 @@ public class BuddyPriceAuthenticationFailureHandler implements AuthenticationFai
 	public void onAuthenticationFailure(HttpServletRequest request,
 			HttpServletResponse response, AuthenticationException exception)
 			throws IOException, ServletException {
-		if(exception instanceof BadCredentialsException){
+		if(exception instanceof BadCredentialsException || exception instanceof AuthenticationServiceException){
 			response.sendRedirect("pages/user/login.zul?error=true");
 		} else if(exception instanceof DisabledException){
 			response.sendRedirect("pages/user/login.zul?inactiveaccount=true");
-		}
+		} 
 	}
 
 }
