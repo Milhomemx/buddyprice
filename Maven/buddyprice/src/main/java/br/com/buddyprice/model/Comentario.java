@@ -91,4 +91,9 @@ public class Comentario extends CommonEntity {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		return getUsuario().getName() + " diz: " + getComentario();
+	}
+	
 }

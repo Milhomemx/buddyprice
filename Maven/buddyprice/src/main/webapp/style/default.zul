@@ -458,5 +458,9 @@ div.z-grid-header-bg {
 	color: black;
 }   
 
+.groupboxImage .z-groupbox-content {
+	padding: 0px;
+}
+
  ]]></style>
 </zk>

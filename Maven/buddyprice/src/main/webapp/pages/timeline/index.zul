@@ -2,7 +2,9 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
-	<div self="@define(content)" apply="${timelineComposer}">
-		<listbox model="@{controller.timelineItens}"></listbox>
+	<div self="@define(content)" apply="${timelineComposer}" >
+		<hbox width="100%" pack="center">
+			<listbox model="@{controller.timelineItens}" itemRenderer="@{controller.timelineRenderer}" width="600px" emptyMessage="Sem itens para exibir em sua timeline!"/>
+		</hbox>
 	</div>
 </zk>

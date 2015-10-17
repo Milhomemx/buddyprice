@@ -34,6 +34,7 @@ public class SearchOfferComposer extends ViewOfferComposer {
 	}
 	
 	public void doAfterCompose(Component comp) throws Exception {
+		isSearch = true;
 		super.doAfterCompose(comp);
 		loadBinder();
 	}

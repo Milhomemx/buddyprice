@@ -20,7 +20,7 @@
 		<west width="23%" border="none" collapsible="true" droppable="true">
 					<include src="/pages/components/leftsidebar.zul" />
 		</west>
-		<east width="8%" border="none"></east>
+		<east width="15px" border="none"></east>
 		<center self="@insert(content)" border="none" hflex="1" vflex="1" autoscroll="true">
 
 		</center>

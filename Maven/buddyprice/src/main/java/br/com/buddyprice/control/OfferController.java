@@ -1,6 +1,8 @@
 package br.com.buddyprice.control;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,36 +85,44 @@ public class OfferController extends GenericControl<Oferta> {
 	}
 	
 	public Return evaluateOfferPositive(){
-		Avaliacao avaliacao = getEvaluateFromUser();
-		if(avaliacao != null){
-			return delete(avaliacao);
-		}
-		avaliacao = getAvaliacaoEntity(true);
-		return save(avaliacao);
+		return evaluateOfferPositive(getEntity());
 	}
 	
 	public Return evaluateOfferNegative(){
-		Avaliacao avaliacao = getEvaluateFromUser();
+		return evaluateOfferNegative(getEntity());
+	}
+	
+	public Return evaluateOfferPositive(Oferta oferta){
+		Avaliacao avaliacao = getEvaluateFromUser(oferta);
 		if(avaliacao != null){
 			return delete(avaliacao);
 		}
-		avaliacao = getAvaliacaoEntity(false);
+		avaliacao = getAvaliacaoEntity(true, oferta);
+		return save(avaliacao);
+	}
+	
+	public Return evaluateOfferNegative(Oferta oferta){
+		Avaliacao avaliacao = getEvaluateFromUser(oferta);
+		if(avaliacao != null){
+			return delete(avaliacao);
+		}
+		avaliacao = getAvaliacaoEntity(false, oferta);
 		return save(avaliacao);
 	}
 
-	private Avaliacao getAvaliacaoEntity(Boolean valor) {
+	private Avaliacao getAvaliacaoEntity(Boolean valor, Oferta oferta) {
 		Avaliacao avaliacao = new Avaliacao();
 		avaliacao.setUsuario((Usuario) data.get("userLogged"));
-		avaliacao.setOferta((Oferta) data.get("entity"));
+		avaliacao.setOferta(oferta);
 		avaliacao.setValor(valor);
 		return avaliacao;
 	}
 	
-	private Avaliacao getEvaluateFromUser() {
+	private Avaliacao getEvaluateFromUser(Oferta oferta) {
 		Return ret = new Return(true);
 		HashMap<String, Object> data = new HashMap<String, Object>();
 
-		data.put("sql",	"FROM Avaliacao a WHERE a.oferta = '" + getEntity().getId() + "' AND a.usuario = '" + ((Usuario)getData().get("userLogged")).getId() + "'");
+		data.put("sql",	"FROM Avaliacao a WHERE a.oferta = '" + oferta.getId() + "' AND a.usuario = '" + ((Usuario)getData().get("userLogged")).getId() + "'");
 
 		OfferController controller = SpringFactory.getController("offerController", OfferController.class, data);
 		ret = controller.searchByHQL();
@@ -122,9 +132,13 @@ public class OfferController extends GenericControl<Oferta> {
 		return null;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Comentario> getCommentsFromOffer(){
-		String sql = "FROM Comentario c WHERE c.oferta= '" + getEntity().getId() + "'";
+		return getCommentsFromOffer(getEntity());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Comentario> getCommentsFromOffer(Oferta oferta){
+		String sql = "FROM Comentario c WHERE c.oferta= '" + oferta.getId() + "'";
 		getData().put("sql", sql);
 		
 		CommentController controller = SpringFactory.getController("commentController", CommentController.class, data);
@@ -132,7 +146,14 @@ public class OfferController extends GenericControl<Oferta> {
 		if (ret.getList() == null) {
 			return new ArrayList<>();
 		}
-		return (List<Comentario>) ret.getList();
+		List<Comentario> list = (List<Comentario>) ret.getList();
+		Collections.sort(list, new Comparator<Comentario>() {
+			@Override
+			public int compare(Comentario o1, Comentario o2) {
+				return o2.getData().compareTo(o1.getData());
+			}
+		});
+		return list;
 	}
 	
 	public Return saveComentary(){

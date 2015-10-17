@@ -1,11 +1,10 @@
 package br.com.buddyprice.view.composer;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Button;
@@ -36,6 +35,8 @@ public class ViewOfferComposer extends OfferComposer {
 	private AvaliacaoComentario fldAvaliacao;
 	
 	private Comentario selectedComentario;
+	
+	protected Boolean isSearch = false;
 	
 	public String getFldComentario() {
 		return fldComentario;
@@ -70,14 +71,31 @@ public class ViewOfferComposer extends OfferComposer {
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		if(session.getAttribute("oferta")!=null)
+		if(session.getAttribute("oferta")!=null){
 			setEntity((Oferta) session.getAttribute("oferta"));
 			session.setAttribute("oferta", null);
+		} else if(Executions.getCurrent().getParameter("id") != null){
+			Oferta oferta = null;
+			try {
+				oferta = getControl().searchById(Long.parseLong(Executions.getCurrent().getParameter("id")));
+			} catch (Exception e) {
+				redirectToSearch();
+			}
+			if(oferta == null) redirectToSearch();
+			setEntity(oferta);
+		} else if(!isSearch){
+			redirectToSearch();
+		}
 		initEvaluateButtons();
 		loadBinder();
 	}
+
+	private void redirectToSearch() {
+		Executions.sendRedirect("/pages/offers/search.zul");
+	}
 	
 	public String getTitlePage(){
+		if(getEntity() == null || getEntity().getProduto() == null) return "";
 		return getEntity().getProduto().getNome() + " - " + getEntity().getProduto().getMarca() + "," + getEntity().getProduto().getVersao();
 	}
 
@@ -103,19 +121,23 @@ public class ViewOfferComposer extends OfferComposer {
 		return post;
 	}
 	
-	private void initEvaluateButtons() {
-		if(getComponentById("negativeEvaluate") != null && getComponentById("positiveEvaluate") != null){
+	private void initEvaluateButtons(){
+		initEvaluateButtons(getComponentById("positiveEvaluate"), getComponentById("negativeEvaluate"));
+	}
+	
+	private void initEvaluateButtons(Component buttonPositive, Component buttonNegative) {
+		if(buttonNegative != null && buttonPositive != null){
 			if(getEntity().getAvaliacoes() != null ){
 				for (Avaliacao avaliacao : getEntity().getAvaliacoes()) {
 					if(avaliacao.getUsuario().equals(getUserLogged())){
-						((Button)getComponentById("negativeEvaluate")).setDisabled(avaliacao.getValor());
-						((Button)getComponentById("positiveEvaluate")).setDisabled(!avaliacao.getValor());
+						((Button)buttonNegative).setDisabled(avaliacao.getValor());
+						((Button)buttonPositive).setDisabled(!avaliacao.getValor());
 						return;
 					}
 				}
 			}
-			((Button)getComponentById("negativeEvaluate")).setDisabled(false);
-			((Button)getComponentById("positiveEvaluate")).setDisabled(false);
+			((Button)buttonNegative).setDisabled(false);
+			((Button)buttonPositive).setDisabled(false);
 		}
 	}
 	
@@ -147,12 +169,6 @@ public class ViewOfferComposer extends OfferComposer {
 		List<Comentario> list = getControl().getCommentsFromOffer();
 		if(list != null && !list.isEmpty()){
 			getComponentById("boxComentarios").setVisible(true);
-			Collections.sort(list, new Comparator<Comentario>() {
-				@Override
-				public int compare(Comentario o1, Comentario o2) {
-					return o2.getData().compareTo(o1.getData());
-				}
-			});
 		} else {
 			getComponentById("boxComentarios").setVisible(false);
 		}
