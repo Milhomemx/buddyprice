@@ -1,5 +1,7 @@
 <?page title="Busca Estabelecimento"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
+<?link rel="icon" type="image/x-icon" href="/images/icon/icon.ico"?>
+
 
 <zk>
 	<style>.message.z-label{ font-size: 20px; }</style>
@@ -97,7 +99,7 @@
 		<hbox>
 			<button label="Adicionar Oferta"
 				href="include.zul" />
-			<button label="Voltar" href="../dashboard/" />
+			<button label="Voltar" href="../timeline/" />
 
 		</hbox>
 	</div>

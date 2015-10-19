@@ -54,7 +54,7 @@
 								label="Salvar Alterações" width="121px"
 								onClick='controller.doAction("saveEntity")' />
 							<button label="Cancelar"
-								href="/pages/dashboard/" width="121px" />
+								href="/pages/timeline/" width="121px" />
 						</hbox>
 					</row>
 				</rows>

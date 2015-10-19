@@ -4,7 +4,7 @@
 
 <zk>
 
-	<div self="@define(content)">
+	<div self="@define(content)" >
 		<window apply="br.com.buddyprice.view.composer.ProfileComposer">
 
 			<grid style="width: 80%">
@@ -69,7 +69,7 @@
 
 					<row>
 						<hbox>
-							<button label="Alterar Senha"
+							<button label="Alterar Senha" sclass="btn btn-danger btn-sm"
 								onClick='controller.callModalWindow("./changePass.zul")' />
 
 						</hbox>
@@ -77,18 +77,18 @@
 					</row>
 					<row>
 						<hbox>
-							<button sclass="btn btn-danger"
+							<button sclass="btn btn-danger btn-sm"
 								label="Salvar Alterações"
 								onClick='controller.updateInformation();' />
-							<button sclass="btn btn-danger"
+							<button sclass="btn btn-danger btn-sm"
 								width="140px" label="Desativar Conta"
 								onClick='controller.deactivate();' />
 
 						</hbox>
 					</row>
 					<row>
-						<button
-							label="Cancelar" href="/pages/dashboard/" width="130px" />
+						<button sclass="btn btn-danger btn-sm"
+							label="Voltar" href="/pages/timeline/" width="130px" />
 					</row>
 				</rows>
 

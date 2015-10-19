@@ -7,7 +7,6 @@
 		}
 	</style>
 	<div self="@define(content)" height="100%" apply="${requestsComposer}">
-<!-- 		<include src="/paginas/template/topPages.zul" backHref="/paginas/amizades/amizades.zul"/> -->
 		<tabbox height="100%">
 			<tabs>
 				<tab label="Solicitações Pendentes" style="font-size: 18px;"/>
@@ -54,7 +53,7 @@
 									<vbox align="center">
 										<borderlayout width="400px" height="72px" sclass="pesqUsuario">
 											<west>
-												<image src="/imagens/fotopadrao.png" width="67px" height="67px"/>
+												<image src='${c:getProperty("DefaultAvatar")};' width="67px" height="67px"/>
 											</west>
 											<center>
 												<vbox width="100%">
@@ -65,9 +64,9 @@
 											</center>
 											<east>
 												<vbox height="100%" width="30px" align="center" pack="center">
-													<button zclass="btn btn-block btn-success reduced" image="/imagens/user24x24.png" onClick="controller.redirectToProfile(self)"/>
+													<button zclass="btn btn-block btn-success reduced" onClick="controller.redirectToProfile(self)"/>
 													<separator height="10px"/>
-													<button zclass="btn btn-block btn-success reduced" image="/imagens/Close-2-icon24x24.png" onClick="controller.refuseFriendship(self)"/>
+													<button zclass="btn btn-block btn-success reduced" onClick="controller.refuseFriendship(self)"/>
 												</vbox>
 											</east>
 										</borderlayout>
@@ -80,5 +79,14 @@
 				</tabpanel>
 			</tabpanels>
 		</tabbox>
+			<separator />
+		<hbox>
+			<button label="Buscar Usuários"
+				href="searchusers.zul" />
+			<button label="Buscar amigos"
+				href="index.zul" />
+			<button label="Voltar" href="../timeline/" />
+
+		</hbox>
 	</div>
 </zk>

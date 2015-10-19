@@ -169,10 +169,10 @@ public class TimelineRenderer implements ListitemRenderer<Timeline<?>> {
 		Hbox hboxPublications = new Hbox();
 		hboxPublications.setHflex("1");
 		hboxPublications.setPack("center");
-		Image imageFacebook = new Image("/images/social/facebook.jpg");
+		Image imageFacebook = new Image("/images/social/facebook.png");
 		Separator sepPublications = new Separator();
 		sepEvaluate.setWidth("5px");
-		Image imageTwitter = new Image("/images/social/twitter.jpg");
+		Image imageTwitter = new Image("/images/social/twitter.png");
 		hboxPublications.appendChild(imageFacebook);
 		hboxPublications.appendChild(sepPublications);
 		hboxPublications.appendChild(imageTwitter);

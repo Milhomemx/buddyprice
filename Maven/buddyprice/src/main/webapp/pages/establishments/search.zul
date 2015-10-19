@@ -1,4 +1,5 @@
 <?page title="Busca Estabelecimento"?>
+<?link rel="shortcut icon" href="/images/icon/icon.ico" type="image/x-icon"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/pages/templates/templateLogged.zul"?>
 
 <zk>
@@ -91,7 +92,7 @@
 		<hbox>
 			<button label="Adicionar Estabelecimento"
 				href="include.zul" />
-			<button label="Voltar" href="../dashboard/" />
+			<button label="Voltar" href="../timeline/" />
 
 		</hbox>
 	</div>

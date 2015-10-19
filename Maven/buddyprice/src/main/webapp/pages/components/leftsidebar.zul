@@ -99,13 +99,14 @@
                                             </div>
                                         </row>
                                         <row>
-                                            <div>
+                                        <!-- TODO em visible="true/false", colocar alguma coisa que trate as ROLES admin e user -->
+                                            <div visible ="false">
                                                 <image
                                                     src='${c:getProperty("ConfigurationIcon")};' />
                                                 <separator
                                                     orient="vertical" />
                                                 <toolbarbutton onClick="controller.redirectToConfig();"
-                                                    label="Configurações" style="font-size:14px" disabled ="true"/>
+                                                    label="Configurações" style="font-size:14px"/>
                                             </div>
                                         </row>
                                     </rows>

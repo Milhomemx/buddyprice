@@ -1,9 +1,0 @@
-<?page title="BuddyPrice"?>
-<zk>
-	 <div self="@define(content)">
-	 <div>
-		    <include src="/pages/dashboard/view.zul" /> 
-		</div>
-	</div> 
-</zk>
-
