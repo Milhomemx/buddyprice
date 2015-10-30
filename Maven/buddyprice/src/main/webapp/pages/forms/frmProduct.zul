@@ -104,7 +104,7 @@
 				<row>
 					<hbox height="150px" align="left"
 						pack="left">
-						<image
+						<image id="imagePanel"
 							src='${c:getProperty("DefaultProduct")};'>
 							<attribute name="onCreate">
 	controller.showImageProduct(self, controller.getEntity());
@@ -116,6 +116,10 @@
 					<button upload="true" label="Alterar Foto"
 						id="foto" visible="false"
 						onUpload='controller.changeProductImage(event)' />
+						
+					<button upload="true" label="Inserir Foto"
+								id="foto_create" visible="false"
+								onUpload='controller.uploadProductImage(event)' />
 				</row>
 
 			</rows>

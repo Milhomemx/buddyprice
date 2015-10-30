@@ -126,10 +126,10 @@ public class EstablishmentComposer extends
 				getParentComposer().loadBinder();
 			} else {
 				setEntity(estabelecimento);
-				if (ret.isValid() && fotoEstabelecimento != null)
-					ret.concat(uploadImage(getFotoEstabelecimento()));
 			}
 		}
+		if (ret.isValid() && fotoEstabelecimento != null)
+			ret.concat(uploadImage(getFotoEstabelecimento()));
 		return ret;
 	}
 

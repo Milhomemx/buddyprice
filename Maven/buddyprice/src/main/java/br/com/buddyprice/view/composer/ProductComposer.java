@@ -1,6 +1,7 @@
 package br.com.buddyprice.view.composer;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.springframework.context.annotation.Scope;
 import org.zkoss.image.AImage;
@@ -30,6 +31,16 @@ import br.com.vexillum.util.SpringFactory;
 public class ProductComposer extends
 		CommonEntityDatedHasAtrrExtComposer<Produto, ProductController> {
 
+	private Media fotoProduto;
+	 
+	public Media getFotoProduto() {
+		return fotoProduto;
+	}
+
+	public void setFotoProduto(Media fotoProduto) {
+		this.fotoProduto = fotoProduto;
+	}
+
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		if (session.getAttribute("produto") != null) {
@@ -40,6 +51,8 @@ public class ProductComposer extends
 		} else if(arg.containsKey("nomeProduto")){
 			getEntity().setNome((String) arg.get("nomeProduto"));
 			((HtmlBasedComponent) getComponentById("fldTamanho")).focus();
+		} else {
+			showCreateImageProduct();
 		}
 		
 		loadBinder();
@@ -56,18 +69,22 @@ public class ProductComposer extends
 	public Return saveEntity() {
 		Produto produto = entity;
 		Return ret = super.saveEntity();
-		if (ret.isValid() && getParentComposer() instanceof OfferComposer) {
+		if(ret.isValid()){
 			produto = (Produto) getControl().getProductId(ret.getSerializable()).getList().get(0);
-			if(getComponentById("modalProduto") != null){
-				getComponentById("modalProduto").detach();
-				((OfferComposer)getParentComposer()).getEntity().setProduto(produto);
-				getParentComposer().loadBinder();
+			if(getParentComposer() instanceof OfferComposer){
+				if(getComponentById("modalProduto") != null){
+					getComponentById("modalProduto").detach();
+					((OfferComposer)getParentComposer()).getEntity().setProduto(produto);
+					getParentComposer().loadBinder();
+				}
 			} else {
+				setEntity(produto);
+				if (fotoProduto != null)
+					ret.concat(uploadImage(getFotoProduto()));
 				session.setAttribute("produto", produto);
 				Executions.sendRedirect("view.zul?sucess=true");
 			}
 		}
-
 		return ret;
 	}
 
@@ -77,16 +94,41 @@ public class ProductComposer extends
 	 */
 	public void changeProductImage(UploadEvent event) {
 		Media media = event.getMedia();
+		if (media != null) {
+			Return uploadImage = uploadImage(media);
+			if (uploadImage.isValid()) {
+				Component comp = getComponentById("imagePanel");
+				showImageProduct((Image) comp, entity);
+				treatReturn(uploadImage);
+			}
+		}
+	}
+
+	public void uploadProductImage(UploadEvent event) throws IOException {
+		Media media = event.getMedia();
+		ImageValidator val = new ImageValidator(media);
+		Return ret = val.upload();
+		if (ret.isValid()) {
+			setFotoProduto(media);
+			Component image = getComponentById("imagePanel");
+			if (image != null) {
+				((Image) image).setContent((org.zkoss.image.Image) media);
+			}
+		} else {
+			treatReturn(ret);
+		}
+	}
+	
+	private Return uploadImage(Media media) {
 		ImageValidator val = new ImageValidator(media);
 		Return ret = val.upload();
 		if (ret.isValid()) {
 			AttachmentMediaProduct att = new AttachmentMediaProduct();
 			att.uploadAttachment(media, "image_product", entity);
-//			Executions.sendRedirect("");
+			// Executions.sendRedirect("");
 		}
-		treatReturn(ret);
+		return ret;
 	}
-
 
 	/**
 	 * Direciona para a tela de edição do produto.
@@ -131,6 +173,11 @@ public class ProductComposer extends
 		foto.setVisible(true);
 	}
 	
+	private void showCreateImageProduct() {
+		Component foto = getComponentById("foto_create");
+		if (foto != null)
+			foto.setVisible(true);
+	}
 
 	@Override
 	public Produto getEntityObject() {
